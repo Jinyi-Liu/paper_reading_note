@@ -1,0 +1,1576 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Lemons × Trade-Ins × CPO｜Huang et al. (MSOM 2023) 交互式解读</title>
+
+  <!-- Apple-ish system font stack -->
+  <style>
+    :root{
+      --bg: #ffffff;
+      --bg-elev: #f6f7f9;
+      --text: #0b0b0d;
+      --muted: rgba(11,11,13,.66);
+      --hairline: rgba(11,11,13,.10);
+      --hairline-2: rgba(11,11,13,.14);
+      --shadow: 0 12px 30px rgba(0,0,0,.08);
+      --shadow-soft: 0 8px 22px rgba(0,0,0,.07);
+      --accent: #0071e3; /* Apple blue-ish */
+      --accent-2: #0a84ff;
+      --good: #0a7d35;
+      --warn: #b25e00;
+      --bad: #b00020;
+      --pill: rgba(0,113,227,.12);
+      --code-bg: rgba(127,127,127,.10);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 12px;
+      --max: 1160px;
+      --lh: 1.65;
+    }
+    :root[data-theme="dark"]{
+      --bg: #0b0c0f;
+      --bg-elev: #12131a;
+      --text: #f4f5f7;
+      --muted: rgba(244,245,247,.70);
+      --hairline: rgba(244,245,247,.10);
+      --hairline-2: rgba(244,245,247,.14);
+      --shadow: 0 14px 40px rgba(0,0,0,.45);
+      --shadow-soft: 0 10px 28px rgba(0,0,0,.35);
+      --pill: rgba(10,132,255,.16);
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji",
+                   "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: var(--lh);
+      letter-spacing: .1px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    .nowrap{ white-space: nowrap; }
+    .muted{ color: var(--muted); }
+    .tiny{ font-size: 12.5px; }
+    .small{ font-size: 14px; }
+    .base{ font-size: 16px; }
+    .h1{
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -0.6px;
+      margin: 0 0 10px;
+    }
+    .h2{
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+      margin: 0 0 10px;
+    }
+    .h3{
+      font-size: 18px;
+      line-height: 1.25;
+      margin: 0 0 8px;
+      letter-spacing: -0.1px;
+    }
+
+    /* Layout */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(160%) blur(16px);
+      -webkit-backdrop-filter: saturate(160%) blur(16px);
+      background: color-mix(in oklab, var(--bg) 86%, transparent);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 240px;
+    }
+    .dot{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #7cc4ff, var(--accent));
+      box-shadow: 0 10px 18px rgba(0,113,227,.22);
+    }
+    .brand-title{
+      display:flex;
+      flex-direction:column;
+      line-height:1.12;
+    }
+    .brand-title strong{ font-size: 13.5px; letter-spacing: .2px; }
+    .brand-title span{ font-size: 12px; color: var(--muted); }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    .nav a{
+      font-size: 12.8px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all .18s ease;
+      white-space: nowrap;
+    }
+    .nav a.active{
+      color: var(--text);
+      background: var(--pill);
+      border-color: color-mix(in oklab, var(--accent) 30%, transparent);
+    }
+    .nav a:hover{
+      background: color-mix(in oklab, var(--bg-elev) 70%, transparent);
+      text-decoration:none;
+    }
+
+    .toggle{
+      display:flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklab, var(--bg-elev) 70%, transparent);
+      cursor:pointer;
+      user-select:none;
+      transition: all .18s ease;
+      white-space: nowrap;
+    }
+    .toggle:hover{ transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .toggle .knob{
+      width: 28px; height: 16px; border-radius: 999px;
+      background: color-mix(in oklab, var(--text) 20%, transparent);
+      position: relative;
+      overflow:hidden;
+    }
+    .toggle .knob::after{
+      content:"";
+      position:absolute; top:2px; left:2px;
+      width: 12px; height: 12px; border-radius: 999px;
+      background: var(--bg);
+      box-shadow: 0 6px 14px rgba(0,0,0,.18);
+      transition: transform .18s ease;
+    }
+    :root[data-theme="dark"] .toggle .knob::after{ background: #0b0c0f; }
+    .toggle[data-on="true"] .knob{
+      background: color-mix(in oklab, var(--accent) 55%, transparent);
+    }
+    .toggle[data-on="true"] .knob::after{ transform: translateX(12px); }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 80px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 960px){
+      .grid{ grid-template-columns: 1fr; }
+      .brand{ min-width: 0; }
+    }
+
+    .card{
+      background: color-mix(in oklab, var(--bg-elev) 86%, transparent);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+    }
+    .card.pad{ padding: 18px 18px; }
+    .card.pad-lg{ padding: 22px 22px; }
+    .section{
+      margin-top: 26px;
+    }
+    .section-header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklab, var(--bg-elev) 70%, transparent);
+      font-size: 12.8px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pill b{ color: var(--text); font-weight: 650; }
+    .divider{
+      height: 1px;
+      background: var(--hairline);
+      margin: 14px 0;
+    }
+
+    /* Lists */
+    ul.clean{ margin: 10px 0 0; padding-left: 18px; }
+    ul.clean li{ margin: 6px 0; }
+    .kpi-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 820px){ .kpi-grid{ grid-template-columns: 1fr; } }
+    .kpi{
+      padding: 14px 14px;
+      border-radius: var(--radius-lg);
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+      border: 1px solid var(--hairline);
+    }
+    .kpi .num{
+      font-size: 20px;
+      letter-spacing: -0.25px;
+      font-weight: 760;
+      margin-bottom: 2px;
+    }
+    .kpi .lbl{ font-size: 12.5px; color: var(--muted); }
+
+    /* Two-column inside cards */
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 820px){ .two{ grid-template-columns: 1fr; } }
+
+    /* Code-ish */
+    code, pre{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: var(--code-bg);
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+    pre{
+      padding: 12px;
+      overflow:auto;
+      line-height: 1.55;
+    }
+
+    /* Tables */
+    table{
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 13.5px;
+    }
+    th, td{
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--hairline);
+      vertical-align: top;
+    }
+    th{
+      text-align:left;
+      font-weight: 700;
+      color: var(--muted);
+      background: color-mix(in oklab, var(--bg) 72%, transparent);
+      position: sticky;
+      top: 56px; /* below topbar */
+      z-index: 1;
+    }
+    .table-wrap{
+      overflow:auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklab, var(--bg) 72%, transparent);
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklab, var(--bg-elev) 72%, transparent);
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .tag.good{ color: color-mix(in oklab, var(--good) 85%, var(--text)); border-color: color-mix(in oklab, var(--good) 35%, transparent); }
+    .tag.warn{ color: color-mix(in oklab, var(--warn) 85%, var(--text)); border-color: color-mix(in oklab, var(--warn) 35%, transparent); }
+    .tag.bad{ color: color-mix(in oklab, var(--bad) 85%, var(--text)); border-color: color-mix(in oklab, var(--bad) 35%, transparent); }
+
+    /* Details */
+    details{
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      padding: 12px 12px;
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+    }
+    details summary{
+      cursor:pointer;
+      font-weight: 700;
+      letter-spacing: -0.1px;
+      outline: none;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker{ display:none; }
+    details summary .muted{ font-weight: 600; }
+
+    /* Sidebar outline */
+    .side{
+      position: sticky;
+      top: 76px;
+    }
+    .outline{
+      padding: 14px 14px;
+    }
+    .outline a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      font-size: 13px;
+      transition: all .16s ease;
+    }
+    .outline a:hover{
+      background: color-mix(in oklab, var(--bg) 72%, transparent);
+      text-decoration:none;
+    }
+    .outline a.active{
+      color: var(--text);
+      background: color-mix(in oklab, var(--pill) 68%, transparent);
+      border-color: color-mix(in oklab, var(--accent) 26%, transparent);
+    }
+    .outline .badge{
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklab, var(--bg-elev) 72%, transparent);
+    }
+
+    /* Figure placeholders & charts */
+    .figure{
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg,
+        color-mix(in oklab, var(--bg) 78%, transparent),
+        color-mix(in oklab, var(--bg-elev) 82%, transparent)
+      );
+      overflow:hidden;
+    }
+    .figure .cap{
+      padding: 12px 14px;
+      border-top: 1px solid var(--hairline);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .figure .inner{
+      padding: 14px 14px;
+    }
+    .svg-wrap{
+      width: 100%;
+      height: 240px;
+    }
+    .svg-wrap.tall{ height: 290px; }
+    .legend{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .dotL{
+      width: 10px; height: 10px; border-radius: 999px;
+      display:inline-block;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* Mechanism loop */
+    .loop{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 820px){ .loop{ grid-template-columns: 1fr; } }
+    .node{
+      padding: 14px 14px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklab, var(--bg) 72%, transparent);
+      position: relative;
+    }
+    .node .title{
+      font-weight: 760;
+      letter-spacing: -0.15px;
+      margin-bottom: 6px;
+    }
+    .node .arrow{
+      position:absolute;
+      right: 12px;
+      top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .node.highlight{
+      border-color: color-mix(in oklab, var(--accent) 32%, transparent);
+      box-shadow: 0 12px 26px rgba(0,113,227,.10);
+    }
+
+    /* Sliders */
+    .controls{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    @media (max-width: 820px){ .controls{ grid-template-columns: 1fr; } }
+    .ctrl{
+      padding: 12px 12px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--hairline);
+      background: color-mix(in oklab, var(--bg) 72%, transparent);
+    }
+    .ctrl label{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    input[type="range"]{ width: 100%; }
+    .val{
+      font-weight: 750;
+      color: var(--text);
+      letter-spacing: -0.1px;
+      font-size: 12.5px;
+    }
+
+    /* Citation styling */
+    .cite{
+      display:inline;
+      font-size: 12px;
+      color: var(--muted);
+      vertical-align: super;
+      margin-left: 3px;
+      white-space: nowrap;
+    }
+    .refs ol{ margin: 10px 0 0; padding-left: 18px; }
+    .refs li{ margin: 8px 0; }
+    .hr-soft{
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--hairline), transparent);
+      margin: 18px 0;
+    }
+
+    /* MathJax tweaks */
+    mjx-container[jax="CHTML"]{ max-width: 100%; }
+    mjx-container[display="true"]{
+      margin: 10px 0 !important;
+      padding: 10px 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .math-inline mjx-container{ display:inline-block; }
+  </style>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\**', '\**']],
+        processEscapes: true
+      },
+      chtml: {
+        scale: 1.0,
+        displayAlign: 'center',
+        displayIndent: '0'
+      },
+      options: {
+        skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="brand-title">
+          <strong>Lemons × Trade-Ins × CPO</strong>
+          <span>Huang · Atasu · Tereyağoğlu · Toktay (MSOM 2023)</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="主导航">
+        <a href="#motivation" class="navlink">动机</a>
+        <a href="#model" class="navlink">模型</a>
+        <a href="#analysis" class="navlink">求解</a>
+        <a href="#results" class="navlink">结论</a>
+        <a href="#evidence" class="navlink">证据</a>
+        <a href="#critique" class="navlink">犀利评论</a>
+        <a href="#one-more-thing" class="navlink">One more thing</a>
+
+        <div class="toggle" id="themeToggle" role="button" tabindex="0" aria-label="切换深浅色" data-on="false">
+          <span class="small muted">Dark</span>
+          <span class="knob" aria-hidden="true"></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="grid" id="top">
+      <div class="card pad-lg">
+        <div class="pill" style="margin-bottom:10px;">
+          <span>Paper ID</span>
+          <b class="nowrap">MSOM 25(2): 737–755</b>
+          <span class="muted">· DOI 10.1287/msom.2022.1176</span>
+        </div>
+
+        <h1 class="h1">CPO 的价值不只是“告诉你车况”</h1>
+        <p class="base muted" style="margin:0;">
+          这篇论文的关键洞见是：<span class="nowrap">Certified Pre-Owned (CPO)</span> 通过
+          <span class="nowrap">“二手市场差异化”</span>与<span class="nowrap">“更深的 trade-in discount”</span>形成
+          <span class="nowrap">相互强化的闭环机制</span>，从而抑制 <span class="nowrap">strategic peach-holding</span>，提高二手市场效率（VOT），并可能同时提升企业利润与消费者剩余。
+          <span class="cite">:contentReference[oaicite:2]{index=2}</span>
+        </p>
+
+        <div class="kpi-grid" aria-label="三条快速事实">
+          <div class="kpi">
+            <div class="num">2.6M</div>
+            <div class="lbl">2020 年美国 CPO 销量（相当于新车销量的 17%，部分品牌 >25%）</div>
+            <div class="tiny muted" style="margin-top:6px;">:contentReference[oaicite:3]{index=3}</div>
+          </div>
+          <div class="kpi">
+            <div class="num">VOT ↑</div>
+            <div class="lbl">市场效率指标：一手后进入二手交易的比例；越高越有效率</div>
+            <div class="tiny muted" style="margin-top:6px;">:contentReference[oaicite:4]{index=4}</div>
+          </div>
+          <div class="kpi">
+            <div class="num">机制≠信息</div>
+            <div class="lbl">认证只消除 firm–buyer 信息不对称；seller–firm 仍存在</div>
+            <div class="tiny muted" style="margin-top:6px;">:contentReference[oaicite:5]{index=5}</div>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div class="two">
+          <div>
+            <h3 class="h3">一句话复盘</h3>
+            <p class="small muted" style="margin:0;">
+              CPO 让企业能在二手市场“卖贵 peach、卖便宜 lemon”，带来更高二手收入；这反过来支撑更深的 trade-in discount，
+              诱导更多 peach 被 trade-in，二手市场平均质量和交易量上升，再次抬高二手收入——闭环成立。
+              <span class="cite">:contentReference[oaicite:6]{index=6}</span>
+            </p>
+          </div>
+          <div>
+            <h3 class="h3">这页怎么读</h3>
+            <ul class="clean small muted">
+              <li>先看 <a href="#motivation">动机</a>：痛点、缺口、贡献。</li>
+              <li>再看 <a href="#model">模型</a>：符号、时序、策略集合。</li>
+              <li>核心在 <a href="#analysis">求解</a>：Proposition 1–3 + Corollary 1 的“价格不等式 → 行为改变”。</li>
+              <li>最后用 <a href="#evidence">数据</a>：Hypothesis 1–4 与 Table 2/3。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Outline -->
+      <aside class="side">
+        <div class="card outline" aria-label="页面大纲">
+          <a href="#motivation" class="sidelink"><span>动机：痛点→缺口→贡献</span><span class="badge">Why</span></a>
+          <a href="#model" class="sidelink"><span>模型设定与假设</span><span class="badge">Setup</span></a>
+          <a href="#analysis" class="sidelink"><span>分析与求解：命题/机制</span><span class="badge">How</span></a>
+          <a href="#results" class="sidelink"><span>主要结论与管理启示</span><span class="badge">So what</span></a>
+          <a href="#evidence" class="sidelink"><span>实证与图表复现</span><span class="badge">Evidence</span></a>
+          <a href="#critique" class="sidelink"><span>Reviewer's critique</span><span class="badge">🔥</span></a>
+          <a href="#one-more-thing" class="sidelink"><span>One more thing</span><span class="badge">✨</span></a>
+          <div class="divider"></div>
+          <div class="tiny muted">
+            Tip：右上角可切换深色模式。公式用 MathJax 渲染；行内公式尽量包在 <span class="nowrap">nowrap</span> 里避免断行。
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MOTIVATION -->
+    <section class="section" id="motivation">
+      <div class="section-header">
+        <h2 class="h2">研究背景与动机</h2>
+        <span class="pill"><b>Motivation</b><span>· 为什么是 CPO？</span></span>
+      </div>
+
+      <div class="card pad-lg">
+        <div class="two">
+          <div>
+            <h3 class="h3">实践痛点：二手市场“柠檬”抑制交易</h3>
+            <p class="small muted" style="margin:0;">
+              经典 lemons problem：卖家（车主）在使用后获得私有质量信息；买家无法观察。
+              于是高质量 <span class="nowrap">peach</span> 被“留着不卖”，低质量 <span class="nowrap">lemon</span> 被拿去卖，
+              二手市场平均质量下降，买家担心踩雷，交易量被压制（市场效率下降）。
+              <span class="cite">:contentReference[oaicite:7]{index=7}</span>
+            </p>
+
+            <div class="divider"></div>
+
+            <h3 class="h3">产业事实：CPO 极其普遍</h3>
+            <p class="small muted" style="margin:0;">
+              作者指出：美国主要汽车厂商都提供 CPO；2020 年 CPO 销量达 260 万台，约等于新车销量的 17%，某些品牌超过 25%。
+              <span class="cite">:contentReference[oaicite:8]{index=8}</span>
+            </p>
+          </div>
+
+          <div>
+            <h3 class="h3">理论缺口：认证并没有“彻底消除”信息不对称</h3>
+            <p class="small muted" style="margin:0;">
+              直觉上，人们会以为“认证=信息披露=解决 lemons”。但 CPO 的 inspection 发生在 trade-in 之后——
+              企业在收购二手车时仍不知道其真实质量，因此 <span class="nowrap">seller–firm</span> 交易仍存在信息不对称；
+              认证只在 <span class="nowrap">firm–buyer</span> 环节消除了不对称。
+              <span class="cite">:contentReference[oaicite:9]{index=9}</span>
+            </p>
+
+            <div class="divider"></div>
+
+            <h3 class="h3">核心贡献：识别“机制”而非“口号”</h3>
+            <p class="small muted" style="margin:0;">
+              论文明确提出：CPO 的作用机制由两股力量相互强化构成——
+              （1）二手车高低质量差异化带来更有效的市场细分与更高二手收入；
+              （2）更高二手收入支撑更深的 trade-in discount，从而更有效地抑制 strategic peach-holding，
+              让更多 peach 进入二手市场、更多新车被购买、整体 VOT 上升。
+              <span class="cite">:contentReference[oaicite:10]{index=10}</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div class="loop" aria-label="机制闭环">
+          <div class="node highlight" id="nodeA">
+            <div class="arrow">①</div>
+            <div class="title">认证 → 二手市场差异化（peach vs lemon）</div>
+            <div class="small muted">
+              企业可对 peach 定价更高、对 lemon 定价更低，扩大覆盖并提升二手收入。
+              <span class="cite">:contentReference[oaicite:11]{index=11}</span>
+            </div>
+          </div>
+          <div class="node" id="nodeB">
+            <div class="arrow">②</div>
+            <div class="title">二手收入 ↑ → trade-in discount ↑</div>
+            <div class="small muted">
+              更大的“二手利润池”让企业敢给更深折扣吸引车主 trade-in。
+              <span class="cite">:contentReference[oaicite:12]{index=12}</span>
+            </div>
+          </div>
+          <div class="node" id="nodeC">
+            <div class="arrow">③</div>
+            <div class="title">trade-in discount ↑ → peach-holding ↓</div>
+            <div class="small muted">
+              高质量车主不再“留着不卖”，更多 peach 被 trade-in，提升二手供给质量与交易量。
+              <span class="cite">:contentReference[oaicite:13]{index=13}</span>
+            </div>
+          </div>
+          <div class="node" id="nodeD">
+            <div class="arrow">④</div>
+            <div class="title">更多 peach 流入二手 → 差异化更有价值</div>
+            <div class="small muted">
+              高质量供给越多，“peach 溢价”越能被收割，二手收入进一步上升，闭环自洽。
+              <span class="cite">:contentReference[oaicite:14]{index=14}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls" aria-label="机制交互控制（概念演示）">
+          <div class="ctrl">
+            <label>
+              <span>Program size（部分覆盖）<span class="nowrap">\(\beta\)</span></span>
+              <span class="val" id="betaVal">0.60</span>
+            </label>
+            <input id="beta" type="range" min="0.05" max="1" step="0.01" value="0.60" />
+            <div class="tiny muted" style="margin-top:8px;">
+              论文在部分覆盖模型中数值发现：<span class="nowrap">\(\beta\)</span> 越大，VOT 与 trade-in discount 越高（示例参数在 Figure 2/3 标注）。
+              <span class="cite">:contentReference[oaicite:15]{index=15}</span>
+            </div>
+          </div>
+          <div class="ctrl">
+            <label>
+              <span>Inspection cost（单位检测成本）<span class="nowrap">\(e\)</span></span>
+              <span class="val" id="eVal">0.15</span>
+            </label>
+            <input id="e" type="range" min="0" max="1" step="0.01" value="0.15" />
+            <div class="tiny muted" style="margin-top:8px;">
+              理论与扩展均强调：<span class="nowrap">\(e\)</span> 越高，CPO 的效应越弱（VOT 与 trade-in discount 随之下降）。
+              <span class="cite">:contentReference[oaicite:16]{index=16}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODEL -->
+    <section class="section" id="model">
+      <div class="section-header">
+        <h2 class="h2">模型设定与假设</h2>
+        <span class="pill"><b>Model Setup</b><span>· 符号、时序、目标函数</span></span>
+      </div>
+
+      <div class="card pad-lg">
+        <div class="two">
+          <div>
+            <h3 class="h3">Players & Sequence of Events（时序博弈）</h3>
+            <ol class="clean small muted" style="padding-left: 18px;">
+              <li><b>Firm</b>：每期先定价（新车价、trade-in 后的新车价、CPO peach 价）。<span class="cite">:contentReference[oaicite:17]{index=17}</span></li>
+              <li><b>Consumers</b>：基于价格选择买新/买二手/不买，并决定是否 trade-in。</li>
+              <li><b>Market clearing</b>：二手 lemon 价与回收价由市场出清决定。<span class="cite">:contentReference[oaicite:18]{index=18}</span></li>
+              <li><b>Inspection & Certification</b>：trade-in 后企业付成本 <span class="nowrap">\(e\)</span> 检测质量，peach 认证后再卖；买家知道其质量，但企业在收购时仍不知道（seller–firm 信息不对称仍在）。<span class="cite">:contentReference[oaicite:19]{index=19}</span></li>
+            </ol>
+
+            <div class="divider"></div>
+
+            <h3 class="h3">耐久品与质量不确定</h3>
+            <p class="small muted" style="margin:0;">
+              两期寿命：新车第一期效用 <span class="nowrap">\(\theta\)</span>；第二期可能为 peach（概率 <span class="nowrap">\(\alpha\)</span>）或 lemon（概率 <span class="nowrap">\(1-\alpha\)</span>）。
+              peach 的效用为 <span class="nowrap">\(\delta\theta\)</span>，lemon 为 <span class="nowrap">\(\delta(1-s)\theta\)</span>。
+              其中 <span class="nowrap">\(\delta\)</span> 表示随时间折旧，<span class="nowrap">\(s\)</span> 表示 lemon 相对 peach 的劣质程度。<span class="cite">:contentReference[oaicite:20]{index=20}</span>
+            </p>
+          </div>
+
+          <div>
+            <h3 class="h3">符号体系（Table 1 重绘）</h3>
+            <div class="table-wrap" role="region" aria-label="符号表（重绘）">
+              <table>
+                <thead>
+                  <tr><th style="min-width:140px;">符号</th><th>含义</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="math-inline nowrap">\(p^i\)</span></td><td>新车价（无 trade-in）</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(p^i_T\)</span></td><td>新车价（有 trade-in）</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(p^i_u\)</span></td><td>二手回收/市场价（纯 TI）</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(p^C_p\)</span></td><td>CPO 下 peach（二手高质量）价格</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(p^C_l\)</span></td><td>CPO 下 lemon（二手低质量）价格</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(\theta\)</span></td><td>消费者类型（对新车估值）</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(\delta\)</span></td><td>耐久度/折旧参数</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(s\)</span></td><td>lemon 相对 peach 的质量劣势</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(c\)</span></td><td>新车单位生产成本</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(e\)</span></td><td>单位 inspection 成本</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(\Pi^i\)</span></td><td>企业利润（稳态、每期）</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(D^i_{wTI}\)</span></td><td>新车需求（有 trade-in 购买）</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(D^i_{woTI}\)</span></td><td>新车需求（无 trade-in 购买）</td></tr>
+                  <tr><td><span class="math-inline nowrap">\(D^C_p, D^C_l\)</span></td><td>CPO 下 peach/lemon 的需求</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tiny muted" style="margin-top:8px;">
+              本表依据论文 Table 1 摘要重绘。<span class="cite">:contentReference[oaicite:21]{index=21}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div class="two">
+          <div>
+            <h3 class="h3">消费者策略集合（Lemma 1）</h3>
+            <p class="small muted" style="margin:0 0 8px;">
+              CPO 下共有 6 个不被支配的两期策略：NN、NP、NH、PP、LL、II。<span class="cite">:contentReference[oaicite:22]{index=22}</span>
+            </p>
+            <details>
+              <summary>展开：每种策略的稳态期望效用（含 LaTeX） <span class="muted">（原文公式重排）</span></summary>
+              <div class="small muted" style="margin-top:10px;">
+                <p style="margin:0 0 8px;">
+                  令消费者类型为 <span class="nowrap">\( \theta \)</span>，则：
+                </p>
+                <pre aria-label="Lemma 1 utilities">
+NN: \(\;V^{C}_{NN}(\theta)=\theta - p^C_T + p^C_u\)
+
+NP: \(\;V^{C}_{NP}(\theta)=\frac{1+\alpha\delta}{1+\alpha}\theta-\frac{\alpha p^C+(1-\alpha)(p^C_T-p^C_u)}{1+\alpha}\)
+
+NH: \(\;V^{C}_{NH}(\theta)=\frac{1+\delta(1-(1-\alpha)s)}{2}\theta-\frac{p^C}{2}\)
+
+PP: \(\;V^{C}_{PP}(\theta)=\delta\theta-p^C_p\)
+
+LL: \(\;V^{C}_{LL}(\theta)=\delta(1-s)\theta-p^C_l\)
+
+II: \(\;V^{C}_{II}(\theta)=0\)
+                </pre>
+                <div class="tiny muted">
+                  来源：Lemma 1。<span class="cite">:contentReference[oaicite:23]{index=23}</span>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div>
+            <h3 class="h3">企业目标函数与关键约束</h3>
+            <p class="small muted" style="margin:0;">
+              稳态下企业每期利润可写为：
+            </p>
+            <div class="figure" style="margin-top:10px;">
+              <div class="inner">
+                **
+                \Pi^C(p^C,p^C_T,p^C_p)
+                =D^C_{wTI}(p^C_T-p^C_u-c-e)+D^C_{woTI}(p^C-c)+D^C_p(p^C_p)+D^C_l(p^C_l)
+                **
+                <div class="tiny muted">
+                  企业选择 <span class="nowrap">\(\{p^C,p^C_T,p^C_p\}\)</span>，并施加“各细分市场规模非负”的约束。
+                  <span class="cite">:contentReference[oaicite:24]{index=24}</span>
+                </div>
+              </div>
+              <div class="cap">Profit/Utility function（原文结构重排，符号同 Table 1）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANALYSIS -->
+    <section class="section" id="analysis">
+      <div class="section-header">
+        <h2 class="h2">分析与求解</h2>
+        <span class="pill"><b>Analysis</b><span>· 均衡分段、价格不等式、机制解释</span></span>
+      </div>
+
+      <div class="card pad-lg">
+        <div class="two">
+          <div>
+            <h3 class="h3">求解逻辑（稳态 + 逆向归纳的味道）</h3>
+            <ul class="clean small muted">
+              <li>固定价格 → 用 Lemma 1/2 得到消费者自选择的分段结构。</li>
+              <li>用 market-clearing 条件决定二手价格/回收价（内生）。</li>
+              <li>将需求代回利润函数，企业对决策价求最优（带细分市场非负约束）。<span class="cite">:contentReference[oaicite:25]{index=25}</span></li>
+            </ul>
+
+            <details style="margin-top:10px;">
+              <summary>关键：为什么 CPO 不等于“直接消除 lemons”？</summary>
+              <p class="small muted" style="margin:10px 0 0;">
+                因为企业只有在 trade-in 之后才 inspection，因此 trade-in 交易时
+                <span class="nowrap">seller–firm</span> 信息不对称依旧存在；论文研究的是：在这个约束下，CPO 如何仍能改变卖方行为并提升 VOT。
+                <span class="cite">:contentReference[oaicite:26]{index=26}</span>
+              </p>
+            </details>
+          </div>
+
+          <div>
+            <h3 class="h3">核心概念：VOT（volume of used good trade）</h3>
+            <p class="small muted" style="margin:0;">
+              VOT 衡量“新车用一周期后进入二手交易的比例”，最大为 1，越大表示二手市场越活跃、越有效率。<span class="cite">:contentReference[oaicite:27]{index=27}</span>
+            </p>
+            <div class="divider"></div>
+            <p class="small muted" style="margin:0;">
+              论文给出 CPO 下 VOT 的一种写法：
+              <span class="nowrap">\(\mathrm{VOT}^C=\frac{D^C_p+D^C_l}{D^C_{wTI}+D^C_{woTI}}\)</span>。<span class="cite">:contentReference[oaicite:28]{index=28}</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div class="two">
+          <div>
+            <h3 class="h3">命题 1：CPO 下的均衡分段随检测成本 \(e\) 切换</h3>
+            <p class="small muted" style="margin:0;">
+              Proposition 1 给出：随着 <span class="nowrap">\(e\)</span> 从 0 增加，市场可能从
+              <span class="nowrap">[NN PP LL II]</span> 逐步演化到含 NP/NH 的结构，甚至只剩 <span class="nowrap">[NP LL II]</span>。
+              <span class="cite">:contentReference[oaicite:29]{index=29}</span>
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="ctrl">
+              <label>
+                <span>概念演示：滑动 \(e\) 查看“分段 case”</span>
+                <span class="val" id="caseLabel">Case(I)</span>
+              </label>
+              <input id="eCase" type="range" min="0" max="1" step="0.01" value="0.18" />
+              <div class="small" style="margin-top:10px;">
+                <span class="tag" id="caseTag">[NN NP PP LL II]</span>
+                <div class="tiny muted" style="margin-top:8px;">
+                  注意：论文中的阈值 <span class="nowrap">\(e_1(c,s,\delta), e_2(c,s,\delta), e_3(c,s,\delta)\)</span> 是内生函数；
+                  此处 slider 仅用于“结构直觉”展示。
+                  <span class="cite">:contentReference[oaicite:30]{index=30}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="h3">基准对照：纯 Trade-In（Proposition 2）</h3>
+            <p class="small muted" style="margin:0;">
+              纯 TI 不做质量区分，均衡分段为：
+              <span class="nowrap">[NN NP UU II]</span>（当 <span class="nowrap">\(0\le \delta \le \frac{4}{4+s}\)</span>），或
+              <span class="nowrap">[NP UU II]</span>（当 <span class="nowrap">\(\frac{4}{4+s}<\delta\le 1\)</span>）。
+              这揭示：在高耐久区域，纯 TI 可能无法提升 VOT（都变成 strategic peach-holder）。
+              <span class="cite">:contentReference[oaicite:31]{index=31}</span>
+            </p>
+            <div class="divider"></div>
+            <details>
+              <summary>直觉补充：为什么“高耐久”会让纯 TI 失效？</summary>
+              <p class="small muted" style="margin:10px 0 0;">
+                当二期使用价值很高（耐久强），车主更愿意“如果是 peach 就继续用”，只在 lemon 时 trade-in。
+                于是新车买家几乎全是 NP，VOT 固定在 lemon 比例附近（论文在 Proposition 2 的讨论里强调了这一点）。
+                <span class="cite">:contentReference[oaicite:32]{index=32}</span>
+              </p>
+            </details>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div>
+          <h3 class="h3">Corollary 1：三组“价格不等式”是机制的齿轮</h3>
+          <p class="small muted" style="margin:0;">
+            在 <span class="nowrap">\(e=0\)</span> 的极限情形，论文给出：
+            <span class="nowrap">\((p^C-p^C_T)>(p^{TI}-p^{TI}_T)\)</span>，
+            <span class="nowrap">\(p^C_p<p^{TI}_T\)</span>，
+            <span class="nowrap">\(p^C_l<p^{TI}_u\)</span>。
+            解释：CPO 能给更深 trade-in discount；同时 peach 更“亲民”、lemon 更便宜。
+            <span class="cite">:contentReference[oaicite:33]{index=33}</span>
+          </p>
+
+          <div class="two" style="margin-top:12px;">
+            <div class="node">
+              <div class="title">效应 A：二手市场“扩容”</div>
+              <div class="small muted">
+                因为 <span class="nowrap">\(p^C_p\)</span> 低于纯 TI 的折后新车价 <span class="nowrap">\(p^{TI}_T\)</span>，
+                一部分原本做 NP 的低 \(\theta\) 人群转去“长期买 peach（PP）”；
+                同时 <span class="nowrap">\(p^C_l<p^{TI}_u\)</span> 吸引原本不买（II）的较高 \(\theta\) 人群转入“买 lemon（LL）”。
+                <span class="cite">:contentReference[oaicite:34]{index=34}</span>
+              </div>
+            </div>
+            <div class="node">
+              <div class="title">效应 B：卖方行为被“折扣杠杆”撬动</div>
+              <div class="small muted">
+                更深的 trade-in discount 使得部分原本 NP 的高 \(\theta\) 人群转为 NN（无论质量都换新），
+                strategic peach-holding 被抑制，更多二手车（尤其 peach）进入市场，VOT 上升。
+                <span class="cite">:contentReference[oaicite:35]{index=35}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div>
+          <h3 class="h3">命题 3：当 CPO 值得做时，它同时“更赚钱、更惠民、更高效”</h3>
+          <p class="small muted" style="margin:0;">
+            当 <span class="nowrap">\(e<\bar e\)</span>（检测成本不过高）时：CPO 相比纯 TI
+            （i）分段为 <span class="nowrap">[NN NP PP LL II]</span> 且 <span class="nowrap">\(e\to 0\)</span> 时 NP 消失；
+            （ii）trade-in discount 与 VOT 更高且随 \(e\) 增加而弱化（<span class="nowrap">VOT \(\to 1\)</span> 当 \(e\to 0\)）；
+            （iii）覆盖更多消费者并带来更高消费者剩余。
+            <span class="cite">:contentReference[oaicite:36]{index=36}</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS & MANAGERIAL INSIGHTS -->
+    <section class="section" id="results">
+      <div class="section-header">
+        <h2 class="h2">主要结论与管理启示</h2>
+        <span class="pill"><b>Main Results</b><span>· Trade-off、反直觉点、可操作建议</span></span>
+      </div>
+
+      <div class="card pad-lg">
+        <div class="two">
+          <div>
+            <h3 class="h3">机制揭示：CPO 的“新 trade-off”</h3>
+            <ul class="clean small muted">
+              <li><b>不是单纯的信息披露</b>：关键是改变“卖方的退出/置换决策”。<span class="cite">:contentReference[oaicite:37]{index=37}</span></li>
+              <li><b>二手差异化</b>让企业能做价格歧视：peach 更贵、lemon 更便宜 → 覆盖面扩大 → 二手收入池变大。<span class="cite">:contentReference[oaicite:38]{index=38}</span></li>
+              <li><b>收入池反哺折扣</b>：更深 trade-in discount 抑制 strategic peach-holding。<span class="cite">:contentReference[oaicite:39]{index=39}</span></li>
+            </ul>
+
+            <details style="margin-top:10px;">
+              <summary>一个“反直觉”角度：为何 lemon 反而要卖更便宜？</summary>
+              <p class="small muted" style="margin:10px 0 0;">
+                因为 lemon 低价不是“放弃利润”，而是用来<strong>打开低估值需求</strong>、扩大二手市场规模；
+                与此同时 peach 走 CPO 渠道获取更高愿付。两头一起做，二手总收入可能更高，从而支撑更深 trade-in discount。
+                这与 Corollary 1 的 <span class="nowrap">\(p^C_l<p^{TI}_u\)</span>、<span class="nowrap">\(p^C_p<p^{TI}_T\)</span> 组合直觉一致。
+                <span class="cite">:contentReference[oaicite:40]{index=40}</span>
+              </p>
+            </details>
+          </div>
+
+          <div>
+            <h3 class="h3">管理建议：可操作的三根杠杆</h3>
+            <ul class="clean small muted">
+              <li><b>杠杆 1：trade-in discount</b> — 不只是促销新车，而是“买回更多 peach”的工具。</li>
+              <li><b>杠杆 2：二手价差（CPO vs non-CPO）</b> — 把差异化当作利润池，而非仅仅是“标个认证”。</li>
+              <li><b>杠杆 3：资格标准（program size）</b> — 通过更包容的年限/里程阈值扩大 \(\beta\)，提升 VOT 与折扣空间。<span class="cite">:contentReference[oaicite:41]{index=41}</span></li>
+            </ul>
+            <div class="divider"></div>
+            <p class="small muted" style="margin:0;">
+              但要注意：高耐久/高可靠产品上，CPO 需要更高的检测成本效率才值得扩张（论文在建议中也提醒了这一点）。<span class="cite">:contentReference[oaicite:42]{index=42}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVIDENCE -->
+    <section class="section" id="evidence">
+      <div class="section-header">
+        <h2 class="h2">图表复现与实证证据</h2>
+        <span class="pill"><b>Evidence</b><span>· Figure 2/3 + Table 2/3</span></span>
+      </div>
+
+      <div class="card pad-lg">
+        <div class="two">
+          <div>
+            <h3 class="h3">Hypotheses 1–4（从理论到可检验预测）</h3>
+            <ul class="clean small muted">
+              <li><b>H1</b>：VOT 与 CPO program size 正相关。</li>
+              <li><b>H2</b>：trade-in discounts 与 CPO program size 正相关。</li>
+              <li><b>H3</b>：上述正相关被 inspection cost 负向调节。</li>
+              <li><b>H4</b>：trade-in discount 的正相关也被 inspection cost 负向调节。</li>
+            </ul>
+            <div class="tiny muted" style="margin-top:8px;">
+              来源：Hypothesis Development。<span class="cite">:contentReference[oaicite:43]{index=43}</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3 class="h3">数据来源（汽车行业 2008–2013）</h3>
+            <p class="small muted" style="margin:0;">
+              使用 Automotive News 的 CPO 规格、J.D. Power 的可靠性/二手价、CES 的交易与 trade-in 数据等，并聚焦 21 个主要品牌。<span class="cite">:contentReference[oaicite:44]{index=44}</span>
+            </p>
+          </div>
+
+          <div>
+            <h3 class="h3">Figure 2/3 交互复刻（方向一致的“高雅占位+可玩版本”）</h3>
+            <div class="figure">
+              <div class="inner">
+                <div class="two" style="gap:12px;">
+                  <div>
+                    <div class="small muted"><b>VOT</b> vs \(\beta\)</div>
+                    <div class="svg-wrap" id="chartVOT" aria-label="VOT chart"></div>
+                  </div>
+                  <div>
+                    <div class="small muted"><b>trade-in discount</b> vs \(\beta\)</div>
+                    <div class="svg-wrap" id="chartDisc" aria-label="Discount chart"></div>
+                  </div>
+                </div>
+
+                <div class="legend">
+                  <span><span class="dotL" style="background:#0a84ff;"></span>Model 1（Figure 2）</span>
+                  <span><span class="dotL" style="background:#7d5cff;"></span>Model 2（Figure 3）</span>
+                  <span class="muted">（曲线为“形状复刻”：单调递增，与论文数值例一致）</span>
+                </div>
+
+                <div class="controls">
+                  <div class="ctrl">
+                    <label><span>Program size \(\beta\)</span><span class="val" id="betaVal2">0.60</span></label>
+                    <input id="beta2" type="range" min="0.05" max="1" step="0.01" value="0.60" />
+                    <div class="tiny muted" style="margin-top:8px;">
+                      论文示例参数：<span class="nowrap">\(s=0.5,\ \delta=0.5,\ c=0.5,\ e=0.001\)</span>（Figure 2/3 标注）。<span class="cite">:contentReference[oaicite:45]{index=45}</span>
+                    </div>
+                  </div>
+                  <div class="ctrl">
+                    <label><span>Inspection cost \(e\)（仅用于演示“下移/变平”）</span><span class="val" id="eVal2">0.15</span></label>
+                    <input id="e2" type="range" min="0" max="1" step="0.01" value="0.15" />
+                    <div class="tiny muted" style="margin-top:8px;">
+                      方向依据：\(e\) 降低会增强 CPO 效应（VOT 与折扣上升）。<span class="cite">:contentReference[oaicite:46]{index=46}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cap">
+                Figure 2/3（论文）：\(\beta\) 增大时，VOT 与 trade-in discount 单调上升（两种部分覆盖模型）。<span class="cite">:contentReference[oaicite:47]{index=47}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div class="two">
+          <div>
+            <h3 class="h3">Table 2：VOT 回归（重绘）</h3>
+            <div class="table-wrap" role="region" aria-label="Table 2（重绘）">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="min-width:220px;">变量</th>
+                    <th>Model 1</th><th>Model 2</th><th>Model 3</th><th>Model 4</th><th>Model 5 (VOTRao)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><b>CPO</b></td><td>0.048**</td><td>0.215***</td><td>0.625***</td><td>0.898***</td><td>0.919***</td></tr>
+                  <tr><td>Insp_Cost (×10⁻¹)</td><td>0.000</td><td>-0.005**</td><td>-0.012**</td><td>-0.002**</td><td>-0.015*</td></tr>
+                  <tr><td>Durability</td><td>-0.005</td><td>-0.001</td><td>-0.276***</td><td>-0.109</td><td>-0.020</td></tr>
+                  <tr><td>Reliability</td><td>-0.001</td><td>-0.001</td><td>0.000</td><td>-0.001**</td><td>-0.001**</td></tr>
+                  <tr><td><b>CPO × Insp_Cost</b> (×10⁻¹)</td><td></td><td>-0.012***</td><td>-0.038***</td><td>-0.058***</td><td>-0.058***</td></tr>
+                  <tr><td class="muted">（其余交互项略，见论文表格）</td><td colspan="5" class="muted">…</td></tr>
+                  <tr><td>Observations</td><td>126</td><td>126</td><td>126</td><td>126</td><td>126</td></tr>
+                  <tr><td>R²</td><td>0.35</td><td>0.37</td><td>0.47</td><td>0.49</td><td>0.62</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tiny muted" style="margin-top:8px;">
+              重点读法：<span class="tag good">CPO 正</span> 支持 H1；<span class="tag warn">CPO×Insp_Cost 负</span> 支持 H3。
+              <span class="cite">:contentReference[oaicite:48]{index=48}</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="h3">Table 3：新车成交价（含 trade-in 交互，重绘）</h3>
+            <div class="table-wrap" role="region" aria-label="Table 3（重绘）">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="min-width:240px;">变量</th>
+                    <th>Model 6</th><th>Model 7</th><th>Model 8</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>TradeIn</td><td>4,925.98*</td><td>5,787.31**</td><td>5,905.94**</td></tr>
+                  <tr><td>CPO</td><td>17,831.68***</td><td>17,660.15***</td><td>17,273.46***</td></tr>
+                  <tr><td>Insp_Cost</td><td>35.13</td><td>41.43</td><td>42.72</td></tr>
+                  <tr><td>Durability</td><td>783.58***</td><td>544.50*</td><td>559.05**</td></tr>
+                  <tr><td>Reliability</td><td>0.11</td><td>30.39***</td><td>30.07***</td></tr>
+                  <tr><td>CPO × Insp_Cost</td><td>-111.86***</td><td>-109.54***</td><td>-106.78***</td></tr>
+                  <tr><td><b>TradeIn × CPO</b></td><td>-11,915.60***</td><td>-14,002.83***</td><td>-13,050.83***</td></tr>
+                  <tr><td>TradeIn × Insp_Cost</td><td>-28.87*</td><td>-32.29**</td><td>-30.63**</td></tr>
+                  <tr><td>TradeIn × Durability</td><td>-829.51**</td><td>-1,005.81***</td><td>-922.06***</td></tr>
+                  <tr><td>TradeIn × Reliability</td><td>-11.50</td><td>-12.68*</td><td>-14.34*</td></tr>
+                  <tr><td><b>TradeIn × CPO × Insp_Cost</b></td><td>76.55***</td><td>88.69***</td><td>82.13***</td></tr>
+                  <tr><td>Observations</td><td>4,782</td><td>4,782</td><td>4,782</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="tiny muted" style="margin-top:8px;">
+              依据论文对式 (3) 的解释：TradeIn×CPO 为负 ⇒ trade-in discount 随 CPO size 上升（支持 H2）；三重交互为正 ⇒ 该正向关系被 Insp_Cost 负向调节（支持 H4）。
+              <span class="cite">:contentReference[oaicite:49]{index=49}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <details>
+          <summary>实证部分的作者自我提醒：这更像“关联性证据”而非结构因果</summary>
+          <p class="small muted" style="margin:10px 0 0;">
+            作者指出：尽管使用固定效应控制了大量不随时间变化的因素，但仍难以结构性识别竞争压力等机制；
+            例如不同品牌在 CPO size 上的变化可能伴随竞争策略变化，从而影响 trade-in discount 与 VOT。
+            <span class="cite">:contentReference[oaicite:50]{index=50}</span>
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CRITIQUE -->
+    <section class="section" id="critique">
+      <div class="section-header">
+        <h2 class="h2">你的犀利评论</h2>
+        <span class="pill"><b>Reviewer's Critique</b><span>· Senior Editor 模式</span></span>
+      </div>
+
+      <div class="card pad-lg">
+        <div class="two">
+          <div>
+            <h3 class="h3">我会给的“强优点”</h3>
+            <ul class="clean small muted">
+              <li><b>机制识别干净</b>：把 CPO 从“信息披露工具”提升为“改变卖方行为的制度安排”，并用 Corollary 1 的价格不等式把齿轮咬合讲清楚。<span class="cite">:contentReference[oaicite:51]{index=51}</span></li>
+              <li><b>理论—实证闭环</b>：从部分覆盖模型导出 H1–H4，并在行业数据上获得一致证据（Table 2/3）。<span class="cite">:contentReference[oaicite:52]{index=52}</span></li>
+              <li><b>可操作杠杆明确</b>：用 \(\beta\)（资格标准）把“项目大小”可管理化，这是让理论结果落地的关键设计。<span class="cite">:contentReference[oaicite:53]{index=53}</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="h3">我会追问的“硬问题”</h3>
+            <ul class="clean small muted">
+              <li><b>两期寿命 + 稳态承诺</b>：两期耐久品是经典 tractability，但对汽车这种长寿命品，关键比较静态是否稳健？（作者用稳态处理是标准做法，但也意味着忽略过渡动态）。<span class="cite">:contentReference[oaicite:54]{index=54}</span></li>
+              <li><b>inspection 成本结构</b>：现实中 inspection 与翻新/质保绑定，成本可能与车龄、里程、质量相关；模型用常数 \(e\) 会低估“选择性检验”的策略空间。</li>
+              <li><b>渠道与经销商</b>：汽车 CPO 经常由 dealer network 执行，利润分摊与激励兼容会影响折扣与认证力度。作者在未来研究也提到 dealer network 是方向。<span class="cite">:contentReference[oaicite:55]{index=55}</span></li>
+              <li><b>实证识别</b>：当前更像“面板相关性”，存在内生性（品牌策略、竞争态势、宏观冲击）；作者也承认无法结构性度量竞争效应。<span class="cite">:contentReference[oaicite:56]{index=56}</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <h3 class="h3">我希望看到的扩展（Future directions）</h3>
+        <div class="two">
+          <div class="node">
+            <div class="title">扩展 1：内生 \(\beta\) 与质量分布（选择性检验）</div>
+            <div class="small muted">
+              论文在 Model 2 用 <span class="nowrap">\(\varphi(\beta)=\frac{\alpha}{\alpha+\beta(1-\alpha)}\)</span> 捕捉“更小 \(\beta\) → 检验集合更优质”的逆关系（很巧妙）。
+              未来可把 \(\beta\) 作为策略变量，并让质量分布与车龄/里程显式挂钩。<span class="cite">:contentReference[oaicite:57]{index=57}</span>
+            </div>
+          </div>
+          <div class="node">
+            <div class="title">扩展 2：结构实证 + 区域竞争</div>
+            <div class="small muted">
+              作者也提出：若能获得区域层面一手/二手交易数据，可建立结构模型去度量“调整资格标准”对 VOT 与折扣的因果效应。<span class="cite">:contentReference[oaicite:58]{index=58}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONE MORE THING -->
+    <section class="section" id="one-more-thing">
+      <div class="section-header">
+        <h2 class="h2">One more thing</h2>
+        <span class="pill"><b>✨</b><span>· 我认为最值得分享的灵光一现</span></span>
+      </div>
+
+      <div class="card pad-lg">
+        <div class="two">
+          <div>
+            <h3 class="h3">灵光一现：把 CPO “拆成两个市场角色”</h3>
+            <p class="small muted" style="margin:0;">
+              这篇文章最漂亮的点在于：它不是把 CPO 当作“给买家更多信息”的单一动作，
+              而是明确企业在二手市场同时扮演<b>买方</b>（收 trade-in）与<b>卖方</b>（卖 CPO/non-CPO 二手车）的双重身份，
+              并且强调：信息不对称只在卖方—企业端持续存在。这个建模视角直接逼迫你去找“改变卖方行为”的机制，而不是停留在“认证解决 lemons”的口号上。
+              <span class="cite">:contentReference[oaicite:59]{index=59}</span>
+            </p>
+          </div>
+
+          <div>
+            <h3 class="h3">数学技巧：用“价格不等式 → 分段迁移”讲机制</h3>
+            <p class="small muted" style="margin:0;">
+              Corollary 1 的三条不等式看似简单，但它们分别触发了两次“分段迁移”：
+              <span class="nowrap">NP→PP</span>（peach 作为新二手选项被引入）与 <span class="nowrap">NP→NN</span>（更深折扣压制 peach-holding），
+              从而把“二手差异化”与“trade-in discount”绑成正反馈回路。<span class="cite">:contentReference[oaicite:60]{index=60}</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="hr-soft"></div>
+
+        <div class="refs" id="refs">
+          <h3 class="h3">引用（页面内关键论断对应论文位置）</h3>
+          <ol class="small muted">
+            <li>CPO 普遍性与销量数据：:contentReference[oaicite:61]{index=61}</li>
+            <li>Lemons 问题与 peach-holding 机制：:contentReference[oaicite:62]{index=62}</li>
+            <li>认证并未消除 seller–firm 信息不对称：:contentReference[oaicite:63]{index=63}</li>
+            <li>两股相互强化效应（核心机制）：:contentReference[oaicite:64]{index=64}</li>
+            <li>Proposition 1（CPO 分段随 \(e\) 切换）：:contentReference[oaicite:65]{index=65}</li>
+            <li>Proposition 2（纯 TI 分段与耐久阈值）：:contentReference[oaicite:66]{index=66}</li>
+            <li>Corollary 1（价格不等式）及其两类效应解释：:contentReference[oaicite:67]{index=67}</li>
+            <li>Proposition 3（CPO 更高 VOT/折扣/消费者剩余的条件）：:contentReference[oaicite:68]{index=68}</li>
+            <li>H1–H4（可检验预测）：:contentReference[oaicite:69]{index=69}</li>
+            <li>Table 2（VOT 回归系数）：:contentReference[oaicite:70]{index=70}</li>
+            <li>Table 3（最终成交价回归关键交互）：:contentReference[oaicite:71]{index=71}</li>
+            <li>作者对竞争/识别的限制说明：:contentReference[oaicite:72]{index=72}</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <footer class="tiny muted" style="margin-top:18px;">
+      © 交互式解读页面（单文件）。论文版权归 INFORMS 与作者所有；本页仅用于研究/教学式内容解读。
+    </footer>
+  </main>
+
+  <script>
+    // -----------------------------
+    // Theme toggle
+    // -----------------------------
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+
+    function setTheme(mode){
+      root.dataset.theme = mode;
+      const on = mode === 'dark';
+      themeToggle.dataset.on = on ? 'true' : 'false';
+      themeToggle.querySelector('.muted').textContent = on ? 'Dark' : 'Light';
+      // re-render charts with updated colors
+      drawAll();
+    }
+
+    // init based on prefers-color-scheme
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDark ? 'dark' : 'light');
+
+    function toggleTheme(){
+      const cur = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      setTheme(cur);
+    }
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggleTheme(); } });
+
+    // -----------------------------
+    // Scroll spy: top nav + side nav
+    // -----------------------------
+    const navLinks = Array.from(document.querySelectorAll('.navlink'));
+    const sideLinks = Array.from(document.querySelectorAll('.sidelink'));
+
+    const sections = ['motivation','model','analysis','results','evidence','critique','one-more-thing']
+      .map(id => document.getElementById(id));
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting){
+          const id = ent.target.id;
+          navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+          sideLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.02 });
+
+    sections.forEach(s=>s && io.observe(s));
+
+    // smooth scroll
+    [...navLinks, ...sideLinks].forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(href && href.startsWith('#')){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // -----------------------------
+    // Proposition 1: segmentation cases (concept demo)
+    // -----------------------------
+    const eCase = document.getElementById('eCase');
+    const caseLabel = document.getElementById('caseLabel');
+    const caseTag = document.getElementById('caseTag');
+
+    // Not actual thresholds; just a conceptual mapping for the UI demo.
+    function caseFromE(x){
+      if(x === 0) return {label:'Case(O)', seg:'[NN PP LL II]'};
+      if(x <= 0.28) return {label:'Case(I)', seg:'[NN NP PP LL II]'};
+      if(x <= 0.52) return {label:'Case(II)', seg:'[NN NP NH PP LL II]'};
+      if(x <= 0.78) return {label:'Case(III)', seg:'[NP NH LL II]'};
+      return {label:'Case(IV)', seg:'[NP LL II]'};
+    }
+    function updateCaseUI(){
+      const x = parseFloat(eCase.value);
+      const c = caseFromE(x);
+      caseLabel.textContent = c.label;
+      caseTag.textContent = c.seg;
+      caseTag.className = 'tag ' + (x<0.52 ? 'good' : (x<0.78 ? 'warn' : 'bad'));
+    }
+    eCase.addEventListener('input', updateCaseUI);
+    updateCaseUI();
+
+    // -----------------------------
+    // Shared beta/e sliders for mechanism + charts
+    // -----------------------------
+    const beta = document.getElementById('beta');
+    const e = document.getElementById('e');
+    const betaVal = document.getElementById('betaVal');
+    const eVal = document.getElementById('eVal');
+
+    const beta2 = document.getElementById('beta2');
+    const e2 = document.getElementById('e2');
+    const betaVal2 = document.getElementById('betaVal2');
+    const eVal2 = document.getElementById('eVal2');
+
+    function fmt(x){ return (Math.round(x*100)/100).toFixed(2); }
+
+    function syncSliders(){
+      // keep both beta sliders in sync
+      const b = parseFloat(beta.value);
+      const ee = parseFloat(e.value);
+      beta2.value = b;
+      e2.value = ee;
+
+      betaVal.textContent = fmt(b);
+      eVal.textContent = fmt(ee);
+      betaVal2.textContent = fmt(b);
+      eVal2.textContent = fmt(ee);
+
+      // highlight mechanism nodes based on "high beta / low e"
+      const score = (b) * (1 - ee);
+      document.getElementById('nodeA').classList.toggle('highlight', score > 0.35);
+      document.getElementById('nodeB').classList.toggle('highlight', score > 0.45);
+      document.getElementById('nodeC').classList.toggle('highlight', score > 0.55);
+      document.getElementById('nodeD').classList.toggle('highlight', score > 0.65);
+
+      drawAll();
+    }
+    [beta,e,beta2,e2].forEach(inp => inp.addEventListener('input', ()=>{
+      // set canonical from whichever changed
+      if(inp===beta2) beta.value = beta2.value;
+      if(inp===e2) e.value = e2.value;
+      if(inp===beta) beta2.value = beta.value;
+      if(inp===e) e2.value = e.value;
+      syncSliders();
+    }));
+    syncSliders();
+
+    // -----------------------------
+    // Minimal SVG charting (Figure 2/3 style)
+    // -----------------------------
+    function mkSVG(w,h){
+      const ns = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(ns,'svg');
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      svg.setAttribute('width','100%');
+      svg.setAttribute('height','100%');
+      return svg;
+    }
+    function add(nsParent, name, attrs){
+      const ns = "http://www.w3.org/2000/svg";
+      const el = document.createElementNS(ns, name);
+      for(const k in attrs) el.setAttribute(k, attrs[k]);
+      nsParent.appendChild(el);
+      return el;
+    }
+
+    function cssVar(name){
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function drawLineChart(containerId, opts){
+      const el = document.getElementById(containerId);
+      el.innerHTML = '';
+      const W = 520, H = 240;
+      const pad = {l:42, r:14, t:14, b:30};
+      const svg = mkSVG(W,H);
+      el.appendChild(svg);
+
+      const bg = cssVar('--bg');
+      const hair = cssVar('--hairline');
+      const text = cssVar('--muted');
+
+      // background
+      add(svg,'rect',{x:0,y:0,width:W,height:H,rx:18,fill:`color-mix(in oklab, ${bg} 80%, transparent)`,stroke:hair});
+
+      const x0=pad.l, y0=H-pad.b, x1=W-pad.r, y1=pad.t;
+      // grid
+      for(let i=0;i<=4;i++){
+        const yy = y0 - (y0-y1)*(i/4);
+        add(svg,'line',{x1:x0,y1:yy,x2:x1,y2:yy,stroke:hair,'stroke-width':1});
+      }
+      for(let i=0;i<=5;i++){
+        const xx = x0 + (x1-x0)*(i/5);
+        add(svg,'line',{x1:xx,y1:y1,x2:xx,y2:y0,stroke:hair,'stroke-width':1, 'stroke-dasharray': i===0? '': '2 6'});
+      }
+
+      const xMin=opts.xMin, xMax=opts.xMax, yMin=opts.yMin, yMax=opts.yMax;
+      const x = v => x0 + (x1-x0) * ((v-xMin)/(xMax-xMin));
+      const y = v => y0 - (y0-y1) * ((v-yMin)/(yMax-yMin));
+
+      // axes labels
+      add(svg,'text',{x:x0, y:H-10, fill:text, 'font-size':11}).textContent = 'β';
+      add(svg,'text',{x:10, y:y1+12, fill:text, 'font-size':11}).textContent = opts.yLabel;
+
+      // draw each series
+      opts.series.forEach(s=>{
+        const pts = s.data.map(d=>`${x(d.x)},${y(d.y)}`).join(' ');
+        add(svg,'polyline',{points:pts, fill:'none', stroke:s.color, 'stroke-width':2.6, 'stroke-linecap':'round', 'stroke-linejoin':'round', opacity:0.95});
+      });
+
+      // marker for current beta
+      const b = parseFloat(beta.value);
+      const xB = x(b);
+      add(svg,'line',{x1:xB,y1:y1,x2:xB,y2:y0,stroke:`color-mix(in oklab, ${cssVar('--accent')} 55%, transparent)`, 'stroke-width':2, opacity:0.85});
+      add(svg,'circle',{cx:xB, cy:y0, r:3.5, fill:cssVar('--accent')});
+
+      // y ticks
+      for(let i=0;i<=4;i++){
+        const v = yMin + (yMax-yMin)*(i/4);
+        const yy = y(v);
+        add(svg,'text',{x:6, y:yy+4, fill:text, 'font-size':10}).textContent = v.toFixed(2);
+      }
+    }
+
+    // Generate "shape-replica" series (monotone increasing with beta, decreasing with e)
+    function genSeries(kind, model){
+      const bPts = [];
+      const ee = parseFloat(e.value);
+      for(let i=0;i<=50;i++){
+        const b = 0.05 + (0.95)*(i/50);
+
+        // Lower e -> higher levels; Higher e -> shift down + flatten a bit
+        const damp = (1 - 0.55*ee);
+        const flat = 1 - 0.25*ee;
+
+        if(kind==='vot'){
+          // Figure-like range ~0.75 to ~1.0
+          const base = model===1 ? 0.74 : 0.75;
+          const gain = model===1 ? 0.26 : 0.24;
+          const curve = Math.pow(b, model===1 ? 0.85 : 0.62);
+          let v = base + gain * curve;
+          v = base + (v-base) * damp;
+          // slight flatten
+          v = base + (v-base) * flat;
+          v = Math.min(1.0, v);
+          bPts.push({x:b, y:v});
+        } else {
+          // trade-in discount: ~0.27 to ~0.315
+          const base = model===1 ? 0.27 : 0.272;
+          const gain = model===1 ? 0.045 : 0.042;
+          const curve = Math.pow(b, model===1 ? 0.75 : 0.55);
+          let v = base + gain * curve;
+          v = base + (v-base) * damp;
+          v = base + (v-base) * flat;
+          bPts.push({x:b, y:v});
+        }
+      }
+      return bPts;
+    }
+
+    function drawAll(){
+      // Chart 1: VOT
+      drawLineChart('chartVOT', {
+        xMin:0.05, xMax:1,
+        yMin:0.74, yMax:1.00,
+        yLabel:'VOT',
+        series: [
+          {name:'Model 1', color:'#0a84ff', data: genSeries('vot',1)},
+          {name:'Model 2', color:'#7d5cff', data: genSeries('vot',2)}
+        ]
+      });
+
+      // Chart 2: Discount
+      drawLineChart('chartDisc', {
+        xMin:0.05, xMax:1,
+        yMin:0.27, yMax:0.315,
+        yLabel:'Δp',
+        series: [
+          {name:'Model 1', color:'#0a84ff', data: genSeries('disc',1)},
+          {name:'Model 2', color:'#7d5cff', data: genSeries('disc',2)}
+        ]
+      });
+    }
+
+    // first draw
+    drawAll();
+  </script>
+</body>
+</html>

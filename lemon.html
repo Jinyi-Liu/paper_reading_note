@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度解读：Lemons, Trade-Ins, and CPO Programs</title>
+    
+    <!-- 引入 Tailwind CSS 以实现 Apple 风格设计 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 引入 MathJax 用于 LaTeX 渲染 -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\**', '\**']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <!-- 自定义样式 -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background-color: #F5F5F7; /* Apple 浅灰背景 */
+            color: #1D1D1F;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #1D1D1F 0%, #434344 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1D1D1F;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 优化数学公式显示 */
+        .mjx-chtml {
+            font-size: 110% !important;
+        }
+        
+        /* 表格样式 */
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .academic-table th {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #1D1D1F;
+            font-weight: 600;
+        }
+        .academic-table td {
+            padding: 12px;
+            border-bottom: 1px solid #E5E5E5;
+            color: #424245;
+        }
+        .academic-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* 交互卡片 */
+        .insight-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-text {
+            color: #0071E3; /* Apple Blue */
+            font-weight: 500;
+        }
+
+        /* 引用块 */
+        .academic-quote {
+            border-left: 4px solid #0071E3;
+            padding-left: 1rem;
+            font-style: italic;
+            color: #6e6e73;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- 导航栏 (模拟 macOS Finder 栏) -->
+    <nav class="fixed top-0 w-full z-50 glass-panel border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+            <div class="font-bold text-lg tracking-tight">OM Reading</div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+                <a href="#motivation" class="hover:text-blue-600 transition">Motivation</a>
+                <a href="#model" class="hover:text-blue-600 transition">Model</a>
+                <a href="#analysis" class="hover:text-blue-600 transition">Analysis</a>
+                <a href="#insights" class="hover:text-blue-600 transition">Insights</a>
+                <a href="#critique" class="hover:text-blue-600 transition">Critique</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header 区域 -->
+    <header class="pt-32 pb-16 px-6 max-w-5xl mx-auto text-center">
+        <p class="text-blue-600 font-semibold mb-4 tracking-wide uppercase text-xs">MSOM 2023 &bull; Huang, Atasu, Tereyağoğlu, Toktay</p>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 leading-tight">
+            Lemons, Trade-Ins, and <br> Certified Pre-Owned Programs
+        </h1>
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto font-light">
+            官方认证二手车 (CPO) 不仅仅是消除买方信息不对称的工具，<br>更是一个利用价格歧视反哺供给侧、激活柠檬市场的精妙机制。
+        </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-24">
+
+        <!-- 1. 研究背景与动机 -->
+        <section id="motivation">
+            <h2 class="section-title">Motivation & Context</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 实践痛点 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 insight-card">
+                    <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mb-4 text-red-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">实践痛点</h3>
+                    <p class="text-gray-600 text-sm">
+                        二手车市场充斥着 "Lemons Problem"（Akerlof, 1970）。高质量车主（Peach holders）因无法自证清白，不愿以市场平均价格出售车辆，导致市场萎缩。仅仅提供 Trade-in（以旧换新）折扣能部分缓解，但效率仍有限。
+                    </p>
+                </div>
+
+                <!-- 理论缺口 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 insight-card">
+                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4 text-blue-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">理论缺口</h3>
+                    <p class="text-gray-600 text-sm">
+                        现有文献多关注 CPO 如何解决<strong>买方</strong>的信息不对称（Signaling/Certification），却忽视了厂商在<strong>收购</strong>环节依然面临信息不对称。即：厂商在检测前也不知道收上来的是 Lemon 还是 Peach。
+                    </p>
+                </div>
+
+                <!-- 核心贡献 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 insight-card">
+                    <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mb-4 text-green-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">核心贡献</h3>
+                    <p class="text-gray-600 text-sm">
+                        揭示了 CPO 的<strong>双重机制</strong>：通过检测后的市场细分（Peach 卖高价）带来额外收入，这笔收入被用来补贴更高的 Trade-in 折扣，从而激励更多高质量车主置换新车，从根本上改善了市场逆向选择。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 模型设定 -->
+        <section id="model">
+            <h2 class="section-title">Model Setup</h2>
+            <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-200 flex flex-col md:flex-row">
+                <!-- 左侧：文字描述 -->
+                <div class="p-8 md:w-1/2 md:border-r border-gray-100">
+                    <h3 class="subsection-title">Scenario & Game Structure</h3>
+                    <p class="mb-4 text-gray-700">
+                        文章建立了一个离散时间、无限期界的耐用品垄断模型。
+                    </p>
+                    <ul class="list-disc pl-5 space-y-3 text-gray-600 mb-6">
+                        <li><strong>产品生命周期：</strong> 2 期（New $\to$ Used）。之后报废。</li>
+                        <li><strong>质量不确定性：</strong> 新产品质量均一。使用一期后，产品可能变为 High Quality (Peach) 或 Low Quality (Lemon)。</li>
+                        <li><strong>信息结构：</strong>
+                            <ul class="list-circle pl-4 mt-2 text-sm text-gray-500">
+                                <li>消费者（Owner）：知道自己车的质量。</li>
+                                <li>买家：无法观测质量（除非有 CPO 认证）。</li>
+                                <li>厂商：在 Trade-in 交易发生前不知道质量，必须在回购后花费成本 $e$ 进行检测。</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                        <p class="text-sm font-semibold text-gray-800 mb-2">Decision Sequence (Per Period):</p>
+                        <ol class="list-decimal pl-5 text-sm text-gray-600 space-y-1">
+                            <li>厂商设定新车价格 $p^C$，Trade-in 价格 $p_T^C$，认证二手车价格 $p_p^C$。</li>
+                            <li>消费者决定是否购买新车、是否 Trade-in、或购买二手车。</li>
+                            <li>厂商回购旧车，花费 $e$ 检测，将 Peaches 认证销售，Lemons 普通销售。</li>
+                            <li>市场出清。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 右侧：符号体系 -->
+                <div class="p-8 md:w-1/2 bg-gray-50">
+                    <h3 class="subsection-title">Notation & Assumptions</h3>
+                    <div class="overflow-x-auto">
+                        <table class="academic-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-mono text-blue-600">$\theta \sim U[0,1]$</td>
+                                    <td>消费者类型（对新产品的估值），异质性。</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono text-blue-600">$\delta \in (0,1)$</td>
+                                    <td>折旧因子 (Depreciation factor)。</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono text-blue-600">$\alpha$</td>
+                                    <td>产品变为 Peach 的概率。</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono text-blue-600">$s$</td>
+                                    <td>Lemon 相对于 Peach 的质量劣势（Lemon Utility 衰减系数）。</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono text-blue-600">$c, e$</td>
+                                    <td>$c$: 生产成本; $e$: 检测认证成本。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h4 class="font-bold text-gray-800 mb-2">Utility Functions</h4>
+                        <p class="text-sm text-gray-600 mb-2">Type $\theta$ 消费者的效用：</p>
+                        <ul class="text-sm space-y-2 font-mono bg-white p-4 rounded-lg border border-gray-200">
+                            <li>$U_{new} = \theta - p$</li>
+                            <li>$U_{peach} = \delta \theta - p_{used}$</li>
+                            <li>$U_{lemon} = \delta (1-s) \theta - p_{used}$</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 分析与求解 -->
+        <section id="analysis">
+            <h2 class="section-title">Analysis & Solution</h2>
+            
+            <div class="space-y-8">
+                <!-- 消费者策略 -->
+                <div class="glass-panel p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-4">1. Consumer Segmentation</h3>
+                    <p class="text-gray-600 mb-6">
+                        这是一个典型的 Stackelberg 博弈。首先分析给定价格下的消费者行为。由于产品和货币的时间价值，这是一个平稳均衡 (Stationary Equilibrium) 问题。消费者会根据自己的类型 $\theta$ 自我选择进入不同的策略组 (Strategic Segments)：
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-6 gap-2 text-center text-sm">
+                        <div class="bg-blue-600 text-white p-3 rounded-lg flex flex-col justify-center items-center shadow-md">
+                            <span class="font-bold text-lg">NN</span>
+                            <span class="text-xs opacity-80">买新，每期换新</span>
+                        </div>
+                        <div class="bg-blue-400 text-white p-3 rounded-lg flex flex-col justify-center items-center shadow-md">
+                            <span class="font-bold text-lg">NP</span>
+                            <span class="text-xs opacity-80">买新，仅 Peach 保留</span>
+                        </div>
+                        <div class="bg-gray-400 text-white p-3 rounded-lg flex flex-col justify-center items-center shadow-md">
+                            <span class="font-bold text-lg">NH</span>
+                            <span class="text-xs opacity-80">买新，一直保留</span>
+                        </div>
+                        <div class="bg-green-500 text-white p-3 rounded-lg flex flex-col justify-center items-center shadow-md">
+                            <span class="font-bold text-lg">PP</span>
+                            <span class="text-xs opacity-80">只买 CPO (Peach)</span>
+                        </div>
+                        <div class="bg-yellow-500 text-white p-3 rounded-lg flex flex-col justify-center items-center shadow-md">
+                            <span class="font-bold text-lg">LL</span>
+                            <span class="text-xs opacity-80">只买 Lemon</span>
+                        </div>
+                        <div class="bg-gray-200 text-gray-500 p-3 rounded-lg flex flex-col justify-center items-center shadow-md">
+                            <span class="font-bold text-lg">II</span>
+                            <span class="text-xs opacity-80">不购买</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <p class="text-sm text-yellow-800">
+                            <strong>关键点：</strong> 在纯 Trade-in (TI) 模型中，消费者无法区分二手车质量，因此不存在 PP 和 LL 细分，只有一个混合的 Used Segment (UU)。而在 CPO 模型中，由于认证的存在，PP 和 LL 分离了。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 核心命题 -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative bg-white p-8 rounded-2xl border border-gray-100">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">Proposition 3: CPO vs. Pure Trade-In</h3>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">The Core Result</span>
+                        </div>
+                        
+                        <p class="text-gray-700 mb-4">
+                            当检测成本 $e$ 低于某个阈值 $\bar{e}$ 时，相比于纯以旧换新 (TI) 项目，CPO 项目会导致：
+                        </p>
+                        <ol class="list-decimal pl-5 space-y-2 text-gray-700 mb-6">
+                            <li><strong>更高的 Trade-in 折扣 (Higher Trade-in Discount):</strong> $p^C - p_T^C > p^{TI} - p_T^{TI}$。</li>
+                            <li><strong>更高的二手车交易量 (Higher VOT):</strong> 市场效率提升，逆向选择被缓解。</li>
+                            <li><strong>更优的帕累托结果：</strong> 厂商利润增加，总消费者剩余 (Consumer Surplus) 增加。</li>
+                        </ol>
+
+                        <hr class="border-gray-200 my-4">
+
+                        <h4 class="font-semibold text-blue-600 mb-2">Economic Intuition (直觉解析)</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            为什么 CPO 能提供更高的折扣？<br>
+                            在纯 TI 模型中，厂商收到旧车只能混着卖，价格受限于 Lemons 的存在（平均质量低）。<br>
+                            在 CPO 模型中，厂商通过检测将 Peaches 筛选出来，针对高支付意愿的二手车买家（PP Segment）定高价。这种<strong>价格歧视 (Price Discrimination)</strong> 使得二手车业务的整体收入增加了。厂商理性的将这部分额外利润“返还”给新车买家（通过更高的 Trade-in 折扣），以此激励那些原本想保留 Peach 的车主（NP Segment 的一部分）转为换新车（变为 NN Segment）。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 主要结论与管理启示 -->
+        <section id="insights">
+            <h2 class="section-title">Managerial Insights</h2>
+
+            <!-- 机制图解 -->
+            <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-200 mb-10 text-center">
+                <h3 class="text-lg font-bold mb-8">The "CPO Flywheel" Mechanism</h3>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                    
+                    <div class="w-48 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="text-2xl mb-2">🔍</div>
+                        <div class="font-semibold text-sm">Certification</div>
+                        <div class="text-xs text-gray-500">Segments Peaches & Lemons</div>
+                    </div>
+
+                    <div class="text-gray-400">
+                        <svg class="w-6 h-6 transform rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+
+                    <div class="w-48 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <div class="text-2xl mb-2">💰</div>
+                        <div class="font-semibold text-sm text-blue-700">Higher Revenue</div>
+                        <div class="text-xs text-blue-500">From Price Discrimination</div>
+                    </div>
+
+                    <div class="text-gray-400">
+                        <svg class="w-6 h-6 transform rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+
+                    <div class="w-48 p-4 bg-green-50 rounded-xl border border-green-100">
+                        <div class="text-2xl mb-2">🏷️</div>
+                        <div class="font-semibold text-sm text-green-700">Higher TI Discount</div>
+                        <div class="text-xs text-green-500">Subsidizing Sellers</div>
+                    </div>
+
+                    <div class="text-gray-400">
+                        <svg class="w-6 h-6 transform rotate-90 md:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </div>
+
+                    <div class="w-48 p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                        <div class="text-2xl mb-2">📈</div>
+                        <div class="font-semibold text-sm text-indigo-700">Higher VOT</div>
+                        <div class="text-xs text-indigo-500">Solving Lemons Problem</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 比较静态分析图表复现 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4">Effect of Inspection Cost ($e$)</h3>
+                    <p class="text-sm text-gray-500 mb-4">随着检测成本上升，CPO 的优势逐渐减弱。</p>
+                    
+                    <!-- 使用 CSS 绘制简单的示意图 -->
+                    <div class="relative h-48 w-full border-l border-b border-gray-300 flex items-end px-2 space-x-4">
+                        <!-- VOT CPO -->
+                        <div class="w-1/4 h-3/4 bg-blue-500 rounded-t opacity-90 relative group">
+                            <span class="absolute -top-6 left-0 text-xs text-blue-600 w-full text-center hidden group-hover:block">VOT (CPO)</span>
+                        </div>
+                        <!-- VOT TI -->
+                        <div class="w-1/4 h-1/2 bg-gray-400 rounded-t opacity-90 relative group">
+                             <span class="absolute -top-6 left-0 text-xs text-gray-600 w-full text-center hidden group-hover:block">VOT (TI)</span>
+                        </div>
+                        
+                        <div class="absolute bottom-2 right-2 text-xs text-gray-400">Inspection Cost $e \to$</div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2 text-center">Schematic: VOT decreases as cost increases</p>
+                </div>
+
+                <!-- 实证结果 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4">Empirical Validation (US Auto Data)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-600">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3">Hypothesis</th>
+                                    <th class="px-4 py-3">Result</th>
+                                    <th class="px-4 py-3">Coefficient</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="px-4 py-3 font-medium">H1: CPO Size $\uparrow \Rightarrow$ VOT $\uparrow$</td>
+                                    <td class="px-4 py-3 text-green-600 font-bold">Supported</td>
+                                    <td class="px-4 py-3 font-mono">0.898***</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="px-4 py-3 font-medium">H2: CPO Size $\uparrow \Rightarrow$ TI Discount $\uparrow$</td>
+                                    <td class="px-4 py-3 text-green-600 font-bold">Supported</td>
+                                    <td class="px-4 py-3 text-xs">Derived Negative Coeff</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-medium">Moderation: Cost $e \uparrow \Rightarrow$ Effect $\downarrow$</td>
+                                    <td class="px-4 py-3 text-green-600 font-bold">Supported</td>
+                                    <td class="px-4 py-3 font-mono">-0.058***</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">Data Source: J.D. Power, Consumer Expenditure Survey (2008-2013)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 评论与批判 -->
+        <section id="critique">
+            <h2 class="section-title">Reviewer's Critique</h2>
+            <div class="bg-gray-900 text-gray-300 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                <!-- 装饰背景 -->
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-gray-800 rounded-full opacity-50 blur-3xl"></div>
+                
+                <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-white text-xl font-bold mb-4 border-b border-gray-700 pb-2">Strengths</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start">
+                                <span class="mr-2 text-green-400">✓</span>
+                                观点新颖：跳出了 "Signaling" 的传统框架，强调了 Supply-side incentive（对卖家的激励）。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 text-green-400">✓</span>
+                                理论与实证结合紧密：不仅有理论推导，还有详尽的汽车行业数据支持，增加了文章的可信度。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 text-green-400">✓</span>
+                                Partial Coverage 扩展：考虑了现实中并非所有车都做 CPO (有里程/车龄限制)，使模型更具落地性。
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-white text-xl font-bold mb-4 border-b border-gray-700 pb-2">Limitations & Future Directions</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start">
+                                <span class="mr-2 text-yellow-500">!</span>
+                                <strong>Perfect Inspection:</strong> 假设检测是完美的（能完全区分 Peach/Lemon），忽略了 Type I/II 错误。现实中 CPO 认证也可能看走眼。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 text-yellow-500">!</span>
+                                <strong>Competition:</strong> 主模型是垄断的。虽然有 Competitive Extension，但现实中 Dealer 和 OEM 的利益冲突（代理问题）未被捕捉。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 text-blue-400">→</span>
+                                <strong>Future:</strong> 结合 Dealer Network 的激励问题；或者研究电动车（电池健康检测更透明）背景下的 CPO 演变。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. One More Thing -->
+        <section class="pb-20">
+            <div class="text-center mb-8">
+                <span class="bg-black text-white px-4 py-1 rounded-full text-sm font-bold tracking-wide">ONE MORE THING</span>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <h3 class="text-3xl font-bold text-gray-900 mb-6">The "Self-Correction" of Market Efficiency</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    文章中有一个非常反直觉的数学时刻：
+                    在 Pure Trade-In 模型中，有时 Trade-in 折扣完全失效（Case TI-II），市场完全由 Lemons 占据。
+                    但在引入 CPO 后，即使检测成本 $e > 0$，只要足够小，CPO 就能通过价格机制<strong>强制</strong>让一部分 NP 策略消费者（即那种想保留 Peach 的人）转向 NN 策略。
+                </p>
+                <div class="inline-block bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-left">
+                    <p class="font-mono text-sm text-blue-600 mb-2">Mathematical Beauty:</p>
+                    <p class="text-gray-800 italic">
+                        "CPO programs function not only as a better information provision mechanism for buyers, but also as a means to change <strong>seller behavior</strong>."
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2 text-right">— Huang et al., 2023</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center text-sm">
+        <p>&copy; 2025 OM Reading. Designed for Academic Excellence.</p>
+        <p class="mt-2 text-xs text-gray-600">Based on the MSOM 2023 paper by Huang, Atasu, Tereyağoğlu, Toktay.</p>
+    </footer>
+
+</body>
+</html>

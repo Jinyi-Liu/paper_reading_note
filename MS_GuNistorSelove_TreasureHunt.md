@@ -1,4 +1,4 @@
-# The Joy of Shopping: Thrill of the Treasure Hunt（深度解析笔记）
+# The Joy of Shopping: Thrill of the Treasure Hunt
 
 > **论文**：Jane Gu, Cristina Nistor, Matthew Selove（2025）*The Joy of Shopping: Thrill of the Treasure Hunt*（Dec 4, 2025）  
 > **关键词**：search models，treasure hunting，hedonic shopping，thrift shopping，retail design  
@@ -40,13 +40,13 @@
 
 ### 1.3 核心贡献：Significance（理论与实践）
 
-**理论贡献**
+#### 理论贡献
 
 1. **把“搜索即娱乐”形式化**：构造连续时间动态搜索框架，允许即时搜索效用在初期为正、随时间递减并最终为负（疲劳）。
 2. **内生化“寻宝难度”**：把“发现匹配商品的到达率”作为企业决策变量，研究企业为何即使“让搜索更容易”没有成本，也会选择有限的难度（有限的发现率）。
 3. **得到一组非标准比较静态**：在极低价值与极高价值商品上，消费者到店效用主要来自搜索本身；并且出现**低值商品高价、高值商品低价**的反直觉定价对比（相对于无搜索快乐的基准）。
 
-**实践贡献**
+#### 实践贡献
 
 1. 解释 thrift/warehouse/折扣零售的“脏乱慢”并非纯低效，而可能是最优设计的一部分（为体验创造效用）。
 2. 给出零售设计建议：**价格信息应该更透明**，但“好匹配商品”的发现可以保持一定难度（不要把两者混为一谈）。
@@ -59,7 +59,7 @@
 ### 2.1 符号体系（Notation）
 
 | 符号 | 含义 |
-|---|---|
+| --- | --- |
 | $V>0$ | 对“好匹配商品”（treasure）的内在价值（gross value） |
 | $p$ | 企业设定的单件价格，约束 $0<p\le V$ |
 | $\mu>0$ | 消费者在店内搜索时“发现 treasure”的到达率（Poisson rate），也可理解为“寻宝易度” |

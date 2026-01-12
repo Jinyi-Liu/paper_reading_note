@@ -1,3 +1,5 @@
+# Platform Self-Preferencing in Add-on Markets (Gu, Li & Zou)
+
 ## 1. 研究背景与动机 (Motivation & Interface Fit)  
 
 **实践痛点：**

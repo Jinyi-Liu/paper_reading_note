@@ -1,9 +1,3 @@
----
-output:
-  html_document: default
-  word_document: default
-  pdf_document: default
----
 # The Design and Price of Certification — 深度拆解笔记（OM / IO / 信息设计）
 
 > 论文：Mäkimattila, Mikael; Shang, Yucheng; Shirakawa, Ryo. **The Design and Price of Certification**（2025-06-18）  

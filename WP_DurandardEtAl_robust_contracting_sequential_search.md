@@ -1,4 +1,4 @@
-# Robust Contracting for Sequential Search（Durandard, Vaidya, Xu, 2025）深度解析笔记
+# Robust Contracting for Sequential Search（Durandard, Vaidya, Xu, 2025
 
 > 论文：**Robust Contracting for Sequential Search**（Théo Durandard, Udayan Vaidya, Boli Xu，版本日期：2025-09-17）  
 > 关键词：Robust contracts / Sequential search / Weitzman index / Debt contracts / Moral hazard  

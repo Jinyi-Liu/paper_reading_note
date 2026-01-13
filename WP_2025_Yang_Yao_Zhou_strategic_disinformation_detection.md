@@ -66,7 +66,7 @@ Working Paper (July 22, 2025)
    论文把 detector 输出（alarm/no-alarm）对 receiver belief 的作用拆成两股力：  
    - *persuasive effect*：no alarm 会让 receiver 更相信“是真的”；  
    - *dissuasive effect*：alarm 会让 receiver 更相信“是假的”。  
-   在 $\alpha>0$ 下，这两股力都依赖 detector 的精度与策略，导致“更强 detector”未必减少撒谎。
+   在 $\alpha>0$ 下，这两股力都依赖 detector 的精度与策略，**导致“更强 detector”未必减少撒谎**。
 
 2. **结果贡献：撒谎概率对检测强度非单调**  
    这是文章最“抓人”的 comparative statics：当 detector 还不够强时，提高 $\beta$ 可能让 low type **更愿意**撒谎（因为 no-alarm 更能说服 receiver）；当 $\beta$ 足够强时，检测带来的惩罚性风险主导，撒谎概率下降。摘要层面就强调了这种非单调。
@@ -75,16 +75,19 @@ Working Paper (July 22, 2025)
    给定一个 classifier 的能力，最优 alarm rule 会在 ROC 前沿上选择某个点；而最优点常常不是 $\beta$ 越高越好，并且 classifier 更强时最优 $\beta$ 反而可能降低（从而 alarm 更少），这对平台“阈值调参”非常有指导意义。
 
 ---
+
 ## 2. 模型设定与假设
 
 ### 2.1 Players, Sequence of Events, Information Structure
 
-**Players**
+#### Players
+
 - **Sender (S)**：可能是卖家、内容发布者、营销方、诈骗者等。其类型 $\theta\in\{H,L\}$ 表示“真实高质量/真实低质量”。
 - **Receiver (R)**：消费者/用户/受众/投资者等，基于信息做一个二元决策。  
 - **Lie Detector Designer (D)**：平台/监管者/第三方 fact-checker，先设计 detector 并承诺（commit）执行。
 
-**Timeline（基准版 + detector design 版兼容）**
+#### Timeline（基准版 + detector design 版兼容）
+
 1. 设计者 $D$ 预先选择 detector（外生情形：$\alpha,\beta$ 给定；内生情形：选择 alarm rule $\lambda$，受 classifier $\phi$ 约束）。
 2. Nature 抽取 sender 类型：$\Pr(\theta=H)=\rho$，$\Pr(\theta=L)=1-\rho$。
 3. Sender 发送消息 $m\in\{m_H,m_L\}$：  
@@ -94,7 +97,8 @@ Working Paper (July 22, 2025)
 4. Detector 输出 $l\in\{a,na\}$：$a$ 表示 alarm（怀疑 $m_H$ 是假），$na$ 表示 no alarm。  
 5. Receiver 观察 $(m,l)$ 后选择行动 $r\in\{r_H,r_L\}$（例如购买/不购买，采纳/不采纳）。
 
-**Information structure**
+#### Information structure
+
 - Sender 观察自己的 $\theta$，receiver 只知道先验 $\rho$。  
 - Receiver 观察消息与 detector 信号（若 $m_H$）。  
 - Detector 的统计性能由 $\beta$（true-positive）与 $\alpha$（false-positive）刻画：  
@@ -166,7 +170,7 @@ $$ u_S(r,\theta,m)=\mathbf{1}\{r=r_H\}\Delta S_\theta - \mathbf{1}\{\theta=L,\,m
    - $C<\Delta S_H$：避免极端情形（高类型被误伤时收益为负等）。
 
 3. **“撒谎成功”在社会层面不增益**：$\Delta S_L-\Delta R_L\le 0$  
-   这是一个典型的 welfare alignment 假设：low type 因误导而获得的私人收益不超过 receiver 的损失，保证 disinformation 的“坏”是可论证的，而不是一个“重新分配”而已。
+   这是一个典型的 welfare alignment 假设：low type 因误导而获得的私人收益不超过 receiver 的损失，保证 disinformation 的“坏”是可论证的，*而不是一个“重新分配”而已*。
 
 另外一个隐含但非常关键的“技术假设”是 detector 信息性：通常要求 $\beta>\alpha$（alarm 更可能出现在假消息）。
 
@@ -184,9 +188,10 @@ $$ \beta=\phi(s_L\mid L)\lambda_L+\phi(s_H\mid L)\lambda_H,\qquad \alpha=\phi(s_
 这一步很 OM：把“算法阈值调参”抽象成可控的随机化决策 $\lambda$，同时把 ML 的 trade-off（ROC）硬编码进 feasible set。
 
 ---
+
 ## 3. 分析与求解
 
-这一部分我会尽量做到“你拿着这份笔记能自己复推一遍”。核心套路是：**Bayes 更新 + best response 阈值 + mixing indifference**。
+核心套路是：**Bayes 更新 + best response 阈值 + mixing indifference**。
 
 ---
 
@@ -299,7 +304,6 @@ receiver 在 alarm 下混合意味着
 $$ \Pr(\theta=H\mid m_H,a)=\hat{\rho}. $$  
 由 Bayes 式解得  
 $$ \sigma_S=\frac{\alpha\rho\Delta R_H}{\beta(1-\rho)\Delta R_L}. $$  
-
 
 > **经济学直觉（这就是 dissuasive effect）：**  
 > 强检测下 no-alarm 几乎可视为“通过审查”，receiver 直接信；真正的博弈发生在 alarm 下：如果 alarm 太可能误伤（$\alpha$ 大），receiver 就不敢把 alarm 当铁证，于是为了把 receiver 在 alarm 下压回 indifference，low type 必须增加撒谎（让 alarm 更可能来自真实 H，从而提升 alarm 下的后验）。因此在该区间里 $\sigma_S$ **随 $\alpha$ 上升而上升**、随 $\beta$ 上升而下降。
@@ -414,7 +418,7 @@ $$ \frac{\phi(s_L\mid L)}{\phi(s_L\mid H)}\ge \frac{(\Delta S_L-C)\rho\Delta R_H
   且 $\beta_1<\hat{\beta}$，并且 $\beta_1$ 随 classifier 的“相对精度” $\phi(s_L\mid L)/\phi(s_L\mid H)$ 上升而下降。
 
 > **关键直觉（非常反直觉但真实）：**  
-> classifier 越强，想要让 receiver 在“no alarm”下信任并不需要那么高的 $\beta$；而更高的 $\beta$ 会迫使 alarm rule 去动用 $s_H$ 区域从而抬高 $\alpha$，误伤高类型。  
+> classifier 越强，想要让 receiver 在“no alarm”下信任并不需要那么高的 $\beta$；*而更高的 $\beta$ 会迫使 alarm rule 去动用 $s_H$ 区域从而抬高 $\alpha$，误伤高类型。*  
 > 所以“更好的 classifier”可能使 **最优 detector 更少报警**。
 
 ---
@@ -493,8 +497,6 @@ $C$ 在模型里是撒谎成本。现实对应可以是：
 
 ### 4.3 图表解释：几张最关键的图在讲什么？
 
-> 注：我这里不贴图（避免格式污染），但你可以用论文的 Figure 编号对照阅读。
-
 #### Figure 4：belief 的“上下推”就是 persuasive/dissuasive
 
 Figure 4（以及相邻文字）展示了随着 detector 变强，  
@@ -522,10 +524,6 @@ Figure 10（配合 Proposition 3/4）强调：
 
 ---
 ## 5. Reviewer's Critique
-
-下面我切换成一个“有点刻薄但希望你变强”的 Senior Editor 模式：优点要夸，但漏洞也要挑。
-
----
 
 ### 5.1 我会给的强 positive feedback（值得发顶刊的点）
 

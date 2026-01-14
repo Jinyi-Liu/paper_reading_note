@@ -164,7 +164,8 @@ $$ u_S(r,\theta,m)=\mathbf{1}\{r=r_H\}\Delta S_\theta - \mathbf{1}\{\theta=L,\,m
 
 1. **Receiver 在无信息时不采取高行动**  
    $$ \rho<\hat{\rho}:=\frac{\Delta R_L}{\Delta R_H+\Delta R_L}. $$  
-   这保证了“信息/检测”是有价值的：如果先验已经足够高使 receiver 总买，那 detector 再强也无用。
+
+    这保证了“信息/检测”是有价值的：如果先验已经足够高使 receiver 总买，那 detector 再强也无用。
 
 2. **撒谎成本适中**：$0<C<\min\{\Delta S_H,\Delta S_L\}$  
    - $C>0$：否则 low type 永远撒谎，模型退化；  

@@ -43,5 +43,6 @@ Feel free to explore the files and reach out if you have any questions or sugges
 3. **深度与细节**：目标是读完这个文档，不仅能理解“做了什么”，还能理解“为什么要这样建模”以及“数学背后的直觉”，达到可以复盘其模型推导的程度。
 4. 文件名必须全部英文字符. 命名按照：journalname_year_(authors last names separated by _ if less than 4 persons, otherwise, use et al.)_short_title.md。如果没有journal就用WP. 
 5. Strictly use standard Markdown header syntax (#, ##, ###) for structure. Do NOT use bold text (e.g., **Heading**) on its own line as a substitute for a heading.
+6. Use heading levels appropriately to reflect the structure of the content. The top-level heading (#) should be reserved for the main title of the document.
 
 在输出最终代码前，请暂停并进行一次彻底的自我校正。确保你的输出markdown 文件严格遵守要求（留白、排版、字体）。仔细检查每一个 LaTeX 公式，确保渲染无误。内容的深度必须足以支撑起 OM 博士生级别的阅读需求。不需要输出到回复里面，直接给我一个.md文件下载

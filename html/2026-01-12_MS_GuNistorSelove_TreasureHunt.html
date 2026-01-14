@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MS_GuNistorSelove_TreasureHunt</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="the-joy-of-shopping-thrill-of-the-treasure-hunt">The Joy of Shopping: Thrill of the Treasure Hunt</h1>
+<blockquote>
+<p><strong>论文</strong>：Jane Gu, Cristina Nistor, Matthew Selove（2025）<em>The Joy of Shopping: Thrill of the Treasure Hunt</em>（Dec 4, 2025）<br>
+<strong>关键词</strong>：search models，treasure hunting，hedonic shopping，thrift shopping，retail design<br>
+<strong>定位</strong>：以“搜索本身带来快乐（而不仅是成本）”为核心行为假设，建立连续时间动态搜索模型，并内生化零售商的“寻宝难度”设计与定价。</p>
+</blockquote>
+<hr>
+<h2 id="0">0. 一句话抓住本文</h2>
+<p>传统搜索模型把搜索当作“摩擦”；本文把搜索当作“娱乐品”。当消费者在搜索过程中获得即时效用时，零售商会<strong>故意制造适度的“找不到”</strong>来提升到店效用（从而拉动客流），但又会把寻宝做得<strong>比消费者理想的更容易</strong>，因为零售商还在乎“到店后的成交概率”。</p>
+<hr>
+<h2 id="1-motivation">1. 研究背景与动机（Motivation）</h2>
+<h3 id="11">1.1 实践痛点：行业里到底发生了什么？</h3>
+<p>现实零售里存在一类非常反常（相对经典搜索理论）的现象：<strong>很多消费者“喜欢找”而不是“怕找”</strong>。</p>
+<ul>
+<li><strong>线下</strong>：Costco、T.J. Maxx、Goodwill 等零售商刻意营造“treasure hunt”体验：库存变化快、陈列不完全可预测、部分品类不按属性精细分类。消费者并不把“多逛一会儿”视为纯浪费，反而享受“找到宝”的快感与过程本身的乐趣。</li>
+<li><strong>线上</strong>：二手平台（Poshmark、Depop、The RealReal 等）以及直播带货形式（“慢慢找、慢慢看”）把“浏览/搜索”变成类似“slot machine-style pleasure”的娱乐体验。</li>
+</ul>
+<p>这带来几个运营管理层面的核心难题：</p>
+<ol>
+<li><strong>零售设计问题</strong>：店铺/平台应该把搜索做得多容易？（排序、分类、推荐、导航、库存组织、信息架构）</li>
+<li><strong>定价问题</strong>：寻宝类商品应该更贵还是更便宜？和经典“垄断定价/搜索成本模型”相比会如何偏离？</li>
+<li><strong>转化权衡</strong>：提高客流的体验设计往往降低成交概率（找不到合适的就不买）。如何权衡？</li>
+</ol>
+<h3 id="12">1.2 理论缺口：现有文献忽略了什么？</h3>
+<p>经典搜索模型（Diamond 1971；Bakos 1997；Kuksov &amp; Villas-Boas 2010 等）的核心假设是：<strong>搜索是成本</strong>，因此给定产品质量与价格，消费者偏好更少的搜索时间。后续也有“零搜索成本”分群（Varian 1980）或“学习型搜索”等扩展，但大体仍把搜索当作负效用。</p>
+<p>另一方面，“price obfuscation/信息遮蔽”文献（Stahl 1989；Wilson 2010 等）研究竞争情境下企业如何让价格更难找以软化竞争；“search diversion”文献（Hagiu &amp; Jullien 2011, 2014 等）研究平台如何把消费者引导到不那么匹配的商品以提取佣金。</p>
+<p>但这些流派共同缺少一个关键结构：<strong>搜索过程本身可以带来正效用</strong>，并且企业会把“搜索体验”作为可设计的经营变量（尤其在单一零售商的场景下）。</p>
+<blockquote>
+<p>本文的空白点可以更尖锐地说：<br>
+<strong>我们有很多模型解释“企业为什么让你更难找到价格”，但很少模型解释“企业为什么让你更难找到合适的东西”，而且消费者还因此更开心。</strong></p>
+</blockquote>
+<h3 id="13-significance">1.3 核心贡献：Significance（理论与实践）</h3>
+<h4 id="_1">理论贡献</h4>
+<ol>
+<li><strong>把“搜索即娱乐”形式化</strong>：构造连续时间动态搜索框架，允许即时搜索效用在初期为正、随时间递减并最终为负（疲劳）。</li>
+<li><strong>内生化“寻宝难度”</strong>：把“发现匹配商品的到达率”作为企业决策变量，研究企业为何即使“让搜索更容易”没有成本，也会选择有限的难度（有限的发现率）。</li>
+<li><strong>得到一组非标准比较静态</strong>：在极低价值与极高价值商品上，消费者到店效用主要来自搜索本身；并且出现<strong>低值商品高价、高值商品低价</strong>的反直觉定价对比（相对于无搜索快乐的基准）。</li>
+</ol>
+<h4 id="_2">实践贡献</h4>
+<ol>
+<li>解释 thrift/warehouse/折扣零售的“脏乱慢”并非纯低效，而可能是最优设计的一部分（为体验创造效用）。</li>
+<li>给出零售设计建议：<strong>价格信息应该更透明</strong>，但“好匹配商品”的发现可以保持一定难度（不要把两者混为一谈）。</li>
+<li>预测当存在“讨厌搜索”的顾客类型时，企业在不同价值区间会选择服务谁、如何分渠道。</li>
+</ol>
+<hr>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设（Model Setup &amp; Assumptions）</h2>
+<h3 id="21-notation">2.1 符号体系（Notation）</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$V&gt;0$</td>
+<td>对“好匹配商品”（treasure）的内在价值（gross value）</td>
+</tr>
+<tr>
+<td>$p$</td>
+<td>企业设定的单件价格，约束 $0&lt;p\le V$</td>
+</tr>
+<tr>
+<td>$\mu&gt;0$</td>
+<td>消费者在店内搜索时“发现 treasure”的到达率（Poisson rate），也可理解为“寻宝易度”</td>
+</tr>
+<tr>
+<td>$t\in[0,\infty)$</td>
+<td>搜索时间（连续时间）</td>
+</tr>
+<tr>
+<td>$s(t)$</td>
+<td>尚未找到 treasure 时的即时搜索效用（instantaneous search utility）</td>
+</tr>
+<tr>
+<td>$\alpha&gt;0$</td>
+<td>搜索效用的常数项：氛围、社交、品类兴趣等</td>
+</tr>
+<tr>
+<td>$\beta_1&gt;0$</td>
+<td>$\mu$ 对搜索效用的边际贡献系数：即时“快找到”的兴奋</td>
+</tr>
+<tr>
+<td>$\beta_2&gt;0$</td>
+<td>$(V-p)$ 对搜索效用的边际贡献系数：净价值越大越兴奋（bargain/anticipation）</td>
+</tr>
+<tr>
+<td>$t^*$</td>
+<td>最优停止搜索时间（若此前未找到）</td>
+</tr>
+<tr>
+<td>$q$</td>
+<td>到店后最终找到 treasure 的概率</td>
+</tr>
+<tr>
+<td>$U$</td>
+<td>消费者一次“寻宝之旅”的期望总效用（含搜索效用与购买效用）</td>
+</tr>
+<tr>
+<td>$\pi$</td>
+<td>企业利润</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="22-game-sequence-of-events">2.2 玩家、时序与信息结构（Game / Sequence of Events）</h3>
+<p><strong>Players</strong></p>
+<ul>
+<li>单一零售商（firm）</li>
+<li>连续质量同质的消费者群体（mass $c$），每个消费者单位需求（最多买 1 件 treasure）</li>
+</ul>
+<p><strong>Sequence</strong></p>
+<ol>
+<li>企业选择 $(p,\mu)$，消费者可观察（价格可通过标牌/广告/历史经验得知；$\mu$ 可通过口碑、评价、店铺风格预期得知）。</li>
+<li>消费者决定是否到店。到店成本（交通/机会成本）异质。</li>
+<li>到店后，消费者在连续时间 $t$ 上动态决定是否继续搜索，直到找到 treasure 或停止。</li>
+</ol>
+<p><strong>信息结构</strong></p>
+<ul>
+<li>消费者在到店前观察 $p$ 与 $\mu$（主模型）。</li>
+<li>消费者到店前不知道“具体哪一件是否适合自己”，即在店内才逐渐发现匹配商品；到店后的期望问题因此对所有消费者相同（差异只体现在到店成本）。</li>
+</ul>
+<hr>
+<h3 id="23">2.3 消费者：到店决策与店内搜索问题</h3>
+<h4 id="i">(i) 到店决策（外部阶段）</h4>
+<ul>
+<li>市场上有 mass $c$ 的消费者，到店成本 $k$ 在区间 $[0,c]$ 上均匀分布，密度为 1。</li>
+<li>若一次寻宝之旅的期望效用为 $U$，则到店条件是 $U\ge k$。</li>
+<li>因为成本分布密度为 1，且假设均衡不完全覆盖（$U&lt;c$），<strong>到店人数 = $U$</strong>。</li>
+</ul>
+<blockquote>
+<p>这是一个常见的“把效用映射到需求规模”的简化：把“客流规模”直接写成 $U$，极大简化企业利润表达。</p>
+</blockquote>
+<h4 id="ii">(ii) 店内动态搜索（核心）</h4>
+<ul>
+<li>treasure 的“发现”服从 Poisson 过程，强度为 $\mu$：在很小的时间间隔 $dt$ 内发现 treasure 的概率约为 $\mu dt$。</li>
+<li>尚未找到 treasure 时，消费者在时点 $t$ 的即时搜索效用为（论文式 (1)）：</li>
+</ul>
+<p>$$ s(t)=\alpha+\beta_1\mu+\beta_2(V-p)-t $$</p>
+<p>解释：</p>
+<ul>
+<li>$\alpha$：社交、氛围、逛街本身的愉悦与品类兴趣（即使不买也快乐）。</li>
+<li>$\beta_1\mu$：更高的“即时发现概率”带来兴奋（例如“这里很可能有宝”）。</li>
+<li>$\beta_2(V-p)$：净价值越大，期待越强（bargain hunting / anticipation utility）。</li>
+<li>
+<p>$-t$：疲劳与时间成本递增，且线性递减是为了可解性（并说明可通过尺度变换规范化系数为 1）。</p>
+</li>
+<li>
+<p>一旦找到 treasure，模型设定其后即时搜索效用变为 $-t$（即不再有正向“逛”的快感），且消费者单位需求，因此<strong>找到即买、买完就走</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>这条设定在机制上等价于：treasure 一旦到手，寻宝的“主线任务”完成，后续继续逛只剩疲劳，因此最优是停。</p>
+</blockquote>
+<hr>
+<h3 id="24">2.4 企业：决策变量与利润函数</h3>
+<p>企业选择价格与“易度” $(p,\mu)$，成本归一化为 0，且假设提升 $\mu$ 不需要成本（刻意的极端假设，用于凸显：即便免费变容易，企业也会选择保留难度）。</p>
+<p>企业利润（论文式 (4)）：</p>
+<p>$$ \pi=pUq $$</p>
+<p>其中</p>
+<ul>
+<li>$U$：到店人数（由到店决策得出）</li>
+<li>$q$：到店后成交概率（找到 treasure 的概率）</li>
+</ul>
+<hr>
+<h3 id="25-justification">2.5 关键假设清单与合理性（Justification）</h3>
+<ol>
+<li><strong>Poisson 发现过程（rate $\mu$）</strong>  </li>
+<li>合理性：用到达率刻画“随机遇到合适商品”的过程，满足记忆性（memoryless），使动态问题可解析。</li>
+<li><strong>即时搜索效用线性递减</strong>  </li>
+<li>合理性：疲劳递增；线性是最小可解形式，且可通过尺度变换规范化。</li>
+<li><strong>找到 treasure 后效用切换为 $-t$ 且单位需求</strong>  </li>
+<li>合理性：捕捉“找到就收手”的行为；真实情形可能买多件，但会把“快乐边际”降低，论文也指出可扩展。</li>
+<li><strong>企业选择 $\mu$ 无成本</strong>  </li>
+<li>合理性：在“最强对手”（免费把搜索做容易）下仍选择有限 $\mu$，说明机制强；现实中若提高 $\mu$ 有成本，只会更强化“保留难度”的动机。</li>
+<li><strong>到店成本均匀分布且密度为 1</strong>  </li>
+<li>合理性：把客流函数线性化为 $U$，大幅简化；缺点是过于简洁（见 critique）。</li>
+</ol>
+<hr>
+<h2 id="3-analysis-solution">3. 分析与求解（Analysis &amp; Solution）</h2>
+<p>论文采用<strong>Backward Induction</strong>：</p>
+<ol>
+<li>给定企业 $(p,\mu)$，先解消费者在店内的最优停止规则与期望效用 $U$、成交概率 $q$。</li>
+<li>再把 $(U,q)$ 代回企业利润 $\pi=pUq$，求企业最优 $(p,\mu)$。</li>
+</ol>
+<hr>
+<h3 id="31-t">3.1 消费者子博弈：最优停止时间 $t^*$</h3>
+<h4 id="311">3.1.1 求解逻辑（边际比较 / 动态规划的“局部条件”）</h4>
+<p>在尚未找到 treasure 的某个时点 $t$，考虑继续搜索一个极小时间 $dt$ 的边际收益：</p>
+<ul>
+<li>立即获得搜索效用：$s(t)dt$</li>
+<li>在 $dt$ 内以概率 $\mu dt$ 找到 treasure，并获得净购买效用 $(V-p)$（找到就买）<br>
+  期望增量：$\mu dt (V-p)$</li>
+</ul>
+<p>因此继续搜索的边际期望效用约为：</p>
+<p>$$ [s(t)+\mu(V-p)]dt $$</p>
+<p>最优策略：只要边际为非负，就继续；一旦为负（且 $s(t)$ 随时间继续下降），就应停止。</p>
+<p>于是最优停止规则等价于阈值条件：</p>
+<p>$$ s(t)+\mu(V-p)\ge 0 $$</p>
+<p>将 $s(t)$ 代入并令等号成立得到停止时间（论文 Lemma 1）：</p>
+<p>$$ t^*=\alpha+\beta_1\mu+\beta_2(V-p)+\mu(V-p) $$</p>
+<h4 id="312-t">3.1.2 经济学直觉（为什么 $t^*$ 是这个形状？）</h4>
+<ul>
+<li>前三项 $\alpha+\beta_1\mu+\beta_2(V-p)$：是“纯逛街的即时快乐”在 $t=0$ 的起点水平，越快乐，当然逛得越久。</li>
+<li>最后一项 $\mu(V-p)$：是典型的<strong>option value（继续搜索的期权价值）</strong>：单位时间内找到宝的概率是 $\mu$，找到宝的价值是 $(V-p)$，所以继续一小会儿的“彩票价值”就是两者乘积。<br>
+  这项把最优停止时间推迟，意味着消费者会在即时搜索效用已经转负后仍继续一段时间，因为“万一下一秒就中了大奖呢”。</li>
+</ul>
+<hr>
+<h3 id="32-q-treasure">3.2 成交概率 $q$：找到 treasure 的概率</h3>
+<p>在 Poisson 过程中，若最多搜索到 $t^<em>$，则“在 $[0,t^</em>]$ 内至少到达一次”的概率为：</p>
+<p>$$ q=1-e^{-\mu t^*} $$</p>
+<p>代入 $t^*$（论文式 (2)）：</p>
+<p>$$ q=1-e^{-\mu[\alpha+\beta_1\mu+\beta_2(V-p)+\mu(V-p)]} $$</p>
+<p><strong>比较静态直觉</strong></p>
+<ul>
+<li>$\mu$ 越大，单位时间“中奖”概率越高，且 $t^*$ 也随 $\mu$ 上升，因此 $q$ 单调上升并快速逼近 1。</li>
+<li>$(V-p)$ 越大，继续搜索的期权价值更大，$t^*$ 更长，因此 $q$ 上升。</li>
+</ul>
+<hr>
+<h3 id="33-u">3.3 期望效用 $U$：把“快乐”和“疲劳”都算进去</h3>
+<p>消费者总期望效用由两部分组成：</p>
+<ol>
+<li><strong>找到 treasure 并购买的净效用</strong>：$q(V-p)$</li>
+<li><strong>搜索过程的期望效用</strong>：在每个时点 $t$，只有在尚未找到 treasure 时才在搜索；Poisson 记忆性意味着“尚未找到”的概率为 $e^{-\mu t}$。因此期望搜索效用为：</li>
+</ol>
+<p>$$ \int_{0}^{t^*} e^{-\mu t}s(t)\,dt $$</p>
+<p>论文把这两块合并并显式积分，得到（Proposition 1，论文式 (3)）：</p>
+<p>$$
+U=(1-e^{-\mu t^<em>})\left[\frac{\alpha}{\mu}+\beta_1+\frac{\beta_2(V-p)}{\mu}+(V-p)\right]-\frac{1}{\mu^2}\left(1-e^{-\mu t^</em>}-\mu t^<em>e^{-\mu t^</em>}\right)
+$$</p>
+<h4 id="331">3.3.1 直觉拆解：这条看起来吓人的公式到底在说什么？</h4>
+<p>把它当成三层结构去读：</p>
+<ul>
+<li><strong>层 1：一个“有效到达概率”因子</strong> $(1-e^{-\mu t^*})$<br>
+  这其实就是 $q$：你至少经历到“找到/差点找到”的那种路径的概率权重。很多正向效用项都被 $q$ 放大，因为如果你很快就什么都找不到并且提前停，你也不会积累很多体验。</li>
+<li><strong>层 2：正向效用括号</strong> $\left[\frac{\alpha}{\mu}+\beta_1+\frac{\beta_2(V-p)}{\mu}+(V-p)\right]$  </li>
+<li>$\alpha/\mu$ 与 $\beta_2(V-p)/\mu$：反映“在平均搜索时长约 $1/\mu$ 的尺度下，常数快乐与期待快乐可以积累多少”。$\mu$ 越大，平均停留越短，这两项就越小。</li>
+<li>$\beta_1$：有意思的一点是它<strong>不除以 $\mu$</strong>，因为即时快乐里有 $\beta_1\mu$，但平均时长大约 $1/\mu$，两者乘起来约为常数，所以总体贡献近似是常数阶。</li>
+<li>$(V-p)$：找到后的净消费效用。</li>
+<li><strong>层 3：疲劳成本项</strong> $-\frac{1}{\mu^2}\left(1-e^{-\mu t^<em>}-\mu t^</em>e^{-\mu t^*}\right)$<br>
+  来自 $-t$ 的积分与“尚未找到”的概率权重，体现搜索越久越累。</li>
+</ul>
+<h4 id="332-corollary-1">3.3.2 关键比较静态（Corollary 1）</h4>
+<ul>
+<li>$U$ <strong>一定随净价值 $(V-p)$ 增加</strong>：因为既提高最终购买效用，也提高期待/寻宝快感项。</li>
+<li>$U$ 对 $\mu$ 的影响<strong>不一定单调</strong>：<br>
+  更大的 $\mu$ 提高更快找到的概率与购买效用，但会缩短停留、削弱 $\alpha$ 与 $\beta_2(V-p)$ 这些“需要时间才能品味”的体验收益，因此可能出现“更难找反而更爽”的区间。</li>
+</ul>
+<blockquote>
+<p>这条结论是整篇论文的发动机：<strong>难度不是纯摩擦，而是体验强度的调音旋钮。</strong></p>
+</blockquote>
+<hr>
+<h3 id="34">3.4 企业问题：为什么会“故意让你找不到”？</h3>
+<p>企业利润：</p>
+<p>$$ \pi=pUq $$</p>
+<p>企业同时关心：</p>
+<ul>
+<li><strong>客流</strong>：$U$</li>
+<li><strong>到店后成交概率</strong>：$q$</li>
+<li><strong>每单价格</strong>：$p$</li>
+</ul>
+<p>论文给出两个关键结构性结论（对后续所有命题都很重要）：</p>
+<hr>
+<h4 id="341-proposition-2-mu-treasure-hunt">3.4.1 Proposition 2：最优 $\mu$ 是有限的（企业会制造 treasure hunt）</h4>
+<blockquote>
+<p><strong>命题</strong>：只要 $\alpha&gt;0$ 或 $\beta_2(V-p)&gt;0$，就存在一个有限的 $\mu$ 使利润最大化；企业不会选择 $\mu\to\infty$。</p>
+</blockquote>
+<p><strong>机制解释</strong></p>
+<ul>
+<li>当 $\mu$ 极大时，消费者几乎瞬间找到 treasure 并停止，意味着：</li>
+<li>成交概率 $q$ 接近 1（好事）</li>
+<li>但停留时间极短，$\alpha$ 与 $\beta_2(V-p)$ 这类“需要时间沉浸”的体验效用几乎无法累积（坏事）</li>
+<li>因此利润对 $\mu$ 的边际效应在足够大的 $\mu$ 下会变为负值，导致内点最优。</li>
+</ul>
+<p><strong>反事实对照</strong></p>
+<ul>
+<li>如果没有 $\alpha$ 与 $\beta_2$（即搜索快乐只来自“更快找到”的兴奋 $\beta_1\mu$），那么把 $\mu$ 拉到无穷大是最优：让大家快进式地“爽一下就买”。<br>
+  也就是说，<strong>真正驱动 treasure hunt 的不是“快找到的刺激”，而是“慢慢找的沉浸”</strong>（常数快乐与期待快乐）。</li>
+</ul>
+<hr>
+<h4 id="342-corollary-2">3.4.2 Corollary 2：企业让寻宝“比消费者理想的更容易”</h4>
+<blockquote>
+<p><strong>结论</strong>：给定价格 $p$，企业选择的 $\mu$ 严格高于最大化消费者效用 $U$ 的 $\mu$。</p>
+</blockquote>
+<p><strong>直觉</strong></p>
+<ul>
+<li>消费者只在乎自己的体验：最大化 $U$。</li>
+<li>企业在乎体验带来的客流，同时还在乎“转化”：利润里有额外的乘子 $q$。而 $q$ 随 $\mu$ 单调上升。<br>
+  所以企业会“在不破坏体验的前提下尽量提高找到的概率”。</li>
+</ul>
+<p>这是一种很现实的运营张力：</p>
+<ul>
+<li><strong>消费者理想</strong>：更难一点更像寻宝、更有故事。</li>
+<li><strong>企业理想</strong>：别太难，难到大家都空手而归就亏了。</li>
+</ul>
+<hr>
+<h2 id="4-propositions-mechanisms">4. 核心命题与结果（Propositions / Mechanisms）</h2>
+<p>论文没有试图给出一般闭式解，而是抓住两个极端区间（低 $V$ 与高 $V$）做解析，并用数值例子连起来。</p>
+<hr>
+<h3 id="41-pvproposition-3">4.1 低价值商品：$p=V$，人们“为逛而逛”（Proposition 3）</h3>
+<blockquote>
+<p><strong>命题</strong>：存在阈值 $\bar V&gt;0$，当 $V\in(0,\bar V]$ 时企业最优定价为 $p=V$；此时消费者到店的期望效用<strong>完全来自搜索效用</strong>。</p>
+</blockquote>
+<p><strong>机制（为何 $p$ 推到上限？）</strong></p>
+<ul>
+<li>当 $V$ 很小，$(V-p)$ 的可操作空间也很小（因为 $p\le V$）。</li>
+<li>客流 $U$ 的主要来源是 $\alpha$ 与 $\beta_1\mu$（“逛街本身”），对价格并不敏感。</li>
+<li>因此提高价格几乎不会伤害客流，却能提高每单利润；最优就是把 $p$ 推到上界 $V$，把商品价值全部抽走。</li>
+</ul>
+<p><strong>此时的利润函数（将 $p=V$ 代入）</strong></p>
+<ul>
+<li>发现概率：$q=1-e^{-\mu(\alpha+\beta_1\mu)}$</li>
+<li>期望效用（仅剩搜索效用）：$U=\frac{\alpha}{\mu}+\beta_1-\frac{1-e^{-\mu(\alpha+\beta_1\mu)}}{\mu^2}$</li>
+<li>利润（论文式 (7)）：</li>
+</ul>
+<p>$$
+\pi=V(1-e^{-\mu(\alpha+\beta_1\mu)})\left[\frac{\alpha}{\mu}+\beta_1-\frac{1-e^{-\mu(\alpha+\beta_1\mu)}}{\mu^2}\right]
+$$</p>
+<p><strong>管理含义（非常“现实但刺耳”）</strong></p>
+<ul>
+<li>当商品本身很便宜、且消费者享受过程时，零售商有动力把价格提高到“你买这个东西本身并不划算”的程度；消费者仍会来，因为他们买的是体验。</li>
+<li>这与现实中“二手店涨价仍有人逛”的现象一致：顾客支付的不只是衣服，而是“寻宝的一天”。</li>
+</ul>
+<hr>
+<h3 id="42-pto-v3proposition-4">4.2 高价值商品：$p\to V/3$，寻宝越来越难（Proposition 4）</h3>
+<blockquote>
+<p><strong>命题</strong>：当 $V\to\infty$，企业最优策略满足 $p\to V/3$，且 $\mu\to 2.4/(\beta_2V)$；成交概率 $q\to 0.8$。<br>
+即：价值越高，企业反而让 treasure <strong>更难找</strong>（$\mu$ 随 $V$ 下降）。</p>
+</blockquote>
+<h4 id="421">4.2.1 这为什么不荒谬？（关键机制）</h4>
+<p>高价值下，企业面对的不是“卖出一件赚多少”，而是“把寻宝变成一个足够强的体验品，以吸引大规模客流”。</p>
+<p>核心逻辑可以用“尺度分析”理解（这是本文最漂亮的数学段落之一）：</p>
+<ol>
+<li>若企业把 $\mu$ 固定为常数，则平均搜索时长 $1/\mu$ 是常数阶，体验效用随 $V$ 只线性增长，利润增长阶数有限。</li>
+<li>若企业让 $\mu$ 随 $V$ 下降，使得 $\mu(V-p)$ 保持常数阶（即 $\mu\propto 1/(V-p)$），则：</li>
+<li>消费者愿意搜索的截止时间 $t^*$ 线性增长（因为有 $\beta_2(V-p)$ 项），</li>
+<li>在更长的时间里，消费者一直处于“高期待”的状态，累积体验效用可以达到 <strong>$O((V-p)^2)$</strong> 的量级，</li>
+<li>从而到店人数 $U$ 变得非常大，利润可达到更高阶。</li>
+</ol>
+<p>换句话说：当 treasure 很值钱时，企业把它当作“剧情主线道具”，通过降低 $\mu$ 把剧情拉长，让顾客在长时间的期待中不断获得效用。</p>
+<h4 id="422-p-v3-v2">4.2.2 为什么 $p$ 是 $V/3$ 而不是 $V/2$？</h4>
+<p>在无搜索快乐的标准垄断基准中，需求大致来自 $(V-p)$，利润 $p(V-p)$ 最大化给出 $p=V/2$。</p>
+<p>在本文高价值极限中，需求规模（客流）可以近似随 $(V-p)^2$ 增长，因此利润近似长得像：</p>
+<p>$$ \pi \approx p(V-p)^2 $$</p>
+<p>对 $p$ 最大化：</p>
+<ul>
+<li>令 $x=V-p$，则 $\pi \approx (V-x)x^2=Vx^2-x^3$</li>
+<li>一阶条件：$2Vx-3x^2=0$，得 $x=2V/3$，即 $p=V/3$</li>
+</ul>
+<p><strong>直觉</strong>：企业不再只是在“卖产品”，而是在“卖一个关于产品的寻宝体验”。为了让体验（由净价值驱动的期待效用）更强，企业愿意把价格压得更低，让净价值更大，从而扩大客流并放大总体利润。</p>
+<h4 id="423-08">4.2.3 为什么成交概率收敛到 0.8？</h4>
+<p>命题给出 $q\to 0.8$，这意味着即使在最优设计下，仍有约 20% 的到店者找不到 treasure。这个数字不是拍脑袋，而是来自一条最优性方程的数值根：最优设计倾向让 $\mu\beta_2(V-p)\approx 1.6$，从而 $q=1-e^{-1.6}\approx 0.8$。</p>
+<p><strong>管理上的说法</strong>：最赚钱的 treasure hunt 需要保留一定比例的“空手而归”，否则就不叫 hunt 了。</p>
+<hr>
+<h3 id="43-benchmarkcorollary-3">4.3 Benchmark：若搜索永远是成本，会发生什么？（Corollary 3）</h3>
+<p>设基准世界中 $s(t)&lt;0$ 对所有 $t$（无搜索快乐），则企业最优让 $\mu\to\infty$（让顾客立刻找到，减少痛苦），利润变为标准垄断：</p>
+<p>$$ \pi=p(V-p) $$</p>
+<p>最优价格：</p>
+<p>$$ p=V/2 $$</p>
+<p>与本文对比（Corollary 3）：</p>
+<ul>
+<li><strong>低价值</strong>：本文 $p=V$（更高价）</li>
+<li><strong>高价值</strong>：本文 $p\to V/3$（更低价）</li>
+</ul>
+<blockquote>
+<p>这形成一个很有传播力的洞见：<br>
+<strong>当搜索是快乐时，企业会对便宜货“敢涨价”，对贵宝贝“反而打折”。</strong></p>
+</blockquote>
+<hr>
+<h2 id="5-trade-offcomparative-statics-trade-offs">5. 比较静态与“新 trade-off”总结（Comparative Statics &amp; Trade-offs）</h2>
+<h3 id="51">5.1 关键参数如何影响均衡方向？</h3>
+<ul>
+<li>提高 $\alpha$（氛围/社交/品类兴趣更强）  </li>
+<li>消费者更愿意到店、更愿意搜更久  </li>
+<li>企业更有动机保留难度（有限 $\mu$），因为体验收益更重要</li>
+<li>提高 $\beta_2$（净价值驱动的期待更强）  </li>
+<li>高价值区间的 treasure hunt 更“有效”：企业会更倾向于压低 $p$ 来放大 $(V-p)$，并降低 $\mu$ 拉长“期待时长”</li>
+<li>提高 $\beta_1$（快找到的刺激更强）  </li>
+<li>推动企业提高 $\mu$（更容易找到）以增加即时兴奋  </li>
+<li>但只要 $\alpha$ 或 $\beta_2(V-p)$ 不为 0，仍会有有限 $\mu$（因为沉浸收益仍需要时间）</li>
+<li>改变 $V$（商品价值）  </li>
+<li>$\mu$ 随 $V$ 可能呈“先升后降”（论文的数值例子与图 3）</li>
+<li>搜索效用占比呈“U 型”：低值与高值时几乎全是搜索效用，中间区间购买效用占比更高（图 4）</li>
+</ul>
+<h3 id="52-trade-off-base-model">5.2 本文揭示的核心 trade-off（对比 base model）</h3>
+<p><strong>传统 trade-off（搜索成本模型）</strong><br>
+让搜索更容易（提高 $\mu$）几乎总是好事：顾客更快买到、痛苦更少。</p>
+<p><strong>本文的 trade-off（搜索快乐模型）</strong><br>
+提高 $\mu$ 有两面性：</p>
+<ul>
+<li>正面：更容易找到 → 成交概率 $q$ 上升 → 购买效用上升</li>
+<li>负面：太容易找到 → 搜索时间变短 → “沉浸式快乐”无法累积 → 到店效用 $U$ 下降 → 客流下降</li>
+</ul>
+<p>因此企业的最优设计不是“最大化效率”，而是“最大化体验 * 转化 * 单价”的乘积。</p>
+<hr>
+<h2 id="6-main-results-managerial-insights">6. 主要结论与管理启示（Main Results &amp; Managerial Insights）</h2>
+<h3 id="61">6.1 机制揭示：本文最反直觉的三件事</h3>
+<ol>
+<li><strong>企业即使能免费提高效率，也会选择让你多找一会儿</strong>（有限 $\mu$）<br>
+   因为“找的过程”是需求来源之一。</li>
+<li><strong>企业对消费者的“理想寻宝难度”是偏离的</strong>：企业会让它更容易（Corollary 2）<br>
+   因为企业还在乎成交概率。</li>
+<li><strong>定价会“分裂”</strong>：  </li>
+<li>低值：$p=V$（抽干产品价值）  </li>
+<li>高值：$p\to V/3$（刻意留下很大的净价值来喂养期待效用）</li>
+</ol>
+<h3 id="62">6.2 可执行的管理建议（面向零售商/平台）</h3>
+<p><strong>建议 1：把“价格透明”和“匹配难度”分开设计</strong></p>
+<ul>
+<li>本文扩展（5.1）表明：如果顾客到店前不知道价格，只能在找到具体商品后才看到价签，那么均衡里企业会设 $p=V$，并且利润不高于主模型。  </li>
+<li>直觉：价格不透明会削弱顾客到店动机（你无法用“便宜宝贝”的期待拉客），也会破坏“寻宝的公平感”。</li>
+</ul>
+<p><strong>行动要点</strong>：<br>
+- 价格区间、品类价格要清晰可得（线上也一样：不要把价格藏到最后一步）。<br>
+- 但可以在“匹配发现”上保留一定摩擦：陈列、分类粒度、推荐节奏、限量与随机上新。</p>
+<hr>
+<p><strong>建议 2：为不同价值区间设计不同的 treasure hunt 逻辑</strong></p>
+<ul>
+<li><strong>低价值（如低价服饰、小件）</strong>：顾客更可能为氛围/社交/逛街而来。你可以：</li>
+<li>把体验做成“周末活动/社交场景”</li>
+<li>适度提高价格而不必担心流失（但要注意品牌与道德风险）</li>
+<li><strong>高价值（如奢侈二手/限量款）</strong>：顾客为“捡到大漏”的期待而来。你应该：</li>
+<li>留下足够净价值（价格不要榨干）</li>
+<li>保持稀缺与不确定性（降低 $\mu$），让 hunt 有故事性</li>
+</ul>
+<hr>
+<p><strong>建议 3：考虑顾客异质性时，用“渠道/界面”做分流</strong></p>
+<p>扩展（5.2）显示：当存在“讨厌搜索”的顾客类型时，企业在极低与极高价值区间会逐渐只服务“爱搜的人”，而中间区间可能服务两类人。</p>
+<p><strong>行动要点</strong>：<br>
+- 线上平台可用两个入口：<br>
+  - “精准搜索/筛选/推荐”服务效率型顾客<br>
+  - “瀑布流/直播/盲盒/随机上新”服务寻宝型顾客<br>
+- 线下可以用分区：<br>
+  - 一部分区域高度陈列清晰（fast lane）<br>
+  - 一部分区域保持“挖宝区”（slow lane）</p>
+<hr>
+<p><strong>建议 4：有 cross-selling 时，treasure 甚至可以当 loss leader</strong></p>
+<p>扩展（5.3）中利润变为 $\pi=pUq+Ux$（每个到店者还能贡献额外利润 $x$）。结果是：</p>
+<ul>
+<li>企业更愿意降低 $p$（甚至 $p&lt;0$，真正意义上的 loss leader）</li>
+<li>并可能降低 $\mu$（让 treasure 更难找），以提高体验效用从而拉客</li>
+</ul>
+<p><strong>行动要点</strong>：<br>
+Costco 式策略：用少数“寻宝爆款”拉人进店，靠高毛利品类实现利润闭环。</p>
+<hr>
+<h2 id="7-reviewers-critique-senior-editorreviewer">7. Reviewer's Critique（以严厉 Senior Editor/Reviewer 视角）</h2>
+<h3 id="71-strengths">7.1 优点（Strengths）</h3>
+<ol>
+<li><strong>现象重要且被忽视</strong>：把“寻宝快感”从行为学描述推进到可推导的理论结构，是很好的研究切入点。</li>
+<li><strong>模型简洁但能出硬结果</strong>：连续时间 + Poisson 到达的组合让停止规则与期望效用可闭式表达，利于清晰机制与比较静态。</li>
+<li><strong>若干结论非常可传播</strong>：如高值商品 $p\to V/3$、$q\to0.8$，以及“低值提价、高值打折”的对比，很抓人。</li>
+<li><strong>与文献对话明确</strong>：把“price obfuscation / search diversion”与本文“匹配搜索快乐”的差异讲得清楚，定位精准。</li>
+</ol>
+<h3 id="72-limitations-potentially-strong-assumptions">7.2 模型限制（Limitations / Potentially Strong Assumptions）</h3>
+<ol>
+<li><strong>$\mu$ 无成本且可任意选择</strong>  </li>
+<li>这是刻意设定，用于强化结果，但现实中提升 $\mu$（分类、库存管理、推荐系统）通常有成本；引入成本后，最优 $\mu$ 的内点性更强，但一些比较静态可能改变。</li>
+<li><strong>单一 treasure、单位需求、找到即停</strong>  </li>
+<li>对 thrift 这种“多件购买 + 继续逛”的场景可能过于简化。若允许多次发现、边际快乐递减，最优难度可能出现更丰富的非线性。</li>
+<li><strong>消费者同质（除到店成本）</strong>  </li>
+<li>现实里 $\alpha,\beta_1,\beta_2$ 高度异质且随品类变化。论文在扩展里只引入“是否享受搜索”的二分类型，仍然偏粗。</li>
+<li><strong>Poisson 到达率常数</strong>  </li>
+<li>实际上“越逛越可能找到”（学习路径、熟悉店铺、算法推荐）或“越逛越难”（好货被扫光）都可能发生。若 $\mu$ 随时间或库存状态变化，停止规则与企业策略会更复杂也更真实。</li>
+<li><strong>到店人数 = $U$ 的线性映射</strong>  </li>
+<li>这是分析便利的 demand mapping，但会隐藏一些现实关键：市场规模上限、竞争、重复到访、口碑动态等。</li>
+<li><strong>实证支撑有限</strong>  </li>
+<li>Qualtrics 调查样本小且集中于本科生；目前更多是“存在性证据”，离机制识别与外部效度还有距离。</li>
+</ol>
+<h3 id="73-extensions-worth-doing">7.3 未来研究方向（Extensions Worth Doing）</h3>
+<ol>
+<li><strong>竞争：多零售商/多平台下的 treasure hunt 设计</strong>  </li>
+<li>当两家都搞寻宝，是否会出现“难度军备竞赛”？还是反而走向效率化分工？</li>
+<li><strong>动态库存与稀缺性</strong>  </li>
+<li>把库存补货、限量、被扫货的外部性（别人先买走）纳入 $\mu$ 或到达过程，会更贴合 thrift 与限量商品市场。</li>
+<li><strong>算法推荐与信息设计</strong>（线上平台核心）  </li>
+<li>平台可控的不是物理分类，而是信息架构：排序、推荐、直播节奏。把 $\mu$ 映射到算法参数与用户停留时间，是非常自然的 OM/Marketing Science 方向。</li>
+<li><strong>多件购买与“继续逛”的内生化</strong>  </li>
+<li>允许消费者在找到 1 件后仍有正但递减的搜索效用，可能产生“最优让顾客找到一件后继续逛”的新机制。</li>
+<li><strong>估计与结构实证</strong>  </li>
+<li>用行为数据（停留时长、点击流、搜索/筛选行为、购买概率）结构估计 $\alpha,\beta_1,\beta_2$，并做反事实（调整推荐强度/分类粒度）将非常有价值。</li>
+<li><strong>福利与政策含义</strong>  </li>
+<li>企业选择的 $\mu$ 高于消费者理想值，意味着存在“体验外部性/扭曲”。在平台监管或消费者保护语境下，可讨论是否需要“体验透明度”或信息披露规范。</li>
+</ol>
+<hr>
+<h2 id="8-one-more-thing">8. One More Thing：本文最值得分享的“灵光一现”技巧</h2>
+<p>我会把这篇论文最漂亮的一招，送给所有喜欢推导的人：</p>
+<blockquote>
+<p><strong>当你面对一个看似复杂的双变量优化（$p$ 与 $\mu$），先做“尺度分析”找出主导项，再用变量替换把问题降维。</strong></p>
+</blockquote>
+<p>具体在 Proposition 4 里：</p>
+<ol>
+<li>识别高 $V$ 下要让 $U$ 长到 $O((V-p)^2)$，必须让 $\mu$ 随 $V$ 下降，使得 $\mu(V-p)$ 保持常数阶（否则停留时间太短，体验效用长不起来）。</li>
+<li>把目标函数的高阶主导项抽出来，发现只剩一个关键组合：$1-e^{-\mu\beta_2(V-p)}$ 与 $\mu$ 的比值。</li>
+<li>用替换 $g(\mu)=\frac{1-e^{-\mu\beta_2(V-p)}}{\mu}$，把复杂表达变成一个非常干净的二次型：$g\beta_2(V-p)-g^2$。<br>
+   二次型最大化瞬间给出 $g=\beta_2(V-p)/2$，于是推出 $\mu\beta_2(V-p)\approx 1.6$、$q\approx0.8$，再代回得到 $p\to V/3$。</li>
+</ol>
+<p>这是一种“把指数函数的麻烦藏进一个新变量”的典型 trick：<strong>先把结构看出来，再让代数替你干脏活。</strong></p>
+<hr>
+<h2 id="9">9. 读者复盘清单（帮助你真的“会推”）</h2>
+<p>如果你想把本文模型推到“闭眼能写”的程度，建议按以下顺序复盘：</p>
+<ol>
+<li>写出即时效用 $s(t)$ 与 Poisson 到达率 $\mu$。</li>
+<li>做 $dt$ 边际比较，得到继续条件 $s(t)+\mu(V-p)\ge0$。</li>
+<li>推出阈值停止时间 $t^*$。</li>
+<li>用 Poisson 的“零到达概率”推出 $q=1-e^{-\mu t^*}$。</li>
+<li>写出期望搜索效用 $\int_0^{t^*} e^{-\mu t}s(t)\,dt$，完成积分得到 $U$。</li>
+<li>把到店人数写成 $U$（由均匀分布的到店成本得到）。</li>
+<li>写企业利润 $\pi=pUq$ 并理解：企业选 $\mu$ 是在 trade off $U$ 与 $q$。</li>
+<li>对照两个极端：  </li>
+<li>低 $V$：$p$ 推到上限 $V$  </li>
+<li>高 $V$：用尺度分析得到 $p\approx V/3$、$\mu\propto 1/V$、$q\approx0.8$</li>
+</ol>
+<hr>
+<p><em>（完）</em></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IEP_2024_Colombo_Inperfect_History-based_Discrimination</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="colombo-graziano-pignataro-2024">Colombo, Graziano &amp; Pignataro (2024) 深度解析</h1>
+<p><strong>Imperfect history-based price discrimination with asymmetric market shares</strong>（Information Economics and Policy, 2024）</p>
+<blockquote>
+<p>论文 PDF：
+关键词：History-based price discrimination、information completeness（信息完整度）、asymmetric market shares（非对称市场份额）、sequential pricing（序贯定价）、poaching（挖角/抢客）</p>
+</blockquote>
+<hr>
+<h2 id="0">0. 这篇文章到底“卡”住了哪个关键问题？</h2>
+<p>这篇文章的核心不是“价格歧视会不会更激烈”这种老生常谈，而是一个更现实、更尖锐的运营逻辑：</p>
+<ul>
+<li><strong>企业想做 history-based price discrimination（基于历史的定价），但现实里“识别老客”永远不完美</strong>。</li>
+<li>一旦识别不完美，<strong>给“新客/未知客”的优惠（$\tilde p$）会误伤一部分本应被你收割的老客</strong>（因为他们没被识别出来）。</li>
+<li>这种“误伤”对<strong>大厂（dominant firm）尤其致命</strong>：盘子大，误伤面也大；于是大厂反而可能选择<strong>不挖角、走 uniform pricing</strong>，而小厂继续靠折扣“进攻”。</li>
+</ul>
+<p>论文用一个非常干净的 Hotelling 结构，把这件事推到一个可以写出闭式解、还能做 welfare 分析的程度。</p>
+<hr>
+<h2 id="1-motivation">1. 研究背景与动机 (Motivation)</h2>
+<h3 id="11">1.1 实践痛点：行业里到底发生了什么？</h3>
+<p>现实里你经常看到这种“反直觉的价格战形态”：</p>
+<ul>
+<li>大平台/大银行/大运营商：<strong>对老客并不一定更优惠</strong>，甚至更“硬”。</li>
+<li>小平台/新进入者：疯狂给“新客”优惠（礼包、券、首月免费），用低价去<strong>poach</strong> 竞争对手的客户。</li>
+</ul>
+<p>这背后有两个运营层面的“硬约束”：</p>
+<ol>
+<li>
+<p><strong>客户历史识别不完美</strong>
+   监管（如 GDPR）要求同意才能追踪；用户会 opt-out、清 cookie；线下现金交易更难追踪；会员卡/问卷覆盖不全。于是：</p>
+</li>
+<li>
+<p>你能识别一部分老客（可以“精准收割”）</p>
+</li>
+<li>但识别不到的那部分老客会混在“未知客/新客池子”里</li>
+<li>
+<p>你给新客的优惠会“漏给”这部分老客</p>
+</li>
+<li>
+<p><strong>市场份额不对称 + 定价技术不对称</strong>
+   大厂可能更新慢（流程/系统老），小厂可能更灵活（算法、更新频率高）。现实中经常是<strong>小厂更像“算法跟随者”</strong>，可以观察大厂动作后快速调整。</p>
+</li>
+</ol>
+<h3 id="12">1.2 理论缺口：现有文献忽略了什么？</h3>
+<p>经典 history-based / behavior-based pricing 文献常见两类强假设：</p>
+<ul>
+<li><strong>完美识别</strong>：企业能完整知道哪些消费者是自己 turf（老客），哪些是 rival turf（对手老客）。</li>
+<li><strong>对称性</strong>：市场份额对称、企业策略对称、同时行动（simultaneous pricing）。</li>
+</ul>
+<p>这篇文章把两个“现实中的脏东西”同时塞进模型：</p>
+<ul>
+<li><strong>信息不完美但不犯错</strong>：不是 noisy signal（会误判），而是 <strong>missing-but-correct</strong>：以概率/比例 $\alpha$ 识别老客，其余完全不知道（但不会把别人的老客误当成自己的）。</li>
+<li><strong>市场份额非对称</strong>：$k\neq 1/2$，且还专门讨论了序贯行动（dominant 先动，小的后动）。</li>
+</ul>
+<p>这两个组合在一起，会让很多“完美信息下的整洁结论”变成 <strong>knife-edge</strong>（刀刃型特例）。</p>
+<h3 id="13-significance">1.3 核心贡献：Significance 在哪？</h3>
+<p>我把它压缩成三条“可以拿去写文献综述的贡献”：</p>
+<ol>
+<li><strong>机制贡献（Mechanism）</strong>：提出并刻画了“识别不完美导致的折扣误伤（collateral discounting）”，并证明这会让 dominant firm 在某些区域主动选择不挖角、转向 uniform pricing。</li>
+<li><strong>结构贡献（Market configuration）</strong>：在序贯定价下给出<strong>任意 $(\alpha,k)$ 都存在纯策略均衡</strong>，并刻画均衡在 <strong>weak dominance</strong>（双边挖角）与 <strong>strong dominance</strong>（单边挖角）之间切换的阈值。</li>
+<li><strong>政策/管理含义（Welfare &amp; regulation）</strong>：社会福利 $SW$ 对信息完整度 $\alpha$ <strong>单调下降</strong>，但消费者剩余 $CS$ 的最优 $\alpha$ 却依赖市场不对称程度——监管者会面临“总福利 vs 消费者保护”的硬 trade-off。</li>
+</ol>
+<hr>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="21">2.1 符号体系（建议你把这张表背下来）</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空间/偏好</td>
+<td>$x\in[0,1]$</td>
+<td>消费者在 Hotelling 线上的位置（偏好）</td>
+</tr>
+<tr>
+<td>企业位置</td>
+<td>$l_A=0,;l_B=1$</td>
+<td>Firm A 在 0，Firm B 在 1</td>
+</tr>
+<tr>
+<td>基础价值</td>
+<td>$v$</td>
+<td>产品的基础效用（假设足够大，保证 full market coverage）</td>
+</tr>
+<tr>
+<td>差异化强度</td>
+<td>$t&gt;0$</td>
+<td>“运输成本”/品类差异带来的效用损失</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>$c=0$</td>
+<td>边际成本归一化为 0</td>
+</tr>
+<tr>
+<td>历史市场份额</td>
+<td>$k\in[1/2,1]$</td>
+<td>Firm A 的 inherited market（turf）长度；A 为 dominant</td>
+</tr>
+<tr>
+<td>信息完整度</td>
+<td>$\alpha\in[0,1]$</td>
+<td>firm 能识别自己老客的比例（或概率）</td>
+</tr>
+<tr>
+<td>价格（决策变量）</td>
+<td>$\phi_j={p_j,\tilde p_j}$</td>
+<td>firm $j$ 对两类消费者的报价：识别老客价 $p_j$、未知客价 $\tilde p_j$</td>
+</tr>
+<tr>
+<td>无差异点</td>
+<td>$x_A,x_B,x_U$</td>
+<td>三个 cutoffs：A turf 已识别消费者的切换点、B turf 已识别消费者的切换点、未知消费者的切换点</td>
+</tr>
+<tr>
+<td>利润</td>
+<td>$\pi_A,\pi_B$</td>
+<td>两家利润</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>重要直觉：$\tilde p_j$ 不是“只给对手客户”的价。它给的是“我识别不到的所有人”，其中包含：对手老客 + 我自己的漏网老客。这正是全篇的摩擦源头。</p>
+</blockquote>
+<hr>
+<h3 id="22">2.2 消费者效用与需求结构</h3>
+<p>消费者 $i$ 在位置 $x$，购买 firm $j\in{A,B}$ 的效用为
+$$
+u_i^j(x)=v-\phi_j-t|x-l_j|.
+$$
+假设 $v$ 足够大，使得均衡中每个消费者都买一件（full coverage）。</p>
+<hr>
+<h3 id="23-purchase-historyturf">2.3 “历史”（purchase history）如何进入模型：turf 的划分</h3>
+<ul>
+<li>Firm A 的 inherited market（turf）为
+  $$
+  T_A={x: x\le k},
+  $$</li>
+<li>Firm B 的 inherited market 为
+  $$
+  T_B={x: x\ge k}.
+  $$</li>
+</ul>
+<p>当 $k=1/2$ 对称；当 $k&gt;1/2$，A 继承了更大份额，因此被称为 dominant firm（注意这不是法律意义的 dominance，只是份额描述）。</p>
+<hr>
+<h3 id="24-partial-but-correct">2.4 信息结构：不完美但不犯错（partial-but-correct）</h3>
+<p>信息技术的“完整度”用 $\alpha$ 表示：</p>
+<ul>
+<li>对于属于 firm $j$ 的 turf 的消费者，在每个 $x$ 上有比例 $\alpha$ 被 firm $j$ <strong>正确识别</strong>为“我的老客”（identified）。</li>
+<li>剩余比例 $1-\alpha$ 对 firm $j$ 来说就是“身份未知”（unidentified），但注意：<strong>不是误识别</strong>，而是“识别不到”。</li>
+</ul>
+<p>因此：</p>
+<ul>
+<li>identified 消费者：只被其历史所属 firm 识别；对 rival 来说仍是 unidentified。</li>
+<li>unidentified 消费者：对两家来说都 indistinguishable（只能按统一的 $\tilde p$ 报价）。</li>
+</ul>
+<hr>
+<h3 id="25">2.5 定价结构：两部价格（但不是两段式收费）</h3>
+<p>每家企业 $j$ 同时设置两口价：</p>
+<ul>
+<li>$p_j$：只对“被我识别的老客”报价</li>
+<li>$\tilde p_j$：对<strong>其他所有人</strong>报价（包括：对手老客 + 全部未知消费者 + 我自己的漏网老客）</li>
+</ul>
+<p>这是标准的 third-degree price discrimination（按分组定价），分组依据是“历史身份是否被识别”。</p>
+<hr>
+<h3 id="26-sequence-of-events-information">2.6 博弈/决策结构（Sequence of Events &amp; Information）</h3>
+<p>基准模型是 <strong>sequential move game</strong>：</p>
+<ol>
+<li>Firm A 先动，选择 $(p_A,\tilde p_A)$</li>
+<li>Firm B 观察到 A 的定价后，再选择 $(p_B,\tilde p_B)$</li>
+<li>消费者观察所有价格后选择购买对象</li>
+</ol>
+<p>信息结构：</p>
+<ul>
+<li>firms 对 $(v,t,k,\alpha)$ 共同知识</li>
+<li>但对单个消费者是否被识别存在制度性缺口（由 $\alpha$ 描述的“可识别比例”）</li>
+</ul>
+<hr>
+<h3 id="27-demand-cutoffs">2.7 关键无差异点（Demand cutoffs）</h3>
+<p><strong>(i) A turf 的 identified 消费者（被 A 识别）</strong>
+他们面对：A 报价 $p_A$；B 报价 $\tilde p_B$。
+无差异点满足
+$$
+v-p_A-tx=v-\tilde p_B-t(1-x)
+;\Rightarrow;
+x_A=\frac{\tilde p_B-p_A+t}{2t}.
+$$</p>
+<p><strong>(ii) B turf 的 identified 消费者（被 B 识别）</strong>
+他们面对：B 报价 $p_B$；A 报价 $\tilde p_A$。
+无差异点满足
+$$
+v-\tilde p_A-tx=v-p_B-t(1-x)
+;\Rightarrow;
+x_B=\frac{p_B-\tilde p_A+t}{2t}.
+$$</p>
+<p><strong>(iii) 全部 unidentified 消费者（两家都识别不了）</strong>
+他们面对：A 报价 $\tilde p_A$；B 报价 $\tilde p_B$。
+无差异点满足
+$$
+v-\tilde p_A-tx=v-\tilde p_B-t(1-x)
+;\Rightarrow;
+x_U=\frac{\tilde p_B-\tilde p_A+t}{2t}.
+$$</p>
+<hr>
+<h3 id="28-weak-dominance-vs-strong-dominance">2.8 两种市场结构：weak dominance vs strong dominance</h3>
+<p>这篇文章的“剧情分支”来自于 $x_B$ 相对 $k$ 的位置：</p>
+<ul>
+<li><strong>Weak dominance（双边挖角）</strong>：$x_A&lt;k&lt;x_B$
+  两边都发生 poaching：B 挖 A 的老客（左侧），A 也挖 B 的老客（右侧）。论文 Fig.1（第 5 页）画的是这个结构。</li>
+<li><strong>Strong dominance（单边挖角：A 强势但反而不挖角）</strong>：$x_A&lt;k=x_B$
+  A 不挖 B 的 identified 消费者；B 作为 second mover 仍会在左侧挖 A。论文 Fig.2（第 5 页）画的是这个结构。</li>
+</ul>
+<hr>
+<h3 id="29">2.9 目标函数（利润）与约束</h3>
+<p>因为边际成本 $c=0$，利润就是价格乘以需求量。论文给出统一表达（适用于两种结构）：</p>
+<p>$$
+\pi_A
+=</p>
+<p>p_A\alpha \min{x_A,k}
++
+\tilde p_A\Big[\alpha\max{0,x_B-k}+(1-\alpha)x_U\Big],
+\tag{1}
+$$</p>
+<p>$$
+\pi_B
+=</p>
+<p>p_B\alpha \min{1-k,1-x_B}
++
+\tilde p_B\Big[\alpha\max{0,k-x_A}+(1-\alpha)(1-x_U)\Big].
+\tag{2}
+$$</p>
+<p>你可以把 (1)(2) 按“钱从哪里来”拆成三块：</p>
+<ul>
+<li><strong>收割 identified 老客</strong>：$p_j\times$（被识别且留存的老客量）</li>
+<li><strong>poaching identified 对手老客</strong>：$\tilde p_j\times$（对手老客中被识别那部分里被你抢到的量）</li>
+<li><strong>争夺全市场的 unidentified 人群</strong>：$\tilde p_j\times$（两家都识别不了的人里选择你的量）</li>
+</ul>
+<hr>
+<h3 id="210-justification">2.10 核心假设与合理性（Justification）</h3>
+<ol>
+<li><strong>Full market coverage（$v$ 足够大）</strong>：避免引入“不买”的边界，让焦点集中在定价与抢客机制上。</li>
+<li><strong>信息“不完美但不犯错”</strong>：现实里 cookie/会员体系更像“覆盖不全”，不是经常把 A 客户错标成 B 客户。</li>
+<li><strong>$\tilde p$ 对所有 unknown 一口价</strong>：现实中你给“新客优惠券”往往没法区分“真新客”和“清了 cookie 的老客”。</li>
+<li><strong>序贯定价</strong>：反映定价技术/更新频率差异（大厂慢、小厂快，或一方用算法跟随）。</li>
+<li><strong>无额外 switching cost</strong>：把切换成本“内生”为 Hotelling 的差异化（$t$），并聚焦“信息不完美”带来的额外摩擦。</li>
+</ol>
+<hr>
+<h2 id="3-analysis-solution">3. 分析与求解 (Analysis &amp; Solution)</h2>
+<h3 id="31-backward-induction">3.1 求解逻辑总览：Backward Induction + 市场结构选择</h3>
+<p>因为是序贯博弈：</p>
+<ul>
+<li><strong>先</strong>：给定 A 的价格，解 B 的 best response（第二阶段）</li>
+<li><strong>再</strong>：A 预期 B 的反应，选 $(p_A,\tilde p_A)$（第一阶段）</li>
+<li><strong>最后</strong>：A 还会“挑市场结构”（weak vs strong），因为它先动，能通过定价把市场推向对自己更有利的结构</li>
+</ul>
+<hr>
+<h3 id="32-weak-dominance">3.2 Weak dominance（双边挖角）下的均衡</h3>
+<h4 id="321-b-best-response-a">3.2.1 第二阶段：B 的 best response（给定 A 的价格）</h4>
+<p>在 weak dominance 假设下 $x_B&gt;k$，B 的 identified 老客需求量为 $\alpha(1-x_B)$。代入 $x_B=\frac{p_B-\tilde p_A+t}{2t}$，B 在 $p_B$ 上的利润项等价于
+$$
+\alpha p_B(1-x_B)=\frac{\alpha}{2t},p_B\big(t+\tilde p_A-p_B\big).
+$$
+对 $p_B$ 求一阶条件得到：
+$$
+p_B^w(\tilde p_A)=\frac{t+\tilde p_A}{2}.
+\tag{3}
+$$</p>
+<p>对 $\tilde p_B$，B 面对的是“挖 A 的（identified）老客 + 争夺 unidentified 市场”的综合需求。把 $x_A$、$x_U$ 代入 (2) 并对 $\tilde p_B$ 做一阶条件，可得：
+$$
+\tilde p_B^w(p_A,\tilde p_A)
+=</p>
+<p>\frac{(1-\alpha)\tilde p_A+\alpha p_A+t\big[1-2\alpha(1-k)\big]}{2}.
+\tag{4}
+$$</p>
+<p><strong>运营直觉（别跳过）</strong>：</p>
+<ul>
+<li>(3) 里 $p_B$ 只依赖 $\tilde p_A$：因为 B 的 identified 老客是否被挖走，取决于 A 对“未知人群”的报价 $\tilde p_A$（A 无法对 B 的 identified 老客开 $p_A$）。</li>
+<li>(4) 是个加权平均：$\alpha p_A+(1-\alpha)\tilde p_A$。因为 $\tilde p_B$ 既要对抗 A 给其 identified 老客的 $p_A$，也要对抗 A 给未知人群的 $\tilde p_A$。</li>
+</ul>
+<p>并且你能看出 <strong>prices are strategic complements</strong>：A 提价会推高 B 的最优反应。</p>
+<hr>
+<h4 id="322-a-b">3.2.2 第一阶段：A 预期 B 反应后的最优定价</h4>
+<p>把 (3)(4) 代回 A 的利润 (1)，对 $p_A,\tilde p_A$ 做最优化，得到 weak dominance 下的闭式解：</p>
+<p>$$
+p_A^w
+=</p>
+<p>\frac{t\big[6-4\alpha-(1-2k)\alpha^2\big]}{2(2-\alpha^2)},
+\tag{5}
+$$</p>
+<p>$$
+\tilde p_A^w
+=</p>
+<p>\frac{t\big[6-4\alpha(1+k)+\alpha^2\big]}{2(2-\alpha^2)}.
+\tag{6}
+$$</p>
+<p>再代回 (3)(4)，得到 B 的均衡价格（论文也给出闭式表达）：</p>
+<p>$$
+p_B^w
+=</p>
+<p>\frac{t\big[10-4\alpha(1+k)-\alpha^2\big]}{4(2-\alpha^2)},
+\tag{7}
+$$</p>
+<p>$$
+\tilde p_B^w
+=</p>
+<p>\frac{t\big[10-4\alpha(3-k)-\alpha^2(1-4k)+2\alpha^3(1-k)\big]}{4(2-\alpha^2)}.
+\tag{8}
+$$</p>
+<hr>
+<h4 id="323-weak-dominance-x_bk">3.2.3 weak dominance 可行条件：$x_B&gt;k$</h4>
+<p>均衡价格需要“自洽”地满足 weak dominance 的市场结构（尤其是 $x_B&gt;k$）。论文指出在一系列不等式中，关键约束就是 $x_B&gt;k$，它等价于：</p>
+<p>$$
+k\le \tilde k(\alpha)\equiv \frac{6+4\alpha-7\alpha^2}{16-4\alpha-8\alpha^2}.
+$$</p>
+<p>并且当 $\alpha&lt;1-\frac{\sqrt{3}}{3}\approx 0.42$ 时，$\tilde k(\alpha)&lt;1/2$，意味着即便市场份额几乎对称，weak dominance 也难以成立——信息太不完整，挖角激励撑不起来。</p>
+<hr>
+<h3 id="33-strong-dominancea">3.3 Strong dominance（单边挖角）下的均衡：A 放弃挖角</h3>
+<h4 id="331-b-p_b">3.3.1 第二阶段：B 用“约束绑定”来设定 $p_B$</h4>
+<p>在 strong dominance 中假设 $x_B\le k$，也就是 A 不会挖走 B 的 identified 老客。因为 B 是 second mover，它可以把 $p_B$ 设到刚好让边界消费者 $x=k$ 不愿切换：</p>
+<p>$$
+v-\tilde p_A-tk=v-p_B-t(1-k)
+;\Rightarrow;
+p_B^s(\tilde p_A)=\tilde p_A+t(2k-1).
+\tag{11’}
+$$</p>
+<p>这其实是一个很漂亮的“<strong>把不等式变等式</strong>”技巧：在强势区域里，B 的最优 $p_B$ 往往是让“被挖走的边界”刚好不发生（constraint binding），类似于一种局部的 limit pricing。</p>
+<p>B 的 poaching/unidentified 价格的 best reply 与 weak dominance 形式相同：</p>
+<p>$$
+\tilde p_B^s(p_A,\tilde p_A)
+=</p>
+<p>\frac{(1-\alpha)\tilde p_A+\alpha p_A+t\big[1-2\alpha(1-k)\big]}{2}.
+\tag{9}
+$$</p>
+<hr>
+<h4 id="332-a-uniform-pricing">3.3.2 第一阶段：A 的最优反应——直接变成 uniform pricing</h4>
+<p>把 B 的反应代回 (1)，A 的最优解在 strong dominance 下极其简洁：</p>
+<p>$$
+p_A^s=\tilde p_A^s=\frac{t\big[3-2\alpha(1-k)\big]}{2}.
+\tag{10}
+$$</p>
+<p>也就是说：<strong>dominant firm A 在 strong dominance 均衡里干脆不区分 identified vs unidentified，统一报价</strong>。</p>
+<p>对应 B 的均衡价格为：</p>
+<p>$$
+p_B^s
+=</p>
+<p>\frac{t\big[1-2\alpha(1-k)+4k\big]}{2},
+\tag{11}
+$$</p>
+<p>$$
+\tilde p_B^s
+=</p>
+<p>\frac{t\big[3-4\alpha(1-k)+2k\big]}{4}.
+\tag{12}
+$$</p>
+<p><strong>机制直觉</strong>：</p>
+<ul>
+<li>A 的 inherited share 大（$k$ 大）意味着：如果 A 想靠降低 $\tilde p_A$ 去 poach，对自己的“漏网老客”（比例 $1-\alpha$）也要同步降价，<strong>误伤面积大</strong>。</li>
+<li>所以 A 选择“别挖了”，用 uniform pricing 把战场交给 B；B 作为 second mover 仍可以对 A 的 turf 用 $\tilde p_B$ 做进攻，同时对自己的 identified 老客用 $p_B$ 收割。</li>
+</ul>
+<hr>
+<h3 id="34-a">3.4 A 如何选择市场结构？（均衡结构是内生的）</h3>
+<p>关键问题：A 先动，可以通过第一阶段定价“诱导”市场进入 weak 或 strong。论文做法是比较 A 在两种结构下的利润。</p>
+<p>论文给出差值（非常关键）：</p>
+<p>$$
+\pi_A^w-\pi_A^s
+=</p>
+<p>\frac{\alpha\Big(8k^2\alpha^3+8k^2\alpha^2-16k\alpha^3+8k\alpha^2+32k\alpha-48k+8\alpha^3-17\alpha^2+18\Big)}{16(2-\alpha^2)}.
+\tag{13}
+$$</p>
+<p>注意 (13) 的分子对 $k$ 是<strong>二次函数</strong>。因此可以定义阈值 $k_1(\alpha)$ 为使 $\pi_A^w=\pi_A^s$ 的（经济相关的）根。</p>
+<p>更“可复盘”的写法是直接用二次系数表示：</p>
+<p>令
+$$
+A(\alpha)=8\alpha^2(1+\alpha),
+\quad
+B(\alpha)=8(-2\alpha^3+\alpha^2+4\alpha-6),
+\quad
+C(\alpha)=8\alpha^3-17\alpha^2+18.
+$$</p>
+<p>则 $k_1(\alpha)$ 是方程 $A(\alpha)k^2+B(\alpha)k+C(\alpha)=0$ 在 $[1/2,1]$ 上的有效解（取较小的那根）：</p>
+<p>$$
+k_1(\alpha)=\frac{-B(\alpha)+\sqrt{B(\alpha)^2-4A(\alpha)C(\alpha)}}{2A(\alpha)}.
+$$</p>
+<p>论文的 <strong>Proposition 1</strong> 可以用一句话总结：</p>
+<blockquote>
+<p><strong>Proposition 1（核心结构结果）</strong>：在 sequential move game 中，对任意 $\alpha\in(0,1]$ 与 $k\in(1/2,1]$，存在阈值 $k_1(\alpha)\ge 1/2$，使得：当 $k\le k_1(\alpha)$ 时唯一纯策略均衡为 weak dominance；当 $k&gt;k_1(\alpha)$ 时唯一纯策略均衡为 strong dominance。</p>
+</blockquote>
+<p>并且 $k_1(\alpha)$ 随 $\alpha$ 上升（论文 Fig.3，第 7 页），意味着：</p>
+<ul>
+<li>信息越完整（$\alpha$ 越大），越可能进入“互挖角”的激烈竞争。</li>
+<li>信息越残缺（$\alpha$ 越小），dominant firm 越倾向放弃挖角、转向 strong dominance（“稳住自己的盘子，别乱打折”）。</li>
+</ul>
+<hr>
+<h2 id="4-comparative-statics-mechanisms">4. 比较静态与核心命题的经济学直觉 (Comparative Statics &amp; Mechanisms)</h2>
+<h3 id="41-proposition-2dominant-firm">4.1 Proposition 2：dominant firm 利润永远更低（很反直觉，但很有味道）</h3>
+<p>论文 <strong>Proposition 2</strong>：</p>
+<blockquote>
+<p>在 weak 与 strong dominance 中，Firm A（dominant）的利润都低于 Firm B（小 firm）。</p>
+</blockquote>
+<p><strong>直觉拆解</strong>：</p>
+<ul>
+<li>A 的 turf 大 ⇒ 消费者偏好跨度大 ⇒ A 很难用一个 $p_A$ 精准贴近“老客平均愿付价”。</li>
+<li>B 的 turf 小 ⇒ 消费者偏好更集中 ⇒ B 的 $p_B$ 更“贴近”其老客愿付价，收割更有效。</li>
+<li>另外 B 是 <strong>second mover advantage</strong>：它看到 A 的价格再调自己的策略，天然更占便宜（标准的 price-setting sequential game 结论）。</li>
+</ul>
+<p>这条结果对“反垄断直觉”挺挑衅：<strong>大厂并不一定靠 history-based pricing 更赚钱，小厂反而可能更赚</strong>。</p>
+<hr>
+<h3 id="42-allocationdominant-firm">4.2 市场份额（allocation）结果：dominant firm 反而被打到很小</h3>
+<p>论文在第 8 页给出 A 的均衡市场份额表达（Fig. 中对应 Proposition 2 的直观支撑）：</p>
+<ul>
+<li>
+<p>weak dominance 下
+  $$
+  q_A^w=\frac{3+(1-2k)\alpha}{8}.
+  \tag{15}
+  $$</p>
+</li>
+<li>
+<p>strong dominance 下，论文式子里出现了一个看起来像排版笔误的 $x_U^w$（见第 8 页公式 (16)），但利用 strong dominance 下 $p_A^s=\tilde p_A^s$ 可直接推出 identified 与 unidentified 的切换点一致，从而 A 的总份额简化为
+  $$
+  q_A^s=x_A^s=x_U^s=\frac{1+2k}{8},
+  $$
+  与 $\alpha$ 无关。</p>
+</li>
+</ul>
+<p>无论哪种结构，A 的市场份额都远小于它“继承的” $k$（$k\ge 1/2$），这从运营视角就是：<strong>客户历史的优势并不等于现期市场份额优势</strong>，尤其当对手能用折扣精准挖角时。</p>
+<hr>
+<h3 id="43-proposition-3-alpha">4.3 Proposition 3：信息完整度 $\alpha$ 对利润的影响是非单调的</h3>
+<p>论文 <strong>Proposition 3</strong> 总结了一个很“OM-friendly”的结论：数据能力不是越强越好，存在 U-shape 或 monotone 的区域划分。</p>
+<ul>
+<li>
+<p>Firm A 利润对 $\alpha$：</p>
+</li>
+<li>
+<p>当 $k$ 很小（接近对称）或很大（极不对称）时，$\pi_A$ 随 $\alpha$ 上升而下降</p>
+</li>
+<li>
+<p>当 $k$ 中间值时，$\pi_A(\alpha)$ 呈 U-shape（中等 $\alpha$ 最惨）</p>
+</li>
+<li>
+<p>Firm B 利润对 $\alpha$：</p>
+</li>
+<li>
+<p>小 $k$（接近对称）时随 $\alpha$ 下降</p>
+</li>
+<li>大 $k$（高度不对称）时随 $\alpha$ 上升</li>
+<li>中间区域 U-shape</li>
+</ul>
+<p><strong>统一机制解释：两股力量在打架</strong></p>
+<ol>
+<li><strong>收割效应（Harvesting effect）</strong>：$\alpha$ 上升意味着“能识别并高价收割的老客比例”上升，推高 $p_j$ 这块收益。</li>
+<li><strong>竞争效应（Competition effect）</strong>：$\alpha$ 上升意味着市场里“信息更透明”，poaching 更精准/更激烈，$\tilde p$ 竞争更凶，压低利润。</li>
+</ol>
+<p>哪股力更强取决于 $k$：</p>
+<ul>
+<li>当市场接近对称，竞争效应 dominates ⇒ $\alpha$ 越高越惨</li>
+<li>当市场高度不对称，小 firm 的 poaching 优势更明显，且 dominant firm 在 strong dominance 下不挖角，小 firm 更能从提升 $\alpha$ 中获益</li>
+</ul>
+<hr>
+<h3 id="44-fig4-fig5">4.4 Fig.4 &amp; Fig.5：利润曲线与“结构切换导致的不连续”</h3>
+<p>论文 Fig.4（第 9 页）非常关键，它说明：</p>
+<ul>
+<li><strong>Firm B 的利润对 $\alpha$ 可能出现跳跃式下降（discontinuity）</strong></li>
+<li>原因：市场结构由 A 选择，当 $\alpha$ 增加到让 A 从 strong dominance 切换到 weak dominance 时，A 开始挖角，B 市场份额会“突然掉一截”。</li>
+</ul>
+<p>这在运营上很像：当数据能力提升到某个临界点，竞争格局会突然从“单边进攻”变成“双边价格战”。</p>
+<p>Fig.5（第 10 页）展示 A 的利润对 $\alpha$ 的几种典型形状（$k=0.52,0.57,0.6,0.8$）：</p>
+<ul>
+<li>很多情况下，A 在 $\alpha=0$（完全不能识别，等价于 uniform pricing）反而利润最高</li>
+<li>这就是“数据越多利润越高”的经典直觉在竞争环境下被打脸的地方：<strong>数据让你能更精准收割，也让对手更精准挖你</strong>。</li>
+</ul>
+<hr>
+<h2 id="5-main-results-managerial-insights">5. 福利分析与管理/政策启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="51-proposition-5-sw-alpha-cs">5.1 Proposition 5：社会福利 $SW$ 随 $\alpha$ 单调下降，但消费者剩余 $CS$ 不一定</h3>
+<p>论文的 welfare 结论很硬：</p>
+<ul>
+<li><strong>社会福利（消费者剩余 + 行业利润）在 weak 与 strong dominance 下都随 $\alpha$ 上升而下降</strong>
+  ⇒ 从 $SW$ 角度看，最优是 $\alpha=0$（完全不允许识别/歧视）</li>
+</ul>
+<p>在 strong dominance 下，论文给出一个很简洁的 $SW$ 表达式（第 11 页）：</p>
+<p>$$
+SW^s=\pi_A^s+\pi_B^s+CS^s
+=</p>
+<p>\frac{64v-t\Big(17+4\alpha(1-k)-4\alpha^2(k-1)^2\Big)}{64},
+$$
+显然随 $\alpha$ 上升而下降。</p>
+<p>但消费者剩余 $CS$ 的结论更微妙：</p>
+<ul>
+<li>在 weak dominance：$CS^w$ 对 $\alpha$ 是 <strong>非单调</strong>，依赖 $k$（论文给出区间阈值：接近对称时递增，中间时倒 U，较不对称时递减）</li>
+<li>在 strong dominance：$CS^s$ 随 $\alpha$ 上升而上升（更多信息 ⇒ 竞争更激烈 ⇒ 价格下降）</li>
+</ul>
+<p>最终形成一个政策 trade-off：</p>
+<blockquote>
+<p><strong>想最大化社会福利</strong>：倾向压低 $\alpha$（甚至到 0）
+<strong>想最大化消费者剩余</strong>：很多场景下反而要提高 $\alpha$（甚至到 1），但取决于市场份额不对称程度</p>
+</blockquote>
+<p>这对监管很现实：隐私保护（降低 $\alpha$）并不一定“保护消费者钱包”，可能只是提高行业利润/总福利结构中的某一部分。</p>
+<hr>
+<h3 id="52-benchmark-trade-off">5.2 机制揭示：相对 benchmark，模型揭示的新 trade-off</h3>
+<p>把两个 benchmark 放在一起看就清晰了：</p>
+<ul>
+<li><strong>$\alpha=0$（uniform pricing）</strong>：没有历史识别能力 ⇒ 没有“折扣误伤”的问题 ⇒ 竞争回到标准 Hotelling 价格竞争。</li>
+<li><strong>$\alpha=1$（perfect history-based discrimination）</strong>：不存在“未识别老客” ⇒ $\tilde p$ 真正只用于 poaching ⇒ 结论会非常锋利，但也更脆弱。</li>
+</ul>
+<p>本文的核心揭示在于：当 $\alpha\in(0,1)$ 时，$\tilde p$ 必须同时服务两件事：</p>
+<ol>
+<li>抢对手客户（poaching）</li>
+<li>给“识别不到的自己老客”也让利（误伤）</li>
+</ol>
+<p>于是出现新的 trade-off：</p>
+<ul>
+<li>想 poach ⇒ 必须降 $\tilde p$</li>
+<li>但 $\tilde p$ 降得越多，误伤越大，尤其当你 inherited share 大（$k$ 大）时</li>
+<li>所以 dominant firm 可能选择“不 poach”，转向 uniform pricing（strong dominance）</li>
+</ul>
+<p>这就是一个标准的 OM 机制：<strong>资源（折扣）投入到 acquisition 会对 retention 收割造成外部性，而外部性的规模与运营规模（market share）正相关</strong>。</p>
+<hr>
+<h3 id="53">5.3 管理建议：站在企业与监管者视角</h3>
+<h4 id="dominant-firm-incumbent">对 dominant firm（大厂/ incumbent）</h4>
+<ol>
+<li><strong>别把“更多数据”当成单调利好</strong>：当你规模大、$\alpha$ 不够高时，给未知客的折扣会大量“漏给”老客，利润可能下降。</li>
+<li><strong>在 strong dominance 区域，uniform pricing 可能是理性策略</strong>：不是你不会做 discrimination，而是做了会自残。</li>
+<li><strong>技术栈的战略意义</strong>：如果你能从 first mover 变成 second mover（算法跟随/实时调价），可能会改变均衡优势（文章的扩展讨论了顺序变化的影响）。</li>
+</ol>
+<h4 id="small-firm-entrant">对 small firm（小厂/ entrant）</h4>
+<ol>
+<li><strong>poaching 的 ROI 可能更高</strong>：因为你的 turf 更集中，定价更贴近愿付价，且在 sequential 下 second mover advantage 强。</li>
+<li><strong>提高识别能力的收益依赖市场结构</strong>：在高度不对称市场中，提高 $\alpha$ 可能让你更能从 identified 老客中提价获利；但在接近对称市场里，提高 $\alpha$ 可能只是把自己拖进更凶的价格战。</li>
+</ol>
+<h4 id="_1">对监管者（隐私/竞争政策）</h4>
+<ol>
+<li><strong>“隐私保护=消费者福利提升”并非必然</strong>：降低 $\alpha$ 可能提高总福利但伤害消费者剩余，或者反之。</li>
+<li><strong>政策要看市场集中度（$k$）</strong>：同一条数据规则在“接近对称市场”和“高度不对称市场”可能方向相反。</li>
+<li><strong>警惕 perfect information 的政策推论</strong>：论文在 simultaneous game 的讨论强调：$\alpha=1$ 是 knife-edge，很多结论对 $\alpha&lt;1$ 不稳健。</li>
+</ol>
+<hr>
+<h3 id="54-fig3fig5">5.4 图表复现：如何自己复刻 Fig.3–Fig.5 的关键逻辑（给博士生的“可操作版本”）</h3>
+<p>下面是一段最小化的复现思路（不依赖 Online Appendix）：</p>
+<ul>
+<li>用上文的 $k_1(\alpha)$ 二次方程形式（由 (13) 推出）来画 Fig.3 的边界</li>
+<li>对给定 $(\alpha,k)$ 判断处于 weak 或 strong dominance</li>
+<li>用闭式价格 (5)–(8) 或 (10)–(12) 计算利润并画 Fig.4/5</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">k1</span><span class="p">(</span><span class="n">alpha</span><span class="p">):</span>
+    <span class="c1"># coefficients from Eq.(13) numerator: A k^2 + B k + C = 0</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="mi">8</span><span class="o">*</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="mi">8</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">alpha</span> <span class="o">-</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="mi">8</span><span class="o">*</span><span class="n">alpha</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">17</span><span class="o">*</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">18</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">B</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">C</span>
+    <span class="k">if</span> <span class="n">D</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.5</span>
+    <span class="n">root_small</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">B</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">root_large</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">B</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">A</span><span class="p">)</span>
+    <span class="c1"># pick the economically relevant root in [0.5,1]</span>
+    <span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">[</span><span class="n">root_small</span><span class="p">,</span> <span class="n">root_large</span><span class="p">]</span> <span class="k">if</span> <span class="mf">0.5</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">candidates</span> <span class="k">else</span> <span class="mf">0.5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">prices_weak</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">pA</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="mi">6</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">alpha</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">ptA</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="mi">6</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">pB</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">k</span><span class="p">)</span><span class="o">-</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">ptB</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="n">k</span><span class="p">)</span><span class="o">-</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pA</span><span class="p">,</span> <span class="n">ptA</span><span class="p">,</span> <span class="n">pB</span><span class="p">,</span> <span class="n">ptB</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">prices_strong</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">pA</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">k</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">ptA</span> <span class="o">=</span> <span class="n">pA</span>
+    <span class="n">pB</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">ptB</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
+    <span class="k">return</span> <span class="n">pA</span><span class="p">,</span> <span class="n">ptA</span><span class="p">,</span> <span class="n">pB</span><span class="p">,</span> <span class="n">ptB</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">demand_cutoffs</span><span class="p">(</span><span class="n">pA</span><span class="p">,</span> <span class="n">ptA</span><span class="p">,</span> <span class="n">pB</span><span class="p">,</span> <span class="n">ptB</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">xA</span> <span class="o">=</span> <span class="p">(</span><span class="n">ptB</span> <span class="o">-</span> <span class="n">pA</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">xB</span> <span class="o">=</span> <span class="p">(</span><span class="n">pB</span> <span class="o">-</span> <span class="n">ptA</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">xU</span> <span class="o">=</span> <span class="p">(</span><span class="n">ptB</span> <span class="o">-</span> <span class="n">ptA</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xA</span><span class="p">,</span> <span class="n">xB</span><span class="p">,</span> <span class="n">xU</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">profits</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">regime</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">regime</span> <span class="o">==</span> <span class="s2">&quot;weak&quot;</span><span class="p">:</span>
+        <span class="n">pA</span><span class="p">,</span> <span class="n">ptA</span><span class="p">,</span> <span class="n">pB</span><span class="p">,</span> <span class="n">ptB</span> <span class="o">=</span> <span class="n">prices_weak</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pA</span><span class="p">,</span> <span class="n">ptA</span><span class="p">,</span> <span class="n">pB</span><span class="p">,</span> <span class="n">ptB</span> <span class="o">=</span> <span class="n">prices_strong</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">xA</span><span class="p">,</span> <span class="n">xB</span><span class="p">,</span> <span class="n">xU</span> <span class="o">=</span> <span class="n">demand_cutoffs</span><span class="p">(</span><span class="n">pA</span><span class="p">,</span> <span class="n">ptA</span><span class="p">,</span> <span class="n">pB</span><span class="p">,</span> <span class="n">ptB</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+    <span class="c1"># profit formulas Eq.(1)(2)</span>
+    <span class="n">piA</span> <span class="o">=</span> <span class="n">pA</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="nb">min</span><span class="p">(</span><span class="n">xA</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">ptA</span><span class="o">*</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">xB</span><span class="o">-</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">xU</span><span class="p">)</span>
+    <span class="n">piB</span> <span class="o">=</span> <span class="n">pB</span><span class="o">*</span><span class="n">alpha</span><span class="o">*</span><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">xB</span><span class="p">)</span> <span class="o">+</span> <span class="n">ptB</span><span class="o">*</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="n">xA</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">xU</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">piA</span><span class="p">,</span> <span class="n">piB</span>
+
+<span class="c1"># Example: replicate Fig.3 boundary</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">k_boundary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">k1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">k_boundary</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;alpha&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;k1(alpha)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sequential game: boundary between weak and strong dominance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+<hr>
+<h2 id="6-reviewers-critique">6. 你的犀利评论 (Reviewer's Critique)</h2>
+<p>下面我会用“Senior Editor 视角”来挑刺（带点狠，但有用）。</p>
+<h3 id="61">6.1 我认可的亮点（优点）</h3>
+<ol>
+<li><strong>把“信息不完美”建模成 missing-but-correct（而不是 noisy misclassification）非常干净</strong>
+   这让模型更贴近 cookie/会员覆盖不全的现实，而且避免了信号结构带来的额外复杂性。</li>
+<li><strong>非对称市场份额 + 序贯定价 + 不完美识别</strong> 的三重交互是新颖且重要的
+   很多既有结论确实是靠“对称 + 完美信息”撑起来的，这篇文章把这些结论的脆弱性揭示得很清楚。</li>
+<li><strong>knife-edge 讨论很到位</strong>
+   simultaneous 版本里 $\alpha=1$ 的特例不稳健（Fig.7），这个提醒对后续研究非常关键：很多政策结论不能从 perfect info 直接外推。</li>
+</ol>
+<h3 id="62">6.2 我会卡住作者的地方（缺点/限制）</h3>
+<ol>
+<li><strong>$\alpha$ 是外生的</strong>
+   现实里企业会投资数据能力、会买 third-party data、会设计激励让用户登录/绑定身份。把 $\alpha$ 外生会弱化一个很重要的 OM/IO 问题：<strong>数据能力投资与定价策略的联动</strong>。</li>
+<li><strong>消费者隐私选择是外生且与偏好无关</strong>
+   文中有提到 opt-out 与偏好独立是合理的，但从机制设计/实证角度看，偏好与隐私态度往往相关（高价值客户更敏感或更愿意换身份），这会改变“误伤”的结构。</li>
+<li><strong>$\tilde p$ 对所有 unidentified 一口价：现实中企业可以做概率推断</strong>
+   现在的定价系统常用 ML 做“这人像不像老客”的概率评分，即便没有 deterministic ID，也能做软识别。这会把模型从“二分信息”推进到“贝叶斯分层”，结论可能更丰富也更难。</li>
+<li><strong>Hotelling + full coverage 的经典限制</strong>
+   现实里价格歧视往往伴随需求扩张/收缩（outside option 不为 0），并且成本/容量约束可能与 pricing 联动（典型 OM 的 capacity pricing）。本模型忽略这些会让一些 welfare 结论偏向“竞争越激烈价格越低”这一条线。</li>
+<li><strong>序贯定价的制度化假设需要更多 empirical grounding</strong>
+   作者给了很合理的叙事（更新频率、算法），但如果能用行业事实（比如不同 firm 的价格更新间隔分布）来支持“谁先动”的设定，会更有说服力。</li>
+</ol>
+<h3 id="63">6.3 未来方向（这篇文章最适合长出什么分支？）</h3>
+<ol>
+<li><strong>Endogenize $\alpha$：数据投资 + 隐私监管</strong>
+   让 firms 选择数据投资（决定 $\alpha$），监管者设定隐私规则或合规成本，形成一个两阶段博弈。你会得到真正 OM 味道的“capability choice → pricing equilibrium”。</li>
+<li><strong>动态模型：两期/多期 history accumulation</strong>
+   现在的 purchase history 是外生 turf。把 turf 内生化（由上一期竞争结果产生）会更贴近 “acquisition today → harvest tomorrow” 的经典框架。</li>
+<li><strong>引入 misclassification（noisy signals）并与 missingness 结合</strong>
+   现实更像：既有漏识别，也有误识别。两者的交互会改变 poaching 的效率与误伤结构。</li>
+<li><strong>容量/履约（Operations）约束</strong>
+   很多行业（物流、云服务、医疗）存在 capacity bottleneck。折扣挖角可能带来拥堵成本或服务失败风险，这会把 welfare 与利润结论改写成更 OM 的版本。</li>
+<li>
+<p><strong>实证检验路径</strong>
+   可以用 GDPR 前后、或 cookie 规则变化作为 quasi-experiment，检验：</p>
+</li>
+<li>
+<p>市场份额越不对称的行业，价格歧视策略是否更偏向“只有小 firm 在打折挖角”？</p>
+</li>
+<li>$\alpha$ 的变化是否引发定价策略的结构性切换（对应 Fig.4 的 discontinuity）？</li>
+</ol>
+<hr>
+<h2 id="7-one-more-thing">7. One More Thing：我认为最值得分享的“灵光一现/数学技巧”</h2>
+<p>我最喜欢的是 strong dominance 那一段的“<strong>约束绑定</strong>”操作：</p>
+<ul>
+<li>不是先猜一个复杂的 demand 区间再硬解，而是直接意识到：在 strong dominance 下，B 作为 second mover 会把 $p_B$ 设到刚好阻止 A 挖走边界消费者 $x=k$，即让 $x_B=k$ <strong>变成 binding constraint</strong>。</li>
+<li>这一下把 $p_B$ 从一个“自由选择变量”变成了由 $\tilde p_A$ 决定的函数 $p_B^s=\tilde p_A+t(2k-1)$，问题立刻降维，后面的闭式解顺得像拉链。</li>
+</ul>
+<p>从方法论角度，这是一个很实用的套路：</p>
+<blockquote>
+<p><strong>在不等式约束定义市场结构的模型里，第二阶段玩家常常会把“最关键的结构约束”推到等式边界上。识别哪个约束会绑定，往往比硬算更重要。</strong></p>
+</blockquote>
+<hr>
+<!-- **（完）**
+这份笔记把论文的基准模型与关键扩展都按“可复盘推导”的方式拆开了：你可以直接按公式把均衡价格、cutoffs、结构阈值与利润/福利关系完整重建出来。下一步如果要更进一步（写 referee report 或做扩展），最自然的落点就是把 $\alpha$ 内生化并引入动态 history accumulation——那会把这篇 IO/Info Econ 论文真正接到 OM 的主干上。 -->
+    </div>
+  </div>
+</body>
+</html>

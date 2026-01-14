@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OR_2022_Jiang_Tian_Reactivate_Capacity_Quality</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="jiang-tian-2022reactive-capacity-om">Jiang &amp; Tian (2022)｜Reactive Capacity 如何改变产品质量与利润分配：一份 OM 博士生可“复盘推导”的深度解析</h1>
+<p>来源：:contentReference[oaicite:0]{index=0}<br>
+论文：Baojun Jiang, Lin Tian (2022). <em>Effects of Reactive Capacity on Product Quality and Firm Profitability in an Uncertain Market</em>. <strong>Operations Research</strong>, 70(5): 2619–2636.</p>
+<hr>
+<h2 id="0">0. 这篇文章到底在解决什么（给忙碌研究生的“抓重点”版本）</h2>
+<p>这篇 paper 研究一个在“品牌商主导、外包生产、短销售季”行业里很常见但在文献里没被系统打通的问题：</p>
+<blockquote>
+<p><strong>供应商的 quick response / reactive capacity（可在季中补产的能力）提升，到底会让品牌商把产品做得更好还是更差？利润又会怎么在品牌商与供应商之间重新分配？</strong></p>
+</blockquote>
+<p>它的核心结论很“反直觉”，但逻辑非常硬：</p>
+<ul>
+<li><strong>Reactive capacity 对产品质量 $q^*$ 的影响可能是非单调的</strong>：先推高质量，之后反而压低质量（命题 1；图 1 在 PDF 第 10 页）。</li>
+<li><strong>提升 reactive capacity 一定让零售商/品牌商更爽，但可能让供应商更惨</strong>（命题 2）。</li>
+<li><strong>市场“更好”（高估值消费者出现概率更高）也可能让双方都更差，且质量下降</strong>（命题 4；图 2 在 PDF 第 12 页）。</li>
+<li>这些现象的底层机制不是“黑箱比较静态”，而是一个非常清晰的互动链条：<br>
+<strong>零售商的“分群定价/targeting”策略</strong> ↔ <strong>供应商的库存风险</strong> ↔ <strong>零售商用 wholesale price 当“风险补偿/激励工具”</strong>。</li>
+</ul>
+<hr>
+<h2 id="1-motivation">1. 研究背景与动机 (Motivation)</h2>
+<h3 id="11">1.1 实践痛点：为什么这不是“又一个定价+库存”模型？</h3>
+<p>论文从典型的品牌商外包生产场景出发：品牌商决定设计与定价，但生产在上游，且常见 <strong>pull contract</strong>：品牌商下单/提货，上游承担未被提货导致的库存风险（引言与背景在 PDF 第 2–4 页）。</p>
+<p>现实里两个同时存在、而且会互相咬合的事实：</p>
+<ol>
+<li><strong>长提前期 + 需求不确定</strong> → 供应商要提前生产（preseason inventory），但很容易要么缺货要么积压（PDF 第 2–3 页）。</li>
+<li>供应商会通过缩短 setup/物流时间、提高产能等方式提升 <strong>reactive capacity</strong>（季中补产能力），但：  </li>
+<li>它到底帮谁更多？供应商还是品牌商？  </li>
+<li>品牌商会不会因此改变产品质量与市场定位？<br>
+   这些在实践里非常尖锐（如 Apple–Foxconn 利润分配、COVID 期间汽车芯片短缺导致“只推高配高价车型”现象，PDF 第 3–4 页）。</li>
+</ol>
+<h3 id="12">1.2 理论缺口：现有文献“各讲各的”，缺了一根关键筋</h3>
+<p>论文明确指出三类相关文献，但它们之间缺了关键连接（文献综述在 PDF 第 5–6 页）：</p>
+<ul>
+<li><strong>质量选择/产品线/渠道质量</strong>文献：常把“运营侧的 reactive capacity + 库存风险”当外生或忽略。</li>
+<li><strong>quick response / reactive capacity</strong>文献：多研究库存与价格，但很少把<strong>质量 $q$ 作为内生决策</strong>，更少在 <strong>pull contract（上游担库存风险）</strong> 的权力结构下讨论。</li>
+<li><strong>需求不确定</strong>文献：大量是“市场规模不确定”，但本文强调另一个更贴近新品/新市场的维度：<br>
+<strong>总市场规模知道，但消费者估值分布（高估值人群占比）不确定</strong>（PDF 第 6 页）。</li>
+</ul>
+<h3 id="13">1.3 核心贡献：不是“多加一个参数”，而是揭示一个新机制</h3>
+<p>我会把贡献压缩为三条“可引用”的点：</p>
+<ol>
+<li><strong>把 reactive capacity 与产品质量选择在 pull contract 下首次系统链接</strong>：给出闭式均衡，并把均衡结构分段刻画（PDF 第 7–10 页的 Table 1–3）。</li>
+<li><strong>提出并证明两个关键反直觉</strong>：  </li>
+<li>$q^*$ 对 reactive capacity 非单调（命题 1；图 1 第 10 页）；  </li>
+<li>市场更好（$\rho$ 更高）反而可能让双方更差且 $q^*$ 更低（命题 4；图 2 第 12 页）。</li>
+<li><strong>管理启示非常“可操作”</strong>：供应商提升能力未必该公开；品牌商提升供应灵活性并不必然带来更高质量/更高价格（PDF 第 11–13 页）。</li>
+</ol>
+<hr>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="21-referee-report">2.1 符号体系（建议你以后写 referee report 直接复制这种“符号块”）</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$q$</td>
+<td>产品质量（由零售商/品牌商设计）</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>wholesale price（零售商给供应商的“take-it-or-leave-it”价格）</td>
+</tr>
+<tr>
+<td>$p$</td>
+<td>retail price（零售商对消费者定价）</td>
+</tr>
+<tr>
+<td>$I$</td>
+<td>供应商 preseason inventory（销售季前生产的库存）</td>
+</tr>
+<tr>
+<td>$Q$</td>
+<td>零售商在销售季开始时的订单量/提货量选择</td>
+</tr>
+<tr>
+<td>$\bar Q$</td>
+<td>供应商在销售季内可补产并交付的最大数量（reactive capacity）</td>
+</tr>
+<tr>
+<td>$k$</td>
+<td>成本参数（供应商单位成本 $c(q)=kq^2$）</td>
+</tr>
+<tr>
+<td>$\theta\in{\theta_H,\theta_L}$</td>
+<td>消费者对质量的支付意愿类型（高/低）</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>市场中高类型消费者占比</td>
+</tr>
+<tr>
+<td>$(\alpha_g,\alpha_b)$</td>
+<td>好/坏市场下的高类型占比，且 $\alpha_b&lt;\alpha_g$</td>
+</tr>
+<tr>
+<td>$\rho$</td>
+<td>好市场概率：$\Pr(\alpha=\alpha_g)=\rho$</td>
+</tr>
+<tr>
+<td>$A$</td>
+<td>销售季内“可接受交付窗口”长度</td>
+</tr>
+<tr>
+<td>$T_s$</td>
+<td>与产量无关的 lead time 部分（setup、运输、处理等）</td>
+</tr>
+<tr>
+<td>$C$</td>
+<td>单位时间产能（steady-state production speed）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>关键建模点：$\bar Q$ 不是拍脑袋的外生参数，而是从 lead time 分解推出来（PDF 第 6–7 页）：<br>
+$$T = T_s + \frac{N}{C},\qquad T_s + \frac{\bar Q}{C}\le A \;\Rightarrow\; \bar Q=(A-T_s)C.$$</p>
+</blockquote>
+<h3 id="22-playerssequence-of-eventsinformation-structure">2.2 Players、Sequence of Events、Information Structure</h3>
+<p><strong>Players</strong>：零售商/品牌商（下游，强势），供应商（上游，承受库存风险），消费者。<br>
+<strong>信息结构</strong>：销售季开始时市场状态 $\alpha\in{\alpha_g,\alpha_b}$ 被双方观察到；销售季前只有先验 $\rho$（PDF 第 6–7 页）。<br>
+<strong>决策顺序（Backward Induction 的骨架）</strong>（PDF 第 7 页）：</p>
+<ol>
+<li><strong>季前</strong>：零售商选质量 $q$，并给出 take-it-or-leave-it wholesale price $w$。  </li>
+<li><strong>季前</strong>：供应商选 preseason inventory $I$。  </li>
+<li><strong>季初</strong>：市场状态 $\alpha$ 实现；零售商选订单量 $Q$。  </li>
+<li>若 $Q&gt;I$，供应商可在季内补产 $I^{in}\le \bar Q$，交付 $\min{I+I^{in},Q}$。  </li>
+<li><strong>随后</strong>：零售商定零售价 $p$；消费者购买。</li>
+</ol>
+<h3 id="23">2.3 需求与效用：为什么离散两点分布很聪明？</h3>
+<p>消费者效用（PDF 第 6 页）：
+$$u=q\theta-p.$$</p>
+<p>每个消费者最多买一件，外部选项效用为 0。于是：</p>
+<ul>
+<li>若定价 $p=q\theta_H$：只有高类型买，需求量为 $\alpha$（“高端定位 / high-segment targeting”）。</li>
+<li>若定价 $p=q\theta_L$：高低类型都买，需求量为 $1$（“覆盖全市场 / mass targeting”）。</li>
+</ul>
+<p><strong>这一步非常关键</strong>：它把零售商的定价问题压缩为“二选一”，从而让整个博弈能做出漂亮的闭式均衡与分段结构（Table 1–3 的基础）。</p>
+<h3 id="24-pull-contract">2.4 成本与合同：pull contract 的“痛点”如何进入模型？</h3>
+<ul>
+<li>供应商单位成本：$c(q)=kq^2$（凸成本，常见且可解释为“质量越高，材料/工艺/良率成本越高”，PDF 第 6 页）。  </li>
+<li>未售库存残值归零（paper 说定性结论对低残值也稳健，PDF 第 6 页）。  </li>
+<li><strong>pull contract</strong>：零售商只为提货量付 $w$；供应商对季前生产的剩余库存“自吞损失”（PDF 第 7 页）。<br>
+  这就是本文所有反直觉的发动机：<strong>库存风险在上游，但定价/质量权力在下游。</strong></li>
+</ul>
+<h3 id="25-justification">2.5 关键假设的合理性（Justification + 读者要警惕的地方）</h3>
+<ol>
+<li><strong>$T_s\le A$ 的简化</strong>：若 $T_s&gt;A$ 则必须季前生产，等价于 $T_s=A$ 的结果（作者用来省符号，PDF 第 7 页）。  </li>
+<li><strong>零售商拥有定价权与合同权</strong>：契合 Apple、OEM 等强势品牌场景；但这也意味着结论最适用于“强势下游+弱势上游”的链条。  </li>
+<li><strong>离散估值 + 状态不确定</strong>：不是为了“数学好做”，而是为了抓住“估值分布不确定”这一现实：新品/新市场最难预测的是“高估值人群到底有多少”（PDF 第 6 页）。  </li>
+<li><strong>不允许一度价格歧视</strong>：现实里确实难做到一人一价（脚注提到，PDF 第 7 页末）。</li>
+</ol>
+<hr>
+<h2 id="3-analysis-solution">3. 分析与求解 (Analysis &amp; Solution)</h2>
+<p>下面我按 backward induction 把推导的“骨架逻辑”搭出来，你可以据此复盘 Table 1–3 的分段均衡。</p>
+<h3 id="31-4">3.1 第 4 阶段（定价）：给定供给上限时的“定价=分群=配给”</h3>
+<p>在状态 $\alpha$ 下，零售商面临一个供给上限（可卖数量）$S$，本质上是供应链交付的 $\min{Q,I+\bar Q}$。</p>
+<p>由于离散估值，零售商只需比较两种候选定价：</p>
+<ul>
+<li>高价（只卖高类型）：$p_H=q\theta_H$，销量 $\min{\alpha,S}$，利润<br>
+  $$\pi_R^H=(p_H-w)\min{\alpha,S}=(q\theta_H-w)\min{\alpha,S}.$$</li>
+<li>低价（覆盖全体）：$p_L=q\theta_L$，销量 $\min{1,S}$，利润<br>
+  $$\pi_R^L=(q\theta_L-w)\min{1,S}.$$</li>
+</ul>
+<p>因此，“是否走大众市场”完全取决于 $S$ 是否足够大以及边际利润大小。<strong>这就是论文里反复出现的 targeting 结构</strong>：<br>
+- 供给紧/不确定 → 更偏向高价配给高类型；<br>
+- 供给松/反应快 → 更敢在坏市场走低价覆盖全体。</p>
+<h3 id="32-3">3.2 第 3 阶段（订单）：零售商不会订“卖不掉”的量</h3>
+<p>给定上一阶段定价只可能对应需求 $\alpha$ 或 $1$，在状态 $\alpha$ 下零售商的自然订单候选也就是：
+- 若打高端：$Q=\alpha$；
+- 若走大众：$Q=1$；
+但交付受限于 $I+\bar Q$（季前库存 + 季内可补产上限）。于是：
+- <strong>若 $I+\bar Q$ 不足以支撑大众策略</strong>，即 $I+\bar Q&lt;1$，则大众定价会导致 stockout；
+- <strong>若 $I$ 过高而好市场只卖高端</strong>，则出现 overstock（供应商自吞）。</p>
+<h3 id="33-2-i-w">3.3 第 2 阶段（库存）：供应商的最优 $I$ 其实是“概率加权的分位点”，而零售商用 $w$ 去“买保险”</h3>
+<p>供应商季前选 $I$ 时，关键是：<br>
+- 季前生产的单位若在某些状态下不会被零售商提走，就会变成纯成本 $kq^2$；<br>
+- 若零售商愿意为“可能才会卖掉”的库存单位支付更高 $w$，供应商才愿意承担风险。</p>
+<p>这里出现本文最漂亮的一个“数学—经济直觉对齐”的点（也是我认为最值得学的技巧）：</p>
+<blockquote>
+<p><strong>若一单位季前库存只有在某个状态发生时才会卖掉，售出概率是 $s$，则供应商 break-even 需要 $s\cdot w = kq^2$，即 $w=kq^2/s$。</strong></p>
+</blockquote>
+<p>在本文里，典型的 $s$ 只会是 $1$、$\rho$、或 $1-\rho$，于是你在均衡里反复看到三种“结构化的 wholesale 定价”：
+- $w=kq^2$（卖掉概率 1：风险为零的单位）
+- $w=\frac{kq^2}{\rho}$（只在好市场卖：概率 $\rho$）
+- $w=\frac{kq^2}{1-\rho}$（只在坏市场卖：概率 $1-\rho$）</p>
+<p>这就是 Table 1–2 里 $w^*$ 为何会出现 $\rho$ 或 $(1-\rho)$ 的倒数结构（PDF 第 8–9 页的解释 + 表格）。</p>
+<h3 id="34-1">3.4 第 1 阶段（质量）：质量选择被“利润率”钳制</h3>
+<p>零售商选 $q$ 时，本质是在最大化“需求侧的愿意付钱”与“供应侧的成本/激励”之间的差：</p>
+<ul>
+<li>需求侧：更高 $q$ 线性提升愿意付钱（因为 $p=q\theta$）。</li>
+<li>供应侧：成本 $kq^2$ 凸增，且为了诱导库存可能需要把 $w$ 拉高到 $kq^2/\rho$ 或 $kq^2/(1-\rho)$，进一步压缩零售商利润率。</li>
+</ul>
+<p>这解释了为什么 reactive capacity 提升后，质量不一定上升：当 $\bar Q$ 高到让“库存保险”不再需要时，零售商可能选择更低的 $w$，进而改变其市场覆盖策略与利润率，最终压低 $q$（命题 1 的直觉，PDF 第 10–11 页）。</p>
+<hr>
+<h2 id="4-reactive-capacity-table-13">4. 均衡结构：按 reactive capacity 分段的“策略地图”（Table 1–3 的读法）</h2>
+<p>论文聚焦一个“非平凡”区间（PDF 第 7 页末）：
+$$\alpha_b&lt;\frac{\theta_L}{\theta_H}&lt;\alpha_g,$$
+也就是：坏市场更适合大众定价，好市场更适合高端定价——因此零售商确实可能在两种 targeting 之间切换。</p>
+<h3 id="41-reactive-capacity">4.1 Reactive capacity 的三段划分（你要把它当作全文的“骨架”）</h3>
+<p>令季内补产能力为 $\bar Q=(A-T_s)C$（PDF 第 7 页）。均衡形式取决于 $\bar Q$ 落在哪一段（PDF 第 7–10 页）：</p>
+<ul>
+<li><strong>低</strong>：$\bar Q\le \frac{\theta_H}{\theta_L}\alpha_b-\alpha_g$  </li>
+<li><strong>中</strong>：$\frac{\theta_H}{\theta_L}\alpha_b-\alpha_g&lt;\bar Q\le 1-\alpha_g$  </li>
+<li><strong>高</strong>：$\bar Q&gt;1-\alpha_g$</li>
+</ul>
+<p>直觉上：
+- 当 $\bar Q$ 很小，季内救火能力弱，季前库存决定一切；
+- 当 $\bar Q$ 足够大（超过 $1-\alpha_g$），即使坏市场大众需求是 1，也能靠季内补产补齐，库存风险几乎可消除。</p>
+<hr>
+<h2 id="5">5. 关键均衡结果（带公式 + 机制解释）</h2>
+<blockquote>
+<p>为避免把 Table 1–3 原封不动搬运，我用“同等信息量但更可读”的方式重写：给出关键闭式表达，并解释每个 regime 的运营含义。</p>
+</blockquote>
+<h3 id="51-reactive-capacity">5.1 高 reactive capacity：唯一均衡（无缺货无积压）</h3>
+<p><strong>条件</strong>：$\bar Q&gt;1-\alpha_g$（PDF 第 10 页 Table 3）。<br>
+此时供应商能在季内补产覆盖坏市场的大众需求缺口，因而存在一段 <strong>risk-free 库存区间</strong>：
+$$I^*\in[\,1-\bar Q,\;\alpha_g\,],$$
+无论市场好坏都不会产生库存风险。</p>
+<p>于是零售商不必给“风险补偿”，均衡 wholesale 等于边际成本：
+$$w^<em>=k(q^</em>)^2.$$</p>
+<p>并且零售商在好市场卖高端、坏市场走大众，均衡质量为：
+$$
+q^*=\frac{1}{2k}\cdot\frac{\rho\,\alpha_g\theta_H+(1-\rho)\theta_L}{\rho\,\alpha_g+(1-\rho)}.
+$$</p>
+<p>零售价格为分状态：
+$$
+p^<em>=
+\begin{cases}
+q^</em>\theta_H,&amp; \alpha=\alpha_g,\
+q^*\theta_L,&amp; \alpha=\alpha_b.
+\end{cases}
+$$</p>
+<p>利润分配非常“残酷但干净”：
+- 供应商：$\pi_S^<em>=0$（因为 $w$ 被压到成本；PDF 第 10 页 Table 3）。
+- 零售商：
+$$
+\pi_R^</em>=\frac{1}{4k}\cdot\frac{\big(\rho\,\alpha_g\theta_H+(1-\rho)\theta_L\big)^2}{\rho\,\alpha_g+(1-\rho)}.
+$$</p>
+<p><strong>机制一句话</strong>：当 $\bar Q$ 足够高，供应商不再承担库存风险 → 下游把 wholesale 压到成本 → 供应商赚不到“风险租金”。</p>
+<hr>
+<h3 id="52-reactive-capacity">5.2 中 reactive capacity：两类均衡（是否愿意为库存付“保险费”）</h3>
+<p><strong>条件</strong>：$\frac{\theta_H}{\theta_L}\alpha_b-\alpha_g&lt;\bar Q\le 1-\alpha_g$（PDF 第 9 页 Table 2）。</p>
+<p>此时坏市场大众需求是 1，但即便加上季内补产，若 $I=\alpha_g$ 仍可能满足不了：因为 $I+\bar Q=\alpha_g+\bar Q&lt;1$，所以会出现“坏市场缺货”的可能。</p>
+<h4 id="i-opportunistic-targeting-with-stockout">(i) Opportunistic targeting with stockout（不付保险 → 坏市场缺货）</h4>
+<p>零售商选 $w=kq^2$（不给库存风险补偿），供应商选 risk-free $I^*=\alpha_g$，于是：
+- 好市场：卖高端，销量 $\alpha_g$（不缺货）<br>
+- 坏市场：想走大众，但销量被卡在 $\alpha_g+\bar Q$（缺货）</p>
+<p>均衡质量（Table 2 左列可整理为）：
+$$
+q^*=\frac{1}{2k}\cdot
+\frac{\rho\,\alpha_g\theta_H+(1-\rho)(\alpha_g+\bar Q)\theta_L}{\rho\,\alpha_g+(1-\rho)(\alpha_g+\bar Q)}.
+$$</p>
+<p>供应商利润仍为 0（因为 $w=c$），零售商利润为
+$$
+\pi_R^*=\frac{1}{4k}\cdot
+\frac{\big(\rho\,\alpha_g\theta_H+(1-\rho)(\alpha_g+\bar Q)\theta_L\big)^2}{\rho\,\alpha_g+(1-\rho)(\alpha_g+\bar Q)}.
+$$</p>
+<h4 id="ii-opportunistic-targeting-with-overstock">(ii) Opportunistic targeting with overstock（付保险 → 消除坏市场缺货，但好市场积压）</h4>
+<p>零售商把 wholesale 抬到：
+$$w=\frac{kq^2}{1-\rho},$$
+等价于为“只在坏市场才需要的额外库存单位”（售出概率 $1-\rho$）付风险补偿。供应商因此愿意把库存拉到：
+$$I^*=1-\bar Q,$$
+从而坏市场可做到 $I+\bar Q=1$（无缺货），但好市场只卖高端 $\alpha_g$ 会导致 overstock。</p>
+<p>此时均衡质量恰好退化为高 reactive capacity 的同一闭式（因为坏市场已无缺货）：
+$$
+q^*=\frac{1-\rho}{2k}\cdot\frac{\rho\,\alpha_g\theta_H+(1-\rho)\theta_L}{\rho\,\alpha_g+(1-\rho)}.
+$$
+（这正是 Table 2 右列、也与 Table 1 的某一列一致。）</p>
+<p><strong>机制一句话</strong>：中等 $\bar Q$ 时，零售商在“压低 $w$（高利润率但缺货）”和“提高 $w$（买库存保险但利润率被挤压）”之间做选择。</p>
+<hr>
+<h3 id="53-reactive-capacity">5.3 低 reactive capacity：三类均衡（库存风险最硬，合同激励最戏剧化）</h3>
+<p><strong>条件</strong>：$\bar Q\le \frac{\theta_H}{\theta_L}\alpha_b-\alpha_g$（PDF 第 8 页 Table 1）。</p>
+<p>这里会出现三类均衡（取决于参数与零售商最优比较）：</p>
+<h4 id="i-high-segment-targeting-with-stockout">(i) High-segment targeting with stockout（压价到成本 → 低库存 → 好市场缺货）</h4>
+<ul>
+<li>$w=kq^2$，供应商 risk-free：$I^*=\alpha_b$  </li>
+<li>零售商两种市场都卖高端（因为库存太少，干脆一直高价配给）  </li>
+<li>好市场销量被卡在 $\alpha_b+\bar Q&lt;\alpha_g$（缺货）</li>
+</ul>
+<p>均衡质量为高端极值：
+$$q^<em>=\frac{\theta_H}{2k},\quad w^</em>=\frac{\theta_H^2}{4k},\quad p^<em>=\frac{\theta_H^2}{2k},\quad \pi_S^</em>=0.$$</p>
+<h4 id="ii-high-segment-targeting-with-overstock">(ii) High-segment targeting with overstock（为“只在好市场会卖掉的库存”付保险）</h4>
+<p>零售商把 wholesale 抬到
+$$w=\frac{kq^2}{\rho},$$
+对应“边际库存单位只在好市场卖掉，售出概率 $\rho$”。供应商因此把库存推到：
+$$I^*=\alpha_g-\bar Q,$$
+好市场刚好补齐（无缺货），坏市场发生 overstock。</p>
+<p>这一列的均衡质量与价格出现一个非常干净的缩放：
+$$
+q^<em>=\frac{\rho\theta_H}{2k},\quad
+w^</em>=\frac{\rho\theta_H^2}{4k},\quad
+p^*=\frac{\rho\theta_H^2}{2k}.
+$$</p>
+<p>供应商获得正利润（因为 $w$ 高于成本、且承担库存风险），其期望利润（可从 Table 1 化简）：
+$$
+\pi_S^*=\frac{\rho(1-\rho)\big(\alpha_b+\rho\bar Q\big)\theta_H^2}{4k}.
+$$</p>
+<h4 id="iii-opportunistic-targeting-with-overstock">(iii) Opportunistic targeting with overstock（为坏市场大众策略“买保险”，但好市场积压）</h4>
+<p>零售商选择
+$$w=\frac{kq^2}{1-\rho},\quad I^*=1-\bar Q.$$
+- 坏市场：走大众，销量 1（无缺货）<br>
+- 好市场：只卖高端 $\alpha_g$，导致 overstock</p>
+<p>均衡质量：
+$$
+q^*=\frac{1-\rho}{2k}\cdot\frac{\rho\,\alpha_g\theta_H+(1-\rho)\theta_L}{\rho\,\alpha_g+(1-\rho)}.
+$$</p>
+<p><strong>机制一句话</strong>：低 $\bar Q$ 时，库存风险太硬，零售商要么“彻底放弃大众市场（一直高端）”，要么通过抬高 $w$ 来让供应商替自己扛风险——而 $w$ 的抬升幅度恰好由“边际库存的售出概率”倒数决定。</p>
+<hr>
+<h2 id="6-comparative-statics">6. 比较静态分析 (Comparative Statics)：把命题翻译成“机制语言”</h2>
+<h3 id="61-1q-reactive-capacity-bar-q-1pdf-10">6.1 命题 1：$q^*$ 对 reactive capacity $\bar Q$ 非单调（图 1，PDF 第 10 页）</h3>
+<p><strong>命题陈述（简化）</strong>：存在阈值 $\bar Q'&lt;1$，使得<br>
+- 当 $\bar Q\le \bar Q'$：$q^<em>$（弱）随 $\bar Q$ 上升；<br>
+- 当 $\bar Q&gt;\bar Q'$：$q^</em>$（弱）随 $\bar Q$ 下降；<br>
+并且 $w^<em>$、$p^</em>$ 也可能非单调。</p>
+<p><strong>两股力对打：</strong></p>
+<ol>
+<li><strong>Margin-improving effect（利润率提升）</strong>：$\bar Q$ 越大，零售商越不需要用高 $w$ 去“买库存保险”，于是更可能把 $w$ 压向成本 $kq^2$，利润率提高 → 更愿意投质量。</li>
+<li><strong>Coverage-increasing effect（覆盖面扩大）</strong>：$\bar Q$ 越大，坏市场也更敢走大众定价；大众策略意味着单位利润率更低（价格是 $q\theta_L$ 而不是 $q\theta_H$），从而降低投质量的激励。</li>
+</ol>
+<p>当 $\bar Q$ 低到中等时，第一股力主导；当 $\bar Q$ 足够高时，第二股力主导，于是出现倒 U 型（图 1 的形状就是这个故事）。</p>
+<h3 id="62-2bar-q-pdf-11">6.2 命题 2：$\bar Q$ 提升一定让零售商更好，但可能让供应商更差（PDF 第 11 页）</h3>
+<ul>
+<li><strong>零售商利润 $\pi_R^*$ 随 $\bar Q$（弱）上升</strong>：直觉很直接——供应链履约能力更强，零售商的可选策略集变大，至少不可能更差。</li>
+<li><strong>供应商利润可能随 $\bar Q$ 下降</strong>：因为 $\bar Q$ 高了，零售商更有底气压低 $w/(kq^2)$（相对批发价，见图 3 的结构，PDF 第 13 页），供应商失去“风险租金”。当 $\bar Q$ 足够高，甚至 $\pi_S^*=0$（高 reactive capacity 区间）。</li>
+</ul>
+<blockquote>
+<p>管理含义非常尖锐：<strong>在 pull contract 下，供应商提升 reactive capacity 可能是在“帮零售商建立更强的议价武器”。</strong><br>
+因此供应商可能不愿公开自己的能力提升（作者在 PDF 第 11 页给出这一解释）。</p>
+</blockquote>
+<h3 id="63-3-4rho-q-2pdf-12">6.3 命题 3 &amp; 4：更“好”的市场（$\rho$ 更高）也可能压低 $q^*$，甚至让双方都更差（图 2，PDF 第 12 页）</h3>
+<p>这部分是本文第二个“灵魂点”。</p>
+<p>直觉上，$\rho$ 更高代表高估值消费者更可能多 → 你会以为零售商提价提质、大家都赚钱。<br>
+但当供应商仍有库存风险（大致对应 $\bar Q\le 1-\alpha_g$，PDF 第 11–12 页），会发生：</p>
+<ol>
+<li>$\rho\uparrow$ → 零售商更倾向好市场走“高端小量”（订单更像 $\alpha_g$ 而不是 1）。  </li>
+<li>供应商预测到“高端小量更可能发生” → 更不愿做季前库存（因为更可能积压）。  </li>
+<li>但坏市场仍可能发生，而坏市场下零售商想走大众，需要大量供给 → 零售商不得不抬高 $w$ 去逼供应商备货。  </li>
+<li>$w$ 被抬高后，零售商利润率被挤压 → 反而降低投质量激励 → <strong>$q^*$ 下降</strong>（命题 3）。  </li>
+<li>同时，供应商一边库存风险高、一边被零售商压价（或在某些区间被迫承担风险但总量下降），两者叠加可能让 <strong>双方利润一起下降</strong>（命题 4；图 2 展示了非单调区间）。</li>
+</ol>
+<hr>
+<h2 id="7-main-results-managerial-insights">7. 主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="71-paper">7.1 机制揭示：这篇 paper 真正新在哪里？</h3>
+<p>相对典型 benchmark（例如：集中式系统、或“下游承担库存风险”的 push contract），本文的核心新 trade-off 是：</p>
+<blockquote>
+<p><strong>Supply-side flexibility（$\bar Q$）既降低库存风险、也改变下游的市场覆盖策略；而市场覆盖策略反过来改变下游愿意给上游的风险补偿（$w$），最终扭曲质量激励。</strong></p>
+</blockquote>
+<p>所以你会得到两个“反直觉但可解释”的现象：
+- <strong>更灵活的供应链不一定带来更高质量</strong>（因为它可能诱导更激进的大众覆盖，压低利润率）。
+- <strong>更好的需求前景不一定让双方更好</strong>（因为它可能诱导“高端小量”，进而让供应商缩库存，使坏市场时的供给更痛、需要更贵的风险补偿）。</p>
+<h3 id="72">7.2 给管理者/政策制定者的可执行建议（不是泛泛而谈）</h3>
+<p>对 <strong>品牌商/零售商（强势下游）</strong>：
+1. <strong>别把 quick response 当作“质量升级的自动按钮”</strong>：$\bar Q$ 上升后你可能反而应该重新评估产品定位与质量梯度（命题 1）。
+2. 当你试图让供应商备库存时，你实际上在做“风险采购”——$w$ 的提高不是纯粹让利，而是买一个“坏市场时不断货”的期权。<br>
+   这意味着：<strong>用更精细的合同（如 buyback、MOQ、分段批发价）可能更有效</strong>（作者在结论讨论 step-premium 与风险分担，PDF 第 16 页）。</p>
+<p>对 <strong>供应商（上游）</strong>：
+1. <strong>提升 reactive capacity 不保证提升利润</strong>：若下游知道你更能补产，它会压低 $w$，你失去风险租金（命题 2；作者甚至建议供应商可能不愿披露能力提升，PDF 第 11 页）。
+2. 若必须投入能力，现实中应争取“最低利润/经济租金”或“能力专用性补偿”，否则你在帮下游打造更强的压价工具（作者在 PDF 第 16 页指出现实中的约束会限制 $w$ 压得过低）。</p>
+<p>对 <strong>更宏观的供应链治理/政策</strong>（偏启发式）：
+- 当行业处于强势品牌压价、上游承担库存风险的结构时，单纯推动上游提升灵活性可能加剧利润向下游集中；更有效的干预可能是推动风险分担或信息披露机制。</p>
+<h3 id="73-numerical-study">7.3 图表解读（Numerical Study 的信息点）</h3>
+<ul>
+<li><strong>图 1（PDF 第 10 页）</strong>：$q^*$ 随 $\bar Q$ 呈现先升后降（或先升后平/降）的非单调形态。你可以把它读成“激励效应 vs 覆盖效应”的胜负切换图。</li>
+<li><strong>图 2（PDF 第 12 页）</strong>：$q^*$ 随 $\rho$ 也可能非单调：在中间区间，$\rho$ 上升反而压低质量。它是在告诉你：需求侧“更高估值”通过供应链库存风险渠道，可能反向作用于质量激励。</li>
+<li><strong>图 3（PDF 第 13 页）</strong>：相对批发价 $w/(kq^2)$ 随 $\rho$ 的变化展示了“风险补偿结构”：在某些 $\rho$ 区间，零售商必须给显著高于成本的批发价来买库存保险；而当市场状态更偏向高端小量时，零售商反而不愿付保险，$w/(kq^2)$ 回落到 1。</li>
+</ul>
+<hr>
+<h2 id="8-reviewers-critique-senior-editor-reviewer">8. 你的犀利评论 (Reviewer's Critique)：如果我是 Senior Editor/严厉 Reviewer</h2>
+<h3 id="81-strengths">8.1 我会给的正面评价（Strengths）</h3>
+<ol>
+<li><strong>问题选得准</strong>：pull contract 下“上游担风险、下游控质量与价格”是真实且重要的权力结构，文章抓住了它的经济后果。</li>
+<li><strong>模型设计极其克制但有效</strong>：二点估值 + 分布不确定，把复杂的“产品定位+库存风险+灵活产能”压缩到可解析结构；Table 1–3 的分段均衡非常清晰。</li>
+<li><strong>反直觉结果不是噱头</strong>：命题 1–4 的机制叙述严丝合缝，且用图 1–3 辅助解释到位。</li>
+<li><strong>稳健性扩展做得像样</strong>：外生质量（命题 5）、供应商内生选 $\bar Q$（命题 6）、连续分布（命题 7）、对比市场规模不确定（命题 8），边界讲清楚（PDF 第 13–15 页）。</li>
+</ol>
+<h3 id="82-limitations-potential-weaknesses">8.2 我会挑的刺（Limitations / Potential Weaknesses）</h3>
+<ol>
+<li><strong>权力结构过于单边</strong>：零售商 take-it-or-leave-it $w$，供应商没有议价/外部选择（outside option）几乎被压扁，导致高 $\bar Q$ 区间供应商利润直接到 0。  </li>
+<li>这在 Apple–Foxconn 叙事上很契合，但在很多行业（双寡头、长期关系）可能过强。</li>
+<li><strong>reactive capacity 投入没有显式成本（核心模型）</strong>：虽然扩展里让供应商选择 $\bar Q$，但“省略固定成本”会影响投资的比较静态与 welfare 解释（作者承认固定成本会改参数区间，PDF 第 14 页）。</li>
+<li><strong>质量不影响产能/良率</strong>：模型假设 $q$ 只影响成本 $kq^2$ 与需求侧估值，不影响 $C$ 或 $T_s$。现实里高质量往往意味着更慢、更不稳定、更难补产，这可能强化或扭曲非单调结论（作者在结论第一条讨论了 $q$ 与 $\bar Q$ 负相关的可能，PDF 第 15 页）。</li>
+<li><strong>需求端过于“只有两种价位”</strong>：离散估值是刻意简化，但在许多市场里价格-需求函数更平滑；虽然作者给了连续分布扩展（命题 7），但主文对“平滑需求下的定位边界”没有展开，会让一些读者觉得机制依赖离散结构。</li>
+<li><strong>合同空间受限</strong>：只允许线性 wholesale price。作者自己也指出 step-premium、风险分担、退货合约等会缓解结论（PDF 第 16 页）。从机制角度说，这是未来工作机会，也意味着本文结论对“合同不可精细化”的市场更适用。</li>
+</ol>
+<h3 id="83-report">8.3 未来方向（我会在 report 里建议作者或读者做的扩展）</h3>
+<ol>
+<li><strong>内生合同设计</strong>：在 pull contract 框架下加入 buyback / MOQ / menu of contracts，研究何时能同时提升供应商激励与零售商质量选择。</li>
+<li><strong>信息不对称</strong>：供应商私有 $\bar Q$，零售商做推断并设计筛选合同（作者在结论第六点提到但未建模，PDF 第 16–17 页）。</li>
+<li><strong>多供应商竞争</strong>：加入供应商竞争后，零售商压价能力更强，但供应商差异化会改变结论强度（作者最后一段提到，PDF 第 17 页）。</li>
+<li><strong>动态/多期</strong>：把“季前库存+季内补产”变成多期滚动（learning about $\alpha$），看质量与能力投资如何共同演化。</li>
+<li><strong>质量—能力耦合</strong>：让 $C(q)$ 或 $T_s(q)$ 内生，研究“高质量更难 quick response”时的政策与合同含义。</li>
+</ol>
+<hr>
+<h2 id="9-one-more-thing">9. One More Thing：本文最值得偷师的“灵光一现”技巧</h2>
+<p>我认为最漂亮、也最值得你带走复用的技巧是：</p>
+<blockquote>
+<p><strong>用“边际库存单位的售出概率”来直接推导最优/实施所需的批发价溢价结构。</strong></p>
+</blockquote>
+<p>具体地，供应商对一单位季前库存的 break-even 条件是<br>
+$$\Pr(\text{该单位最终被零售商提走})\cdot w = kq^2.$$
+于是零售商为了诱导“只在好市场卖得掉”的库存，就会设置<br>
+$$w=\frac{kq^2}{\rho},$$
+为了诱导“只在坏市场卖得掉”的库存，就会设置<br>
+$$w=\frac{kq^2}{1-\rho}.$$</p>
+<p>这个技巧的妙处在于：它把“合同激励 + 库存风险”从一坨复杂的期望最大化，直接变成一眼可读的经济直觉——<strong>$w$ 本质是风险补偿的保险费率</strong>。<br>
+而一旦你抓住这个点，Table 1–3 的结构就不再是“公式堆砌”，而是一张非常清晰的保险定价表。</p>
+<hr>
+<h2 id="10-referee-report">10. 你如何用这份解析去写 Referee Report（简短建议）</h2>
+<ul>
+<li>Summary 用一句话写：<strong>“pull contract + 分布不确定 + reactive capacity → targeting 与库存风险交互导致质量/利润非单调”</strong>。  </li>
+<li>Contribution 强调两点反直觉（命题 1 与 4），并指出它们来自同一机制链条。  </li>
+<li>Concerns 就抓：权力结构、合同空间、能力成本、质量—能力耦合。  </li>
+<li>Recommendation 给出：若作者能在扩展里更系统处理合同或信息不对称，这会是更强的 OM+Marketing interface 论文。</li>
+</ul>
+<hr>
+    </div>
+  </div>
+</body>
+</html>

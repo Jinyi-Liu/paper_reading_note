@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WP_2025_Di_pre_purchase_sampling_quality_experience_goods</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="pre-purchase-sampling-and-quality-of-experience-goods-ommarketing">Pre-Purchase Sampling and Quality of Experience Goods — 深度解析（OM/Marketing 视角）</h1>
+<p><strong>论文</strong>：<em>Pre-Purchase Sampling and Quality of Experience Goods</em><br>
+<strong>作者</strong>：Chenchen Di, Yuk-fai Fong, Xiaoxuan Meng, Martin Shu<br>
+<strong>版本</strong>：February 23, 2025（Working Paper）  </p>
+<hr>
+<h2 id="_1">目录</h2>
+<ol>
+<li><a href="#研究背景与动机-motivation">研究背景与动机 (Motivation)</a>  </li>
+<li><a href="#模型设定与假设-model-setup--assumptions">模型设定与假设 (Model Setup &amp; Assumptions)</a>  </li>
+<li><a href="#分析与求解-analysis--solution">分析与求解 (Analysis &amp; Solution)</a>  </li>
+<li><a href="#主要结论与管理启示-main-results--managerial-insights">主要结论与管理启示 (Main Results &amp; Managerial Insights)</a>  </li>
+<li><a href="#reviewers-critique犀利审稿意见">Reviewer's Critique（犀利审稿意见）</a>  </li>
+<li><a href="#one-more-thing一个最值得分享的灵光">One More Thing（一个最值得分享的灵光）</a>  </li>
+<li><a href="#复盘推导速查表可用于自己推一遍">复盘推导速查表（可用于自己推一遍）</a>  </li>
+</ol>
+<hr>
+<h2 id="motivation">研究背景与动机 (Motivation)</h2>
+<h3 id="_2">实践痛点：行业里到底卡在哪？</h3>
+<p>经验品（experience goods）的典型痛点是：<strong>质量在购买前不可观察</strong>，消费者只能“买了才知道”。这会带来一组非常具体、非常运营化的难题：</p>
+<ul>
+<li><strong>信任与声誉的脆弱性</strong>：只要当期“偷工减料”能赚到钱，且未来声誉损失不够痛，企业就容易滑向低质量均衡（经典 reputation story）。  </li>
+<li><strong>信息技术改变了“体验”的可得性</strong>：线上评论、测评视频、试用装、门店体验、无理由退货等，让“购买前抽样/采样（sampling）”越来越常见。现实市场因此出现一种奇怪现象：  </li>
+<li>搜索成本下降，有时<strong>搜索更多</strong>（大家更爱比价/看评测）；  </li>
+<li>但也经常出现相反：平台信息更透明后，消费者反而<strong>更少主动搜索</strong>（因为默认平台/品牌会兜底，或质量更稳定）。  </li>
+<li><strong>企业是否应该“补贴”消费者的搜索/试用成本？</strong> 苹果自建大店、亚马逊退货政策等，本质都是企业把消费者“抽样成本”内部化。问题是：这到底是“讨好用户”还是“严肃的利润最大化工具”？</li>
+</ul>
+<p>论文把这些现实现象压缩成一个核心运营问题：<strong>当消费者可以在购买前以成本 $z$ 去抽样质量时，企业的质量选择与定价会如何被重塑？</strong></p>
+<h3 id="_3">理论缺口：现有文献忽略了什么？</h3>
+<p>主流理论往往把“search goods vs. experience goods”当作<strong>外生分类</strong>：<br>
+- search goods：消费者在购买前已知质量（或能无成本获得信息）；<br>
+- experience goods：购买前不知道质量（或信息获取成本高到不搜）。  </p>
+<p>这一外生化假设的副作用是：在经典声誉模型中，如果企业折现因子 $\delta$ 不够高，就很容易得到“高质量无法维持”的结论（存在一个阈值 $\delta_H$，低于它就只能低质量均衡）。论文指出：这可能<strong>不是现实市场的全貌</strong>，因为它忽略了“消费者是否搜索”这一策略变量，以及它与企业质量的战略互相制约关系。</p>
+<p>更具体地说，缺口在于：</p>
+<ul>
+<li>文献里要么研究“经验品 + 声誉”（消费者不搜），要么研究“搜寻模型”（质量分布外生），很少把两者<strong>内生地联动</strong>。  </li>
+<li>经验品分类在实证中并不稳定：同一类产品在不同研究里被分到不同类别（相机、数码相机等）；仅靠“信息技术进步 → 更搜索化”并不能解释这种反复横跳。论文要给一个<strong>机制层面的解释</strong>：分类不是单向演化，而可能因为价格/声誉激励的变化而“回到体验品”。</li>
+</ul>
+<h3 id="significance">核心贡献：Significance 在哪里？</h3>
+<p>把贡献拆成“理论上 + 机制上 + 管理上”三层更清晰：</p>
+<ol>
+<li>
+<p><strong>理论贡献：将 search–experience 分类内生化为一个连续谱</strong><br>
+   用消费者的均衡搜索频率 $\sigma$ 来“揭示”产品在市场中到底更像 search good 还是 experience good：$\sigma$ 高则更“search”，$\sigma$ 低则更“experience”。这把离散分类变成连续度量。</p>
+</li>
+<li>
+<p><strong>关键机制贡献：低 $\delta$ 下也能出现“部分高质量”</strong><br>
+   在动态垄断声誉模型中，当 $\delta &lt; \delta_H$ 时，传统结论常是“只能低质量”。论文证明：只要抽样成本 $z$ 低到一定程度，就会出现一个<strong>混合策略均衡（Mixed-strategy Equilibrium, ME）</strong>：企业以正概率提供高质量，且下界可达到 $1/2$；消费者也以正概率抽样。<br>
+   直觉一句话：<strong>消费者“偶尔抽查”就足以给企业质量施加纪律</strong>，而企业“偶尔作恶”又恰好维持了消费者抽样的动机。</p>
+</li>
+<li>
+<p><strong>反直觉比较静态：$z$ 下降并不必然让 $\sigma$ 上升</strong><br>
+   在同一个 ME 内部，$z$ 越低，企业越常做高质量（$q$ 上升），消费者反而<strong>更少抽样</strong>（$\sigma$ 下降）。再叠加“从低质量均衡切换到混合均衡”的离散跃迁，就得到一个更丰富的、可用于解释实证分歧的非单调预测。</p>
+</li>
+<li>
+<p><strong>管理/策略贡献：企业愿意吸收抽样成本是利润最大化，不只是“服务好”</strong><br>
+   允许企业承担抽样成本的一部分（参数 $\beta$）后，论文给出结论：在可行区域内企业的价值对 $\beta$ <strong>严格递增</strong>，因此最优是 $\beta^*=1$（全额承担）。这为“免费试用/免费退货/线下体验店”等策略提供了清晰的博弈论解释。</p>
+</li>
+</ol>
+<hr>
+<h2 id="model-setup-assumptions">模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<p>论文分三层：<strong>静态基准模型</strong> → <strong>动态声誉模型</strong> → <strong>抽样成本分摊扩展</strong>。下面按“符号—结构—目标函数—关键假设”把它们一次摆平。</p>
+<h3 id="_4">符号体系（统一记号）</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>质量与成本</td>
+<td>$Q\in{H,L}$</td>
+<td>企业选择的质量：高 $H$ 或低 $L$</td>
+</tr>
+<tr>
+<td></td>
+<td>$c_h, c_l$</td>
+<td>对应质量的生产成本，且 $c_h&gt;c_l$</td>
+</tr>
+<tr>
+<td>价值</td>
+<td>$v_h, v_l$</td>
+<td>消费者对高/低质量的估值，且 $v_h&gt;v_l$</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>$p$</td>
+<td>企业设定的单价（可被消费者观察）</td>
+</tr>
+<tr>
+<td>抽样</td>
+<td>$z&gt;0$</td>
+<td>消费者购买前检查质量的成本（sampling/inspection cost）</td>
+</tr>
+<tr>
+<td>策略概率</td>
+<td>$\sigma\in[0,1]$</td>
+<td>消费者进行抽样（inspection）的概率</td>
+</tr>
+<tr>
+<td></td>
+<td>$q\in[0,1]$</td>
+<td>企业生产高质量的概率（混合策略）</td>
+</tr>
+<tr>
+<td>动态</td>
+<td>$\delta\in(0,1)$</td>
+<td>企业折现因子（长寿命企业）</td>
+</tr>
+<tr>
+<td></td>
+<td>$y\in{0,1,2,3}$</td>
+<td>每期公共结果（质量 × 是否抽样）</td>
+</tr>
+<tr>
+<td></td>
+<td>$v(y)$</td>
+<td>在公共结果 $y$ 后企业的续值（continuation value）</td>
+</tr>
+<tr>
+<td></td>
+<td>$\rho\in[0,1]$</td>
+<td>发现低质量后，公共随机装置让未来继续 ME 的概率</td>
+</tr>
+<tr>
+<td>成本分摊扩展</td>
+<td>$\beta\in[0,1]$</td>
+<td>企业承担抽样成本的比例（买方承担 $(1-\beta)z$）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>经济学上你可以把 $\sigma$ 视为“市场可观察到的搜寻强度”，把 $q$ 视为“质量纪律水平”，两者互为因果：$\sigma$ 让 $q$ 有动力，$q$ 让 $\sigma$ 有必要。</p>
+</blockquote>
+<h3 id="_5">博弈/决策结构</h3>
+<h4 id="a">(A) 静态模型：一次性交易 + 购买前抽样</h4>
+<ul>
+<li><strong>Players</strong>：垄断企业（firm）、单个消费者（consumer），均风险中性。  </li>
+<li><strong>Sequence of Events</strong>：  </li>
+<li>企业同时选择质量 $Q$ 与价格 $p$，但<strong>只有 $p$ 可观察</strong>；  </li>
+<li>消费者选择是否抽样（支付 $z$）并观察到真实质量；  </li>
+<li>消费者决定买/不买（论文假设无差异时购买）。  </li>
+<li><strong>Information structure</strong>：价格可观察；质量在抽样前不可观察；抽样信息完美。</li>
+</ul>
+<h4 id="b">(B) 动态模型：长寿命企业 + 短寿命消费者序列 + 公共历史</h4>
+<ul>
+<li>每期有一个短寿命消费者；企业跨期存在，折现因子 $\delta$。  </li>
+<li><strong>关键设定</strong>：期末质量会成为公共信息（无论消费者是否抽样）。  </li>
+<li>低质量被观察到后，触发惩罚路径：以概率 $\rho$ 继续 ME，以概率 $1-\rho$ 进入低质量纯策略（LE）。  </li>
+<li>均衡概念：<strong>Perfect Public Equilibrium (PPE)</strong>，并且论文聚焦“对企业最优（profit-maximizing）的均衡选择”。</li>
+</ul>
+<h4 id="c">(C) 扩展：抽样成本分摊</h4>
+<ul>
+<li>企业事先选择承担比例 $\beta$；消费者实际承担的抽样成本变为 $(1-\beta)z$；企业每次抽样要付 $\beta z$（通常发生在抽样事件上）。</li>
+</ul>
+<h3 id="_6">目标函数与约束</h3>
+<h4 id="_7">消费者（单期效用）</h4>
+<ul>
+<li>若不抽样直接购买：<br>
+  $$U_{\text{buy}} = q(v_h-p) + (1-q)(v_l-p)$$</li>
+<li>若抽样后再决定：<br>
+  $$U_{\text{inspect}} = -z + q(v_h-p)$$
+  （若抽到低质量就不买，因此低质量不贡献价值项）</li>
+</ul>
+<p>在成本分摊扩展中，$z$ 换成 $(1-\beta)z$。</p>
+<h4 id="_8">企业（单期利润 + 动态续值）</h4>
+<ul>
+<li>静态：  </li>
+<li>选 $H$：利润 $p-c_h$（消费者买）  </li>
+<li>
+<p>选 $L$：若消费者抽样则不买；否则买，期望利润 $(1-\sigma)(p-c_l)$  </p>
+</li>
+<li>
+<p>动态：引入公共结果 $y$ 的续值 $v(y)$。论文把每期公共结果定义为：  </p>
+</li>
+<li>$y=0$：低质量、未抽样  </li>
+<li>$y=1$：低质量、抽样  </li>
+<li>$y=2$：高质量、未抽样  </li>
+<li>$y=3$：高质量、抽样  </li>
+</ul>
+<p>企业的动态价值写成（论文的核心式子之一）：<br>
+$$
+v = (1-q)\left[(1-\sigma)(p-c_l+\delta v(0))+\sigma\delta v(1)\right] + q\left[(1-\sigma)(p-c_h+\delta v(2))+\sigma(p-c_h+\delta v(3))\right].
+$$</p>
+<p>企业必须满足<strong>激励相容（IC）</strong>：当它在 ME 中以正概率选择高质量时，高质量不能被“当期偷懒 + 未来被惩罚”所支配。</p>
+<h3 id="_9">关键假设（以及为什么这样设）</h3>
+<ol>
+<li><strong>两点质量（binary quality）</strong>：$H/L$ 足够干净地抓住“偷工减料 vs. 维持品质”的道德风险；也让混合策略均衡能写出闭式解。  </li>
+<li><strong>抽样信息完美</strong>：抽样一旦发生，能准确发现质量。这是“强假设”，但它把重点放在“抽样频率 $\sigma$ 如何作为纪律工具”上。后文 critique 会吐槽它。  </li>
+<li><strong>期末质量公共化</strong>：即便消费者没抽样，市场也会在期末知道质量（比如口碑/曝光/投诉/社媒爆雷）。这让声誉机制更强，也让 PPE 分析可行。  </li>
+<li><strong>企业可选择价格但不可承诺质量</strong>：价格可即时观察，所以它成为信号/承诺工具的候选，但质量仍需要靠声誉或抽样纪律来约束。  </li>
+<li><strong>均衡选择：企业挑“最优均衡”</strong>：论文把注意力放在“企业利润最大”的 PPE。作为建模选择，它对应“企业通过协调、营销、制度设计把市场引导到对自己最有利的稳定均衡”。</li>
+</ol>
+<hr>
+<h2 id="analysis-solution">分析与求解 (Analysis &amp; Solution)</h2>
+<h3 id="1">1) 静态模型：为什么必然出现混合策略？</h3>
+<p>先把“直觉不可能”的纯策略排除掉：</p>
+<ul>
+<li>若消费者总抽样（$\sigma=1$），企业必定选高质量（否则卖不出去）；但消费者知道企业必选高质量后，就不抽样更好（省 $z$）。因此 $\sigma=1$ 不稳。  </li>
+<li>若企业总高质量（$q=1$），消费者也不抽样；但企业此时有动力改成低质量赚成本差（取决于是否能卖出）。因此 $q=1$ 也不稳（在静态里尤其明显）。  </li>
+</ul>
+<p>所以要让双方都“有理由随机化”，必须让两条无差异条件同时成立：</p>
+<h4 id="i-vs">(i) 消费者在“抽样 vs. 不抽样”之间无差异</h4>
+<p>$$-z + q(v_h-p) = q(v_h-p) + (1-q)(v_l-p).$$</p>
+<p>整理得出价格与质量概率的关系：</p>
+<p>$$p = v_l + \frac{z}{1-q}.$$</p>
+<p>这句很关键：<strong>要让消费者愿意花 $z$ 抽样，企业必须通过提高 $p$（或提高低质量概率 $1-q$）让“抽样能避免踩雷”这件事变得有价值。</strong></p>
+<h4 id="ii-vs">(ii) 企业在“高质量 vs. 低质量”之间无差异</h4>
+<p>高质量利润：$p-c_h$（一定卖出）。<br>
+低质量利润：只有在不抽样时卖出，期望利润 $(1-\sigma)(p-c_l)$。</p>
+<p>无差异条件：</p>
+<p>$$p-c_h = (1-\sigma)(p-c_l),$$</p>
+<p>从而得到消费者抽样概率：</p>
+<p>$$\sigma = \frac{c_h-c_l}{p-c_l}.$$</p>
+<p>直觉：<strong>价格越高，企业每次卖出赚得越多，越怕被抽样发现低质量导致卖不出去，于是消费者不必抽样那么频繁也能“管住企业”。</strong></p>
+<h4 id="iii">(iii) 选择“对企业最优”的混合均衡：参与约束绑定</h4>
+<p>论文进一步要求：在所有可能均衡中挑企业利润最高的（等价于尽可能高的 $p-c_h$）。此时消费者参与约束会绑定（否则企业还能再抬价一点点）。</p>
+<p>最终得到闭式解（取对企业更好的那一支）：</p>
+<p>$$\Delta = \sqrt{(v_h-v_l)(v_h-v_l-4z)}$$</p>
+<p>$$p^* = \frac{1}{2}(v_h+v_l+\Delta)$$</p>
+<p>$$q^* = \frac{1}{2}+\sqrt{\frac{1}{4}-\frac{z}{v_h-v_l}} \in \left(\frac{1}{2},1\right)$$</p>
+<p>$$\sigma^* = \frac{2(c_h-c_l)}{v_h+v_l-2c_l+\Delta}.$$</p>
+<p><strong>存在条件</strong>：$\Delta$ 要为实数，因此需要 $4z\le v_h-v_l$，即：</p>
+<p>$$z \le \frac{v_h-v_l}{4}.$$</p>
+<blockquote>
+<p>这里出现一个很“运营学”的门槛：抽样成本并不需要低到“低于价格”，而是低到“相对质量溢价 $v_h-v_l$ 的四分之一以内”。这比一些直觉式说法（例如“只要 $z&lt;p$ 就会抽样”）更尖锐。</p>
+</blockquote>
+<h4 id="_10">静态均衡的经济学直觉（别只看公式）</h4>
+<p>这类混合策略均衡的核心是一个“互相喂养的最小强度”：</p>
+<ul>
+<li>消费者抽样的意义，只在于<strong>阻止企业出低质量</strong>；因此企业必须偶尔出低质量（$1-q&gt;0$）才能让抽样有意义。  </li>
+<li>企业出高质量的意义，只在于<strong>避免被抽样抓包导致卖不出去</strong>；因此消费者必须偶尔抽样（$\sigma&gt;0$）才能让高质量有激励。  </li>
+</ul>
+<p>它不是在描述“消费者喜欢搜索”，而是在描述“搜索作为一种纪律工具（monitoring）被内生地产生”。</p>
+<hr>
+<h3 id="2">2) 动态模型：经典声誉阈值 + 新的混合策略最优均衡</h3>
+<h4 id="21-delta_h">2.1 不允许抽样时：经典声誉阈值 $\delta_H$</h4>
+<p>当质量不可在购买前被发现（且消费者不抽样），动态垄断声誉模型给出两个均衡：</p>
+<ul>
+<li>
+<p><strong>低质量均衡（LE）</strong>：企业永远低质量，价格 $p=v_l$，利润现值<br>
+  $$\pi_L = \frac{v_l-c_l}{1-\delta}.$$</p>
+</li>
+<li>
+<p><strong>高质量均衡（HE）</strong>：企业永远高质量，价格 $p=v_h$，但需要企业足够耐心。约束来自“当期偷懒”与“未来声誉损失”的比较：</p>
+</li>
+</ul>
+<p>$$\delta \ge \delta_H \equiv \frac{c_h-c_l}{v_h-v_l}.$$</p>
+<p>若满足，则利润现值</p>
+<p>$$\pi_H = \frac{v_h-c_h}{1-\delta}.$$</p>
+<p>这就是文献里常见的“折现因子不够高，高质量维持不了”的结论。</p>
+<h4 id="22-deltadelta_h">2.2 允许抽样后：当 $\delta&lt;\delta_H$ 也可能出现高质量（以正概率）</h4>
+<p>论文的核心新结果是 Proposition 1：当 $\delta&lt;\delta_H$ 且 $z$ 足够小，会出现一个 <strong>Mixed-strategy Equilibrium (ME)</strong>，并且对企业来说比 LE 更赚钱，因此它是“最优均衡”。</p>
+<p>Proposition 1 把最优均衡分三块：</p>
+<ol>
+<li><strong>$\delta \ge \delta_H$</strong>：HE 最优，$(\sigma,p,q)=(0,v_h,1)$。  </li>
+<li><strong>$\delta&lt;\delta_H$ 且 $z$ 够低</strong>：ME 最优。存在一个阈值 $\bar z$，当 $z\in(0,\bar z)$ 时 ME 被企业选择。  </li>
+<li><strong>$z$ 太高</strong>：回到 LE（$\sigma=0,q=0,p=v_l$）。</li>
+</ol>
+<p>这里的 $\bar z$（论文给出分段表达）：</p>
+<p>$$
+\bar z \equiv
+\begin{cases}
+\frac{v_h-v_l}{4}, &amp; \text{if } \delta_H \le \frac{1}{2},\
+\delta_H(1-\delta_H)(v_h-v_l), &amp; \text{otherwise}.
+\end{cases}
+$$</p>
+<p>在 ME 中，价格与质量概率仍然有漂亮的闭式：</p>
+<p>$$q^* = \frac{1}{2}+\sqrt{\frac{1}{4}-\frac{z}{v_h-v_l}} \in \left(\frac{1}{2},1\right)$$</p>
+<p>$$p^* = \frac{1}{2}\left(v_h+v_l+\sqrt{(v_h-v_l)(v_h-v_l-4z)}\right).$$</p>
+<p>并且企业的贴现利润现值是：</p>
+<p>$$V^<em> = \frac{p^</em>-c_h}{1-\delta}.$$</p>
+<p>消费者抽样概率 $\sigma^*$ 在动态里更复杂，因为它要把惩罚路径（$\rho$）和折现（$\delta$）都吃进去。论文给出：</p>
+<p>$$
+\sigma^* =
+\frac{2(c_h-c_l)-\delta(1-\rho)\left(v_h-v_l+\sqrt{(v_h-v_l)(v_h-v_l-4z)}\right)}
+{(1-\delta(1-\rho))\left(v_h+v_l+\sqrt{(v_h-v_l)(v_h-v_l-4z)}-2c_l\right)}
+\in (0,1),
+$$</p>
+<p>并证明其 <strong>随 $z$ 上升而上升，随 $\delta$ 上升而下降</strong>。</p>
+<h4 id="me">ME 的求解逻辑（你应该怎样“复盘它怎么推出来”）</h4>
+<p>论文在附录里把 ME 写成一个“企业最大化问题”，约束包括：</p>
+<ul>
+<li>企业在 $H$ 与 $L$ 之间的 IC：高质量至少不比偷懒差；  </li>
+<li>消费者参与约束（PC）绑定：否则企业还能抬价；  </li>
+<li>消费者抽样决策由无差异条件决定：抽样和不抽样期望效用相同（在 ME 内部）。  </li>
+</ul>
+<p>关键技巧是：在 PPE 下，公共结果的续值可以被整理成两个极值 $v,\bar v$，并利用“提高 $v(2),v(3)$ 总是更好”这样的单调性，让续值在最优解里取边界值，从而把动态问题压缩成可解的闭式表达。</p>
+<blockquote>
+<p>这一步非常 OM：把动态复杂性“折叠”进少数几个 continuation values，然后用激励约束把它们压到边界上。</p>
+</blockquote>
+<hr>
+<h3 id="3-comparative-statics">3) 比较静态 (Comparative Statics)：参数怎么推动均衡？</h3>
+<p>分两种：<strong>均衡内部变化</strong> vs. <strong>均衡类型切换</strong>。论文最“反直觉”的点来自把这两种效果叠加。</p>
+<h4 id="31-me-z">3.1 在同一个 ME 内部：$z$ 越低，消费者越少抽样</h4>
+<p>在 ME 中，论文给出明确推论：</p>
+<ul>
+<li>$z$ 下降 $\Rightarrow$ $q^*$ 上升（更常高质量）  </li>
+<li>$z$ 下降 $\Rightarrow$ $p^*$ 上升（企业能收取更高的声誉溢价）  </li>
+<li>$z$ 下降 $\Rightarrow$ $\sigma^*$ 下降（消费者更少抽样）</li>
+</ul>
+<p>经济直觉是一个“声誉价值—抽样强度”的替代关系：</p>
+<ul>
+<li>$z$ 低意味着抽样更便宜，从而企业若出低质量更容易被抓到，<strong>声誉的惩罚更有效</strong>；  </li>
+<li>企业因此愿意更常出高质量，且敢抬价；  </li>
+<li>价格越高，企业未来利润越大，越怕被抓包，消费者就不需要频繁抽样来维持纪律。  </li>
+</ul>
+<p>一句话总结：<strong>抽样越便宜，市场越容易“自我驯化”到低抽样频率但高质量的状态。</strong></p>
+<p>这也解释了为什么“更透明的市场不一定观察到更多搜索”。</p>
+<h4 id="32-delta-sigma-pq">3.2 折现因子 $\delta$ 的作用：只影响 $\sigma$，不影响 $p,q$</h4>
+<p>在 ME 中：</p>
+<ul>
+<li>$p^<em>$ 与 $q^</em>$ 不依赖 $\delta$（论文的 Corollary 3）。  </li>
+<li>$\delta$ 上升 $\Rightarrow$ $\sigma^*$ 下降。</li>
+</ul>
+<p>直觉：在 ME 中企业用价格把消费者的期望效用压到 $0$（参与约束绑定），因此每期“单位利润结构”被定价吸收掉了，$p,q$ 主要由“抽样成本 $z$ 与质量溢价 $v_h-v_l$”决定；而 $\delta$ 只影响“需要多频繁抽样才能维持企业不偷懒”的纪律强度。</p>
+<h4 id="33-z-sigma">3.3 关键的非单调：$z$ 下降会让 $\sigma$ 先跳升、再下降</h4>
+<p>当 $\delta&lt;\delta_H$ 时：</p>
+<ul>
+<li>$z$ 很高：只有 LE，$\sigma=0$。  </li>
+<li>当 $z$ 下降穿过阈值 $\bar z$：企业最优均衡从 LE 切到 ME，$\sigma$ 从 $0$ <strong>离散跳到正值</strong>（Corollary 2 也指出质量概率会从 $0$ 跳到 $1/2$）。  </li>
+<li>在 ME 区间里继续下降 $z$：$\sigma$ <strong>连续下降</strong>。  </li>
+</ul>
+<p>所以总体上 $\sigma(z)$ 可能呈现“先上升（均衡切换）再下降（均衡内比较静态）”的形状。论文用这一点去解释实证中看似矛盾的发现：有的研究发现互联网增加总搜索，有的发现互联网减少搜索。</p>
+<hr>
+<h3 id="4">4) 扩展：抽样成本分摊（企业为什么愿意“买单”？）</h3>
+<p>引入 $\beta\in[0,1]$：企业承担 $\beta z$，消费者承担 $(1-\beta)z$。</p>
+<p>在 ME 中，消费者的无差异条件等价于把 $z$ 替换成 $(1-\beta)z$，因此：</p>
+<p>$$q(\beta) = \frac{1}{2}+\sqrt{\frac{1}{4}-\frac{(1-\beta)z}{v_h-v_l}}$$</p>
+<p>$$p(\beta) = \frac{1}{2}\left(v_h+v_l+\sqrt{(v_h-v_l)(v_h-v_l-4(1-\beta)z)}\right).$$</p>
+<p>价格与高质量概率都随 $\beta$ 上升而上升：<strong>企业承担越多抽样成本，越能抬价、越能更常高质量。</strong></p>
+<p>但企业也要付抽样发生时的成本 $\sigma \beta z$。论文把企业的贴现价值写成（在最优结构下）：</p>
+<p>$$V(\beta) = \frac{p(\beta)-c_h-\sigma(\beta)\beta z}{1-\delta}.$$</p>
+<h4 id="lemma-2-beta-beta1">Lemma 2：企业价值对 $\beta$ 严格递增，最优 $\beta^*=1$</h4>
+<p>论文证明：</p>
+<p>$$\frac{dV}{d\beta} &gt; 0,$$</p>
+<p>所以企业最优是全额承担抽样成本。直觉是：</p>
+<ul>
+<li>企业承担抽样成本，相当于把消费者的抽样门槛拉低；  </li>
+<li>这让企业更容易通过“潜在抽样威胁”维持高质量，从而抬价获取更大声誉溢价；  </li>
+<li>额外的定价收益与声誉激励提升，超过了企业为抽样买单的成本。</li>
+</ul>
+<h4 id="proposition-2-deltadelta_h-q1">Proposition 2：当企业全额承担时，竟然能在 $\delta&lt;\delta_H$ 下实现 $q=1$</h4>
+<p>当 $\beta^*=1$ 且 $z$ 落在一定范围 $(0,\bar z_{CS})$ 内，最优均衡变成：</p>
+<ul>
+<li>$q^*_{CS}=1$（企业每期都高质量）  </li>
+<li>$p^*_{CS}=v_h$（企业把高质量价值几乎吃干抹净）  </li>
+<li>消费者仍以正概率抽样 $\sigma^*_{CS}$，但抽样成本由企业承担。  </li>
+</ul>
+<p>这背后是一个非常“机制设计味”的观点：<strong>企业付钱买监控强度（让消费者更愿意抽样），从而获得更强的自我约束能力，最终能收取更高价格。</strong>  </p>
+<p>这解释了很多看似“宠客户”的政策：它们不仅是让消费者爽，更是在给企业自己装上一个可盈利的声誉约束器。</p>
+<hr>
+<h2 id="main-results-managerial-insights">主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="benchmark-trade-off">机制揭示：相比 Benchmark，模型新增了什么 trade-off？</h3>
+<p>把论文的机制浓缩成三个“对照”：</p>
+<ol>
+<li>
+<p><strong>从“声誉靠耐心”到“声誉靠抽样纪律”</strong><br>
+   传统结果：要高质量，企业必须很耐心（高 $\delta$）。<br>
+   新结果：即便 $\delta$ 低，只要 $z$ 足够低，消费者的抽样威胁也能让企业以正概率提供高质量。</p>
+</li>
+<li>
+<p><strong>消费者搜索不是“越便宜越多”，而是“越便宜越不需要多”</strong>（在 ME 内部）<br>
+   抽样成本下降 → 企业更守规矩、价格更高 → 消费者反而减少抽样频率。<br>
+   这是一种“纪律替代”：高质量本身替代了抽样频率。</p>
+</li>
+<li>
+<p><strong>企业吸收抽样成本并不减少利润，反而可能是利润放大器</strong><br>
+   免费试用/退货/体验店的作用不是简单让利，而是把抽样威胁做强，从而支撑更高定价与更高质量概率。</p>
+</li>
+</ol>
+<h3 id="_11">管理建议：能落到动作层面的启示</h3>
+<p>下面把建议按“谁在做决策”分组。</p>
+<h4 id="a_1">(A) 对企业（定价、渠道、服务政策）</h4>
+<ul>
+<li><strong>把“降低消费者抽样成本”当作质量与定价的战略投资</strong>：<br>
+  退货政策、线下体验、试用装、样品、Demo、透明质检、第三方评测合作，本质是在降低有效 $z$。  </li>
+<li><strong>别用“搜索量/浏览量”直接衡量信息透明的效果</strong>：<br>
+  如果你降了 $z$ 但观察到消费者更少搜索，不必立刻悲观；模型告诉你这可能意味着 $q$ 上升、声誉价值更高、消费者更信任。  </li>
+<li><strong>当企业不够“耐心”（短期压力大）时，反而更应该投资抽样机制</strong>：<br>
+  在 $\delta$ 低的行业（快消、网红品牌、短生命周期品类），通过抽样机制建立纪律可能是替代长期声誉积累的捷径。  </li>
+</ul>
+<h4 id="b_1">(B) 对平台/政策制定者（治理与福利）</h4>
+<ul>
+<li><strong>提高可验证信息的可得性（降低 $z$）可以显著提高质量供给</strong>，尤其在原本靠声誉难以维持高质量的市场（$\delta$ 低）。  </li>
+<li><strong>鼓励企业承担抽样成本（例如退货保护、保证金制度）</strong>：理论上可能同时提高质量与企业利润，且改善消费者风险。  </li>
+<li><strong>分类监管应避免把“搜索频率高”当作唯一信号</strong>：搜索频率下降可能意味着机制更有效，而不是信息更匮乏。</li>
+</ul>
+<h3 id="figure-1">图表解释：Figure 1 想告诉你什么？</h3>
+<p>论文 Figure 1 用 $(\delta,z)$ 平面画出了企业最优均衡的区域：</p>
+<ul>
+<li><strong>右上角（$\delta$ 高）</strong>：HE 区域——企业足够耐心，不需要抽样也能维持高质量。产品在观察上更像 experience good（$\sigma=0$）。  </li>
+<li><strong>左上角（$z$ 高、$\delta$ 低）</strong>：LE 区域——抽样太贵且企业不耐心，市场锁在低质量、低价、零抽样。  </li>
+<li><strong>左下角（$z$ 低、$\delta$ 低）</strong>：ME 区域——抽样可行，消费者以正概率抽样，企业以正概率高质量。  </li>
+</ul>
+<p>图里还隐含两层“分级”：</p>
+<ul>
+<li>随 $z$ 下降（在 ME 内），产品质量更高（$q$ 上升），但抽样频率更低（更像 experience）。  </li>
+<li>因此“更搜索化”与“更高质量”并不总是同步。</li>
+</ul>
+<hr>
+<h2 id="reviewers-critique">Reviewer's Critique（犀利审稿意见）</h2>
+<p>下面用“Senior Editor/Reviewer”的口吻，既夸也怼，并给出可做的扩展方向。</p>
+<h3 id="_12">亮点（强项）</h3>
+<ol>
+<li><strong>机制新且清楚</strong>：把消费者抽样作为“内生监控”引入经验品声誉模型，给出了可解释、可检验的非单调预测。  </li>
+<li><strong>闭式解漂亮</strong>：$q^<em>,p^</em>$ 这类表达式非常利于做比较静态、画图、讲故事，也利于后续论文引用与扩展。  </li>
+<li><strong>管理含义明确</strong>：吸收抽样成本 $\Rightarrow$ 更高价格与更高质量，并非纯福利让渡，而是战略工具；这对平台治理与零售策略都有解释力。  </li>
+</ol>
+<h3 id="_13">主要问题（弱点/潜在攻击点）</h3>
+<ol>
+<li>
+<p><strong>“期末质量公共化”假设很强</strong><br>
+   论文假设无论是否抽样，期末质量都会成为公共信息。现实里很多产品质量只有在“购买并使用”后才慢慢显现，而且噪声很大；若没有购买，外部未必能观察质量。这一设定显著强化了声誉机制与惩罚路径，可能放大了 ME 的可行性。<br>
+<em>建议</em>：考虑“只有购买后/一段时间后/以概率”才公开质量，或引入 noisy rating。</p>
+</li>
+<li>
+<p><strong>抽样信息完美、且消费者可无成本拒买</strong><br>
+   现实抽样经常是噪声信号（试用不等于长期体验），且拒买可能有摩擦（时间成本、机会成本、订金等）。完美抽样让 $\sigma$ 的纪律作用过于锋利。<br>
+<em>建议</em>：引入抽样信号精度 $\alpha$（Bayesian updating），或者拒买成本 $k$。</p>
+</li>
+<li>
+<p><strong>垄断结构过于干净</strong><br>
+   在竞争市场中，抽样可能改变需求分配、价格竞争与信息外部性，甚至让“过度抽样”成为社会浪费。垄断下企业能完全攫取剩余（参与约束绑定），因此很多结论（例如 $p,q$ 对 $\delta$ 的独立性）可能依赖这一点。<br>
+<em>建议</em>：扩展到 duopoly（Bertrand/Hotelling），看抽样如何与竞争一起塑造质量与利润。</p>
+</li>
+<li>
+<p><strong>均衡选择（firm picks optimal PPE）需要更强的叙事支撑</strong><br>
+   论文直接聚焦“企业最优的 PPE”。但在博弈论上，多个 PPE 并存时，谁来选？为什么市场会协调到对企业最有利的那个？这在审稿时常被抓。<br>
+<em>建议</em>：给出 refinement 或制度设计解释（例如企业通过承诺政策、平台规则、广告/披露选择来选择均衡），或者讨论 robust equilibrium selection。</p>
+</li>
+<li>
+<p><strong>消费者同质、且每期只有一个消费者</strong><br>
+   实际市场的抽样者比例往往来自消费者异质性（风险偏好、信息素养、时间成本）。本模型用同质消费者也能生成混合行为，这是优点，但也可能限制对数据的映射。<br>
+<em>建议</em>：加入消费者类型 $z_i$ 或价值 $v_i$ 的分布，看看 aggregate search 如何随技术变化而动。</p>
+</li>
+</ol>
+<h3 id="_14">未来研究方向（可扩展、也更容易发）</h3>
+<ul>
+<li><strong>竞争与平台机制</strong>：加入平台推荐/排序、评论系统、退货政策作为平台选择变量，研究平台如何通过改变有效 $z$ 影响质量生态。  </li>
+<li><strong>多维质量</strong>：把质量拆成“可搜索属性”与“体验属性”，并允许消费者选择抽样哪个维度（与 Klein 1998 的经验叙事更贴合）。  </li>
+<li><strong>动态学习与贝叶斯声誉</strong>：让消费者从历史信号更新对企业类型/努力成本的信念，而不是使用“观察到低质量就永远低质量”的 grim belief。  </li>
+<li><strong>契约与机制设计</strong>：把“退款/保修/押金/质保延长”作为企业的合同条款，研究它们如何替代/补充抽样纪律。  </li>
+<li><strong>行为因素</strong>：现实中的“过度自信/有限注意/误判评论质量”会让 $\sigma$ 与 $z$ 的关系更复杂，适合与 Marketing Science 的行为 IO/信息处理文献对接。</li>
+</ul>
+<hr>
+<h2 id="one-more-thing">One More Thing（一个最值得分享的灵光）</h2>
+<p>论文最值得反复品的“灵光点”是：<strong>把“消费者搜不搜”从偏好问题变成激励问题</strong>。</p>
+<p>在很多讨论里，“搜索”被当作消费者的自然行为：信息越便宜，大家越爱搜。论文做了一个很聪明的转向：在经验品声誉环境下，搜索不是目的，而是<strong>一种纪律工具</strong>。纪律的目标是让企业维持高质量；当企业更守规矩时，纪律工具就可以用得更少——于是出现“抽样更便宜，反而更少抽样”的反直觉结果。</p>
+<p>数学上，这个灵光对应一个非常干净的结构：在 ME 中消费者参与约束绑定，企业用价格把消费者剩余压到零，因而 $p^<em>$ 与 $q^</em>$ 主要由“质量溢价 $v_h-v_l$ 与抽样成本 $z$”决定，而对 $\delta$ 不敏感；$\delta$ 只通过影响需要多强监控（$\sigma$）来维持 IC。这个“把动态激励吃进价格/监控强度分解”的技巧，很值得偷师。</p>
+<hr>
+<h2 id="_15">复盘推导速查表（可用于自己推一遍）</h2>
+<p>下面按“你自己推一遍”最省心的路线列出关键步骤；每一步都对应一个约束绑定或无差异条件。</p>
+<h3 id="a-mixed-equilibrium">A. 静态模型（Mixed equilibrium）</h3>
+<ol>
+<li>写出消费者两种选择的期望效用：<br>
+   $U_{\text{inspect}}=-z+q(v_h-p)$，$U_{\text{buy}}=q(v_h-p)+(1-q)(v_l-p)$。  </li>
+<li>令两者无差异，得到：<br>
+   $$p = v_l+\frac{z}{1-q}.$$  </li>
+<li>写出企业高/低质量利润并令无差异：<br>
+   $$p-c_h=(1-\sigma)(p-c_l)\Rightarrow \sigma=\frac{c_h-c_l}{p-c_l}.$$  </li>
+<li>用参与约束与“企业最优均衡”选择，得到闭式 $(p^<em>,q^</em>,\sigma^*)$，并检查存在条件 $4z\le v_h-v_l$。</li>
+</ol>
+<h3 id="b-ppe">B. 动态模型（PPE + 最优均衡）</h3>
+<ol>
+<li>先复习无抽样的声誉阈值：<br>
+   $$\delta_H=\frac{c_h-c_l}{v_h-v_l}.$$  </li>
+<li>引入公共结果 $y\in{0,1,2,3}$ 与续值 $v(y)$，写出企业价值 $v$。  </li>
+<li>用单调性论证在最优解里 $v(0)=v(1)=\underline v$ 且 $v(2)=v(3)=\bar v$（低质量触发惩罚路径）。  </li>
+<li>绑定消费者参与约束（否则企业抬价）。  </li>
+<li>在 ME 内部，消费者抽样决策由无差异条件固定 $q$ 与 $p$ 的关系，最终得到与静态类似的闭式 $q^<em>,p^</em>$。  </li>
+<li>用企业 IC（包含 $\delta,\rho$ 与续值差）解出 $\sigma^*$，并验证其随 $z$、$\delta$ 的单调性。  </li>
+<li>与 LE 的利润比较，推出阈值 $\bar z$ 并完成 Proposition 1 的区域划分。</li>
+</ol>
+<h3 id="c-beta">C. 成本分摊（$\beta$）</h3>
+<ol>
+<li>把 $z$ 替换为 $(1-\beta)z$，得到 $q(\beta),p(\beta)$。  </li>
+<li>写出企业需支付的期望抽样成本 $\sigma\beta z$，形成价值<br>
+   $$V(\beta)=\frac{p(\beta)-c_h-\sigma(\beta)\beta z}{1-\delta}.$$  </li>
+<li>证明 $\frac{dV}{d\beta}&gt;0$，得出 $\beta^*=1$。  </li>
+<li>在 $\beta^<em>=1$ 下，给出 Proposition 2：$q^</em><em>{CS}=1,p^<em>_{CS}=v_h$，并刻画 $\sigma^</em></em>{CS}$ 与 $z$ 的关系。</li>
+</ol>
+<hr>
+<p><strong>文末注</strong>：本文档严格围绕论文的模型结构、均衡逻辑与经济学机制展开；若你打算把它写进自己的研究（尤其是把“抽样成本”映射到平台机制或服务政策），建议直接从“$\sigma$ 作为监控强度、$q$ 作为纪律结果”的视角重写你自己的版本，会非常顺。</p>
+    </div>
+  </div>
+</body>
+</html>

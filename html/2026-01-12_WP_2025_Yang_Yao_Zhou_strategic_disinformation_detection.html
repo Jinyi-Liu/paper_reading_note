@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WP_2025_Yang_Yao_Zhou_strategic_disinformation_detection</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="strategic-disinformation-generation-and-detection">Strategic Disinformation Generation and Detection</h1>
+<p><strong>Wenxiao Yang · Yunfei (Jesse) Yao · Pengxiang Zhou</strong><br>
+Working Paper (July 22, 2025)  </p>
+<blockquote>
+<p>本文档是对论文 <em>Strategic Disinformation Generation and Detection</em> 的 OM/Marketing 博士生级别精读笔记：不仅“讲结果”，更重在“讲机制、讲推导、讲为什么这样建模”。  </p>
+</blockquote>
+<hr>
+<h2 id="0-five-takeaways">0. Five takeaways (先给你五个可复用的结论)</h2>
+<ol>
+<li>
+<p><strong>“更强的检测器”不一定降低造假</strong>：在检测器还不够强时，提高 true-positive rate 反而可能 <strong>提高</strong> low type 的撒谎概率（因为 <em>no alarm</em> 变得更“可信”，产生 <em>persuasive effect</em>）。</p>
+</li>
+<li>
+<p><strong>撒谎概率对检测强度呈非单调（驼峰）</strong>：当 $\beta$ 低于某阈值时，$\sigma_S$ 随 $\beta$ 上升；超过阈值后，$\sigma_S$ 随 $\beta$ 下降。关键阈值是 $\hat{\beta}=1-\frac{C}{\Delta S_L}$。</p>
+</li>
+<li>
+<p><strong>最优检测器不会“追求最高 recall”</strong>：在存在 false positives 的战略环境下，最优 detector 往往选择一个 <strong>中间的 true-positive rate</strong>（而非越高越好）。</p>
+</li>
+<li>
+<p><strong>给定 true-positive，最优必在 ROC 前沿上</strong>：对任意给定 $\beta$，设计者会选择能实现该 $\beta$ 的 <strong>最低</strong> false-positive rate $\alpha^*(\beta;\phi)$（所有玩家的 payoff 都随 $\alpha$ 上升而下降）。</p>
+</li>
+<li>
+<p><strong>更好的 classifier 可能导致更少的 alarm</strong>（反直觉但很重要）：当 classifier capacity 提升时，最优 $\beta$ 可能下降，意味着 detector 可能对更小比例的 disinformation 发出 alarm，但仍更有效（因为策略响应变了）。</p>
+</li>
+</ol>
+<hr>
+<h2 id="_1">目录</h2>
+<ul>
+<li><a href="#1-研究背景与动机">1. 研究背景与动机</a></li>
+<li><a href="#2-模型设定与假设">2. 模型设定与假设</a></li>
+<li><a href="#3-分析与求解">3. 分析与求解</a></li>
+<li><a href="#4-主要结论与管理启示">4. 主要结论与管理启示</a></li>
+<li><a href="#5-reviewers-critique">5. Reviewer's Critique</a></li>
+<li><a href="#6-one-more-thing">6. One More Thing</a></li>
+</ul>
+<hr>
+<h2 id="1">1. 研究背景与动机</h2>
+<h3 id="11">1.1 实践痛点：行业里到底在痛什么？</h3>
+<p>这篇论文抓的不是“AI 能不能识别假内容”这种纯技术问题，而是一个更尴尬、更现实的问题：</p>
+<ul>
+<li>
+<p><strong>检测在现实里一定会误伤（false positives）</strong>：比如好卖家/好内容被误判为假，从而被平台打上 warning label、下架、降权；这会直接损害高质量供给者的收益与参与意愿。论文明确强调 false positives 在现实中具有显著经济后果，甚至被描述为“multi-billion-dollar problem”。</p>
+</li>
+<li>
+<p><strong>“内容生产者”是战略性的（strategic）</strong>：低质量方不是被动等待模型打分，而是会根据平台政策与检测强度来调节造假/撒谎/刷单的力度。论文最直白的一句话是：disinformation 更容易被生成与传播，检测重要性上升，但生成者与检测者之间存在战略互动。</p>
+</li>
+<li>
+<p><strong>典型场景（论文给的应用感很强）</strong>：fake reviews（Yelp/TripAdvisor）、email spam 与诈骗、社媒 misinformation 与 warning label 机制等；共同点是：平台/监管者会“检测 + 标记”，但标记会误伤真实内容，而且误伤会反过来改变造假激励。</p>
+</li>
+</ul>
+<p>用 OM 的语言翻译：这是一个 <strong>“检测系统设计（Operations/Information Design）+ 参与者策略响应（Strategic Behavior）”</strong> 的联立问题。你不能只看 ROC/AUC；你得看 <em>equilibrium response</em>。</p>
+<hr>
+<h3 id="12">1.2 理论缺口：现有文献忽略了什么？</h3>
+<p>论文的切入点非常明确：<strong>把“false positives + 战略造假”放到同一个模型里端到端解出来</strong>。</p>
+<ul>
+<li>
+<p>在不少 deception / cheap talk / misinformation 模型中，要么 <strong>检测器是 exogenous</strong>（给定准确率），要么默认报警不会误伤（$\alpha=0$），从而忽略了现实中最棘手的 “Type I error”。这篇文章直接把 $\alpha&gt;0$ 放进核心机制，并强调这会带来<strong>质变</strong>：比如没有 false positives 时可能存在 separating equilibrium，但有 false positives 时该结构可能消失。</p>
+</li>
+<li>
+<p>更关键的是：<strong>检测器设计本身是一个决策变量</strong>。现实中平台会调 threshold：到底“宁可错杀”还是“宁可放过”？论文用一个“classifier + alarm rule”的结构，把 $\beta$ 与 $\alpha$ 的权衡（ROC）与 equilibrium 结果直接连接起来。</p>
+</li>
+</ul>
+<hr>
+<h3 id="13-significance">1.3 核心贡献：理论与实践上的 Significance</h3>
+<p>我把论文贡献拆成三件可被引用/复用的“硬结论”：</p>
+<ol>
+<li><strong>机制贡献：persuasive effect vs dissuasive effect 的显式分解</strong><br>
+   论文把 detector 输出（alarm/no-alarm）对 receiver belief 的作用拆成两股力：  </li>
+<li><em>persuasive effect</em>：no alarm 会让 receiver 更相信“是真的”；  </li>
+<li>
+<p><em>dissuasive effect</em>：alarm 会让 receiver 更相信“是假的”。<br>
+   在 $\alpha&gt;0$ 下，这两股力都依赖 detector 的精度与策略，<strong>导致“更强 detector”未必减少撒谎</strong>。</p>
+</li>
+<li>
+<p><strong>结果贡献：撒谎概率对检测强度非单调</strong><br>
+   这是文章最“抓人”的 comparative statics：当 detector 还不够强时，提高 $\beta$ 可能让 low type <strong>更愿意</strong>撒谎（因为 no-alarm 更能说服 receiver）；当 $\beta$ 足够强时，检测带来的惩罚性风险主导，撒谎概率下降。摘要层面就强调了这种非单调。</p>
+</li>
+<li>
+<p><strong>设计贡献：最优 detector 可能选择“中间精度”且更好 classifier 反而报警更少</strong><br>
+   给定一个 classifier 的能力，最优 alarm rule 会在 ROC 前沿上选择某个点；而最优点常常不是 $\beta$ 越高越好，并且 classifier 更强时最优 $\beta$ 反而可能降低（从而 alarm 更少），这对平台“阈值调参”非常有指导意义。</p>
+</li>
+</ol>
+<hr>
+<h2 id="2">2. 模型设定与假设</h2>
+<h3 id="21-players-sequence-of-events-information-structure">2.1 Players, Sequence of Events, Information Structure</h3>
+<h4 id="players">Players</h4>
+<ul>
+<li><strong>Sender (S)</strong>：可能是卖家、内容发布者、营销方、诈骗者等。其类型 $\theta\in{H,L}$ 表示“真实高质量/真实低质量”。</li>
+<li><strong>Receiver (R)</strong>：消费者/用户/受众/投资者等，基于信息做一个二元决策。  </li>
+<li><strong>Lie Detector Designer (D)</strong>：平台/监管者/第三方 fact-checker，先设计 detector 并承诺（commit）执行。</li>
+</ul>
+<h4 id="timeline-detector-design">Timeline（基准版 + detector design 版兼容）</h4>
+<ol>
+<li>设计者 $D$ 预先选择 detector（外生情形：$\alpha,\beta$ 给定；内生情形：选择 alarm rule $\lambda$，受 classifier $\phi$ 约束）。</li>
+<li>Nature 抽取 sender 类型：$\Pr(\theta=H)=\rho$，$\Pr(\theta=L)=1-\rho$。</li>
+<li>Sender 发送消息 $m\in{m_H,m_L}$：  </li>
+<li>$m_H$：对外“自称高类型/高质量”的内容（可能是 disinformation）；  </li>
+<li>$m_L$：低类型/保守信息（可以理解为“不做夸张声明/不发 fake review”）。<br>
+   Lie detector <strong>只在 $m_H$ 下出具信号</strong>，在 $m_L$ 下恒为 no alarm。这是一个非常关键的建模选择：它把“造假”定位为“向上夸大”的行为，贴近 fake review / 虚假宣传 / misinformation 的语义结构。</li>
+<li>Detector 输出 $l\in{a,na}$：$a$ 表示 alarm（怀疑 $m_H$ 是假），$na$ 表示 no alarm。  </li>
+<li>Receiver 观察 $(m,l)$ 后选择行动 $r\in{r_H,r_L}$（例如购买/不购买，采纳/不采纳）。</li>
+</ol>
+<h4 id="information-structure">Information structure</h4>
+<ul>
+<li>Sender 观察自己的 $\theta$，receiver 只知道先验 $\rho$。  </li>
+<li>Receiver 观察消息与 detector 信号（若 $m_H$）。  </li>
+<li>Detector 的统计性能由 $\beta$（true-positive）与 $\alpha$（false-positive）刻画：<br>
+  $$ \beta:=\Pr(a\mid m_H,\theta=L),\qquad \alpha:=\Pr(a\mid m_H,\theta=H). $$<br>
+  通常假设 $0&lt;\alpha&lt;\beta&lt;1$（否则 detector 没信息含量）。</li>
+</ul>
+<hr>
+<h3 id="22-payoffstable-1">2.2 Payoffs：目标函数与约束（Table 1 的结构化版本）</h3>
+<p>论文把 $r_L$ 归一化为“安全行动”，双方 payoff 为 0；$r_H$ 是“冒险行动”，高类型时 receiver 得正收益，低类型时 receiver 受损；sender 总希望 receiver 选 $r_H$，但 low type 若撒谎需支付 cost $C$。这一结构在 OM/Marketing 里非常常见：本质是一个“质量不确定 + 营销陈述 + 事后后悔成本”的二元决策模型。</p>
+<p><strong>Receiver payoff</strong></p>
+<ul>
+<li>若 $r=r_H$：  </li>
+<li>$\theta=H$ 得 $+\Delta R_H$  </li>
+<li>$\theta=L$ 得 $-\Delta R_L$  </li>
+<li>若 $r=r_L$：恒为 0。  </li>
+</ul>
+<p>可写成：<br>
+$$ u_R(r,\theta)=\mathbf{1}{r=r_H}\big(\mathbf{1}{\theta=H}\Delta R_H-\mathbf{1}{\theta=L}\Delta R_L\big). $$</p>
+<p><strong>Sender payoff</strong></p>
+<ul>
+<li>高类型：若 receiver 选 $r_H$ 得 $\Delta S_H$，否则 0。  </li>
+<li>低类型：若 receiver 选 $r_H$ 得 $\Delta S_L$，否则 0；但若其发送 $m_H$（撒谎）则额外支付 cost $C$。  </li>
+</ul>
+<p>可写成：<br>
+$$ u_S(r,\theta,m)=\mathbf{1}{r=r_H}\Delta S_\theta - \mathbf{1}{\theta=L,\,m=m_H}C. $$</p>
+<hr>
+<h3 id="23-notation-cheat-sheet">2.3 符号体系（Notation Cheat Sheet）</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\theta\in{H,L}$</td>
+<td>Sender 类型：真实高/低</td>
+</tr>
+<tr>
+<td>$\rho$</td>
+<td>先验：$\Pr(\theta=H)=\rho$</td>
+</tr>
+<tr>
+<td>$m_H,m_L$</td>
+<td>Sender 消息：高类型宣称 vs 低类型/沉默</td>
+</tr>
+<tr>
+<td>$l\in{a,na}$</td>
+<td>Detector 信号：alarm / no alarm</td>
+</tr>
+<tr>
+<td>$r_H,r_L$</td>
+<td>Receiver 行动：高行动（采纳/购买） vs 低行动（拒绝/不买）</td>
+</tr>
+<tr>
+<td>$\Delta R_H,\Delta R_L$</td>
+<td>Receiver 在 $r_H$ 下的收益/损失幅度</td>
+</tr>
+<tr>
+<td>$\Delta S_H,\Delta S_L$</td>
+<td>Sender 在 $r_H$ 下的收益幅度（按类型）</td>
+</tr>
+<tr>
+<td>$C$</td>
+<td>low type 发送 $m_H$ 的撒谎成本</td>
+</tr>
+<tr>
+<td>$\beta$</td>
+<td>true-positive rate：$\Pr(a\mid m_H,\theta=L)$</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>false-positive rate：$\Pr(a\mid m_H,\theta=H)$</td>
+</tr>
+<tr>
+<td>$\sigma_S$</td>
+<td>low type 撒谎概率：$\Pr(m=m_H\mid \theta=L)$</td>
+</tr>
+<tr>
+<td>$\sigma_R^{na}$</td>
+<td>Receiver 在 $(m_H,na)$ 下选择 $r_H$ 的概率</td>
+</tr>
+<tr>
+<td>$\sigma_R^{a}$</td>
+<td>Receiver 在 $(m_H,a)$ 下选择 $r_H$ 的概率</td>
+</tr>
+<tr>
+<td>$\hat{\rho}$</td>
+<td>Receiver 的决策阈值：后验 $\ge\hat{\rho}$ 才愿意选 $r_H$</td>
+</tr>
+<tr>
+<td>$\hat{\beta}$</td>
+<td>deterrence 阈值：让 receiver 在 no alarm 下敢于纯策略信任的临界 $\beta$</td>
+</tr>
+<tr>
+<td>$s\in{s_H,s_L}$</td>
+<td>classifier 对 type 的预测信号（内生 detector 部分）</td>
+</tr>
+<tr>
+<td>$\phi(s\mid\theta)$</td>
+<td>classifier 的 confusion matrix（给定 $\theta$ 输出 $s$ 的概率）</td>
+</tr>
+<tr>
+<td>$\lambda_H,\lambda_L$</td>
+<td>alarm rule：$\Pr(a\mid s_H)=\lambda_H,\Pr(a\mid s_L)=\lambda_L$</td>
+</tr>
+<tr>
+<td>$\alpha^*(\beta;\phi)$</td>
+<td>给定 $\beta$ 下可实现的最小 false-positive（ROC 前沿）</td>
+</tr>
+<tr>
+<td>$\beta_1$</td>
+<td>某些最优设计/容量阈值中出现的内部解（见 3.2）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="24-justification">2.4 关键假设与合理性（Justification）</h3>
+<p>论文在 Table 1 之后给出三条非常“干净”的假设（它们决定了模型要解决的核心难点在哪里）：</p>
+<ol>
+<li>
+<p><strong>Receiver 在无信息时不采取高行动</strong><br>
+   $$ \rho&lt;\hat{\rho}:=\frac{\Delta R_L}{\Delta R_H+\Delta R_L}. $$<br>
+   这保证了“信息/检测”是有价值的：如果先验已经足够高使 receiver 总买，那 detector 再强也无用。</p>
+</li>
+<li>
+<p><strong>撒谎成本适中</strong>：$0&lt;C&lt;\min{\Delta S_H,\Delta S_L}$  </p>
+</li>
+<li>$C&gt;0$：否则 low type 永远撒谎，模型退化；  </li>
+<li>$C&lt;\Delta S_L$：否则 low type 永远不撒谎，模型也退化；  </li>
+<li>
+<p>$C&lt;\Delta S_H$：避免极端情形（高类型被误伤时收益为负等）。</p>
+</li>
+<li>
+<p><strong>“撒谎成功”在社会层面不增益</strong>：$\Delta S_L-\Delta R_L\le 0$<br>
+   这是一个典型的 welfare alignment 假设：low type 因误导而获得的私人收益不超过 receiver 的损失，保证 disinformation 的“坏”是可论证的，<em>而不是一个“重新分配”而已</em>。</p>
+</li>
+</ol>
+<p>另外一个隐含但非常关键的“技术假设”是 detector 信息性：通常要求 $\beta&gt;\alpha$（alarm 更可能出现在假消息）。</p>
+<hr>
+<h3 id="25-detectorclassifier-alarm-rule-roc">2.5 内生 detector：classifier + alarm rule（把 ROC 引进博弈）</h3>
+<p>论文没有把 detector 直接当作一个黑箱 $(\beta,\alpha)$，而是拆成两层：</p>
+<ul>
+<li><strong>classifier</strong>：基于文本/行为特征输出一个预测 $s\in{s_H,s_L}$；其能力用 $\phi(s\mid\theta)$ 表示（confusion matrix）。  </li>
+<li><strong>alarm rule</strong>：在给定预测 $s$ 后以概率 $\lambda_s$ 发出 alarm。  </li>
+</ul>
+<p>由此得到：
+$$ \beta=\phi(s_L\mid L)\lambda_L+\phi(s_H\mid L)\lambda_H,\qquad \alpha=\phi(s_L\mid H)\lambda_L+\phi(s_H\mid H)\lambda_H. $$<br>
+这一步很 OM：把“算法阈值调参”抽象成可控的随机化决策 $\lambda$，同时把 ML 的 trade-off（ROC）硬编码进 feasible set。</p>
+<hr>
+<h2 id="3">3. 分析与求解</h2>
+<p>核心套路是：<strong>Bayes 更新 + best response 阈值 + mixing indifference</strong>。</p>
+<hr>
+<h3 id="31-detector-alphabeta-pbe">3.1 外生 detector（给定 $(\alpha,\beta)$）下的 PBE</h3>
+<h4 id="311-receiver">3.1.1 Receiver 的最优反应：一个阈值就够了</h4>
+<p>令 receiver 在某个信息集下对 $\theta=H$ 的后验为 $\mu$。若她选 $r_H$，期望收益为<br>
+$$ \mu\Delta R_H-(1-\mu)\Delta R_L. $$<br>
+若她选 $r_L$，收益恒为 0。<br>
+因此 receiver 的 best response 是阈值型：</p>
+<ul>
+<li>若 $\mu&gt;\hat{\rho}$，选 $r_H$；  </li>
+<li>若 $\mu&lt;\hat{\rho}$，选 $r_L$；  </li>
+<li>若 $\mu=\hat{\rho}$，可混合。  </li>
+</ul>
+<p>阈值为<br>
+$$ \hat{\rho}=\frac{\Delta R_L}{\Delta R_H+\Delta R_L}. $$<br>
+论文用假设 $\rho&lt;\hat{\rho}$ 确保无信息时 receiver 不会“无脑信任”。</p>
+<blockquote>
+<p><strong>直觉</strong>：$r_H$ 是“赌一把”。赌赢（$H$）赚 $\Delta R_H$，赌输（$L$）亏 $\Delta R_L$。后验足够高才值得赌。</p>
+</blockquote>
+<hr>
+<h4 id="312-beliefs-no-alarm-alarm">3.1.2 Beliefs：中间信念 + 两个后验（no-alarm / alarm）</h4>
+<p>设高类型 sender 总是发送 $m_H$（这是弱支配：发送 $m_L$ 只会让 receiver 更不信，从而不可能提升高类型 payoff）。低类型 sender 以概率 $\sigma_S$ 撒谎发送 $m_H$，以 $1-\sigma_S$ 发送 $m_L$。</p>
+<p><strong>(i) 中间信念（只看消息 $m_H$，未看 detector）</strong><br>
+$$ \Pr(\theta=H\mid m_H)=\frac{\rho}{\rho+(1-\rho)\sigma_S}. $$</p>
+<p><strong>(ii) 观察 detector 输出后的后验</strong><br>
+当 $m=m_H$ 时，detector 以 $\alpha$ 误伤高类型、以 $\beta$ 抓到低类型：</p>
+<p>$$ \Pr(\theta=H\mid m_H,na)=\frac{(1-\alpha)\rho}{(1-\alpha)\rho+(1-\beta)\sigma_S(1-\rho)}, $$
+$$ \Pr(\theta=H\mid m_H,a)=\frac{\alpha\rho}{\alpha\rho+\beta\sigma_S(1-\rho)}. $$</p>
+<p>这两条就是后面所有比较静态的“发动机”。</p>
+<hr>
+<h4 id="313-low-type">3.1.3 Low type 的激励：撒谎的净收益</h4>
+<p>低类型若发送 $m_L$，detector 恒 no-alarm，receiver 会选 $r_L$（因为 $m_L$ 在均衡上等价于“承认自己低类型”），其 payoff 归一化为 0。</p>
+<p>若低类型撒谎发送 $m_H$，他必付出成本 $C$，并以某个概率让 receiver 选择 $r_H$ 从而获得 $\Delta S_L$。<br>
+记 receiver 在不同 detector 输出下选择 $r_H$ 的概率为：</p>
+<ul>
+<li>$q^{na}:=\sigma_R^{na}=\Pr(r_H\mid m_H,na)$  </li>
+<li>$q^{a}:=\sigma_R^{a}=\Pr(r_H\mid m_H,a)$</li>
+</ul>
+<p>则低类型撒谎的期望收益为<br>
+$$ U_L(\text{lie})=\big((1-\beta)q^{na}+\beta q^{a}\big)\Delta S_L - C. $$</p>
+<blockquote>
+<p><strong>一个关键观察</strong>：$\beta$ 只通过两条路径影响撒谎激励：<br>
+(1) 改变 alarm/no-alarm 的概率（直接惩罚效应）；<br>
+(2) 改变 receiver 在 alarm/no-alarm 下的反应（通过 belief 的 persuasion/dissuasion 间接影响）。</p>
+</blockquote>
+<hr>
+<h4 id="314-hatbeta-receiver-alarm">3.1.4 关键阈值 $\hat{\beta}$：什么时候 receiver 必须在 alarm 下也“给一点面子”？</h4>
+<p>考虑一种直观的 detector 使用方式：receiver <strong>no alarm 就信</strong>、<strong>alarm 就不信</strong>，即 $q^{na}=1, q^{a}=0$。<br>
+此时低类型撒谎收益为<br>
+$$ (1-\beta)\Delta S_L - C. $$<br>
+使其恰好无利可图的临界点为<br>
+$$ \hat{\beta}:=1-\frac{C}{\Delta S_L}. $$</p>
+<ul>
+<li>若 $\beta&gt;\hat{\beta}$，即使 receiver no-alarm 必信、alarm 必拒，低类型仍不愿意撒谎（deterrence 成功）。  </li>
+<li>若 $\beta&lt;\hat{\beta}$，上述“硬切换”不足以让低类型收手，receiver 必须通过降低 $q^{na}$（降低 no-alarm 的奖励）来把低类型拉回 indifference。  </li>
+</ul>
+<p>论文在 Proposition 1 里就用 $\hat{\beta}$ 来分区。</p>
+<hr>
+<h4 id="315-proposition-1">3.1.5 Proposition 1（核心均衡刻画）：策略与信念如何拼起来？</h4>
+<p>论文给出 PBE 的明确刻画（并对边界/多均衡点做 Pareto-optimal refinement）。我把最重要的“generic case（$0&lt;\alpha&lt;\beta&lt;1$）”拆成两个主区域：</p>
+<hr>
+<h5 id="a-betahatbeta">A. <strong>弱检测区：$\beta&lt;\hat{\beta}$</strong></h5>
+<p><strong>(1) Receiver：alarm 下拒绝，no-alarm 下混合</strong><br>
+为了让低类型无利可图，receiver 需要选<br>
+$$ \sigma_R^{na}=\frac{C}{(1-\beta)\Delta S_L},\qquad \sigma_R^{a}=0. $$<br>
+（注意：当 $\beta&lt;\hat{\beta}$ 时，上式保证 $\sigma_R^{na}\in(0,1)$。）</p>
+<p><strong>(2) Sender(L)：混合撒谎概率由 receiver 的 indifference pin down</strong><br>
+在 $na$ 信息集上，receiver 混合意味着其后验必须满足<br>
+$$ \Pr(\theta=H\mid m_H,na)=\hat{\rho}. $$<br>
+代入 3.1.2 的 Bayes 式可解得<br>
+$$ \sigma_S=\frac{(1-\alpha)\rho\Delta R_H}{(1-\beta)(1-\rho)\Delta R_L}. $$<br>
+如果这个值超过 1，则均衡会“顶到边界”变成 pooling（低类型总撒谎）。</p>
+<blockquote>
+<p><strong>经济学直觉（这就是 persuasive effect）：</strong><br>
+在弱检测区，alarm 基本等于“判死刑”（receiver 直接拒绝），所以 low type 真正关心的是“能不能拿到 no-alarm”。当 detector 变强（$\beta$ 上升）时，no-alarm 更难拿到，但一旦拿到就更像“洗白成功”，receiver 更容易被说服。为了维持 receiver 在 no-alarm 下的 indifference，low type 反而需要提高撒谎概率来“稀释”no-alarm 的含金量，于是 $\sigma_S$ 可能随 $\beta$ 上升。  </p>
+</blockquote>
+<hr>
+<h5 id="b-betahatbeta">B. <strong>强检测区：$\beta&gt;\hat{\beta}$</strong></h5>
+<p><strong>(1) Receiver：no-alarm 下纯信，alarm 下混合</strong><br>
+强检测下可以做到 $\sigma_R^{na}=1$，并在 alarm 下选择<br>
+$$ \sigma_R^{a}=\frac{C}{\beta\Delta S_L}-\frac{1-\beta}{\beta}. $$<br>
+（当 $\beta&gt;\hat{\beta}$ 且 $C&lt;\Delta S_L$ 时，上式位于 $(0,1)$。）</p>
+<p><strong>(2) Sender(L)：由 alarm 信息集的 receiver indifference pin down</strong><br>
+receiver 在 alarm 下混合意味着<br>
+$$ \Pr(\theta=H\mid m_H,a)=\hat{\rho}. $$<br>
+由 Bayes 式解得<br>
+$$ \sigma_S=\frac{\alpha\rho\Delta R_H}{\beta(1-\rho)\Delta R_L}. $$  </p>
+<blockquote>
+<p><strong>经济学直觉（这就是 dissuasive effect）：</strong><br>
+强检测下 no-alarm 几乎可视为“通过审查”，receiver 直接信；真正的博弈发生在 alarm 下：如果 alarm 太可能误伤（$\alpha$ 大），receiver 就不敢把 alarm 当铁证，于是为了把 receiver 在 alarm 下压回 indifference，low type 必须增加撒谎（让 alarm 更可能来自真实 H，从而提升 alarm 下的后验）。因此在该区间里 $\sigma_S$ <strong>随 $\alpha$ 上升而上升</strong>、随 $\beta$ 上升而下降。</p>
+</blockquote>
+<hr>
+<h4 id="316">3.1.6 比较静态：非单调从哪里来？</h4>
+<p>把上面两段的闭式解拼起来，你会看到最醒目的 comparative statics：</p>
+<ul>
+<li>
+<p>在 <strong>弱检测区</strong> $\beta&lt;\hat{\beta}$（且处于 semi-separating 的 interior）：<br>
+  $$ \sigma_S=\frac{(1-\alpha)\rho\Delta R_H}{(1-\beta)(1-\rho)\Delta R_L}, $$<br>
+  所以 $\frac{\partial \sigma_S}{\partial \beta}&gt;0$、$\frac{\partial \sigma_S}{\partial \alpha}&lt;0$。</p>
+</li>
+<li>
+<p>在 <strong>强检测区</strong> $\beta&gt;\hat{\beta}$：<br>
+  $$ \sigma_S=\frac{\alpha\rho\Delta R_H}{\beta(1-\rho)\Delta R_L}, $$<br>
+  所以 $\frac{\partial \sigma_S}{\partial \beta}&lt;0$、$\frac{\partial \sigma_S}{\partial \alpha}&gt;0$。</p>
+</li>
+</ul>
+<p>这就解释了摘要里的“non-monotonic relationship”以及“强 detector 未必减少撒谎”。</p>
+<hr>
+<h3 id="32-detector-roc-equilibrium-engineering">3.2 内生 detector 设计：ROC 前沿上的 equilibrium engineering</h3>
+<p>上面 3.1 把 detector 当外生给定 $(\alpha,\beta)$。但现实里平台会调阈值。论文的第二步是：把 detector 拆成 classifier + alarm rule，并让设计者选择。</p>
+<hr>
+<h4 id="321-philambda-betaalpha-fphi">3.2.1 从 $(\phi,\lambda)$ 到 $(\beta,\alpha)$：可行集合 $F(\phi)$</h4>
+<p>classifier 输出 $s\in{s_H,s_L}$，其 confusion matrix 为 $\phi(s\mid\theta)$。alarm rule 为<br>
+$$ \lambda_L:=\Pr(a\mid s_L),\qquad \lambda_H:=\Pr(a\mid s_H). $$</p>
+<p>于是<br>
+$$ \beta=\phi(s_L\mid L)\lambda_L+\phi(s_H\mid L)\lambda_H,\qquad \alpha=\phi(s_L\mid H)\lambda_L+\phi(s_H\mid H)\lambda_H. $$<br>
+$(\lambda_L,\lambda_H)\in[0,1]^2$ 诱导出 $(\beta,\alpha)$ 的可行集合 $F(\phi)$，你可以把它理解为“detector 能达到的 ROC 区域”。</p>
+<hr>
+<h4 id="322-lemma-5roc-beta-alpha">3.2.2 Lemma 5（ROC 前沿闭式）：给定 $\beta$，最小 $\alpha$ 是多少？</h4>
+<p>设计者通常希望：在达到某个 true-positive $\beta$ 的同时，让 false-positive 尽可能小（减少误伤）。论文把这个优化问题写成：</p>
+<p>$$ \alpha^*(\beta;\phi)=\min_{\lambda_L,\lambda_H\in[0,1]} \ \phi(s_L\mid H)\lambda_L+\phi(s_H\mid H)\lambda_H \quad \text{s.t.}\quad \phi(s_L\mid L)\lambda_L+\phi(s_H\mid L)\lambda_H=\beta. $$</p>
+<p>由于这里是一个线性规划，解呈现 <strong>分段线性</strong>（这其实就是 ROC 的几何本质）。Lemma 5 给出闭式：</p>
+<p>$$ \alpha^*(\beta;\phi)=
+\begin{cases}
+\frac{\phi(s_L\mid H)}{\phi(s_L\mid L)}\beta, &amp; \beta\le \phi(s_L\mid L),\
+\frac{\phi(s_H\mid H)}{\phi(s_H\mid L)}\beta + 1-\frac{\phi(s_H\mid H)}{\phi(s_H\mid L)}, &amp; \beta&gt;\phi(s_L\mid L).
+\end{cases} $$</p>
+<p>对应的最优 alarm rule：
+- 若 $\beta\le \phi(s_L\mid L)$：$\lambda_L=\beta/\phi(s_L\mid L)$，$\lambda_H=0$；<br>
+- 若 $\beta&gt;\phi(s_L\mid L)$：$\lambda_L=1$，$\lambda_H=(\beta-\phi(s_L\mid L))/\phi(s_H\mid L)$。  </p>
+<blockquote>
+<p><strong>直觉</strong>：先把 alarm “用在最可疑的地方”。只有当你把 $s_L$ 预测下的 alarm 概率打满（$\lambda_L=1$）仍不够达到目标 $\beta$ 时，才开始对 $s_H$ 也发 alarm（这会以更高边际代价增加 false positives）。</p>
+</blockquote>
+<hr>
+<h4 id="323-proposition-2-roc">3.2.3 Proposition 2（关键降维）：为什么“只看 ROC 前沿”就够了？</h4>
+<p>论文证明：对任意给定 $\beta$，<strong>所有玩家的 payoff 都随 $\alpha$ 增加而弱下降</strong>，因此设计者在选择 detector 时总能（且应当）把 $\alpha$ 压到可行的最低水平 $\alpha^*(\beta;\phi)$；这使得 detector design 问题从二维 $(\beta,\alpha)$ 直接降成一维 $\beta$ 的选择。<br>
+更细一点：receiver 与 high-type sender 的 payoff 随 $\beta$ 上升而上升，low-type sender 的 payoff 随 $\beta$ 上升而下降（因为更容易被抓）。</p>
+<blockquote>
+<p>这一步其实是本文“最 OM 的一刀”：它把“算法阈值选择”从一个 messy 的博弈问题，变成了沿 ROC 前沿的一维优化。  </p>
+</blockquote>
+<hr>
+<h4 id="324-definition-2classifier-capacity-roc">3.2.4 Definition 2：classifier capacity（为什么同样的 ROC，会有“高/低容量”之分？）</h4>
+<p>论文定义了 <strong>high-capacity classifier</strong> 的条件（本质上是两个 likelihood ratio 足够大，使 detector 能把 receiver belief 推到关键阈值附近）。其形式是两个不等式：</p>
+<p>$$ \frac{\phi(s_H\mid H)}{\phi(s_H\mid L)}\ge \frac{(1-\rho)\Delta R_L}{\rho\Delta R_H}, $$
+$$ \frac{\phi(s_L\mid L)}{\phi(s_L\mid H)}\ge \frac{(\Delta S_L-C)\rho\Delta R_H}{\Delta S_L\rho\Delta R_H-(1-\rho)\Delta R_L C}. $$</p>
+<p>满足则称为 high capacity，否则 low capacity。</p>
+<blockquote>
+<p><strong>解释（用人话）：</strong><br>
+- 第一条要求：当 classifier 预测 $s_H$ 时，这个信号足够“支持 H”，能让 receiver 在某些信息集上愿意相信；<br>
+- 第二条要求：当 classifier 预测 $s_L$ 时，这个信号足够“支持 L”，从而让 alarm/no-alarm 能形成有用的激励约束。<br>
+capacity 高意味着 detector 更可能通过“信息提供”来引导 receiver，而不只靠“惩罚威慑”。</p>
+</blockquote>
+<hr>
+<h4 id="325-proposition-3-receiver-payoff-beta">3.2.5 Proposition 3：若设计者最大化 receiver payoff，最优 $\beta$ 怎么选？</h4>
+<p>论文给出一个非常有操作意义的分情形结论。我把它翻译成“调参指南”：</p>
+<ul>
+<li>
+<p><strong>若 classifier low capacity</strong>：receiver 想要获得正 payoff，基本只能依赖“威慑区”$\beta\ge\hat{\beta}$ 来压制撒谎；因此最优会选择 $\beta$ 使 low-type 撒谎概率最小（等价地，在 ROC 上找到能实现 $\beta\ge\hat{\beta}$ 且 $\alpha/\beta$ 最小的一段）。论文表述为：最优 $\beta$ 属于 $[\hat{\beta},\max{\hat{\beta},\phi(s_L\mid L)}]$（当 $\phi(s_L\mid L)\ge\hat{\beta}$ 时即 $[\hat{\beta},\phi(s_L\mid L)]$）。</p>
+</li>
+<li>
+<p><strong>若 classifier high capacity</strong>：receiver 在某些情况下会更偏向“信息提供”而不是“极限威慑”。论文引入一个 critical cost $\hat{C}$：  </p>
+</li>
+<li>若 $C\ge \hat{C}$（撒谎成本相对高，威慑可行），仍选上述威慑区间；  </li>
+<li>若 $C&lt;\hat{C}$（撒谎成本很低，想把 $\beta$ 拉到 $\hat{\beta}$ 会引发过多误伤），最优反而选择<br>
+    $$ \beta^*=\phi(s_L\mid L) $$<br>
+    即卡在 ROC 的“拐点”（此处提升 $\beta$ 的边际误伤开始变得更贵）。</li>
+</ul>
+<blockquote>
+<p><strong>直觉</strong>：当 $C$ 很低时，$\hat{\beta}=1-\frac{C}{\Delta S_L}$ 接近 1，意味着要做到“靠威慑让撒谎不划算”需要极高 $\beta$，但 ROC 告诉你这会带来极高 $\alpha$。于是 receiver 更愿意停在拐点，用相对低误伤换取足够的信息区分，让自己的决策更精准，而不是幻想把撒谎彻底吓没。</p>
+</blockquote>
+<hr>
+<h4 id="326-proposition-4-high-type-sender-payoff-beta">3.2.6 Proposition 4：若设计者最大化 <strong>high-type sender</strong> payoff，最优 $\beta$ 更“软”？</h4>
+<p>这部分很有 Marketing/Platform 味道：高类型商家/内容创作者最怕的是 <strong>被误伤</strong>，所以他们的最优 detector 可能比 receiver 想要的更“温和”。</p>
+<ul>
+<li><strong>若 classifier low capacity</strong>：结论与 receiver 类似，最优 $\beta$ 也在 $[\hat{\beta},\max{\hat{\beta},\phi(s_L\mid L)}]$。  </li>
+<li><strong>若 classifier high capacity</strong>：最优 true-positive rate 为一个内部解<br>
+  $$ \beta_1:=\frac{\rho\Delta R_H-(1-\rho)\Delta R_L}{\frac{\phi(s_L\mid H)}{\phi(s_L\mid L)}\rho\Delta R_H-(1-\rho)\Delta R_L}, $$<br>
+  且 $\beta_1&lt;\hat{\beta}$，并且 $\beta_1$ 随 classifier 的“相对精度” $\phi(s_L\mid L)/\phi(s_L\mid H)$ 上升而下降。</li>
+</ul>
+<blockquote>
+<p><strong>关键直觉（非常反直觉但真实）：</strong><br>
+classifier 越强，想要让 receiver 在“no alarm”下信任并不需要那么高的 $\beta$；<em>而更高的 $\beta$ 会迫使 alarm rule 去动用 $s_H$ 区域从而抬高 $\alpha$，误伤高类型。</em><br>
+所以“更好的 classifier”可能使 <strong>最优 detector 更少报警</strong>。</p>
+</blockquote>
+<hr>
+<h4 id="327-benchmark-alpha0">3.2.7 重要 benchmark：为什么 $\alpha=0$ 时会“越强越好”？</h4>
+<p>论文专门对比了一个常见基准：<strong>没有 false positives</strong>。在 $\alpha=0$ 的世界里，提高 $\beta$ 没有误伤代价，因此最优 detector 往往会选择尽可能高的 $\beta$（强到把撒谎完全吓停）。但一旦 $\alpha&gt;0$，误伤会改变 receiver 对 alarm 的信任程度，并通过 equilibrium response 改变 low type 的撒谎概率，从而把“越强越好”扭成“中间最优”。</p>
+<hr>
+<h4 id="328-detector-extension-52">3.2.8 扩展：平台定价/抽佣与 detector 的联动（Extension 5.2）</h4>
+<p>论文还给了一个非常 platform-OM 的扩展：平台不仅选 detector，还选 <strong>commission fee</strong>（抽佣）。结论是：平台的最优抽佣与 detector 的强弱可能 <strong>互补</strong>也可能 <strong>互为替代</strong>，取决于参数与 market side 的弹性；这是把“信息治理”与“收入模型设计”绑在一起的分析框架。</p>
+<blockquote>
+<p>这部分虽然是扩展，但很值得延伸：在现实里平台往往不是单纯最大化 receiver welfare，而是最大化 platform profit；detector 既影响交易量，也影响高质量供给的进入与留存。  </p>
+</blockquote>
+<hr>
+<h2 id="4">4. 主要结论与管理启示</h2>
+<p>这一节我把论文“最值得带走”的机制与建议，以管理语言重新组织一遍。</p>
+<hr>
+<h3 id="41-benchmark-trade-off">4.1 机制揭示：相对 benchmark，这篇模型多揭示了什么 trade-off？</h3>
+<h4 id="411-benchmark">4.1.1 传统直觉（benchmark）：检测越强越好？</h4>
+<p>如果你在一个 <strong>非战略</strong> 世界里做 ML：只要模型更准就更好。即使考虑战略，但若假设 $\alpha=0$（不误伤），那提高 $\beta$ 基本没有成本，通常能更强地威慑撒谎并提高 receiver welfare——于是“越强越好”成为天然结论。</p>
+<h4 id="412-false-positives">4.1.2 本文的关键扭转：false positives 把“惩罚”变成“噪声”，并反过来鼓励撒谎</h4>
+<p>在 $\alpha&gt;0$ 时，alarm 既可能来自“抓到假”（好事），也可能来自“误伤真”（坏事）。receiver 因此必须把 alarm 当作 noisy signal，而不是铁证。这个噪声有两个层面的后果：</p>
+<ol>
+<li><strong>对 receiver 来说</strong>：alarm/no-alarm 的信息含量取决于 $\alpha/\beta$ 等相对指标，而不是仅看 $\beta$。  </li>
+<li><strong>对 sender(L) 来说</strong>：更强 detector 既提高被抓概率，又提高 no-alarm 的“洗白”价值；在某个区间内后者占优，于是撒谎上升。</li>
+</ol>
+<p>论文用 <em>persuasive effect</em> 与 <em>dissuasive effect</em> 的语言把这一点讲得很直：no alarm 会把 belief 往上推，alarm 会往下推，而 detector 变强会同时放大两股力；两股力对 sender 激励的合力并不总是“惩罚”。</p>
+<hr>
+<h3 id="42">4.2 管理建议：平台/监管者到底该怎么做？</h3>
+<p>我把建议分成三层：<strong>阈值策略</strong>、<strong>技术投资</strong>、<strong>机制设计/沟通</strong>。</p>
+<h4 id="421-recallbeta">4.2.1 阈值策略：不要只盯着 recall（$\beta$），要盯“策略响应后的有效性”</h4>
+<ul>
+<li>当 detector 还处于弱检测区（$\beta&lt;\hat{\beta}$）时，盲目提高 $\beta$ 可能造成 <strong>“误以为更安全 → 反而更多造假”</strong> 的反效果。管理上对应：  </li>
+<li>平台做 A/B 测试时，不应只看“检测到多少假”，而要看 <strong>均衡后的假内容产出量</strong>。  </li>
+<li>
+<p>监管也不应只看“标记率”，而要看“标记政策改变了多少造假激励”。</p>
+</li>
+<li>
+<p>当 detector 进入强检测区（$\beta&gt;\hat{\beta}$）后，提高 $\beta$ 的威慑效果才开始主导，撒谎下降。阈值 $\hat{\beta}=1-\frac{C}{\Delta S_L}$ 在管理解释上就是：<strong>造假越便宜（$C$ 越小），越难靠威慑解决</strong>，需要更高的 $\beta$ 才能让撒谎不值。  </p>
+</li>
+</ul>
+<p>这也是为什么在“低成本生成内容/深度伪造”的时代，纯靠加大检测强度不一定有效；你可能更需要“提高 $C$”（处罚、封禁、追责、押金、验证成本）这类制度工具。$\hat{\beta}$ 把这个直觉写成了一个清晰公式。</p>
+<h4 id="422-classifier">4.2.2 技术投资：更好的 classifier 不一定意味着“更多报警”，但仍然有价值</h4>
+<p>Lemma 5 告诉你：给定 $\beta$，你总能通过把 alarm 优先分配给更可疑的预测结果（先动 $s_L$，后动 $s_H$）来最小化 $\alpha$。这对现实里“threshold tuning”非常像：先把最极端的案例标记，再逐步扩大范围。</p>
+<p>更有意思的是 Proposition 4：当 classifier capacity 很强时，high-type sender 的最优点 $\beta_1$ 随 classifier 改进而下降。</p>
+<p><strong>管理含义：</strong>
+- 改进 classifier（更好的特征、更大的模型、更干净的训练数据）可能让平台在均衡上选择更低的报警阈值（更少报警），但仍然能提高整体信息质量，因为每一次报警/不报警的信号含量更高。<br>
+- 因此“报警数量下降”不应该被误读为“治理变弱”；关键是信号质量与策略响应。</p>
+<h4 id="423-c-beta">4.2.3 沟通与制度：把 $C$ 做大，可能比把 $\beta$ 做大更便宜</h4>
+<p>$C$ 在模型里是撒谎成本。现实对应可以是：
+- 认证/保证金（KYC、deposit、escrow）；<br>
+- 违规处罚（封号、下架、罚款）；<br>
+- 追责概率（执法、取证成本下降）；<br>
+- 传播摩擦（转发限制、阅读确认等）。  </p>
+<p>当 $C$ 上升，$\hat{\beta}$ 下降，你更容易进入“强检测区”，从而让 detector 的边际改进更可能起到威慑作用，而不是只放大 persuasive effect。</p>
+<hr>
+<h3 id="43">4.3 图表解释：几张最关键的图在讲什么？</h3>
+<h4 id="figure-4belief-persuasivedissuasive">Figure 4：belief 的“上下推”就是 persuasive/dissuasive</h4>
+<p>Figure 4（以及相邻文字）展示了随着 detector 变强，<br>
+- $\Pr(\theta=H\mid m_H,na)$ 上升（no alarm 更能说服）；<br>
+- $\Pr(\theta=H\mid m_H,a)$ 下降（alarm 更能劝退）。<br>
+两者共同构成 detector 的 persuasion/dissuasion 双效应。</p>
+<h4 id="figure-5">Figure 5：撒谎概率的驼峰（非单调）</h4>
+<p>Figure 5 用数值例子画出了 $\sigma_S$ 对 $\beta$ 的非单调：在 $\beta$ 较低时上升，在越过 $\hat{\beta}$ 后下降。这个图是整篇文章的“海报级结果”。</p>
+<h4 id="figure-8roc-phis_lmid-l">Figure 8：ROC 前沿与“拐点” $\phi(s_L\mid L)$</h4>
+<p>Lemma 5 的分段式实际上对应 Figure 8 的几何：<br>
+- 在 $\beta\le \phi(s_L\mid L)$ 区间，你只需调 $\lambda_L$ 就能提高 $\beta$，误伤边际较低；<br>
+- 超过该点后必须调 $\lambda_H$，误伤边际上升。<br>
+这正是 Proposition 3 中“当 $C$ 低时最优卡在拐点”的根源。</p>
+<h4 id="figure-10receiver-vs-high-type-sender-detector">Figure 10：receiver vs high-type sender 的 detector 偏好可能冲突</h4>
+<p>Figure 10（配合 Proposition 3/4）强调：<br>
+- receiver 可能更想要进入 $\beta\ge\hat{\beta}$ 的威慑区；<br>
+- high-type sender 可能更想要 $\beta_1&lt;\hat{\beta}$ 的温和 detector，以减少误伤。<br>
+这在平台治理中很常见：高质量供给侧会反对“过度审核”，哪怕它能更好抓假。模型给出了一个可计算的冲突结构。</p>
+<hr>
+<h2 id="5-reviewers-critique">5. Reviewer's Critique</h2>
+<h3 id="51-positive-feedback">5.1 我会给的强 positive feedback（值得发顶刊的点）</h3>
+<ol>
+<li>
+<p><strong>核心机制抓得准</strong>：把 false positives 放进战略造假模型不是“加一个参数”，而是引出一整套新的均衡结构（尤其是非单调比较静态与中间最优）。这属于典型的“看似小改动但带来质变”的理论贡献。</p>
+</li>
+<li>
+<p><strong>均衡可解、可解释</strong>：Proposition 1 给出闭式均衡（而不是只靠数值），并能清晰解释 persuasive/dissuasive 机制。这对 OM/Marketing 理论论文非常重要：机制比计算更值钱。</p>
+</li>
+<li>
+<p><strong>把 ROC 引进博弈设计非常漂亮</strong>：classifier + alarm rule 的拆分让“算法阈值选择”有了可分析的结构；Lemma 5 的线性规划解特别干净，属于可以被大量后续论文复用的 building block。</p>
+</li>
+</ol>
+<hr>
+<h3 id="52-push-major-concerns">5.2 我会 push 的 major concerns（可能影响外部有效性）</h3>
+<h4 id="1-alarm">(1) “alarm 的成本”被简化为纯粹的信息效应</h4>
+<p>在基准模型里，alarm 影响 payoff 的渠道主要是 <strong>receiver 的选择变化</strong>（因为 receiver 看到 alarm 后更可能选 $r_L$）。<br>
+但在许多真实平台中，alarm 本身会触发平台动作（降权、限制传播、封号），即使 receiver 仍愿意相信，也可能被平台直接惩罚。换句话说，alarm 有一个“制度性惩罚”维度，不只是“信念更新”。  </p>
+<p>如果把这一点加进去，$\alpha$ 的社会成本可能更大，最优 detector 可能更偏向保守；同时 high-type 对误伤的厌恶也会更强。</p>
+<h4 id="2-m_h-vs-m_l">(2) 二元消息结构：$m_H$ vs $m_L$ 过于极简</h4>
+<p>模型把 disinformation 简化为“是否发送高类型宣称”。现实里很多误导是<strong>强度连续</strong>的（夸张程度、用词、修图幅度、选择性披露）。<br>
+连续消息可能带来：
+- sender 在“模糊区”选择更微妙的策略（部分撒谎/半真半假）；<br>
+- detector 的最佳策略可能不再是简单的二元 alarm，而是分级标签（warning levels）。</p>
+<h4 id="3_1">(3) 单次博弈忽略了长期声誉与学习</h4>
+<p>真实平台治理的关键是动态：<br>
+- 平台不断更新模型；<br>
+- 造假者适应（adversarial）；<br>
+- receiver 也会学习平台标签的可信度（label fatigue）。  </p>
+<p>在重复博弈里，false positives 会累积信誉损失，从而改变 receiver 对 alarm 的长期信任，可能进一步放大本文的机制（甚至出现多稳态：大家最终都不信标签）。</p>
+<h4 id="4-capacity">(4) capacity 的定义很技术，但管理含义可以更“可测量”</h4>
+<p>Definition 2 的两个不等式是充分具体的数学条件，但在实务里平台更关心可观测指标：precision/recall、AUC、calibration error、cost-weighted error 等。<br>
+建议作者进一步把 capacity 条件翻译成这些指标的阈值/关系（哪怕是近似），让建议更可落地。</p>
+<hr>
+<h3 id="53">5.3 我想看到的未来研究方向（可以写成一条研究线）</h3>
+<ol>
+<li>
+<p><strong>连续信号/多级标签的机制设计</strong>：把 $l\in{a,na}$ 扩展为多级 warning，研究“标签粒度”如何影响 equilibrium 造假强度与误伤成本。</p>
+</li>
+<li>
+<p><strong>动态/adversarial learning</strong>：将 detector 改进视为一个动态控制问题（learning curve），sender 作为对手选择对抗特征；研究最优更新节奏与透明度（公开规则会不会被利用）。</p>
+</li>
+<li>
+<p><strong>多 receiver / 网络传播外部性</strong>：社媒 misinformation 的损害往往是网络外部性，不是单个 receiver payoff 能刻画；引入传播动力学后，“少量 false positives”可能带来巨大的信任崩溃，从而改变最优 detector。</p>
+</li>
+<li>
+<p><strong>$C$ 的制度内生化</strong>：把 $C$ 作为平台政策选择（罚款、押金、认证门槛）与 detector 联合设计，研究“提高撒谎成本 vs 提高检测准确率”哪一个更具成本效率。</p>
+</li>
+<li>
+<p><strong>平台利润最大化的完整模型</strong>：Extension 5.2 已经往这一步走了，但还可以更深：考虑双边市场、广告收入、内容供给弹性、以及法律风险，把 detector 放进平台的整体运营目标里。</p>
+</li>
+</ol>
+<hr>
+<h2 id="6-one-more-thing">6. One More Thing</h2>
+<p>如果只能从这篇论文带走一个“灵光一现”的数学技巧，我会选这个：</p>
+<h3 id="indifference-pinning"><strong>用“indifference pinning”把复杂博弈压成可计算的闭式解</strong></h3>
+<p>在 Proposition 1 的两个区域里，作者都做了同一件事：</p>
+<ol>
+<li>找到 receiver 会混合的那个信息集（弱检测区：no alarm；强检测区：alarm）。  </li>
+<li>因为 receiver 混合，说明该信息集的后验必须刚好落在阈值 $\hat{\rho}$。  </li>
+<li>用 Bayes 公式把“后验 = $\hat{\rho}$”反解为低类型撒谎概率 $\sigma_S$ 的闭式表达。  </li>
+</ol>
+<p>这是一种非常强的建模/求解套路：<strong>先定位哪个信息集会被用来 enforce IC（incentive compatibility），再用 indifference 把策略空间钉死</strong>。</p>
+<p>它的美妙之处在于：你不需要枚举所有策略，也不需要求复杂的 fixed point；只要抓到哪个约束在均衡中绑定，就能直接写出闭式均衡，并且自然得到比较静态（比如为什么 $\sigma_S$ 在不同区间对 $\beta$ 的导数符号相反）。</p>
+<h3 id="bonus-roclemma-5"><strong>Bonus：线性规划视角的 ROC（Lemma 5）</strong></h3>
+<p>第二个“好用到离谱”的技巧是：把 alarm rule 设计写成一个线性规划，直接推出 ROC 前沿分段线性。<br>
+这让“算法阈值选择”在理论模型里变得像一个干净的 operations problem：先用最便宜的资源（$s_L$ 区域）提高 $\beta$，再用更贵的资源（$s_H$ 区域）。</p>
+<hr>
+    </div>
+  </div>
+</body>
+</html>

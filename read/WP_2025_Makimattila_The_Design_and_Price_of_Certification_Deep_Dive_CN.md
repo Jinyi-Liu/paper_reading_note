@@ -128,6 +128,7 @@ receiver 希望行动匹配状态：
 
 - $v_R(a_H,H)>0>v_R(a_H,L)$，且归一化 $v_R(a_L,L)=v_R(a_L,H)=0$。  
 - 因此存在门槛 $\mu$，使得 receiver 在 posterior $p$ 下选择 $a_H$ 当且仅当 $p\ge \mu$，其中  
+
 $$
 \mu=-\frac{v_R(a_H,L)}{v_R(a_H,H)-v_R(a_H,L)}.
 $$
@@ -238,6 +239,7 @@ $$
 
 1. $x(\theta)$ **非减**（monotone allocation）；
 2. Envelope 条件成立：对任意 $\tilde\theta$，
+
 $$
 V(\theta)=V(\tilde\theta)+\int_{\tilde\theta}^{\theta}x(s)\,ds.
 \tag{EV}
@@ -368,16 +370,19 @@ $$
 先定义：
 
 - 顶部池化区间的条件均值
+
 $$
 \mu^*=\mathbb{E}[\theta\mid \theta\ge \theta^*].
 $$
 
 - 常数差分信息量（由顶部可行性 pin down）
+
 $$
 x^*=\frac{\mu-\mu^*}{\mu(1-\mu^*)}.
 $$
 
 - 对每个中间类型 $\theta\in(\theta_*,\theta^*)$，定义
+
 $$
 \pi_L^\theta=\frac{\theta(1-\mu)}{\mu-\theta}\,x^*.
 $$
@@ -456,6 +461,7 @@ $$
 论文给出一个判断条件（Remark 1）来保证最优不是塌缩（从而 sender 有正 surplus）。在 uniform 分布例子里，这个条件可化简为 **$\mu>2/3$**。
 
 > 直觉：receiver 越“苛刻”（$\mu$ 越大），要想说服她就越需要真正的信息差分，这会让 $x^*$ 变大，从而不可避免地产生信息租；certifier 有时宁愿让 sender 留一点租，也不愿把市场做得太小。
+>
 ### 价格/转移函数的实现：把 $(\pi_H,\pi_L)$ 变成“可执行的价格表”
 
 主结果给了最优菜单的**信息结构**（每个类型对应的 $(\pi_H,\pi_L)$），但在运营落地里你会自然追问：**价格 $t$ 到底怎么定，才能让不同类型“按剧本”选测试？**
@@ -465,10 +471,12 @@ $$
 1) 我们已经知道：对所有会买测试的类型（$\theta\ge \theta_*$），都有同一个差分信息量 $x^*$。  
 2) 选择 IR 在边际类型绑定：$V(\theta_*)=0$。  
 3) 由 $V'(\theta)=x^*$ 得到  
+
 $$
 V(\theta)=\int_{\theta_*}^{\theta}x^*\,ds=(\theta-\theta_*)x^*,\qquad \theta\ge \theta_*.
 $$
-4) 又因为 $V(\theta)=\theta x^*-\hat t(\theta)$，所以  
+1) 又因为 $V(\theta)=\theta x^*-\hat t(\theta)$，所以  
+
 $$
 \hat t(\theta)=t(\theta)-\pi_L(\theta)=\theta_*x^* \quad \text{对所有 }\theta\ge \theta_* \text{恒定}.
 $$
@@ -483,10 +491,13 @@ $$
 
 - **不买区间 $\theta<\theta_*$**：$t(\theta)=0$（或等价地不提供）。  
 - **中间分离区间 $\theta\in[\theta_*,\theta^*)$**：
+
 $$
 t(\theta)=\theta_*x^*+\frac{\theta(1-\mu)}{\mu-\theta}x^*.
 $$
+
 - **顶部池化区间 $\theta\in[\theta^*,1]$**：
+
 $$
 t_H=\theta_*x^*+(1-x^*).
 $$
@@ -509,7 +520,7 @@ $$
 该测试满足（并绑定 obedience）：
 
 $$
-\pi_H^{JS}=1,\qquad 
+\pi_H^{JS}=1,\qquad
 \pi_L^{JS}= \frac{\xi(1-\mu)}{\mu(1-\xi)}.
 $$
 
@@ -539,7 +550,6 @@ $$
 - receiver-optimal 的 posterior 支撑集是 $\{0,1\}$（最极端，信息最大）。
 
 > 翻译成人话：利润最大化的 certifier **会刻意避免让 receiver 获得“非常强的好消息”**，因为那会让 sender 的私有信息在选择中变得更重要，从而必须让渡更多 rent。  
-
 
 ---
 
@@ -613,6 +623,7 @@ receiver 学到信息的方式有两条：
 2. **sender 选了哪个测试**（通过分区 $\mathscr{P}$ 产生 $\mu_P$）。
 
 最优设计的核心摩擦是：  
+
 - 想让 receiver 服从 $a_H$ 推荐，你要么让测试更信息性强（更大 $x$），要么让“选这个测试的人看起来更好”（更高 $\mu_P$）。  
 - 但提高 $x$ 会加剧 sender 的信息租（因为 IC 下 rent 随 $x$ 积分增长）。  
 - 因此 certifier 会通过**限制进入/池化高端**来维持较高 $\mu_P$，从而减少对 $x$ 的依赖。

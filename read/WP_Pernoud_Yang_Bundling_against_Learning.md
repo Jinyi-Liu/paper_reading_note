@@ -1,4 +1,5 @@
 # Bundling against Learning（Pernoud & Yang, Oct 2025）  
+
 ## ——一维注意力下的“反学习捆绑”与嵌套套餐均衡
 
 > **论文**：Agathe Pernoud, Frank Yang, *Bundling against Learning*, October 2025  
@@ -8,6 +9,7 @@
 ---
 
 ## 目录
+
 - [1. 研究背景与动机 (Motivation)](#1-研究背景与动机-motivation)  
 - [2. 模型设定与假设 (Model Setup & Assumptions)](#2-模型设定与假设-model-setup--assumptions)  
 - [3. 分析与求解 (Analysis & Solution)](#3-分析与求解-analysis--solution)  
@@ -32,6 +34,7 @@
 关键运营现象（文章抓得很准）：
 
 > 企业并不是被动面对消费者学习，而是经常在**主动管理消费者学什么**：  
+>
 > - 不给单买、只给套餐；  
 > - 用升级包让你“从低到高加料”；  
 > - 用“买 A 送 B / 随机权益 / 积分”让横向对比变得没意义。
@@ -51,6 +54,7 @@
 ### 1.3 核心贡献：本文到底“新”在哪里？
 
 **贡献 A（均衡结构很强）**：证明 Theorem 1：  
+
 - 任何均衡都必须是 **vertical learning**；  
 - 任何均衡结果都等价于 **nested bundling**（嵌套套餐）。
 
@@ -72,12 +76,14 @@
 **Players**：单一卖方（monopolist）与单一买方。
 
 **Sequence of Events（同时行动 + 信号后购买）**：
+
 1. 卖方选择机制 $M$（菜单，允许 lotteries）。  
 2. 买方选择学习权重 $\alpha$，观察信号 $s=\alpha\cdot v$。  
 3. 买方在观察 $s$ 后从菜单选择选项 $m$。  
 4. 分配与支付执行。
 
 **Information**：
+
 - 卖方知道先验分布，但不观察买方的 $\alpha$ 与 $s$；  
 - 买方知道机制与先验分布；  
 - 无差异时买方 **tie-break in favor of seller**（保证卖方最优机制存在）。
@@ -90,6 +96,7 @@ $$u(B,p;v)=\sum_{k\in B}v_k-p.$$
 基准模型：成本归一化为 0，且 $v_k$ 始终高于成本（扩展里引入 $c_k$）。
 
 估值向量 $v=(v_k)_k$：
+
 - 服从椭圆分布（elliptical），支撑在紧集 $V\subset\mathbb{R}_+^K$；  
 - 均值 $\mu$，协方差 $\Sigma$；  
 - **等相关**：对任意 $i\neq j$，  
@@ -121,6 +128,7 @@ $$\theta_i(t)=a_i t+b_i.$$
 ### 2.5 机制、目标函数与约束（把卖方问题写成标准机制设计）
 
 卖方机制 $M=(\mathcal{M},x,p)$：
+
 - $x:\mathcal{M}\to \Delta(2^{[K]})$（随机分配 bundle）；加性下可用商品边际概率 $x_k(m)\in[0,1]$ 表示；  
 - $p:\mathcal{M}\to\mathbb{R}_+$。
 
@@ -131,6 +139,7 @@ $$\max_{m\in\mathcal{M}}\ \sum_{k=1}^K\theta_k(s;\alpha)x_k(m)-p(m).$$
 $$\Pi(M;\alpha)=\mathbb{E}_{\theta\sim G_\alpha}[p(m(\theta))].$$
 
 #### 直接机制形式（Revelation Principle 的线段版本）
+
 由于类型有效是一维（$t$），可考虑直接机制：对每个 $t$ 选择 $(x(t),p(t))$。  
 买方效用：
 $$U(t)=\theta(t)\cdot x(t)-p(t).$$
@@ -200,6 +209,7 @@ $$U(t)\ge \theta(t)\cdot x(t')-p(t').$$
 ### 3.2 Step 1：卖方最优机制刻画（线段类型下的 1D screening）
 
 #### 3.2.1 把类型写成“标量 $t$ + 斜率向量 $a$”
+
 对任意 allocation $x\in[0,1]^K$，类型 $t$ 的价值为
 $$\theta(t)\cdot x=(a t+b)\cdot x=t(a\cdot x)+b\cdot x=t\,q(x)+b\cdot x.$$
 
@@ -207,12 +217,14 @@ $$\theta(t)\cdot x=(a t+b)\cdot x=t(a\cdot x)+b\cdot x=t\,q(x)+b\cdot x.$$
 $$U(t)=t\,q(t)+b\cdot x(t)-p(t).$$
 
 IC 的 envelope 形式给出：
+
 - $q(t)$ 非递减；  
 - $U'(t)=q(t)$（几乎处处）。
 
 这一步是整个 mechanism side 的“主钥匙”。
 
 #### 3.2.2 收入等价：把期望支付写成“虚拟价值 × 分配”
+
 卖方的期望收入：
 $$\mathbb{E}[p(t)]=\mathbb{E}[\theta(t)\cdot x(t)-U(t)].$$
 
@@ -227,6 +239,7 @@ $$\Phi(t;t_0)=\left(t+\frac{F(t)}{f(t)}\right)\mathbf{1}\{t\le t_0\}+\left(t-\fr
 再做 ironing 得到 $\bar\Phi(t;t_0)$（保证单调可实施性）。
 
 直观上：  
+
 - $t>t_0$ 用的是标准 Myerson 形式 $t-(1-F)/f$；  
 - $t<t_0$ 因为 $t_0$ 才是 IR 绑定点，左侧的“虚拟值”要换成 $t+F/f$。
 
@@ -357,6 +370,7 @@ $$U(\alpha)=\mathbb{E}[V(\theta(s;\alpha))].$$
 ### 4.2 Theorem 1（主定理）
 
 **Theorem 1**：在广义高斯环境中  
+
 1) 每个均衡都具有 vertical learning；  
 2) 每个均衡都 outcome-equivalent to nested bundling equilibrium。
 
@@ -372,6 +386,7 @@ $$\mathrm{Cov}(v_i/\mu_i,\alpha\cdot v)\le \mathrm{Cov}(v_j/\mu_j,\alpha\cdot v)
 $$0\le \frac{\sigma_i^2}{\mu_i}\alpha_i\le \frac{\sigma_j^2}{\mu_j}\alpha_j.$$
 
 **直觉**（把数学翻译成人话）：
+
 - 升级品要靠高类型的上尾付费，所以需要更厚的相对上尾（log 方差更大）。  
 - 如果某商品在 log 尺度上太集中（相对不确定性小），它的需求更弹性，放在高 tier 不如放在 base（否则高价卖不动）。  
 - 因而均衡里买方会把一维学习能力更多地投向高 tier 商品（让它的后验更分散），否则卖方会“交换 base/upgrade”提升利润，均衡无法成立。
@@ -383,6 +398,7 @@ $$0\le \frac{\sigma_i^2}{\mu_i}\alpha_i\le \frac{\sigma_j^2}{\mu_j}\alpha_j.$$
 **Proposition 2**：若 $v$ exchangeable，则均衡存在。更一般地，存在 $\bar\rho<1$ 使得当 $\rho\ge \bar\rho$ 时均衡存在。
 
 **比较静态**：
+
 - $\rho$ 越高，商品共动越强，vertical 信号更自然；买方在不同方向间的权衡更弱，固定点更容易出现。  
 - exchangeable 情况下，学 grand bundle（$\alpha=\mathbf{1}$）与卖方只卖 grand bundle 相互最佳回应，形成 pure bundling 均衡。
 
@@ -451,6 +467,7 @@ $$0\le \frac{\sigma_i^2}{\mu_i}\alpha_i\le \frac{\sigma_j^2}{\mu_j}\alpha_j.$$
 ### 5.2 对政策/平台治理的一句话（谨慎但重要）
 
 “bundling 抑制学习”这件事，从消费者福利角度并不单调：  
+
 - 可能减少无意义的搜索成本；  
 - 也可能抑制有效比较，产生锁定与市场力量。  
 这为 antitrust/平台监管提供了一个新的理论角度：关注 bundling 如何改变信息获取，而不仅是价格。
@@ -462,22 +479,27 @@ $$0\le \frac{\sigma_i^2}{\mu_i}\alpha_i\le \frac{\sigma_j^2}{\mu_j}\alpha_j.$$
 > 不复制图片，解释每张图的“信息含量”。
 
 ### Figure 1：极负相关下 pure bundling 均衡的直觉
+
 当两商品高度负相关时，直觉上买方想学 $v_1-v_2$。  
 但如果卖方只卖 bundle，那么买方真正需要的是 $v_1+v_2$（是否值得买）。  
 于是出现“卖方只卖 bundle、买方只学 bundle 价值”的均衡。
 
 ### Figure 3：一个标准 nested bundling 均衡的数值例子（论文给了具体数）
+
 设 $\mu=(1,2)$，$\sigma_1=\sigma_2=1$，$\rho=0.5$（截断高斯）。存在均衡：
+
 - 买方信号 $\alpha=(0.74,0.26)$（vertical）；  
 - 卖方菜单：$\{2\}$ 售价 1.51，$\{1,2\}$ 售价 2.37（嵌套套餐）。  
 并且满足 Proposition 1 的 log 方差排序：$\mathrm{Var}(\log\theta_1)=0.39$，$\mathrm{Var}(\log\theta_2)=0.03$。  
 论文给出的解释是：若排序反过来，卖方会倾向于交换 base/upgrade 提升利润，均衡就破裂。
 
 ### Figure 4：horizontal 类型下的“压扁效用”机制（为什么混合捆绑会出现）
+
 在下降线段型分布下，存在一个随机 bundle $x^*$ 使得不同类型对它的价值相同。  
 卖方把一段类型的 IR 绑定在这个 $x^*$ 上，从而让买方学习到的横向差异无法改变选项选择。
 
 ### Figure 5：翻转构造解释 Proposition 4
+
 在 $\rho=0$ 下，vertical/horizontal 可通过“翻转”复制边缘分布，因此买方无差异；  
 在 $\rho<0$ 下翻转会让边缘更分散，horizontal 更值钱。
 

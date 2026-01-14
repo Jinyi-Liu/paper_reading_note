@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WP_2025_Makimattila_The_Design_and_Price_of_Certification_Deep_Dive_CN</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="the-design-and-price-of-certification-om-io">The Design and Price of Certification — 深度拆解笔记（OM / IO / 信息设计）</h1>
+<blockquote>
+<p>论文：Mäkimattila, Mikael; Shang, Yucheng; Shirakawa, Ryo. <strong>The Design and Price of Certification</strong>（2025-06-18）<br>
+主题标签：Certification / Bayesian Persuasion / Selling Information / Mechanism Design / Screening / Signaling / Obedience Constraints<br>
+本笔记目标：读完后你能（i）复述模型与时序，（ii）写出关键约束与收入表达式，（iii）理解最优菜单为何长成“两阈值 + 常数差分信息量”的形状，（iv）抓住背后的机制与反直觉点，达到 OM 博士生可复盘推导的程度。</p>
+</blockquote>
+<hr>
+<h2 id="_1">目录（建议按这个顺序读）</h2>
+<ol>
+<li><a href="#研究背景与动机-motivation">研究背景与动机</a>  </li>
+<li><a href="#模型设定与假设-model-setup--assumptions">模型设定与假设</a>  </li>
+<li><a href="#分析与求解-analysis--solution">分析与求解</a>  </li>
+<li><a href="#主要结论与管理启示-main-results--managerial-insights">主要结论与管理启示</a>  </li>
+<li><a href="#reviewers-critique-严厉审稿人视角">Reviewer's Critique</a>  </li>
+<li><a href="#one-more-thing-一个最值得分享的灵光一现">One More Thing</a>  </li>
+</ol>
+<hr>
+<h2 id="motivation">研究背景与动机 (Motivation)</h2>
+<p>这篇文章研究的不是“信息披露”本身，而是一个更现实、更刺耳的问题：</p>
+<blockquote>
+<p><strong>当信息必须通过第三方认证（certifier）生成与传递，而 certifier 又是利润最大化的机构时，认证的设计与定价会如何扭曲信息结构与市场参与？</strong></p>
+</blockquote>
+<h3 id="_2">实践痛点：行业中到底卡在哪？</h3>
+<p>典型场景包括（论文给的直观例子）：</p>
+<ul>
+<li><strong>标准化考试与招生</strong>：学生（sender）对自己能力有私有信念，购买测试机构（certifier）的考试服务，学校（receiver）据此录取。  </li>
+<li><strong>质量认证与市场交易</strong>：企业/卖家（sender）购买质量证书影响消费者/买家（receiver）决策。</li>
+</ul>
+<p>这些行业里常见的运营现象/争议点是：</p>
+<ol>
+<li><strong>测试/认证往往被“产品化”成菜单</strong>：不同价格、不同版本（加急、补考、premium certificate、不同级别认证）。这不仅是成本差异，更像是“筛选机制”。  </li>
+<li><strong>认证的透明度与披露规则高度制度化</strong>：接收方通常看到证书，但不一定看到“你选了哪个测试版本/考了几次”。这会改变激励。  </li>
+<li><strong>“信息质量”与“收入”之间的张力</strong>：如果 certifier 收入来自 sender（而非 receiver），它可能会选择让 receiver 获得更少、更弱的有用信息，只要还能让 sender 愿意付钱。</li>
+</ol>
+<h3 id="_3">理论缺口：现有文献忽略了什么？</h3>
+<p>论文明确对话的文献脉络：</p>
+<ul>
+<li><strong>Bayesian persuasion</strong>（Kamenica &amp; Gentzkow 2011）：sender 能承诺一个信息披露规则来影响 receiver。  </li>
+<li><strong>缺口</strong>：很多现实场景 sender 无法可信承诺信息（你说你很强，谁信？），于是出现第三方 certifier。  </li>
+<li><strong>Selling information / menu of experiments</strong>（Bergemann, Bonatti &amp; Smolin 2018）：principal 向“信息的使用者”出售一组实验（experiments），买家用信息改善自己的决策。  </li>
+<li><strong>缺口</strong>：在本文里，买信息的人（sender）并不是为了自己做决策，而是为了<strong>说服另一个人</strong>（receiver）做决策；更关键的是：<strong>sender 选了哪一种测试，本身就会向 receiver 传递信息</strong>（selection/signaling effect）。  <ul>
+<li>这会让最优化问题不再能“逐点(pointwise)”优化每个类型的实验：因为一个类型的设计会改变其他类型的可行性（通过 receiver 的推断与 obedience constraints）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="significance">核心贡献：Significance 在哪？</h3>
+<p>我把贡献拆成三条（每条都对应一个“你读完会记住的结论”）：</p>
+<ol>
+<li><strong>提出并解决了“认证菜单 + 说服 + 选择可观察”的联合设计问题</strong>：模型同时含有  </li>
+<li>机制设计（IC/IR + screening）、  </li>
+<li>信息设计（tests/experiments 的信息结构）、  </li>
+<li>
+<p>信号传递（test choice 可观察导致 receiver 更新）。  </p>
+</li>
+<li>
+<p><strong>主结果是一个非常尖锐的结构刻画（Theorem 1）</strong>：最优认证菜单由两个阈值刻画：  </p>
+</li>
+<li>低类型直接被排除（不买），  </li>
+<li>高类型被“池化(pooling)”买同一个“最值创造”的测试，  </li>
+<li>中间类型被“完全分离(full separation)”并购买一族折扣版测试；更反直觉的是：  </li>
+<li><strong>所有被卖出的测试都具有相同的“差分信息量(differential informativeness)”</strong>，从而导致  </li>
+<li><strong>所有买测试的 sender 在菜单上对所有选项都无差异（indifferent）</strong>，而  </li>
+<li>
+<p><strong>receiver 在均衡中拿到 0 surplus</strong>（被逼到刚好服从、无信息租）。</p>
+</li>
+<li>
+<p><strong>比较基准：若 test choice 不可观察，最优菜单可能完全变形（Section 4 / Proposition 1）</strong>：在一定分布条件下，最优变成“两种极端测试”：  </p>
+</li>
+<li>高类型买“完全信息”测试（fully informative），  </li>
+<li>中间类型买“完全不信息”测试（fully uninformative）但反而更贵，  </li>
+<li>低类型不买。<br>
+   这直接给了一个政策/管理含义：<strong>披露规则（是否公开你选了哪个测试/考了几次）会改变市场上可盈利的“认证产品形态”。</strong></li>
+</ol>
+<hr>
+<h2 id="model-setup-assumptions">模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<p>这一部分我会用“记号表 + 时序 + 约束体系”的方式把模型搭起来；你应该能直接拿去复现推导。</p>
+<h3 id="notation">符号体系（Notation）</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\omega \in \Omega={L,H}$</td>
+<td>世界状态（低/高）</td>
+</tr>
+<tr>
+<td>$\xi \in (0,1)$</td>
+<td>共同先验 $P(\omega=H)=\xi$</td>
+</tr>
+<tr>
+<td>sender 的类型 $\theta \in [0,1]$</td>
+<td>sender 在观察私有信号后的“中间信念”(interim belief)：$\theta=P(\omega=H\mid \text{sender signal})$</td>
+</tr>
+<tr>
+<td>$F, f$</td>
+<td>$\theta$ 的分布与密度，full support 且绝对连续，满足 $E[\theta]=\xi$</td>
+</tr>
+<tr>
+<td>$a \in A={a_L,a_H}$</td>
+<td>receiver 的行动（低/高）</td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td>receiver 选择 $a_H$ 的门槛信念（由 payoff 决定）</td>
+</tr>
+<tr>
+<td>certifier 的菜单 $\mathscr{M}=(\mathscr{E},t)$</td>
+<td>$\mathscr{E}$ 为测试集合，$t:\mathscr{E}\to \mathbb{R}$ 为价格函数</td>
+</tr>
+<tr>
+<td>测试 $E=(S,\pi)$</td>
+<td>信号空间 $S$ 与实验/信息结构 $\pi:\Omega\to \Delta(S)$</td>
+</tr>
+<tr>
+<td>价格 $t(E)$</td>
+<td>购买测试 $E$ 的一次性支付（<strong>不能依赖测试结果</strong>）</td>
+</tr>
+<tr>
+<td>行动推荐概率 $\pi_\omega(\theta)$</td>
+<td>经过化简后：在状态 $\omega$ 下推荐 $a_H$ 的概率（见下文）</td>
+</tr>
+<tr>
+<td>差分信息量 $x(\theta)$</td>
+<td>$x(\theta)=\pi_H(\theta)-\pi_L(\theta)$</td>
+</tr>
+<tr>
+<td>虚拟类型 $\psi(\theta)$</td>
+<td>$\psi(\theta)=\theta-\frac{1-F(\theta)}{f(\theta)}$（Myerson 虚拟估值）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="players-sequence-of-events-information-structure">Players, Sequence of Events, Information Structure</h3>
+<h4 id="players3">Players（3 个玩家）</h4>
+<ul>
+<li><strong>Certifier（C）</strong>：设计并定价测试菜单，目标最大化期望收入。  </li>
+<li><strong>Sender（S）</strong>：有部分私有信息（$\theta$），买测试为了影响 receiver 行动。  </li>
+<li><strong>Receiver（R）</strong>：观察测试选择与测试结果后行动，目标匹配状态。</li>
+</ul>
+<h4 id="timing">时序（Timing）</h4>
+<ol>
+<li>Certifier 发布菜单 $\mathscr{M}=(\mathscr{E},t)$.  </li>
+<li>Sender 观察私有信息并形成类型 $\theta$.  </li>
+<li>Sender 选择买某个测试 $E\in\mathscr{E}$ 或不买，并支付 $t(E)$.  </li>
+<li>Receiver 观察到 sender 选的测试 $E$ 以及测试信号 $s$.  </li>
+<li>Receiver 更新信念，选行动 $a\in{a_L,a_H}$.</li>
+</ol>
+<blockquote>
+<p>关键：receiver <strong>能看到 sender 选了哪个测试</strong>（主模型）。这使得“选测试”成为额外信号渠道。</p>
+</blockquote>
+<h4 id="information-structure">信息结构（Information Structure）</h4>
+<ul>
+<li>状态 $\omega$ 二元。sender 的私有信号导致其 belief 类型 $\theta$，但 certifier 与 receiver 看不到 $\theta$。  </li>
+<li>certifier 的测试 $E$ 产生一个公共信号（可被 receiver 观察）。  </li>
+<li>receiver 在看到“测试选择 + 信号结果”后行动。</li>
+</ul>
+<hr>
+<h3 id="_4">目标函数与约束：三方收益</h3>
+<h4 id="receiver-payoff-mu">Receiver payoff 与门槛 $\mu$</h4>
+<p>receiver 希望行动匹配状态：</p>
+<ul>
+<li>$v_R(a_H,H)&gt;0&gt;v_R(a_H,L)$，且归一化 $v_R(a_L,L)=v_R(a_L,H)=0$。  </li>
+<li>因此存在门槛 $\mu$，使得 receiver 在 posterior $p$ 下选择 $a_H$ 当且仅当 $p\ge \mu$，其中  </li>
+</ul>
+<p>$$
+\mu=-\frac{v_R(a_H,L)}{v_R(a_H,H)-v_R(a_H,L)}.
+$$</p>
+<h4 id="sender-payoff-receiver">Sender payoff（关键：只在乎 receiver 是否选高行动）</h4>
+<p>sender 希望 receiver 总是选 $a_H$，不管状态：</p>
+<p>$$
+u_S=\mathbf{1}{a=a_H}-t(E).
+$$</p>
+<blockquote>
+<p>这把 sender 的价值函数变成“让 receiver 采取高行动的概率”，减去价格。</p>
+</blockquote>
+<h4 id="certifier-payoff">Certifier payoff</h4>
+<p>certifier 最大化期望收入：</p>
+<p>$$
+\max_{\mathscr{M}} \; \mathbb{E}_\theta[t(E(\theta))].
+$$</p>
+<hr>
+<h3 id="1">关键化简 1：测试可等价为“行动推荐证书”</h3>
+<p>论文使用一个标准但很强力的简化：<strong>任何测试都可等价为一个“行动推荐信号”</strong>，即信号集合直接取 $S=A={a_L,a_H}$，并要求 receiver 愿意服从推荐（obedience）。</p>
+<p>因此对每个类型 $\theta$ 的测试可用两个数表示：</p>
+<ul>
+<li>$\pi_H(\theta)=\Pr(\text{推荐 }a_H\mid \omega=H)$  </li>
+<li>$\pi_L(\theta)=\Pr(\text{推荐 }a_H\mid \omega=L)$</li>
+</ul>
+<p>差分信息量定义为：</p>
+<p>$$
+x(\theta)=\pi_H(\theta)-\pi_L(\theta).
+$$</p>
+<p>直觉：$x(\theta)$ 越大，测试越能区分状态（高状态更容易推荐高行动），也越“信息性强”。</p>
+<hr>
+<h3 id="2partition-direct-mechanism">关键化简 2：分区(partition) + 机制（direct mechanism）</h3>
+<p>certifier 可用 revelation principle 风格论证：只需考虑<strong>直接机制</strong>：</p>
+<p>$$
+\mathscr{M}={(E(\theta),t(\theta)):\theta\in[0,1]},
+$$</p>
+<p>并且在分析中引入一个分区 $\mathscr{P}$：同一组 $P\in\mathscr{P}$ 的类型被诱导购买同一个测试（同一 $(\pi_H,\pi_L)$ 与价格）。</p>
+<blockquote>
+<p>这一步非常关键：因为 receiver 观察到“你选了哪个测试”，于是她会先根据测试选择推断 sender 类型所在组 $P$，形成组内平均信念 $\mu_P$，再根据推荐信号更新。</p>
+</blockquote>
+<hr>
+<h3 id="ic-ir-ob">约束体系：IC / IR / OB</h3>
+<p>下面是整篇论文的“骨架”。</p>
+<h4 id="i-receiver-obedience-ob">(i) Receiver 的服从约束 (Obedience, OB)</h4>
+<p>设某组 $P$ 的 receiver 在只看到“选择了该组对应测试”时的 interim belief 为</p>
+<p>$$
+\mu_P=\mathbb{E}[\theta\mid \theta\in P].
+$$</p>
+<p>看到推荐 $a_H$ 后，posterior 为</p>
+<p>$$
+\Pr(H\mid a_H,P)=\frac{\mu_P\pi_H}{\mu_P\pi_H+(1-\mu_P)\pi_L}.
+$$</p>
+<p>服从 $a_H$ 的约束就是</p>
+<p>$$
+\frac{\mu_P\pi_H}{\mu_P\pi_H+(1-\mu_P)\pi_L}\ge \mu.
+$$</p>
+<p>论文把高行动服从写成等价形式（我也推荐你用这个）：</p>
+<p>$$
+\mu\big(\mu_P\pi_H+(1-\mu_P)\pi_L\big)\le \mu_P\pi_H.
+\tag{OB-H}
+$$</p>
+<p>同理还有 $a_L$ 的服从约束（不展开）。后续主结果里，高行动约束基本会“卡死(binding)”。</p>
+<hr>
+<h4 id="ii-sender-incentive-compatibility-ic">(ii) Sender 的激励相容 (Incentive Compatibility, IC)</h4>
+<p>sender 类型 $\theta$ 在机制下的期望效用是</p>
+<p>$$
+V(\theta)=\theta\pi_H(\theta)+(1-\theta)\pi_L(\theta)-t(\theta).
+$$</p>
+<p>引入“调整后的转移” $\hat t(\theta)=t(\theta)-\pi_L(\theta)$，则</p>
+<p>$$
+V(\theta)=\theta x(\theta)-\hat t(\theta).
+$$</p>
+<p>在单维类型下，经典 Myerson 结构告诉我们：机制 IC 当且仅当</p>
+<ol>
+<li>$x(\theta)$ <strong>非减</strong>（monotone allocation）；</li>
+<li>Envelope 条件成立：对任意 $\tilde\theta$，</li>
+</ol>
+<p>$$
+V(\theta)=V(\tilde\theta)+\int_{\tilde\theta}^{\theta}x(s)\,ds.
+\tag{EV}
+$$</p>
+<p>所以 $V'(\theta)=x(\theta)$（几乎处处）。</p>
+<hr>
+<h4 id="iii-individual-rationality-ir">(iii) 个体理性 (Individual Rationality, IR)</h4>
+<p>$$
+V(\theta)\ge 0,\quad \forall \theta.
+$$</p>
+<p>在最优机制里，IR 会对某个边际类型 $\theta_0$ 绑定：$V(\theta_0)=0$。<br>
+结合 $x(\theta)$ 的单调性与 (EV)，可把 IR 直观理解为：</p>
+<ul>
+<li>低于边际类型的那些人“买了也不划算” → 最优往往让他们不买（或让他们得到 0 信息价值）。  </li>
+<li>高于边际类型的人获得信息租（information rent），大小由 $\int x$ 决定。</li>
+</ul>
+<hr>
+<h3 id="assumptions">关键假设（Assumptions）与合理性</h3>
+<ol>
+<li><strong>$\xi&lt;\mu$（先验不足以让 receiver 自愿选高行动）</strong>  </li>
+<li>
+<p>若 $\xi\ge \mu$，certifier 可用“无信息测试 + 高价 + 不买就悲观惩罚”的均衡抽干全部 surplus，问题变得平凡。论文因此聚焦非平凡区间。  </p>
+</li>
+<li>
+<p><strong>$F$ 正则（regularity）：虚拟类型 $\psi(\theta)$ 非减</strong>  </p>
+</li>
+<li>Assumption 1：$\psi(\theta)$ 随 $\theta$ 单调上升。  </li>
+<li>
+<p>作用：保证“局部提高信息量对收入的边际收益”在类型上有单调结构，使最优 $x(\theta)$ 呈现阈值/极值特征（类似最优拍卖里“分配是否扭曲”随虚拟估值的符号变化）。</p>
+</li>
+<li>
+<p><strong>价格不能依赖测试结果</strong>（与 Bergemann et al. 2018 一致）  </p>
+</li>
+<li>
+<p>这让测试设计的价值必须通过“事前愿意付多少钱”实现，避免 trivially 用结果定价榨干每个 realization。</p>
+</li>
+<li>
+<p><strong>二元状态、二元行动、sender 只在乎高行动</strong>  </p>
+</li>
+<li>非常 stylized，但换来 sharp characterization：你可以把它理解为“最小模型”，抓住筛选+说服的核心摩擦。</li>
+</ol>
+<hr>
+<h2 id="analysis-solution">分析与求解 (Analysis &amp; Solution)</h2>
+<p>这一部分是整篇文章最精彩也最容易迷路的地方。我会用“先把问题写成一个可优化的数学对象 → 再解释为何最优长成那样”的方式来讲。</p>
+<h3 id="step-0-myerson-">Step 0：把收入写成 Myerson-式的“虚拟剩余”</h3>
+<p>论文推导出（Lemma 1）在给定分区 $\mathscr{P}$ 下的收入最大化问题。核心是把 $t$ 消掉，只留下 $(x,\pi_L)$。</p>
+<p>虚拟类型：</p>
+<p>$$
+\psi(\theta)=\theta-\frac{1-F(\theta)}{f(\theta)}.
+$$</p>
+<p>在 IC 与 envelope 下，期望收入可写成（忽略常数项时的直觉表达）：</p>
+<p>$$
+\mathbb{E}[t(\theta)] = -V(0)+\mathbb{E}\big[\psi(\theta)x(\theta)+\pi_L(\theta)\big].
+$$</p>
+<ul>
+<li>$\psi(\theta)x(\theta)$ 是典型的“虚拟剩余”项：提高差分信息量 $x$ 对不同类型的收益权重由 $\psi$ 决定。  </li>
+<li>$\pi_L(\theta)$ 出现在收入里很特别：它代表一种“把高行动推荐在低状态下也做得更频繁”的手段；只要不违反 obedience，它能提高 sender 得到高行动的概率，从而可被定价吸收。</li>
+</ul>
+<hr>
+<h3 id="step-1-obedience-binding">Step 1：为什么最优菜单里 obedience 往往是 binding？</h3>
+<p>这是一个极关键的“机制性”结论（直觉见 Corollary 2 的证明思路）：</p>
+<blockquote>
+<p>对给定 $x(\theta)$，如果你能把 $\pi_L(\theta)$ 和 $\pi_H(\theta)$ 同时往上挪一点（保持差值 $x$ 不变），sender 的价值会提高，而 IC 不受影响；只要 obedience 仍成立，certifier 就能提高价格 → 收入上升。<br>
+因此最优时，这种“往上挪”的空间必须被堵死，也就是 obedience 约束会卡死(binding)。</p>
+</blockquote>
+<p>在数学上，若某组 $P$ 的 (OB-H) 绑定，我们可以把 $\pi_L$ 用 $x$ 和 $\mu_P$ 表示出来。</p>
+<p>从 (OB-H) 的等式形式推导（建议你亲手做一遍）：</p>
+<p>$$
+\pi_L(P) = \frac{\mu_P(1-\mu)}{\mu-\mu_P}\,x(P), \qquad
+\pi_H(P) = \pi_L(P)+x(P)=\frac{\mu(1-\mu_P)}{\mu-\mu_P}\,x(P).
+\tag{*}
+$$</p>
+<p>这个等式是整篇文章的“齿轮箱”：</p>
+<ul>
+<li>一旦 obedience 绑定，测试的两个维度 $(\pi_H,\pi_L)$ 被压缩成<strong>一维选择</strong>：只剩下 $x$（差分信息量）。  </li>
+<li>但注意：系数依赖 $\mu_P$，而 $\mu_P$ 又由分区与选择揭示的信息决定 → <strong>信息设计与机制设计通过 $\mu_P$ 耦合在一起</strong>。</li>
+</ul>
+<hr>
+<h3 id="step-2monotone-partition">Step 2：为什么最优分区是“单调区间”(monotone partition)？</h3>
+<p>论文用 Lemma 6 等证明：任何非单调分区都可以被“单调化”而不减收入。</p>
+<p>直觉版总结：</p>
+<ul>
+<li>IC 要求 $x(\theta)$ 随 $\theta$ 非减。  </li>
+<li>若分区是“穿插式”的（低类型和高类型混在一起买同一测试），为了满足 IC，这些交叉群组会迫使 $x$ 在其凸包上几乎处处相同。  </li>
+<li>一旦 $x$ 被迫相同，继续用非单调分区只会让 receiver 的推断更麻烦、可行性更紧，而没有收益补偿；通过把分区整理成区间（按类型排序）可以弱化不必要的约束。</li>
+</ul>
+<p>你可以把它看作一种“排序最优性”：在单维类型筛选里，最优分配通常是单调的；这里即使加入了信息结构，单调性仍被 IC 的铁锤敲回来。</p>
+<hr>
+<h3 id="step-3xtheta-0x">Step 3：最关键结构：$x(\theta)$ 只取两个值 ${0,x^*}$</h3>
+<p>在 regularity 下（$\psi$ 非减），论文证明最优菜单里的差分信息量满足：</p>
+<p>$$
+x(\theta)\in{0,x(1)}\quad \text{（进一步在最优里变成 } {0,x^*}\text{）}.
+$$</p>
+<p>直觉：</p>
+<ul>
+<li>对某个分区组 $P$，提高 $x(P)$ 的边际收益大致与该组的“虚拟类型均值”相关。  </li>
+<li>regularity + 单调分区使得“更高的组”拥有更高的虚拟类型均值，于是存在一个 cutoff：  </li>
+<li>cutoff 以上，提高 $x$ 增收；  </li>
+<li>cutoff 以下，提高 $x$ 反而不划算（因为它主要增加信息租）。  </li>
+<li>于是最优选择把 $x$ 推到两个极端：要么 0（不给差分信息），要么推到能推的最大值（但最大值受制于可行性，比如 $\pi_H\le 1$ 与 obedience）。</li>
+</ul>
+<p>这一步的含义非常大：它把一个看似“连续设计空间”的信息结构问题，变成了一个很像 Myerson 的“是否扭曲/扭曲到边界”的问题。</p>
+<hr>
+<h3 id="theorem-1">Theorem 1：最优菜单的精确形状</h3>
+<p>论文的主结果（Theorem 1）说：存在两个阈值 $0\le \theta_<em> \le \theta^</em> \le \mu$，使得最优菜单 $\mathscr{M}(\theta_<em>,\theta^</em>)$ 具有如下形式。</p>
+<p>先定义：</p>
+<ul>
+<li>顶部池化区间的条件均值</li>
+</ul>
+<p>$$
+\mu^<em>=\mathbb{E}[\theta\mid \theta\ge \theta^</em>].
+$$</p>
+<ul>
+<li>常数差分信息量（由顶部可行性 pin down）</li>
+</ul>
+<p>$$
+x^<em>=\frac{\mu-\mu^</em>}{\mu(1-\mu^*)}.
+$$</p>
+<ul>
+<li>对每个中间类型 $\theta\in(\theta_<em>,\theta^</em>)$，定义</li>
+</ul>
+<p>$$
+\pi_L^\theta=\frac{\theta(1-\mu)}{\mu-\theta}\,x^*.
+$$</p>
+<p>则最优菜单（用 $(\pi_H(\theta),\pi_L(\theta))$ 表示）是：</p>
+<p>$$
+(\pi_H(\theta),\pi_L(\theta))=
+\begin{cases}
+(0,0), &amp; \theta\in[0,\theta_<em>),*</em>6pt]
+(x^<em>+\pi_L^\theta,\;\pi_L^\theta), &amp; \theta\in[\theta_</em>,\theta^<em>),*</em>6pt]
+(1,\;1-x^<em>), &amp; \theta\in[\theta^</em>,1].
+\end{cases}
+\tag{OPT}
+$$</p>
+<h4 id="_5">结构解读：三段式 + 两个阈值</h4>
+<ul>
+<li><strong>低类型 $[0,\theta_*)$：不买（或等价地买一个让 receiver 永远选 $a_L$ 的测试）</strong>  </li>
+<li>
+<p>这是典型“排除低估值用户”的 monopoly screening 逻辑，但这里估值不是单一的价格，而是“说服的成功率”。  </p>
+</li>
+<li>
+<p><strong>中间类型 $[\theta_<em>,\theta^</em>)$：完全分离（每个类型一个测试）</strong>  </p>
+</li>
+<li>receiver 观察到你选的测试后，几乎就知道你的 $\theta$（分离）。  </li>
+<li>每个测试的差分信息量都是同一个 $x^*$，但 $\pi_L^\theta$（以及 $\pi_H^\theta$）随 $\theta$ 上升。  </li>
+<li>
+<p>这段“分离”来自一个关键的凸性/Jensen 逻辑：在绑定 obedience 下，$\pi_L$ 与 $\mu_P$ 的关系是凸的，池化会损失 revenue。</p>
+</li>
+<li>
+<p><strong>高类型 $[\theta^*,1]$：池化买同一个测试</strong>  </p>
+</li>
+<li>这个测试满足 $\pi_H=1$：高状态下一定推荐 $a_H$，是“价值创造”最强的 persuasion test（类似 Bayesian persuasion 里 sender-optimal 的结构）。  </li>
+<li>但在低状态下也会以概率 $1-x^*$ 推荐 $a_H$（允许一定 false positive），其大小被 obedience 卡死。</li>
+</ul>
+<hr>
+<h3 id="corollary-1indifference">Corollary 1：买测试的人对所有选项都无差异（Indifference）</h3>
+<p>因为在最优菜单里 <strong>所有卖出的测试都有同一个 $x^*$</strong>，而 IC 下 sender 的效用可写为</p>
+<p>$$
+V(\theta)=\theta x^*-\hat t(\theta),\qquad \hat t(\theta)=t(\theta)-\pi_L(\theta).
+$$</p>
+<p>最优时 $\hat t(\theta)$ 对所有买家是常数（你可以用 $V(\theta_*)=0$ 和 envelope 推出来）：</p>
+<ul>
+<li>若 $x(\theta)=x^<em>$ 对所有 $\theta\ge \theta_</em>$，则<br>
+  $V(\theta)=\int_{\theta_<em>}^{\theta}x^</em>\,ds=(\theta-\theta_<em>)x^</em>$。  </li>
+<li>又由 $V(\theta)=\theta x^<em>-\hat t(\theta)$ 得<br>
+  $\hat t(\theta)=\theta_</em>x^*$，与 $\theta$ 无关。</li>
+</ul>
+<p>于是对任意买测试的 sender，选择哪一个具体测试只要差分信息量相同，就给同样效用 → 无差异。</p>
+<blockquote>
+<p><strong>经济学直觉</strong>：菜单里的“多版本”不是为了让不同类型获得不同效用（他们效用一样），而是为了让 receiver 从选择中推断类型、从而改变 obedience 的可行性与 certifier 的定价边界。<br>
+这非常“机制设计味”：菜单是为了信息结构的可行性与抽租，而不是为了消费者福利。</p>
+</blockquote>
+<hr>
+<h3 id="corollary-2receiver-0">Corollary 2：receiver 预期收益为 0（被压到刚好愿意服从）</h3>
+<p>最优菜单中，高行动 obedience 对每个被选择的测试都绑定。绑定意味着：</p>
+<ul>
+<li>看到推荐 $a_H$ 时 receiver 的 posterior 恰好等于门槛 $\mu$，因此她对 $a_H$ <strong>刚好无差异</strong>。  </li>
+<li>由于 $a_L$ 的 payoff 被归一化为 0，且 $a_H$ 在门槛处期望 payoff 为 0，receiver 在均衡中拿到 0 surplus。</li>
+</ul>
+<p>从机制角度看，这是 certifier 的最优“压榨”：任何让 receiver 严格更愿意选 $a_H$ 的松弛都意味着 certifier 还能把 $\pi_L$ 往上挪（让 sender 更容易拿到 $a_H$），然后提高价格。</p>
+<hr>
+<h3 id="corollary-3sender">Corollary 3：sender 什么时候能拿到正租？</h3>
+<p>sender 的信息租来自 $x^*&gt;0$ 时的 envelope 积分：</p>
+<p>$$
+V(\theta)=(\theta-\theta_<em>)x^</em> \quad (\theta\ge \theta_*).
+$$</p>
+<p>若 $x^*=0$，则所有人都没有信息租，菜单塌缩成一个单一测试：永远推荐 $a_H$（纯粹卖“许可/证书”而非信息）。</p>
+<p>论文给出一个判断条件（Remark 1）来保证最优不是塌缩（从而 sender 有正 surplus）。在 uniform 分布例子里，这个条件可化简为 <strong>$\mu&gt;2/3$</strong>。</p>
+<blockquote>
+<p>直觉：receiver 越“苛刻”（$\mu$ 越大），要想说服她就越需要真正的信息差分，这会让 $x^*$ 变大，从而不可避免地产生信息租；certifier 有时宁愿让 sender 留一点租，也不愿把市场做得太小。
+</p>
+</blockquote>
+<h3 id="pi_hpi_l">价格/转移函数的实现：把 $(\pi_H,\pi_L)$ 变成“可执行的价格表”</h3>
+<p>主结果给了最优菜单的<strong>信息结构</strong>（每个类型对应的 $(\pi_H,\pi_L)$），但在运营落地里你会自然追问：<strong>价格 $t$ 到底怎么定，才能让不同类型“按剧本”选测试？</strong></p>
+<p>利用 IC 的 envelope 结构，你其实可以把价格写得很干净。</p>
+<p>1) 我们已经知道：对所有会买测试的类型（$\theta\ge \theta_<em>$），都有同一个差分信息量 $x^</em>$。<br>
+2) 选择 IR 在边际类型绑定：$V(\theta_<em>)=0$。<br>
+3) 由 $V'(\theta)=x^</em>$ 得到  </p>
+<p>$$
+V(\theta)=\int_{\theta_<em>}^{\theta}x^</em>\,ds=(\theta-\theta_<em>)x^</em>,\qquad \theta\ge \theta_<em>.
+$$
+1) 又因为 $V(\theta)=\theta x^</em>-\hat t(\theta)$，所以  </p>
+<p>$$
+\hat t(\theta)=t(\theta)-\pi_L(\theta)=\theta_<em>x^</em> \quad \text{对所有 }\theta\ge \theta_* \text{恒定}.
+$$
+于是价格表可以写成一句话：</p>
+<p>$$
+t(\theta)=\theta_<em>x^</em>+\pi_L(\theta).
+\tag{Price}
+$$</p>
+<p>把各区间的 $\pi_L$ 代入即可得到显式价格：</p>
+<ul>
+<li><strong>不买区间 $\theta&lt;\theta_*$</strong>：$t(\theta)=0$（或等价地不提供）。  </li>
+<li><strong>中间分离区间 $\theta\in[\theta_<em>,\theta^</em>)$</strong>：</li>
+</ul>
+<p>$$
+t(\theta)=\theta_<em>x^</em>+\frac{\theta(1-\mu)}{\mu-\theta}x^*.
+$$</p>
+<ul>
+<li><strong>顶部池化区间 $\theta\in[\theta^*,1]$</strong>：</li>
+</ul>
+<p>$$
+t_H=\theta_<em>x^</em>+(1-x^*).
+$$</p>
+<blockquote>
+<p>这也解释了“为什么会出现一堆版本但消费者无差异”：<br>
+版本之间的差别体现在 $\pi_L(\theta)$（低状态下也给高推荐的概率），而价格正好跟着 $\pi_L$ 一起动，从而把消费者的效用“压平”。<br>
+菜单的功能不是创造异质化效用，而是创造<strong>可用于 receiver 推断的选择分离</strong>。</p>
+</blockquote>
+<hr>
+<h3 id="benchmark">与两个 benchmark 的对比：谁的目标不同，测试就会长得完全不同</h3>
+<p>论文的 Remark 2 给了两个自然 benchmark，用来凸显 revenue-maximizing 结果的“信息压缩”本质。</p>
+<h4 id="benchmark-a-certifier-sender-joint-surplus">Benchmark A：最大化 certifier + sender 的联合剩余（joint surplus）</h4>
+<p>如果目标是最大化 sender 得到 $a_H$ 的概率（再把钱在两者之间转移），最优其实是卖<strong>一个</strong> persuasion test 给所有类型。<br>
+由于此时 receiver 看到“买了测试”并不能从选择中推断类型，relevant belief 就是总体均值 $E[\theta]=\xi$。</p>
+<p>该测试满足（并绑定 obedience）：</p>
+<p>$$
+\pi_H^{JS}=1,\qquad
+\pi_L^{JS}= \frac{\xi(1-\mu)}{\mu(1-\xi)}.
+$$</p>
+<ul>
+<li>$\pi_H^{JS}=1$：高状态一定推荐 $a_H$，最大化价值创造。  </li>
+<li>$\pi_L^{JS}$ 取到刚好让 receiver 愿意在看到 $a_H$ 推荐时服从的最大值。</li>
+</ul>
+<p>直觉：<strong>联合剩余最大化时，你不怕给 sender 留 rent；你只想让高行动发生得尽可能多。</strong></p>
+<h4 id="benchmark-b-receiver-receiver-optimal">Benchmark B：最大化 receiver 的期望收益（receiver-optimal）</h4>
+<p>receiver 最喜欢信息充分（减少误判），所以最优是卖完全信息测试给所有类型：</p>
+<p>$$
+\pi_H^{R}=1,\qquad \pi_L^{R}=0.
+$$</p>
+<p>这使得推荐完全揭示状态：低状态永不推荐 $a_H$。</p>
+<h4 id="revenue-maximizing">本文的 revenue-maximizing 菜单：信息更少，但更赚钱</h4>
+<p>本文结果的关键区别是：certifier 把“信息性”压缩到能赚钱的最低水平，以限制 sender 的信息租。</p>
+<p>论文给了一个非常漂亮的比较方式：在最优菜单下，receiver 的 posterior 分布相对于上述 benchmark 是一种 <strong>mean-preserving contraction</strong>（均值不变但方差更小），也可以直观理解为：</p>
+<ul>
+<li>revenue-maximizing 菜单让 receiver 的 posterior 支撑集落在 $[0,\mu]$ 的更窄区间（不会出现特别“确信为高”的后验）。  </li>
+<li>joint surplus 菜单的 posterior 支撑集是 ${0,\mu}$（更极端）。  </li>
+<li>receiver-optimal 的 posterior 支撑集是 ${0,1}$（最极端，信息最大）。</li>
+</ul>
+<blockquote>
+<p>翻译成人话：利润最大化的 certifier <strong>会刻意避免让 receiver 获得“非常强的好消息”</strong>，因为那会让 sender 的私有信息在选择中变得更重要，从而必须让渡更多 rent。  </p>
+</blockquote>
+<hr>
+<h3 id="comparative-statics">Comparative Statics：关键参数变化会怎么影响均衡？</h3>
+<p>论文本身更偏“结构刻画”而非给闭式 comparative statics，但我们可以从关键公式里读出方向性。</p>
+<h4 id="1-receiver-mu">1) receiver 门槛 $\mu$ 上升（更保守、更难被说服）</h4>
+<p>从
+$$
+x^<em>=\frac{\mu-\mu^</em>}{\mu(1-\mu^<em>)}
+$$
+可见，在 $\mu^</em>$ 固定时，$\mu$ 上升通常会让 $x^*$ 上升（需要更大的差分信息量来让推荐 $a_H$ 可被服从）。</p>
+<ul>
+<li><strong>后果 A：信息租上升</strong>（因为 $V(\theta)=(\theta-\theta_<em>)x^</em>$）。  </li>
+<li><strong>后果 B：certifier 更可能提高阈值 $\theta_<em>$ 或 $\theta^</em>$</strong> 来限制进入者，避免把 $\mu^<em>$ 拉低导致 $x^</em>$ 更大。  </li>
+<li><strong>管理解读</strong>：当接收方更严格（更高录取门槛、更严格监管、更高合规阈值），认证机构更倾向于：  </li>
+<li>提价/排除低端客户，  </li>
+<li>或推出更“硬”的信息结构（但这反而会给客户更多 rent）。</li>
+</ul>
+<h4 id="2-mu">2) 顶部池化组的均值 $\mu^*$ 上升（买家群体更“自信/优质”）</h4>
+<p>$\mu^<em>$ 上升会降低 $x^</em>$，因为 receiver 在看到高端测试被选择时已经更相信状态为高，于是测试本身不必那么“区分状态”也能让推荐被服从。</p>
+<ul>
+<li><strong>后果</strong>：certifier 更愿意扩大服务范围或降低价格（因为信息租压力减轻）。  </li>
+<li>但注意 $\mu^<em>$ 本身由 $\theta^</em>$ 决定：降低 $\theta^<em>$ 会降低 $\mu^</em>$，形成一个典型的“扩大市场 vs 增加信息租”的权衡。</li>
+</ul>
+<h4 id="3-f-psi">3) 类型分布 $F$ 的变化（尤其是虚拟类型 $\psi$ 的形状）</h4>
+<p>regularity（$\psi$ 单调）保证了最优结构的整洁。如果 $F$ 更偏向高类型（hazard rate 更高、虚拟类型更大），则提高 $x$ 的边际收益更可能为正，从而更可能出现 $x^*&gt;0$ 与多测试菜单；反之可能塌缩。</p>
+<hr>
+<h3 id="section-4-test-choice">Section 4：若 test choice 不可观察，会发生什么？</h3>
+<p>当 receiver 看不到 sender 选了哪个测试时，“选择作为信号”的渠道消失，obedience 从“每个组都要满足”变成一个<strong>总体约束</strong>（aggregate obedience, AOB）：</p>
+<p>$$
+\frac{\mathbb{E}[\theta(1-\pi_H(\theta))]}{\mathbb{E}[\theta(1-\pi_H(\theta))+(1-\theta)(1-\pi_L(\theta))]}\le \mu \le
+\frac{\mathbb{E}[\theta\pi_H(\theta)]}{\mathbb{E}[\theta\pi_H(\theta)+(1-\theta)\pi_L(\theta)]}.
+\tag{AOB}
+$$</p>
+<p>在 $\psi$ 凹（concave）等条件下，论文给出 Proposition 1：最优菜单变成极端的三段式（见 Figure 2）：</p>
+<ul>
+<li>高类型：$(\pi_H,\pi_L)=(1,0)$（完全信息）  </li>
+<li>中间类型：$(1,1)$（完全不信息，但永远推荐 $a_H$）  </li>
+<li>低类型：$(0,0)$（不买）</li>
+</ul>
+<p><strong>关键直觉</strong>：</p>
+<ul>
+<li>receiver 无法根据“你选了哪个测试”来更新，因此 certifier 可以向某些类型卖一种“看起来像证书但不含信息”的产品（完全不信息）。  </li>
+<li>同时仍需靠少部分高类型的“真信息”来在总体上满足 AOB，让 receiver 在看到 $a_H$ 推荐时整体上愿意服从。</li>
+</ul>
+<blockquote>
+<p>这给了一个很直观的现实映射：当“测试版本/次数/路径”不披露时，市场上更容易出现高价但低信息含量的认证产品（甚至近似 placebo）。</p>
+</blockquote>
+<hr>
+<h2 id="main-results-managerial-insights">主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<p>这一节我按“机制揭示 → 对比 benchmark → 建议与政策含义 → 图表”的顺序来写。</p>
+<h3 id="trade-off">机制揭示：新的 trade-off 与反直觉点</h3>
+<h4 id="1-vs">1) 两条信息渠道的耦合：测试信息 vs 选择信息</h4>
+<p>receiver 学到信息的方式有两条：</p>
+<ol>
+<li><strong>测试本身的信号</strong>（$\pi_H,\pi_L$）。  </li>
+<li><strong>sender 选了哪个测试</strong>（通过分区 $\mathscr{P}$ 产生 $\mu_P$）。</li>
+</ol>
+<p>最优设计的核心摩擦是：  </p>
+<ul>
+<li>想让 receiver 服从 $a_H$ 推荐，你要么让测试更信息性强（更大 $x$），要么让“选这个测试的人看起来更好”（更高 $\mu_P$）。  </li>
+<li>但提高 $x$ 会加剧 sender 的信息租（因为 IC 下 rent 随 $x$ 积分增长）。  </li>
+<li>因此 certifier 会通过<strong>限制进入/池化高端</strong>来维持较高 $\mu_P$，从而减少对 $x$ 的依赖。</li>
+</ul>
+<h4 id="2">2) 为什么中间类型要完全分离，而高类型反而池化？</h4>
+<p>这是 Figure 1 背后的微妙点：</p>
+<ul>
+<li>对中间类型，绑定 obedience 后 $\pi_L(\mu_P)$ 是一个对 $\mu_P$ 的凸函数；在凸函数下，<strong>分离（更多极端的 $\mu_P$）会提高期望值</strong>（Jensen）。  </li>
+<li>经济意义：把“更好的中间类型”单独拎出来卖更高价值（也更高价）的测试，增收超过了对“更差中间类型”让利的损失。  </li>
+<li>但对最顶端类型，$\pi_H\le 1$ 的上界开始起作用：当你想继续分离到更高 $\mu_P$ 时，$\pi_H$ 很快撞到 1，进一步分离带来的可行集收益变小，于是顶部出现池化区间 $[\theta^*,1]$。</li>
+</ul>
+<h4 id="3-receiver-0-surplus">3) 反直觉：receiver 被逼到 0 surplus</h4>
+<p>很多人第一反应会是：“认证行业卖信息，receiver 应该收益更高”。<br>
+这篇论文给的尖锐反例是：在利润最大化下，认证机构会把 receiver 压到刚好愿意服从的边界，使 receiver 预期 surplus 为 0。</p>
+<p>这不是说 receiver 一定“什么都学不到”，而是说她学到的程度被设计成恰好让她不获得额外期望收益（信息租被转移到 sender/certifier 的可收费空间里）。</p>
+<hr>
+<h3 id="_6">管理建议：对不同主体的行动含义</h3>
+<h4 id="certifier">对 certifier（测试机构/认证平台）</h4>
+<ul>
+<li><strong>菜单不是为了“满足不同偏好”，而是为了“操控推断 + 抽租”</strong>：  </li>
+<li>实务上你会看到“不同版本”之间信息质量差异可能很小，但价格差异很大；本文给了一个理论解释：关键是差分信息量保持常数，版本差异主要体现在 $\pi_L$（更容易给高推荐）。  </li>
+<li><strong>高端产品会趋向于“价值创造最大化”</strong>：在顶部池化区间里，最优测试满足 $\pi_H=1$（高状态一定推荐高行动），这类似把高端测试做成“最能让 receiver 采取高行动”的 persuasion test。  </li>
+<li><strong>排除低端客户是利润最大化的一部分</strong>：低类型被定价赶出市场（$\theta&lt;\theta_*$）。</li>
+</ul>
+<h4 id="receiver">对 receiver（学校/买家/监管者）</h4>
+<ul>
+<li><strong>不要把证书当成“社会福利最大化的信息”</strong>：证书可能被设计成最小化你的 surplus。  </li>
+<li><strong>披露规则是杠杆</strong>：要求披露“选择了哪个版本/考了几次/是否 retake”能显著改变 certifier 可实现的最优菜单形态。  </li>
+<li>如果不披露，可能出现 Proposition 1 那种“昂贵但无信息”的证书产品。</li>
+</ul>
+<h4 id="relevant">对政策制定者/行业监管（特别 relevant）</h4>
+<ul>
+<li><strong>强制披露测试路径/版本/尝试次数</strong>：能削弱 certifier 利用 aggregate obedience 出售“低信息高价”证书的空间。  </li>
+<li><strong>设置信息质量最低标准（minimum informativeness）</strong>：否则利润动机会把信息压缩到对 receiver 贡献最小的边界。  </li>
+<li><strong>鼓励 receiver 端的独立验证</strong>（独立考试、随机审计）：相当于提高 certifier 的可行集约束，让其无法仅靠设计把 receiver 推到 indifferent。</li>
+</ul>
+<hr>
+<h3 id="figure-1-figure-2">图表解释：Figure 1 与 Figure 2 在讲什么？</h3>
+<h4 id="figure-1test-choice">Figure 1（主模型：test choice 可观察）——三段式菜单的“几何直觉”</h4>
+<p>图 1 同时画了三条曲线：$\pi_H(\theta)$、$\pi_L(\theta)$、以及差分 $x(\theta)$。</p>
+<p>你应当读出三点：</p>
+<ol>
+<li><strong>$x(\theta)$ 是阶梯函数</strong>：  </li>
+<li>$\theta&lt;\theta_*$：$x=0$（不给差分信息，等价不卖）；  </li>
+<li>
+<p>$\theta\ge \theta_<em>$：$x=x^</em>$（所有卖出的测试差分信息量相同）。  </p>
+</li>
+<li>
+<p><strong>在中间区间 $[\theta_<em>,\theta^</em>)$，$\pi_L(\theta)$ 与 $\pi_H(\theta)$ 上升且呈凸形</strong>：  </p>
+</li>
+<li>因为它们通过公式 $\pi_L^\theta=\frac{\theta(1-\mu)}{\mu-\theta}x^*$ 依赖于 $\theta$，在 $\theta\to\mu$ 时会加速上升。  </li>
+<li>
+<p>凸性意味着“分离优于池化”：把中间类型拆开能提高收入。</p>
+</li>
+<li>
+<p><strong>在高区间 $[\theta^*,1]$，$\pi_H$ 撞到 1 并保持常数</strong>：  </p>
+</li>
+<li>这就是为什么顶部类型池化：进一步分离无法让 $\pi_H$ 超过 1，边际增益变小。</li>
+</ol>
+<hr>
+<h4 id="figure-2test-choice">Figure 2（变体：test choice 不可观察）——“真信息 + 伪信息”并存</h4>
+<p>图 2 的菜单是阶梯状：</p>
+<ul>
+<li>高类型：$(1,0)$ → 推荐完全揭示状态（高状态给 $a_H$，低状态给 $a_L$）。  </li>
+<li>中间类型：$(1,1)$ → 永远推荐 $a_H$（完全不信息）。  </li>
+<li>低类型：$(0,0)$ → 不买。</li>
+</ul>
+<p>你应当读出的信息是：<strong>当选择不可观察时，certifier 可以把“信息”集中在少数高类型上，用来支撑 receiver 的总体服从；同时向其他类型卖“看起来有用但实际上不提供区分信息”的证书。</strong></p>
+<hr>
+<h2 id="reviewers-critique">Reviewer's Critique (严厉审稿人视角)</h2>
+<p>下面我会用“Senior Editor/Reviewer”口吻来挑刺——不是为了抬杠，而是为了告诉你：这个模型在哪些地方最强、在哪些地方最脆。</p>
+<h3 id="_7">优点（为什么这篇值得发好刊）</h3>
+<ol>
+<li><strong>问题设定抓住了现实认证行业的核心摩擦</strong>：profit motive 与 information quality 的冲突，加上“选择可观察”的制度细节，非常真实。  </li>
+<li><strong>把三种理论工具焊在一起而且焊得很干净</strong>：mechanism design（IC/IR/virtual types）、Bayesian persuasion（信息结构）、signaling（choice reveals type）。  </li>
+<li><strong>结构刻画极其 sharp</strong>：两阈值 + 常数差分信息量 + receiver 0 surplus。能给很多后续工作当“基准定理”。  </li>
+<li><strong>Section 4 的对比很有力量</strong>：同一个经济问题，仅仅改一个制度细节（choice 是否可观察）就让最优菜单“从连续家族变成极端阶梯”，这很适合做 policy relevance。</li>
+</ol>
+<h3 id="reviewer">缺点与潜在争议（会被 reviewer 追着问的点）</h3>
+<ol>
+<li><strong>均衡选择问题很硬</strong>：  </li>
+<li>在最优菜单下，所有买家对所有测试无差异（Corollary 1）。  </li>
+<li>那么“为什么类型 $\theta$ 会选择机制想让她选择的那个测试？”  </li>
+<li>论文用“certifier-optimal PBE + 纯策略”作为聚焦，但现实中这意味着：  <ul>
+<li>需要某种外生的 tie-breaking 规则，或者  </li>
+<li>certifier 需要额外设计微小扰动/随机化来实现分离。  </li>
+</ul>
+</li>
+<li>
+<p>这不是致命问题，但会影响可实现性与实证含义。</p>
+</li>
+<li>
+<p><strong>sender 偏好极端简化</strong>：sender 只关心 receiver 是否选 $a_H$，且对状态无关。  </p>
+</li>
+<li>
+<p>在很多场景（比如卖家质量认证），低状态下被“误判为高”可能带来后续惩罚、退货、诉讼等；那会改变 sender 对 $\pi_L$ 的偏好，从而改变最优菜单形态。  </p>
+</li>
+<li>
+<p><strong>二元状态/行动 + 单 receiver</strong>：  </p>
+</li>
+<li>OM 场景经常是多维质量、多级行动（定价、产量、配给、录取名额）、多 receiver（市场端竞争、多个学校）。  </li>
+<li>
+<p>二元化使得 obedience 约束非常整洁，但也可能放大了“receiver 0 surplus”这种边界结果的普遍性。</p>
+</li>
+<li>
+<p><strong>certifier 的成本结构缺席</strong>：  </p>
+</li>
+<li>测试设计与实施成本可能随 informativeness 增加而上升。  </li>
+<li>若加入成本，$x$ 不一定推到边界，菜单结构可能更平滑。  </li>
+<li>
+<p>目前结果更适合解释“信息可以被任意设计、成本忽略”的行业（如某些认证流程）而非严格成本递增的实验检测（如医学检验）。</p>
+</li>
+<li>
+<p><strong>outside option 设定与惩罚信念</strong>：  </p>
+</li>
+<li>论文证明“在 certifier-optimal equilibrium 下，不买的外部选项可设为 0”是 WLOG，但它仍依赖于某种均衡选择（pessimistic beliefs）。  </li>
+<li>如果你关心更稳健的均衡选择概念，可能需要再讨论。</li>
+</ol>
+<h3 id="_8">未来研究方向（在这篇基础上，哪些扩展最有价值？）</h3>
+<ol>
+<li><strong>动态/重复认证：retake 与选择披露规则内生化</strong>  </li>
+<li>“考几次”“只报最好成绩”是现实中最重要的制度变量之一。  </li>
+<li>
+<p>这篇 Section 4 已经点燃了火药桶：可见性改变最优菜单。把它做成动态模型会非常有价值。</p>
+</li>
+<li>
+<p><strong>竞争与平台治理</strong>：多个 certifier 竞争时，是否仍会出现“receiver 0 surplus”？  </p>
+</li>
+<li>竞争可能迫使信息更充分（像市场上的透明度竞争），也可能导致 race to the bottom（卖更便宜的“伪证书”）。  </li>
+<li>
+<p>这是 OM/IO 都很关心的。</p>
+</li>
+<li>
+<p><strong>多维类型（confidence + cost + moral hazard）</strong>  </p>
+</li>
+<li>sender 的类型不只是 belief；还有能力、努力成本、风险厌恶、 reputational concerns。  </li>
+<li>
+<p>多维会打破单调性与常数 $x$ 的简洁结构，但也更贴近运营现实。</p>
+</li>
+<li>
+<p><strong>receiver 的最优响应不止阈值</strong>  </p>
+</li>
+<li>例如 receiver 有 capacity constraint（只能录取一定人数）、或 payoff 非线性（错录代价随规模变化）。  </li>
+<li>这会把 obedience 变成更复杂的条件，可能产生新的菜单形态。</li>
+</ol>
+<hr>
+<h2 id="one-more-thing">One More Thing：一个最值得分享的“灵光一现”</h2>
+<p>我认为这篇文章最漂亮的“数学技巧/洞见”是下面这个组合拳（读懂它，你就抓住了整篇的灵魂）：</p>
+<h3 id="xtheta">把“信息设计 + 筛选 + 选择可观察”压缩成一个可控的一维对象：$x(\theta)$</h3>
+<p>表面上，certifier 在选择一个非常复杂的对象：对每个类型设计一个实验 $\pi(\cdot\mid \omega)$，还要定价，还要考虑 receiver 的 Bayes 更新与服从，还要考虑 sender 的选择揭示信息。</p>
+<p>论文的关键转化是：</p>
+<ol>
+<li>先把信号空间化简为行动推荐 $(a_L,a_H)$；  </li>
+<li>用 $x(\theta)=\pi_H(\theta)-\pi_L(\theta)$ 把 sender 的 IC 变成“$x$ 单调 + envelope”；  </li>
+<li>用“最优时 obedience 绑定”把 $\pi_L,\pi_H$ 用 $(x,\mu_P)$ 表示（公式 (*)）；  </li>
+<li>这样一来，在给定分区 $\mathscr{P}$ 时，问题几乎变成：选择一个单调的 $x(\theta)$ 来最大化一个 Myerson-式目标。  </li>
+<li>然后再用凸性（Jensen）与 mean-preserving contraction 的思路去比较分区，推出“中间分离 + 顶部池化”。</li>
+</ol>
+<blockquote>
+<p>换句话说：作者把一个看似多维、强耦合的机制设计问题，通过“绑定约束 + 单调结构 + 凸性比较”压缩成一个你可以真正算的结构刻画。<br>
+这就是高级理论论文里最值得偷走的手艺：<strong>把复杂机制问题找到一个“足够的统计量(sufficient statistic)”并围绕它做结构定理。</strong></p>
+</blockquote>
+<hr>
+<h2 id="_9">（可选）复盘推导的最小清单（你可以按这个自己推一遍）</h2>
+<ol>
+<li>写出 receiver 门槛 $\mu$ 与 (OB-H)；推导绑定时的公式 $(*)$。  </li>
+<li>写出 sender 价值 $V(\theta)=\theta x(\theta)-\hat t(\theta)$；写出 IC 的 monotone + envelope。  </li>
+<li>用虚拟类型 $\psi(\theta)$ 写出收入表达式 $\mathbb{E}[\psi x+\pi_L]$（理解 $\pi_L$ 为“在低状态也给高推荐”的可收费空间）。  </li>
+<li>解释为什么在最优下（几乎所有组）(OB-H) 必绑定（否则可以共同上移 $\pi_L,\pi_H$ 增收）。  </li>
+<li>在 monotone partition 下，理解为什么 $x(\theta)$ 取极值 ${0,x^*}$（regularity + 单调权重）。  </li>
+<li>在绑定 obedience 下，理解 $\pi_L(\mu_P)$ 的凸性与 Jensen：为什么中间类型不应池化。  </li>
+<li>顶部池化来自 $\pi_H\le 1$ 的上界：一旦 $\pi_H$ 撞墙，继续分离收益下降。  </li>
+<li>得到 (OPT) 的三段式结构，并用 $V(\theta_<em>)=0$ 推出价格结构 $\hat t=\theta_</em>x^*$ 与 indifference。</li>
+</ol>
+<hr>
+<p><em>完。</em></p>
+    </div>
+  </div>
+</body>
+</html>

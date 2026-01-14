@@ -1,17 +1,4 @@
----
-title: "The Power of Static Pricing for Reusable Resources（深度解析）"
-author: "Adam N. Elmachtoub, Jiaqi Shi"
-year: 2025
-version: arXiv:2302.11723v3 (13 Feb 2025)
-tags:
-- OM
-- Revenue Management
-- Erlang Loss
-- Dynamic Pricing
-- Approximation Guarantee
----
-
-# The Power of Static Pricing for Reusable Resources（论文精读与复盘笔记）
+# The Power of Static Pricing for Reusable Resources
 
 > **定位**：面向 OM/OR 博士生的“可复盘级”笔记：不仅讲清楚 *做了什么*，更讲清楚 *为什么这样建模*、以及 *数学背后的机制*。  
 > **论文主旨一句话**：在可重用资源（Erlang loss）系统里，即使最优动态定价需要跟踪“每个正在使用的资源已经用了多久”（一般服务时间导致状态无限维），**只按客户类别收一个固定价格（static pricing）也能在最坏情况下保证非常高的长期平均收入**，并且给出可计算的近似算法。
@@ -65,6 +52,7 @@ tags:
   - 但一旦服务时间一般分布，memoryless 消失，最优动态策略要跟踪“已服务时长”，证明难度显著上升；并且多类别系统（不同到达率、服务分布、估值分布）会让结构更复杂。
 
 **本文填的坑**：  
+
 1) 把“static 的常数保证”推广到 **一般服务时间**（$M/G/C/C$ 语感）和 **多类别**；  
 2) 在单类别但估值更强的 **MHR** 假设下，把保证从 0.789 提升到 0.9041；  
 3) 给出“怎么高效算最优 static price”的算法性质（唯一 stationary point + Lipschitz gradient）。
@@ -93,6 +81,7 @@ tags:
 ## 2.1 符号体系（Symbols）
 
 ### 基本系统参数
+
 - $C\in\mathbb{N}$：可重用资源单元数（容量/服务器数）。
 - $M$：客户类别数，类别集合 $[M]=\{1,\dots,M\}$。
 - $\Lambda_j>0$：类别 $j$ 潜在到达率（Poisson）。
@@ -100,11 +89,13 @@ tags:
 - $F_j$、$f_j$：类别 $j$ 估值分布的 CDF 与 PDF。
 
 ### 决策变量：价格与“有效到达率”的等价表示
+
 - $p_j$：给类别 $j$ 到达客户报出的价格（可随状态变化）。
 - $\lambda_j(p_j):=\Lambda_j(1-F_j(p_j))$：在价格 $p_j$ 下，类别 $j$ 的**有效到达率**（愿意买且到达）。  
 - 假设 $\lambda_j(p)$ 与 $p$ 一一对应，可写逆函数 $p_j(\lambda)$，因此可以把**决策变量等价地当成 $\lambda$**。
 
 ### 系统状态（一般服务时间下）
+
 - $x_j$：系统中正在占用资源的类别 $j$ 客户数。向量 $x=(x_1,\dots,x_M)$，满足 $\sum_{j=1}^M x_j\le C$。
 - $y_{jk}$：第 $j$ 类中第 $k$ 个正在服务客户“已服务时间”（age）。记 $y_j=(y_{j1},\dots,y_{j x_j})\in\mathbb{R}_+^{x_j}$。
 - 完整状态：$s=(x,y_1,\dots,y_M)\in\mathcal{S}$，其中  
@@ -119,16 +110,19 @@ tags:
 这是一个典型“卖方动态定价 + 顾客阈值购买”的连续时间系统。
 
 ### Players
+
 - **服务提供商（卖方）**：控制价格/有效到达率策略。
 - **顾客（买方）**：每个到达顾客有一个私有估值 $v\sim F_j$，理性但短视：看到价格就做 $v\ge p$ 的买/不买决定（无策略性等待）。
 
 ### Sequence of Events（每次到达的事件顺序）
+
 1. 系统处于某个状态 $s=(x,y_1,\dots,y_M)$。  
 2. 类别 $j$ 客户到达（Poisson），卖方观察到状态 $s$，报出价格 $p^j_s$（等价报出有效到达率 $\lambda^j_s$）。  
 3. 顾客观测价格，若 $v\ge p^j_s$ 且系统有空闲资源（$\sum x_j<C$），则购买并进入服务，占用 1 个资源；否则离开（不排队）。  
 4. 服务完成事件发生后，该资源释放，系统状态更新。
 
 ### 信息结构（Information）
+
 - 卖方知道：$F_j,G_j,\Lambda_j,C$，并能观察系统状态（根据策略类型观察的丰富程度不同）。  
 - 顾客只知道自己的估值 $v$ 和当下价格 $p$，并不知道未来价格路径（模型中不允许等待与策略性行为）。
 
@@ -152,9 +146,11 @@ tags:
 ## 2.4 目标函数与约束（Objective & Constraints）
 
 ### 约束：容量导致的 loss（无等待）
+
 - 当 $\sum_{j=1}^M x_j=C$（满载）时，任何到达客户都直接流失（等价把价格设成 $+\infty$，令有效到达率为 0）。
 
 ### 目标：最大化稳态长期平均收入率（steady-state revenue rate）
+
 在 fully dynamic 下，论文给出一般形式（我用更可读的方式重写）：
 
 令 $P_s(\lambda)$ 为在策略 $\lambda$ 下处于状态 $s$ 的稳态密度/概率，则长期平均收入率为  
@@ -196,6 +192,7 @@ $$
 ## 3.1 总体求解逻辑：把“最优动态策略很复杂”变成“服务水平比值的极小化”
 
 ### Step 0：引入一个“分析友好”的 static policy（关键构造）
+
 论文的核心套路不是直接分析“最优 static”，而是先构造一个特定 static policy $\tilde{\lambda}$，它模仿最优动态策略在“有货可卖时”的平均行为。
 
 - **多类别 fully dynamic 对标**：对每个类别 $j$，定义  
@@ -219,6 +216,7 @@ $$
 > $$\frac{R(\tilde{\lambda})}{R(\lambda^\*)}\ \ge\ \frac{1-P_C(\tilde{\lambda})}{1-P_C(\lambda^\*)}.$$
 
 **通俗解释**：  
+
 - 动态策略在不同状态下用不同的 $\lambda$。凹性意味着“用不同 $\lambda$ 的加权平均收入” ≤ “用平均 $\lambda$ 的收入”。  
 - 因此动态策略真正能超越静态的地方，主要剩下“它能让系统更少满载，从而卖得更多”（服务水平更高）。  
 - 所以比较收入，最终变成比较 **service level**（未满载概率）。
@@ -306,6 +304,7 @@ $$
 $$
 
 并且作者给出更细的两个特例：
+
 - **Theorem 3**：$C=2$ 且 MHR 时，下界提升到 **0.9801**。  
 - **Theorem 4**：$C=2$ 且 uniform（线性需求）时，下界提升到 **0.9953**，且分析 tight。
 
@@ -359,19 +358,23 @@ $$\omega_0\ge \omega_1\ge \cdots \ge \omega_{C-1},\quad \omega_i=\lambda_i/\mu.$
 ## 3.4 论文里最值得你复盘的证明结构（把你从读懂拉到会用）
 
 ### 结构 1：Jensen 把“动态的定价灵活性”压成“服务水平差”
+
 - 凹性 $r(\lambda)$ → $\mathbb{E}[r(\lambda_s)]\le r(\mathbb{E}[\lambda_s])$。  
 - 所以“状态依赖价格”对收入的提升上限，被凹性锁死；剩下的空间只在于 dynamic 能否显著提高 service level。
 
 这是一个非常通用的模板：以后你看到“动态控制 vs 静态控制”的对比，只要目标在某个维度凹/凸，第一时间想 Jensen。
 
 ### 结构 2：Little’s law + 变量替换：把复杂系统压成 $(\alpha,\beta)$
+
 - $\alpha$（服务水平）和 $\beta$（条件占用）这组变量，是为了把“动态策略导致的 occupancy 分布差异”封装起来。  
 - 一旦封装成功，insensitivity 给静态策略提供显式概率，单调性 lemma 给最坏点。
 
 这个“封装 → 单调性 → 最坏点”也很值得偷。
 
 ### 结构 3：用产品形式导数证明“只有一个 stationary point”（Theorem 5）
+
 虽然这部分看起来像纯数学，但它直接给出算法可行性：  
+
 - 如果目标函数有多个 local maxima，梯度法会迷路；  
 - 证明“至多一个 stationary point”就相当于给了你一个全局地形保证（至少在盒约束内）。
 
@@ -386,10 +389,12 @@ $$\omega_0\ge \omega_1\ge \cdots \ge \omega_{C-1},\quad \omega_i=\lambda_i/\mu.$
 把 dynamic 的优势拆开看，你会发现本文的机制洞察其实很锋利：
 
 ### 基准（Benchmark/Base Model）：fully dynamic / inventory-based 的“理想世界”
+
 - fully dynamic 在一般服务时间下能利用 $y$ 信息：例如当某些占用单元“快结束”时，它可能更愿意降价放人进来；当所有占用都“刚开始”意味着短期释放希望渺茫，它可能涨价避免很快被塞满。
 - inventory-based 至少能利用 $x$ 信息：忙则涨价、闲则降价。
 
 ### 本文揭示的新 trade-off：**“利用状态信息”与“凹性导致的平均化损失上限”**
+
 - regular 估值使得 $r(\lambda)$ 凹，意味着“把 $\lambda$ 在不同状态里上下波动”本身并不会比“用平均 $\lambda$”赚更多（在卖得出去的时刻）。  
 - dynamic 真正的收入提升来源于是**通过改变到达率路径改变阻塞概率**。  
 - 但 loss system 的阻塞概率在结构上受 Erlang 公式控制，最坏情况下 static 的 service level 仍然不会比 dynamic 低得太离谱（至少比例 $G(C)$）。
@@ -403,16 +408,20 @@ $$\omega_0\ge \omega_1\ge \cdots \ge \omega_{C-1},\quad \omega_i=\lambda_i/\mu.$
 ## 4.2 管理建议：什么时候你应该大胆用 static pricing？
 
 ### 建议 1：当你担心公平、菜单成本、系统实现复杂度时 —— static 是“有理论保底”的选择
+
 - 多类别（如云计算不同 job 类型、租车不同租期/会员等级）：每类一个价格足够好（≥78.9%）。
 - 单类别且估值近似 MHR（很多“正态截断/对数凹”类需求都接近）：≥90.4% 的最坏保证。  
 - 如果系统容量小且常见是 $C=2$（rotable parts 典型）：**98%~99.5%** 的最坏保证，几乎可以说 dynamic 只是在“薅毛巾里的最后几滴水”。
 
 ### 建议 2：定价设计时，优先把精力放在“估值分布/需求曲线”而不是“服务时长尾部拟合”
+
 insensitivity 告诉你：在这个模型族中，服务时间分布形状不重要（均值重要）。这对数据工作者意味着：
+
 - 把服务时长建模到“均值层面”可能已经够用；  
 - 更值得投资的是估值/需求对价格的曲线（regular vs MHR 的区别会显著影响可保证的效果）。
 
 ### 建议 3：如果你真要算最优 static price，不必依赖“模仿最优动态”的构造
+
 构造的 $\tilde{\lambda}$ 是为了证明；真正实施可以直接求解最优 static：
 
 多类别下，最优 static 的目标可写成（论文 (13)）  
@@ -425,6 +434,7 @@ $$
 其中 $\bar{\lambda}_j=\arg\max_{\lambda\ge0}\lambda p_j(\lambda)$ 是每类“单独卖”时的最优有效到达率上界（因为 service level 随 $\lambda$ 增大而下降，可限制在盒约束内）。
 
 Theorem 5 说：在这个盒约束里，目标函数**至多一个 stationary point**且梯度 Lipschitz，于是：
+
 - 用投影梯度法 / BFGS 之类的标准连续优化工具就能稳定找到最优 static。
 - 这给了一个实际的“算法闭环”：你不需要求最优 dynamic（那几乎不可行），也能算一个有保证的 static。
 
@@ -463,10 +473,12 @@ $$\max_{\lambda_j\ge0}\sum_j \lambda_j p_j(\lambda_j)\quad \text{s.t.}\quad \sum
 的 concave 问题（Levi & Radovanović 2010），再把解当成 static price。
 
 结果（Table 2）显示：
+
 - 如果固定用 $\Delta=C$（很多文献这么做），**最坏只能拿到 72% 左右的最优 static 收入**。  
 - 但如果对 $\Delta\in[0,3C]$ 做 line search，几乎总能逼近最优 static（最坏也 95%~99%+）。
 
 **管理/研究启示**：  
+
 - “流体近似 + 固定 $\Delta$”这类简单 heuristic 可能在某些实例上很差；  
 - 但本文的 Theorem 5 让你可以直接优化原目标（13），无需绕远路。
 
@@ -528,22 +540,27 @@ $$\max_{\lambda_j\ge0}\sum_j \lambda_j p_j(\lambda_j)\quad \text{s.t.}\quad \sum
 ## 附：一页式公式速查（方便你回头推导）
 
 ### 有效到达率与价格
+
 - $\lambda_j(p)=\Lambda_j(1-F_j(p))$，价格写成 $p_j(\lambda)$。
 
 ### 静态到达率下 Erlang loss 占用分布（多类别）
+
 - $\rho=\sum_j \lambda_j/\mu_j$，  
   $$P_i=\frac{\rho^i/i!}{\sum_{k=0}^{C}\rho^k/k!}.$$
 - service level（未满载概率）  
   $$1-P_C=\frac{\sum_{i=0}^{C-1}\rho^i/i!}{\sum_{i=0}^{C}\rho^i/i!}.$$
 
 ### 多类别静态收入率（可直接优化）
+
 - 令 $r_j(\lambda_j)=\lambda_j p_j(\lambda_j)$，则  
   $$R_{\text{sta}}(\lambda)=\Big(\sum_{j=1}^M r_j(\lambda_j)\Big)\cdot \frac{\sum_{i=0}^{C-1}\rho^i/i!}{\sum_{i=0}^{C}\rho^i/i!},\quad \rho=\sum_{j=1}^M \lambda_j/\mu_j.$$
 
 ### 多类别 regular guarantee
+
 - $$\frac{R_{\text{sta}}^\*}{R^\*}\ge 1-\frac{(C-1)^C/C!}{\sum_{i=0}^{C}(C-1)^i/i!}\ge 15/19.$$
 
 ### 单类别 inventory-based 占用分布（Brumelle insensitivity）
+
 - 令 $\omega_i=\lambda_i/\mu$，  
   $$P_0=\frac{1}{1+\sum_{k=1}^{C}\frac{1}{k!}\prod_{j=1}^{k}\omega_{j-1}},\quad
   P_i=\frac{\frac{1}{i!}\prod_{j=1}^{i}\omega_{j-1}}{1+\sum_{k=1}^{C}\frac{1}{k!}\prod_{j=1}^{k}\omega_{j-1}}.$$

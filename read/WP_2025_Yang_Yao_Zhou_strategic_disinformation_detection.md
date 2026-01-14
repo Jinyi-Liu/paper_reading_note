@@ -112,6 +112,7 @@ Working Paper (July 22, 2025)
 论文把 $r_L$ 归一化为“安全行动”，双方 payoff 为 0；$r_H$ 是“冒险行动”，高类型时 receiver 得正收益，低类型时 receiver 受损；sender 总希望 receiver 选 $r_H$，但 low type 若撒谎需支付 cost $C$。这一结构在 OM/Marketing 里非常常见：本质是一个“质量不确定 + 营销陈述 + 事后后悔成本”的二元决策模型。
 
 **Receiver payoff**
+
 - 若 $r=r_H$：  
   - $\theta=H$ 得 $+\Delta R_H$  
   - $\theta=L$ 得 $-\Delta R_L$  
@@ -121,6 +122,7 @@ Working Paper (July 22, 2025)
 $$ u_R(r,\theta)=\mathbf{1}\{r=r_H\}\big(\mathbf{1}\{\theta=H\}\Delta R_H-\mathbf{1}\{\theta=L\}\Delta R_L\big). $$
 
 **Sender payoff**
+
 - 高类型：若 receiver 选 $r_H$ 得 $\Delta S_H$，否则 0。  
 - 低类型：若 receiver 选 $r_H$ 得 $\Delta S_L$，否则 0；但若其发送 $m_H$（撒谎）则额外支付 cost $C$。  
 
@@ -360,8 +362,6 @@ $$ \alpha^*(\beta;\phi)=
 对应的最优 alarm rule：
 - 若 $\beta\le \phi(s_L\mid L)$：$\lambda_L=\beta/\phi(s_L\mid L)$，$\lambda_H=0$；  
 - 若 $\beta>\phi(s_L\mid L)$：$\lambda_L=1$，$\lambda_H=(\beta-\phi(s_L\mid L))/\phi(s_H\mid L)$。  
-
-
 
 > **直觉**：先把 alarm “用在最可疑的地方”。只有当你把 $s_L$ 预测下的 alarm 概率打满（$\lambda_L=1$）仍不够达到目标 $\beta$ 时，才开始对 $s_H$ 也发 alarm（这会以更高边际代价增加 false positives）。
 

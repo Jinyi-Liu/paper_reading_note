@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MktSci_2025_Iyer_Yao_Zhong_algorithmic_targeting_precision_recall</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="algorithmic-targeting-and-the-precision-recall-trade-off">Algorithmic Targeting and the Precision-Recall Trade-off</h1>
+<ul>
+<li>作者：Ganesh Iyer, Yunfei (Jesse) Yao, Zemin (Zachary) Zhong</li>
+<li>时间：September 2025</li>
+<li>版本：Marketing Science, Forthcoming</li>
+</ul>
+<hr>
+<h2 id="_1">读者导航</h2>
+<p>这篇文章做了一件很“跨界但又必然”的事：把机器学习分类里的经典指标 <strong>precision / recall</strong>，当成企业在<strong>竞争性算法投放（algorithmic targeting）</strong>中的<strong>战略选择维度</strong>来建模，并给出可解析的均衡结构与比较静态。</p>
+<p>你可以把全文的逻辑压缩成一句话：</p>
+<blockquote>
+<p>当算法输出是“每个消费者的转化概率”时，企业的投放规则本质上是在选择 precision 与 recall 的位置；竞争会把企业推向“更高 precision、更低 recall”，而更高的算法相关性（prediction correlation）会进一步压低 recall，甚至会<strong>反直觉地压低 precision</strong>（企业会故意把投放从最“香”的人群挪开以躲避竞争）。</p>
+</blockquote>
+<p>下面的笔记会按 OM/Marketing 理论论文的复盘方式，给你一份能直接“照着推导”的拆解。</p>
+<hr>
+<h2 id="1-motivation">1. 研究背景与动机（Motivation）</h2>
+<h3 id="11">1.1 实践痛点：行业里到底卡在哪？</h3>
+<h4 id="101">（1）投放决策的现实形态已经变了：从“信号=0/1”变成“每人一个概率分数”</h4>
+<p>传统 targeting 文献（经典如 Chen et al. 2001 等）常用的是：企业对消费者类型收到一个<strong>离散/二元</strong>（loyal vs switcher、interested vs not）的 noisy signal，然后决定是否投放。<br>
+但现实的广告投放系统里（无论是 logit、GBDT 还是 deep model），输出几乎都是一个 <strong>conversion probability / score</strong>。企业不是在“投 or 不投”，而是在面对一条从 0 到 1 的分数分布 $f(p)$ 时，决定<strong>投放覆盖面有多大</strong>以及<strong>对不同分数段投放多强</strong>。</p>
+<h4 id="2-precision-recall-trade-off">（2）投放必然面对 precision-recall trade-off，而且竞争让这件事更“战略”</h4>
+<p>在分类里：</p>
+<ul>
+<li><strong>Precision</strong>（精准率）= 被你判为“会转化”的人里，真正会转化的比例  </li>
+<li><strong>Recall</strong>（召回率）= 所有真正会转化的人里，你覆盖到了多少比例  </li>
+</ul>
+<p>投放里对应得非常自然：<br>
+企业可以只投高分人群（高 precision，低 recall），也可以广撒网（高 recall，低 precision），但通常不能两者兼得。<br>
+更麻烦的是：在数字广告竞争中，多个品牌可能<strong>对同一批“高分人群”同时出手</strong>，导致：</p>
+<ul>
+<li>重复曝光/重叠投放（overlap），带来“互相抢同一个人”的竞争成本；</li>
+<li>平台竞价（尤其 display/search 社交平台）会让重叠更昂贵（这篇论文用一个 reduced-form 的 $w&lt;v$ 来抓住这一点）。</li>
+</ul>
+<blockquote>
+<p><strong>Related</strong>: Saremi, Ehsan, and Upender Subramanian. “Automated Targeted Bidding for Sponsored Ads on E-Commerce Platforms.” Marketing Science, December 16, 2025, mksc.2024.0813. https://doi.org/10.1287/mksc.2024.0813.
+公司用价格提高在后续广告竞价使得重叠区域减小，得到更高的利润</p>
+</blockquote>
+<p>因此：<strong>precision/recall 不只是“统计指标”，而是竞争环境下的战略选择。</strong></p>
+<h4 id="3correlation">（3）算法预测之间的相关性（correlation）是现实世界最常见的结构性来源</h4>
+<p>两家企业的预测为什么会相关？</p>
+<ul>
+<li>用同样的数据中介/第三方受众包；</li>
+<li>共同依赖公开数据（public data），或者用相似的特征工程与工具链；</li>
+<li>行业里“最有价值的人群”往往也更容易被所有人识别。</li>
+</ul>
+<p>相关性的结果是：企业更容易“撞车”在同一批人身上。于是企业会想：<br>
+我到底应该更精准（冲着高分人群猛打），还是“故意没那么精准”来躲避竞争？</p>
+<hr>
+<h3 id="12">1.2 理论缺口：现有文献忽略了什么？</h3>
+<h4 id="a-targeting-precisionrecall">缺口 A：传统 targeting 模型把信息结构离散化，无法自然刻画 precision/recall 作为“部署规则”的选择</h4>
+<p>经典文献多用“二元信号/有限分段”的 targetability。这样做有两个后果：</p>
+<ol>
+<li>企业的策略空间被离散化，precision/recall 只能跳变，难以解释现实中“微调阈值/强度”的连续调整。</li>
+<li>更关键的是：机器学习最核心的部署问题——<strong>给定分数，怎么投</strong>（decision rule）——在离散信号下并不突出。</li>
+</ol>
+<p>这篇文章把算法输出直接建成 $p \in [0,1]$ 的概率分布 $f(p)$，因此 precision/recall 变成了投放规则 $q(p)$ 的连续函数。</p>
+<h4 id="b-pricing-collusionmodel-selectionbias-variance-precisionrecall">缺口 B：算法竞争文献讨论很多（如 pricing collusion、model selection、bias-variance），但很少把 precision/recall 当作企业的战略选择对象</h4>
+<p>相关的一个近邻是 Iyer and Ke (2024)（竞争推动 bias-variance 的扭曲），但那是“选什么模型”。<br>
+本文是“给定模型分数输出，如何部署投放规则”，对应 ML pipeline 中更靠后的 deployment layer。</p>
+<hr>
+<h3 id="13-significance">1.3 核心贡献：本文的 Significance 在哪？</h3>
+<p>可以分成三层贡献：</p>
+<h4 id="1-ml-precision-recall-trade-off">贡献 1（概念桥梁）：把 ML 的 precision-recall trade-off 内生到竞争均衡里</h4>
+<p>不是“用 precision/recall 描述结果”，而是把它们变成企业的策略含义：企业通过选择 $q(p)$ 来选择 precision/recall 的位置。</p>
+<h4 id="2-precision-precision-recall">贡献 2（主要结论）：竞争相对垄断更偏向 precision（更高 precision、更低 recall）</h4>
+<p>直觉：竞争使得“多投一个人”的边际收益下降（因为更可能重叠），企业就会收缩覆盖、集中在高 $p$ 人群。</p>
+<h4 id="3-precision">贡献 3（反直觉机制）：算法预测越相关，企业越可能主动降低 precision 来“躲竞争”</h4>
+<p>当 $ρ$（预测相关性）变大，高 $p$ 人群变成“大家都盯上的热点”，重叠概率上升，企业会把强度从最顶部挪向中间段，导致 $q(p)$ 变平、平均 $p$ 下降，从而 precision 下降（在一定条件下）。</p>
+<h4 id="4">贡献 4（组织与政策含义）：相关性可以被视为“数据与分析组织策略”的结果，且存在公共品与搭便车问题”</h4>
+<p>降低相关性（用更多 private/first-party data）能提高利润，但因为相关性降低对双方都有利，存在 underinvestment 的可能。</p>
+<hr>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设（Model Setup &amp; Assumptions）</h2>
+<h3 id="21-players-sequence-of-events-information-structure">2.1 Players, Sequence of Events, Information Structure</h3>
+<h4 id="1-players">(1) Players</h4>
+<ul>
+<li>两家对称企业 $i \in {1,2}$（也允许某家在某些均衡里“不投放/退出”）。</li>
+<li>一单位质量的消费者群体（continuum）。</li>
+</ul>
+<h4 id="2-timeline">(2) Timeline（简化叙述）</h4>
+<ol>
+<li><strong>Nature</strong>：每个消费者 $k$ 的真实类型 $y_k \in {0,1}$（interested vs uninterested）实现，且 $P(y_k=1)=\mu_0$。</li>
+<li><strong>Information / Algorithms</strong>：每家企业对每个消费者输出一个预测概率分数（posterior）$p_{ik}$。</li>
+<li><strong>Targeting decision</strong>：企业同时选择投放规则 $q_i(p)\in[0,1]$：当自己对某消费者预测为 $p$ 时，以概率 $q_i(p)$ 进行投放。</li>
+<li><strong>Outcome</strong>：</li>
+<li>若消费者 interested 且被某企业投放，则购买（文中是“广告=信息/唤醒”，未投放则不会买）。</li>
+<li>若两家都投放，企业的单个消费者价值下降（竞争/分流）。</li>
+</ol>
+<h4 id="3-information-structure">(3) Information Structure 的关键：算法预测的分布与相关性</h4>
+<ul>
+<li>单个企业的预测分布（无条件）为 $f(p)$，支持集 $[0,1]$。</li>
+<li><strong>Bayesian consistency</strong>（后验一致性）：<br>
+  $$ \int_0^1 p f(p)\,dp = \mu_0. $$</li>
+<li>两家企业的预测边际分布相同（对称），但相关性由参数 $ρ$ 捕捉。</li>
+</ul>
+<hr>
+<h3 id="22-notation">2.2 符号体系（Notation）</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$y \in {0,1}$</td>
+<td>消费者真实类型：1=interested，0=uninterested</td>
+</tr>
+<tr>
+<td>$\mu_0$</td>
+<td>先验：任一消费者 interested 的概率</td>
+</tr>
+<tr>
+<td>$p$</td>
+<td>某企业对某消费者的预测转化概率（posterior）</td>
+</tr>
+<tr>
+<td>$f(p)$</td>
+<td>预测概率 $p$ 的密度（算法“信息含量”）</td>
+</tr>
+<tr>
+<td>$ρ$</td>
+<td>两家企业对同一消费者预测<strong>完全一致</strong>的概率（prediction match probability）</td>
+</tr>
+<tr>
+<td>$q_i(p)$</td>
+<td>企业 $i$ 的投放强度/概率规则（混合策略）</td>
+</tr>
+<tr>
+<td>$c$</td>
+<td>单位投放成本（每投一个消费者的成本）</td>
+</tr>
+<tr>
+<td>$v$</td>
+<td>若 interested 消费者只被一家投放，该企业获得的价值（monopoly value）</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>若 interested 消费者被两家都投放，每家获得的期望价值（competition value），且 $w&lt;v$</td>
+</tr>
+<tr>
+<td>$p_m$</td>
+<td>垄断阈值（monopoly targeting threshold）</td>
+</tr>
+<tr>
+<td>$\underline p$</td>
+<td>竞争均衡下最低被投放的预测概率（extensive margin）</td>
+</tr>
+<tr>
+<td>$\bar p$</td>
+<td>竞争均衡下从“混合投放”切换到“必投”的阈值（若存在）</td>
+</tr>
+<tr>
+<td>$a$</td>
+<td>总体投放强度：$a=\int_{\underline p}^1 f(p)q(p)\,dp$</td>
+</tr>
+<tr>
+<td>$R$</td>
+<td>Recall（召回率）：$R=\int_{\underline p}^1 p f(p)q(p)\,dp / \mu_0$</td>
+</tr>
+<tr>
+<td>$\text{Prec}$</td>
+<td>Precision（精准率）：$\text{Prec}=\int_{\underline p}^1 p f(p)q(p)\,dp / a$</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="23-payoff-objective">2.3 目标函数与约束（Payoff / Objective）</h3>
+<h4 id="1">(1) 消费者层面的购买规则</h4>
+<ul>
+<li>若 $y=1$（interested）且企业 $i$ 投放，则产生价值：</li>
+<li>只有企业 $i$ 投放：企业得 $v$</li>
+<li>两家都投放：每家得 $w$（$w&lt;v$）</li>
+<li>若 $y=0$：不购买，但若被投放仍产生成本 $c$（典型“浪费曝光”）。</li>
+</ul>
+<h4 id="2">(2) 企业的决策变量</h4>
+<ul>
+<li>投放规则 $q_i(\cdot)$，满足对所有 $p$：$0 \le q_i(p) \le 1$。</li>
+</ul>
+<h4 id="3-overlap-r">(3) 企业利润的构造（核心：把 overlap 写成 $R$）</h4>
+<p>在对称分析中，假设两家采用同一规则 $q(p)$。考虑某企业面对“自己预测为 $p$ 的消费者”。它投放该消费者的期望边际收益是：</p>
+<p>$$
+\pi(p) = \underbrace{\Pr(\text{both target} \mid p,y=1)\cdot p w}<em>{\text{interested 且双方都投}}
++\underbrace{\Pr(\text{only me target} \mid p,y=1)\cdot p v}</em>{\text{interested 且只有我投}} - c.
+$$</p>
+<p>关键在于：在本文的相关性结构下（见下一小节），对一个“我预测为 $p$ 的消费者”：</p>
+<ul>
+<li>以概率 $ρ$，对手的预测<strong>完全等于</strong>我的预测 $p$，于是对手投放该消费者的概率也是 $q(p)$；</li>
+<li>以概率 $1-ρ$，对手的预测与我不同，此时对手“在该消费者真的 interested 的条件下”投放的概率，等于对手规则的 <strong>recall $R$</strong>。</li>
+</ul>
+<p>因此：</p>
+<p>$$
+\Pr(\text{both target} \mid p,y=1)= ρ q(p) + (1-ρ)R.
+$$</p>
+<p>从而得到论文中的关键表达式：</p>
+<p>$$
+\pi(p) = [ρ q(p) + (1-ρ)R] p w + [1-ρ q(p)-(1-ρ)R] p v - c.
+$$</p>
+<p>总利润则是把 $\pi(p)$ 在被投放的区域对 $f(p)$ 积分（连续消费者）。</p>
+<hr>
+<h3 id="24-correlation-structure">2.4 预测相关性的建模（Correlation Structure）</h3>
+<p>作者定义 $ρ$ 为“预测完全一致”的概率，而不是 Pearson correlation。直觉上它更像“共同依赖 public data 的概率”。</p>
+<p>给定 firm 1 对某消费者的预测为 $p_1$，firm 2 对该消费者的预测分布是：</p>
+<p>$$
+f(p \mid p_1) = ρ \delta(p_1) + (1-ρ)\Big[p_1\cdot \frac{p f(p)}{\mu_0} + (1-p_1)\cdot \frac{(1-p) f(p)}{1-\mu_0}\Big],
+$$</p>
+<p>其中 $\delta(\cdot)$ 是 Dirac delta（点质量）。<br>
+这确保两个性质：</p>
+<ol>
+<li><strong>边际一致</strong>：对 $p_1$ 积分会回到无条件分布 $f(p)$；</li>
+<li><strong>有信息的相关性</strong>：即便不完全一致（概率 $1-ρ$），当消费者确实 interested 时，firm 2 的预测分布会向右尾偏移；当消费者 uninterested 时向左尾偏移。</li>
+</ol>
+<p>直觉上：算法越接近完美，两家预测就算 $ρ$ 不大也会更一致（“真相把大家都拉到一起”）。</p>
+<hr>
+<h3 id="25-assumptions">2.5 关键假设（Assumptions）与合理性</h3>
+<h4 id="1-assumption-1">(1) Assumption 1</h4>
+<p>$$
+0 \le w &lt; c &lt; v.
+$$</p>
+<p>含义分解：</p>
+<ul>
+<li>$c &lt; v$：单独投放一个 interested 消费者有利可图，否则投放不存在。</li>
+<li>$w &lt; c$：如果一个 interested 消费者被两家都投放，则每家的净收益 $w-c$ 为负；也就是说，企业宁愿不投，也不想在该消费者上“打成红海”。</li>
+</ul>
+<h4 id="2-justification">(2) Justification</h4>
+<p>这相当于把“竞争导致的边际收益下降”设得足够强，从而让企业有动力在均衡中<strong>刻意避免重叠</strong>。在数字广告里，这可以对应：</p>
+<ul>
+<li>同一用户同时被多家竞价/重复曝光，边际增量转化很低；</li>
+<li>平台竞价导致成本上升或 ROI 下降；</li>
+<li>同质产品竞争使得“同时触达”变成零和（甚至负和）。</li>
+</ul>
+<p>当然，它也意味着本文的均衡结构聚焦于“avoid overlap / soften competition”的区域。如果现实中 $w$ 可能大于 $c$（例如品类扩张、双边投放对消费者教育有正外部性），均衡性质可能会变，属于可扩展方向（见 critique）。</p>
+<hr>
+<h2 id="3-analysis-solution">3. 分析与求解（Analysis &amp; Solution）</h2>
+<h3 id="31-monopoly-benchmark">3.1 垄断基准（Monopoly Benchmark）</h3>
+<p>垄断企业面对预测为 $p$ 的消费者，投放的期望收益是 $p v - c$。<br>
+因此垄断的最优规则是一个阈值：</p>
+<p>$$
+q^m(p)=\mathbf{1}{p \ge p_m}, \qquad p_m = \frac{c}{v}.
+$$</p>
+<p>这就是一个“Bayes optimal classification threshold”：当后验概率 $p$ 足够大时才投放。</p>
+<h4 id="1-precision-recall">(1) 垄断下 precision 与 recall</h4>
+<ul>
+<li>
+<p>记垄断的投放覆盖面（被投的消费者质量）为<br>
+  $$ a^m = \int_{p_m}^1 f(p)\,dp. $$</p>
+</li>
+<li>
+<p>Precision
+  $$ \text{Prec}^m = \frac{\int_{p_m}^1 p f(p)\,dp}{\int_{p_m}^1 f(p)\,dp}=\frac{\int_{p_m}^1 p f(p)\,dp}{a^m}. $$</p>
+</li>
+<li>
+<p>Recall
+  $$ R^m = \frac{\int_{p_m}^1 p f(p)\,dp}{\int_0^1 p f(p)\,dp}=\frac{\int_{p_m}^1 p f(p)\,dp}{\mu_0}. $$</p>
+</li>
+</ul>
+<h4 id="2_1">(2) 直觉复盘</h4>
+<ul>
+<li>$p_m$ 越高：投放越“挑”，precision 上升，recall 下降。</li>
+<li>$c/v$ 越高：说明投放更贵或利润更薄，企业自然更偏向 precision。</li>
+</ul>
+<p>这给后文提供一个非常清晰的对照：竞争如何把 $p_m$ 扭曲成更“保守”的规则。</p>
+<hr>
+<h3 id="32-why-no-symmetric-pure-strategy-ne">3.2 为什么没有对称纯策略均衡？（Why no symmetric pure strategy NE）</h3>
+<p>作者指出：只要 $ρ&gt;0$，对称纯策略均衡不存在。<br>
+直觉是一个“连续型 undercut”逻辑：如果大家都在某个最低阈值 $p$ 上开始投放，那么我稍微把阈值往下挪一点（投 $p-\varepsilon$），在“预测一致”的那一小块概率质量上，我反而能获得正的边际收益，因为我在边缘消费者上更可能避免重叠（或者更精确地说：在均衡处存在可获利的微小扩张偏离）。</p>
+<p>因此均衡必须包含混合（随机化/强度化）结构，让边缘消费者处于“投与不投的无差异”。</p>
+<hr>
+<h3 id="33-symmetric-mixed-strategy-equilibrium">3.3 竞争均衡：对称混合策略的结构（Symmetric Mixed-Strategy Equilibrium）</h3>
+<p>设两家企业采用对称规则 $q(p)$。</p>
+<h4 id="331-underline-p-bar-p">3.3.1 两个“阈值”：$\underline p$ 与 $\bar p$</h4>
+<ul>
+<li>
+<p>$\underline p$：最低被投放的分数（extensive margin）<br>
+  $$ \underline p = \inf{p : q(p) &gt; 0}. $$</p>
+</li>
+<li>
+<p>$\bar p$：若存在，则高分段开始“必投”的分界（intensive margin 的上端）<br>
+  在 $\underline p &lt; p &lt; \bar p$ 处企业混合（$0&lt;q(p)&lt;1$）；在 $p&gt;\bar p$ 处必投（$q(p)=1$）。<br>
+  若不存在必投区，则可把 $\bar p$ 记为 1。</p>
+</li>
+</ul>
+<p>作者的 Lemma 1 说明：对称均衡只能长成两种形态之一：</p>
+<ol>
+<li><strong>全程混合</strong>：对所有 $p \in (\underline p,1]$ 都是 $0&lt;q(p)&lt;1$（$\bar p=1$）。</li>
+<li><strong>高分必投 + 中分混合</strong>：存在 $\bar p&lt;1$，高分段 $q(p)=1, \forall p\geq \bar p$.</li>
+</ol>
+<p>这对应论文 Figure 1 的两幅示意图：左边是 $\bar p=1$，右边是 $\bar p&lt;1$。</p>
+<hr>
+<h4 id="332-qp">3.3.2 用“无差异条件”解出混合区的 $q(p)$</h4>
+<p>在混合区 $p \in (\underline p,\bar p)$，企业必须在“投 vs 不投”之间无差异，因此 $\pi(p)=0$。代入利润表达式并解 $q(p)$：</p>
+<p>$$
+[ρ q(p) + (1-ρ)R] p w + [1-ρ q(p)-(1-ρ)R] p v - c = 0,
+$$</p>
+<p>得到：</p>
+<p>$$
+q(p) = \frac{v - (1-ρ)(v-w)R - c/p}{ρ (v-w)}, \qquad p \in (\underline p,\bar p).
+$$</p>
+<p><strong>几个关键观察（非常重要，后面所有比较静态都靠它）：</strong></p>
+<ul>
+<li>$q(p)$ 随 $p$ 增加而增加；而且因为有 $c/p$，它对 $p$ 是非线性的（在高 $p$ 处上升更慢）。</li>
+<li>$ρ$ 越大，分母越大，给定 $R$ 时 $q(p)$ 越小、曲线越平（这会推动“precision 下降”的结果）。</li>
+<li>$R$ 越大，$v-(1-ρ)(v-w)R$ 越小，从而 $q(p)$ 越小：对手 recall 越高，你越不想投（这就是一个战略替代的 fixed point）。</li>
+</ul>
+<hr>
+<h4 id="333-underline-p">3.3.3 用边界条件解 $\underline p$（谁是最低分还会被投的人？）</h4>
+<p>在 $\underline p$ 处，企业刚好愿意开始以正概率投放，所以 $q(\underline p)=0$。代入上式得到：</p>
+<p>$$
+\underline p = \frac{c}{v - (1-ρ)(v-w)R}.
+$$</p>
+<p>比较垄断阈值 $p_m=c/v$ 可以看出：</p>
+<ul>
+<li>因为 $v - (1-ρ)(v-w)R &lt; v$（只要 $R&gt;0$），所以 $\underline p &gt; p_m$：竞争把最低投放阈值抬高，企业更“保守”，这直接推向更低 recall。</li>
+</ul>
+<hr>
+<h4 id="334-bar-p-qbar-p1">3.3.4 若存在“高分必投”，则 $\bar p$ 由 $q(\bar p)=1$（或等价的“必投时的零利润边界”）决定</h4>
+<p>当 $q(p)$ 随 $p$ 增长到 1 时，会进入必投区。边界满足：</p>
+<p>$$
+\pi(\bar p \mid q(\bar p)=1)=0
+\quad \Longrightarrow \quad
+\bar p = \frac{c}{[ρ + (1-ρ)R]w + [1-ρ-(1-ρ)R]v}.
+$$</p>
+<p><strong>直觉</strong></p>
+<ul>
+<li>在必投区，每家都投，重叠概率更高；因为 $w&lt;c$，企业不会对所有 $p$ 都必投，只有足够高的 $p$ 才值得承担“可能撞车”的损失。</li>
+</ul>
+<hr>
+<h4 id="335-r-qcdot-fixed-point">3.3.5 关键闭环：$R$ 是一个由 $q(\cdot)$ 诱导出来的 fixed point</h4>
+<p>Recall 的定义（在对称情形下）是：</p>
+<p>$$
+R = \frac{\int_{\underline p}^1 p f(p) q(p)\,dp}{\mu_0}.
+$$</p>
+<p>注意右边的 $q(p)$ 又依赖于 $R$（通过无差异条件），这就构成一个固定点问题。</p>
+<p>作者用技术性的方式证明唯一性（构造 $G(R)$ 或 $H(R)$ 并证明单调），但经济直觉很清楚：</p>
+<ul>
+<li>如果你认为对手 recall 很高（$R$ 大），那对手对 interested 消费者“覆盖得很全”，你投放时更可能遇到重叠，从而你会缩回去，导致你的 recall 变低；</li>
+<li>反之亦然。<br>
+这种“互相抑制”的结构通常给出唯一稳定的对称混合均衡。</li>
+</ul>
+<hr>
+<h3 id="34-propositions-theorems-economic-intuition">3.4 核心命题与直觉（Propositions / Theorems + Economic Intuition）</h3>
+<h4 id="lemma-2">Lemma 2（唯一对称混合均衡 + 两种均衡形态的分界）</h4>
+<p>存在唯一对称混合均衡，并且存在一个阈值 $ρ_b \in [0,\frac{v-c}{v-w}]$，使得：</p>
+<ul>
+<li>若 $ρ \ge ρ_b$：均衡中 <strong>不存在必投区</strong>（$\bar p=1$），所有被投的消费者都处于混合投放；</li>
+<li>若 $ρ &lt; ρ_b$：存在 $\bar p&lt;1$，高分段必投，中分段混合。</li>
+</ul>
+<h5 id="_2">直觉</h5>
+<ul>
+<li>当预测高度相关时，你几乎无法避开重叠，必投会让你在很多消费者上“必亏”（因为 $w&lt;c$），所以你不愿意对任何人必投，只能用混合来控制重叠概率。</li>
+<li>当相关性较低时，高分消费者更可能是“你觉得很值、对手未必也觉得很值”的那类人，于是你愿意对顶端一部分必投。</li>
+</ul>
+<hr>
+<h4 id="proposition-1-vs-precision-recall">Proposition 1（本文最核心）：竞争 vs 垄断的 precision / recall 方向</h4>
+<h5 id="_3">结论</h5>
+<blockquote>
+<p>Duopoly 的均衡投放策略：<strong>precision 更高，recall 更低</strong>（相对 monopoly）。</p>
+</blockquote>
+<p>用符号写就是：</p>
+<ul>
+<li>$\text{Prec}^{d} &gt; \text{Prec}^{m}$</li>
+<li>$R^{d} &lt; R^{m}$</li>
+</ul>
+<p>（其中 $d$ 表示 duopoly，$m$ 表示 monopoly。）</p>
+<h5 id="_4">经济学直觉（要点版）</h5>
+<ul>
+<li>竞争的本质是：你投放一个消费者的边际收益不再是 $p v - c$，而是要扣掉“撞车导致收益从 $v$ 掉到 $w$”的概率。</li>
+<li>由于 $w&lt;c$，撞车不仅“赚得少”，而是可能直接“亏”。因此企业会把投放集中到更高 $p$ 的人群（提高 precision），并且整体减少覆盖（降低 recall）。</li>
+</ul>
+<h5 id="_5">证明思路</h5>
+<ul>
+<li>Recall 更低：因为 $\underline p &gt; p_m$，duopoly 至少放弃了一段 $[p_m,\underline p)$ 的人群；即使在 $(\underline p,1]$ 里还有混合（$q(p)&lt;1$），覆盖也只会更少。</li>
+<li>Precision 更高：precision 本质是“被投人群中 $p$ 的平均值”。duopoly 的 $q(p)$ 随 $p$ 增加而增加，相当于用一个递增权重重加权 $f(p)$，使得被投人群的 $p$ 分布一阶随机占优于 monopoly（monopoly 是“$p\ge p_m$ 等权”）。因此平均 $p$ 更高。</li>
+</ul>
+<hr>
+<h3 id="35-comparative-statics">3.5 比较静态（Comparative Statics）</h3>
+<p>这一部分是本文第二个“让人记得住”的贡献：相关性 $ρ$ 如何改变均衡的投放强度与 precision/recall。</p>
+<hr>
+<h4 id="351-recall">3.5.1 $ρ$ 上升：总体投放强度下降，recall 下降</h4>
+<p>逻辑链：</p>
+<ol>
+<li>$ρ$ 越大，预测越容易一致，重叠概率上升；</li>
+<li>重叠在 $w&lt;c$ 下是“负收益事件”，于是企业在均衡中收缩投放；</li>
+<li>因为 recall 本质上是对 interested 消费者的覆盖率，所以 $R$ 下降。</li>
+</ol>
+<p>你可以把它理解为：<strong>算法越同质化，竞争越像“在同一张地图上打架”，于是大家都投得更谨慎。</strong></p>
+<hr>
+<h4 id="352-precision">3.5.2 反直觉点：当 $ρ$ 足够高时，precision 也会随着 $ρ$ 上升而下降</h4>
+<p>这是很多读者的 “wait, what?” 时刻：<br>
+按直觉，越相关越难避开重叠，企业似乎应该更“挑”高分人群以维持 precision。<br>
+但均衡告诉你：企业会在<strong>强度维度</strong>做“躲避竞争”的重排，使得平均 $p$ 下降。</p>
+<h5 id="_6">机制解释（比公式更重要）</h5>
+<ul>
+<li>高 $ρ$ 意味着：你看到的“高 $p$”消费者，对手也更可能看到同样的“高 $p$”。这类人变成“必争之地”。但在 $w&lt;c$ 下，必争之地反而是“亏损雷区”。</li>
+<li>相对而言，中等 $p$ 的人群反而更可能被对手忽视（或者至少重叠概率更低），于是你会把一部分投放从顶端挪到中段，来降低撞车概率。</li>
+<li>结果是 $q(p)$ 曲线变平：高 $p$ 的投放强度下降，中 $p$ 的相对强度上升，整体 precision 下降。</li>
+</ul>
+<p>从无差异条件看得更直观：混合区的斜率为</p>
+<p>$$
+\frac{dq(p)}{dp} = \frac{c}{p^2 ρ (v-w)}.
+$$</p>
+<p>$ρ$ 越大，斜率越小，曲线越平。曲线越平，意味着你对 $p$ 的区分度越弱，平均 $p$ 下降。</p>
+<hr>
+<h4 id="353-extensive-marginunderline-p">3.5.3 一个更细的洞察：随着 $ρ$ 上升，企业在“extensive margin”反而更不挑（$\underline p$ 下降）</h4>
+<p>论文 Figure 2 旁边有一句非常关键的解释：<br>
+当 $ρ$ 上升时，$q(p)$ 变平，高分段更不想猛打；但在最低分边缘，企业反而会觉得：</p>
+<ul>
+<li>“如果我认为这个人很边缘，那对手也很可能认为边缘，并且投放概率低”，<br>
+于是我可以用很小的概率去试试这些边缘人群，作为“避开热点”的替代。</li>
+</ul>
+<p>因此 $\underline p$（最低被投分数）会下降：企业在边缘上“撒一点点网”，但在顶端上“收一点点手”。</p>
+<p>这也解释了为何 precision 可能下降：你把注意力从顶端挪开，总会拉低平均 $p$。</p>
+<hr>
+<h4 id="354">3.5.4 其他参数的方向（论文给出的结论）</h4>
+<ul>
+<li>$c$ 上升：recall 下降（投放更贵，覆盖更少）。</li>
+<li>$w$ 上升：recall 上升（撞车没那么亏，愿意覆盖更多）。</li>
+<li>$v$ 上升：recall 不一定上升（因为提高 $v$ 也可能诱发更激烈的竞争与重叠，抵消扩大覆盖的动力）；数值结果常显示 precision 随 $v$ 上升而下降（鼓励企业投更低 $p$）。</li>
+<li>precision 随 $c$ 上升而上升（更贵就更挑）；随 $w$ 上升而下降（撞车没那么糟，就更愿意投中低分）。</li>
+</ul>
+<hr>
+<h2 id="4-main-results-managerial-insights">4. 主要结论与管理启示（Main Results &amp; Managerial Insights）</h2>
+<h3 id="41-benchmark-trade-off">4.1 机制揭示：相对 benchmark，新模型揭示了什么 trade-off？</h3>
+<p>把 benchmark 看成“垄断阈值投放”，本文在竞争中揭示了三个新的 trade-off：</p>
+<h4 id="trade-off-1recallcompetition-avoidance">Trade-off 1：覆盖（recall）与避免重叠（competition avoidance）的权衡</h4>
+<p>垄断只在乎 $p v - c$。<br>
+竞争中你必须在乎“对手也投的概率”，而且这个概率在本文结构下被 $R$ 汇总。于是：</p>
+<ul>
+<li>想提高 recall，就得扩大投放、提高 $q(p)$；</li>
+<li>但这会提高对手在 interested 人群上的覆盖，也就提高你自己的撞车概率，导致边际收益下降。</li>
+</ul>
+<h4 id="trade-off-2">Trade-off 2（反直觉）：高相关性下，“更高分的人”反而更不值得猛打</h4>
+<p>这在现实里对应一种常见现象：<br>
+当所有人都用同一套 lookalike / third-party segment 时，“高分人群”被竞价推到很贵，ROI 很差，品牌反而会转向 mid-funnel 人群，或者做差异化创意/渠道。</p>
+<p>本文用一个非常简洁的 $w&lt;c$ 结构，把这个现象抽象成：<br>
+<strong>企业可能会战略性地降低 precision 来软化竞争。</strong></p>
+<h4 id="trade-off-3correlation">Trade-off 3：算法同质化（correlation）降低了市场“信息价值”</h4>
+<p>如果投放被理解为“让消费者知道产品存在”，那么：</p>
+<ul>
+<li>recall 越高，更多 interested 消费者被唤醒，信息价值越高；</li>
+<li>相关性越高，均衡 recall 越低，而且投放更容易重叠，从而减少“有效触达”的广度。</li>
+</ul>
+<p>论文在讨论部分提出：竞争未必总提高消费者福利；如果竞争使得企业都减少投放，消费者反而更难获得信息。</p>
+<hr>
+<h3 id="42">4.2 管理建议：给管理者/平台/政策制定者的可操作含义</h3>
+<p><strong>建议 1：在竞争市场里，投放 KPI 不应只追求 recall/覆盖，precision 的边际价值更高</strong></p>
+<p>均衡逻辑告诉你：竞争会压缩“广撒网”的回报，特别是在 ROI 被平台竞价吞噬时。<br>
+更高 precision（更挑高分人群）在竞争中更可能是利润最大化方向。</p>
+<p><strong>建议 2：识别并管理“算法相关性”是一项真正的战略变量</strong></p>
+<ul>
+<li>如果你和竞争对手共享大量 public data / data broker segment / 同一 SaaS targeting 工具，你们的 $ρ$ 会更高；</li>
+<li>更高 $ρ$ 会让投放更像“撞车游戏”，导致整体回报下降，甚至迫使你做“战略性降精度”。</li>
+</ul>
+<p>因此，企业的 data/AI 组织策略不只是“把预测做准”，还包括“把预测做得和别人不一样”。</p>
+<p><strong>建议 3：投资 first-party data/差异化特征的收益在竞争中更大，但存在时机窗口</strong></p>
+<p>本文的扩展（见 4.4）强调：当行业已经高度依赖公共数据、导致 $ρ_0$ 很高时，单个企业想把 $ρ$ 降下来可能需要巨大投入，且容易被搭便车。<br>
+这暗示了一个管理实践：</p>
+<ul>
+<li>在行业尚未完全同质化前，较小的差异化投入就可能带来显著收益；</li>
+<li>一旦进入“公共数据主导”的高相关性状态，单家企业靠自投很难突破，需要更结构性的改变（例如平台规则变化、行业数据联盟、或监管环境变化）。</li>
+</ul>
+<p><strong>建议 4（政策含义）：隐私监管可能带来“非预期的竞争效应”</strong></p>
+<p>如果隐私规则限制企业使用 private data 来差异化预测，可能被迫更多依赖公共数据，提升 $ρ$。<br>
+在本文机制下，这会降低：</p>
+<ul>
+<li>企业利润（激烈撞车导致投放收缩）；</li>
+<li>消费者信息价值（更少 interested 消费者被触达）。</li>
+</ul>
+<p>这并不等于“隐私监管不好”，而是提示需要把“竞争与信息外部性”纳入政策评估框架。</p>
+<hr>
+<h3 id="43">4.3 图表解释：关键图表到底在说什么？</h3>
+<h4 id="figure-1">Figure 1：对称均衡的两种形态</h4>
+<ul>
+<li>左图：没有任何消费者会被“必投”，所有被投人群都处于混合区（$0&lt;q(p)&lt;1$）。</li>
+<li>右图：高分段必投（$q=1$），中分段混合，低分段不投。</li>
+</ul>
+<p>对应 Lemma 1 的结构性结论。</p>
+<hr>
+<h4 id="figure-2-qp">Figure 2：$ρ$ 改变 $q(p)$ 的形状（曲线变平）</h4>
+<p>在示例参数（$c=0.75,v=1,w=0.5,f\sim U[0,1]$）下：</p>
+<ul>
+<li>当 $ρ$ 很低（如 0.01）：高分段出现必投区；$q(p)$ 很陡，明显偏向高 $p$。</li>
+<li>当 $ρ$ 上升：曲线明显变平，必投区缩小甚至消失；高分段强度下降，中分段相对上升。</li>
+</ul>
+<p>这是“precision 下降”机制的图形表达：同质化越强，企业越不愿在顶端硬刚。</p>
+<hr>
+<h4 id="figure-3precisionrecallprofit">Figure 3：precision、recall、profit 随 $ρ$ 的比较静态</h4>
+<p>三幅图合起来的信息是：</p>
+<ol>
+<li><strong>precision</strong>：duopoly 始终高于 monopoly，但在 duopoly 内部随 $ρ$ 上升而下降（在一定区间内）。</li>
+<li><strong>recall</strong>：duopoly 显著低于 monopoly，且随 $ρ$ 上升进一步下降。</li>
+<li><strong>profit</strong>：$ρ$ 高到一定程度后，均衡利润为 0（因为全程混合且边际利润被压到 0）。</li>
+</ol>
+<p>直觉：预测越同质化，越像“在同一批用户上互相消耗”，最终大家都投得非常谨慎，甚至利润归零。</p>
+<hr>
+<h4 id="figure-4">Figure 4：非对称纯策略均衡的三种代表</h4>
+<ul>
+<li>(a) 可能出现“foreclosure/垄断式”均衡：一方像垄断者那样投放，另一方完全不进入（因为任何投放都会撞车而亏）。</li>
+<li>(b) 分割市场：中低分段由一方投，另一方不投，避免重叠；高分段也可能只由一方投。</li>
+<li>(c) 高分段重叠：在最有价值的消费者上两家都投，但在中段仍会分割以软化竞争。</li>
+</ul>
+<p>论文强调：即使考虑这些非对称均衡，“竞争提高 precision、降低 recall”的主结论仍然成立（至少一方 precision 高于垄断，且两方 recall 都低于垄断）。</p>
+<hr>
+<h3 id="44-extensions">4.4 Extensions（每个扩展要点）</h3>
+<h4 id="extension-aendogenous-correlation">Extension A：内生相关性（Endogenous Correlation）</h4>
+<p><strong>核心思想</strong>：$ρ$ 可以由企业的“public data vs private data”选择决定。</p>
+<ul>
+<li>公共数据：两家都能用，免费，但导致预测更一致（高 $ρ$）。</li>
+<li>私有数据：需要投资，能让预测差异化（降低 $ρ$）。</li>
+</ul>
+<p>作者构造了一个两阶段模型：第一阶段投资降低 $ρ$，第二阶段进行投放竞争。</p>
+<p><strong>Proposition 2（关键结论）</strong></p>
+<ul>
+<li>若初始相关性 $ρ_0$ 已经不太高（低于某阈值），企业会投资并获得正利润；</li>
+<li>若 $ρ_0$ 很高，企业可能不投资，均衡利润为 0。</li>
+</ul>
+<p><strong>直觉（非常值得咀嚼）</strong></p>
+<p>这像一个“陷阱”：</p>
+<ul>
+<li>当 $ρ$ 非常高时，投放利润已经被压到 0，想要变好必须把 $ρ$ 降到足够低（跨过门槛）；</li>
+<li>但跨过门槛需要大投资，而投资收益又具有公共品性质（你降 $ρ$ 对对手也有利），于是可能没人愿意先跳。</li>
+</ul>
+<p>这提供了一个组织策略含义：<strong>在行业进入高度同质化之前，差异化数据投资更有效；一旦同质化锁定，单家企业难以自救。</strong></p>
+<hr>
+<h4 id="extension-bpricing">Extension B：定价（Pricing）</h4>
+<p>主模型把 $v,w$ 外生化；扩展里让企业同时选价格与投放规则（用两档价格 $P_H&gt;P_L$ 做数值分析）。</p>
+<p>发现：</p>
+<ul>
+<li>$ρ$ 低时：两家都选择高价（$P_H,P_H$）；</li>
+<li>$ρ$ 高到一定程度：出现非对称价格均衡（$P_H,P_L$ 或 $P_L,P_H$）。</li>
+</ul>
+<p>直觉：预测越相关，重叠消费者越多，降价能“抢走重叠人群”，于是价格竞争更强。</p>
+<p>更重要的是：即便加入价格，论文仍发现至少一方的 precision 高于垄断，而 recall 低于垄断，主结论稳健。</p>
+<hr>
+<h4 id="extension-casymmetric-pure-strategy-equilibria">Extension C：非对称纯策略均衡（Asymmetric Pure Strategy Equilibria）</h4>
+<p>作者承认：除对称混合均衡外，还存在很多非对称纯策略均衡。<br>
+Proposition 3 给出一个结构性刻画，并证明主结论仍成立：</p>
+<ul>
+<li>两家 recall 都低于垄断；</li>
+<li>至少一家 precision 高于垄断。</li>
+</ul>
+<hr>
+<h2 id="5-reviewers-critique">5. Reviewer's Critique</h2>
+<hr>
+<h3 id="51-strengths">5.1 我会给的正面评价（Strengths）</h3>
+<p><strong>优点 1：问题选得准，而且方法上真的“把 ML 指标变成经济学对象”</strong></p>
+<p>很多论文会把 precision/recall 当结果汇报，但本文把它们当成企业策略空间的投影，且用一个很干净的模型把竞争与指标联系起来。这个桥梁是有长期影响潜力的。</p>
+<p><strong>优点 2：均衡结构漂亮，且能解释现实里常见的“高相关性下避开热点人群”的现象</strong></p>
+<p>“相关性越高，precision 可能越低”这个反直觉结果，既有数学支撑（$q(p)$ 变平），也有实践解释（大家都识别的高分人群变成红海）。这是很好的 mechanism paper 应有的样子。</p>
+<p><strong>优点 3：把组织策略（数据投资）与竞争均衡挂钩，且指出公共品/搭便车问题</strong></p>
+<p>这让论文不止停留在“广告策略”，而是触达 data strategy / analytics organization 的 OM/IS 交叉议题。</p>
+<hr>
+<h3 id="52-weaknesses-concerns">5.2 我会重点追问的点（Weaknesses / Concerns）</h3>
+<h4 id="1-wc">（1）关键假设 $w&lt;c$ 过强，结论的适用边界需要更明确</h4>
+<p>$w&lt;c$ 意味着：只要撞车，即使消费者一定会买，企业也亏。<br>
+这对应一种“极端红海”或“平台竞价非常凶”的环境。现实里 $w$ 可能是：</p>
+<ul>
+<li>$w&gt;0$ 但仍小于 $v$；是否一定小到小于 $c$，取决于成本结构（CPA、CPM、归因模型）；</li>
+<li>对某些品类（耐用品、品牌心智）同时触达可能不是负收益。</li>
+</ul>
+<p>我会建议作者补充：</p>
+<ul>
+<li>当 $w$ 上升到 $c$ 以上时，是否存在对称纯策略均衡？precision/recall 的方向是否仍成立？</li>
+<li>哪些结论是“竞争提高 precision”稳健，哪些结论依赖 $w&lt;c$？</li>
+</ul>
+<h4 id="2-pearsonrank-correlation">（2）相关性参数 $ρ$ 的定义是“完全一致的概率”，与实证可测的相关性（Pearson、rank correlation）有距离</h4>
+<p>作者也承认这一点，并给了 alternative structure。<br>
+但如果想把模型拿去做实证/校准，$ρ$ 需要一个可操作的映射：</p>
+<ul>
+<li>如何从两家企业的 score 分布估计 $ρ$？</li>
+<li>若预测不完全一致但高度 rank-correlated，会发生什么？</li>
+</ul>
+<p>我会期待作者在 online appendix 或后续版本里提供更一般的 copula/monotone likelihood ratio 类型结构，或者至少给一个“如何把数据里的相关性映射为模型 $ρ$”的讨论。</p>
+<h4 id="3fp-accuracy-differentiation">（3）$f(p)$ 外生且相同（两家算法同等信息含量），忽略了“accuracy 与 differentiation 的联动”</h4>
+<p>扩展里投资只改变相关性不改变准确度，这在理论上方便识别机制，但现实里：</p>
+<ul>
+<li>投资 private data 往往同时提高 accuracy（改变 $f(p)$ 的信息含量）；</li>
+<li>差异化可能以牺牲 accuracy 为代价（trade-off：better but similar vs worse but different）。</li>
+</ul>
+<p>如果把 accuracy 也内生化，可能会出现新的均衡张力：企业是否会“故意选一个稍差但差异化”的模型以软化竞争？这与 Iyer and Ke (2024) 的 bias-variance 逻辑可能互补。</p>
+<h4 id="4-conjecture-welfare">（4）消费者端的福利/信息价值讨论停留在 conjecture，缺少正式 welfare 分析</h4>
+<p>论文在讨论部分提到：竞争可能降低消费者信息价值。这个点很有趣，但现在还只是口头推断。<br>
+如果作者能：</p>
+<ul>
+<li>明确消费者福利函数（例如 interested 消费者被至少一家触达就获得 surplus）；</li>
+<li>计入重复触达的边际效用递减；</li>
+<li>定义 social welfare 并比较 monopoly vs duopoly vs 不同 $ρ$，</li>
+</ul>
+<p>那会让文章更完整，也更容易进入 Management Science / Marketing Science 的主流叙事。</p>
+<hr>
+<h3 id="53-future-research-directions">5.3 未来方向（Future Research Directions）</h3>
+<p>我会建议的扩展研究（按优先级排序）：</p>
+<ol>
+<li><strong>让 $w$ 与平台竞价机制联动</strong>：把 $w$ 从 reduced-form 变成由 auction / bidding competition 导出的函数，连接到 ad platform OM。</li>
+<li><strong>accuracy 与 differentiation 的联合选择</strong>：企业同时选择模型（影响 $f(p)$）与数据来源（影响 $ρ$），形成“做得准 vs 做得不一样”的战略权衡。</li>
+<li><strong>多企业（$N&gt;2$）与市场拥挤效应</strong>：precision/recall 在寡头市场如何演化？是否存在“过度 precision”导致市场整体触达不足？</li>
+<li><strong>动态学习与反馈</strong>：投放带来数据，数据反过来改善预测；相关性可能在长期内内生演化（data network effects）。</li>
+<li><strong>异质消费者价值与价格敏感度</strong>：把 interested 类型从二元扩展为连续偏好/愿付价格，并让 targeting 影响需求曲线（更贴近定价与营销混合）。</li>
+<li><strong>算法歧视与公平约束</strong>：当 protected attribute 可观测且平台/法规限制某些特征使用时，precision/recall 的扭曲可能在不同群体间不均衡。</li>
+</ol>
+<hr>
+<h2 id="6-one-more-thing">6. One More Thing：我认为最值得分享的“灵光一现”</h2>
+<p>这篇论文最闪的一瞬间，不是“竞争提高 precision”——那其实挺符合直觉。真正值得记住的是：</p>
+<blockquote>
+<p><strong>相关性越高，企业可能越会主动降低 precision。</strong><br>
+因为最精准的人群变成大家都精准识别的红海，精准反而意味着撞车；于是企业把投放从“最可能买的人”挪向“没那么可能但更少人抢的人”。</p>
+</blockquote>
+<p>这是一种很深的机制：<strong>竞争会把“准确”变成拥挤资源</strong>。<br>
+在这种世界里，“更聪明”未必让你更赚钱，“更不一样”才可能。</p>
+<p>如果把它推广一下，你会发现它不只属于广告投放：在任何“算法把资源集中到同一批对象”的场景（风控、推荐、招聘、供应链预测），当竞争方共享相似信号时，都可能出现类似的“刻意降精度以差异化”的策略动机。</p>
+<hr>
+<p><em>End of notes.</em></p>
+    </div>
+  </div>
+</body>
+</html>

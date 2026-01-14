@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OR_2021_Aflaki_Swinney_Inventory_Integration_with_Rational_Consumers</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="inventory-integration-with-rational-consumersaflaki-swinney-operations-research-2021">Inventory Integration with Rational Consumers（Aflaki &amp; Swinney, <em>Operations Research</em> 2021）深度解析</h1>
+<ul>
+<li>研究主题：库存整合/风险池化（inventory integration/pooling）× 理性/战略消费者（strategic consumers）× 两期季节性清仓（markdown/clearance）</li>
+</ul>
+<blockquote>
+<p><strong>一句话核心</strong>：当消费者会“等打折”时，库存整合不再是纯粹的风险池化利好——它还会通过改变<strong>清仓期可得性（period-2 availability）</strong>来改变消费者等待激励，从而产生可能为负的<strong>行为价值（behavioral value）</strong>，甚至让整合的<strong>总价值</strong>变成负值。</p>
+</blockquote>
+<hr>
+<h2 id="1-motivation">1. 研究背景与动机 (Motivation)</h2>
+<h3 id="11">1.1 实践痛点：全渠道与跨门店“虚拟库存池”越来越普遍，但可能“越整合越让顾客等折扣”</h3>
+<p>现实中大量零售商把原本独立的库存（门店/区域/线上线下）整合成一个“虚拟库存池”，支持跨渠道履约（BOPIS、跨店调拨、线上下单门店取货等）。传统运营直觉认为：整合提高可得性、减少缺货损失、风险池化降低成本，是“稳赢”的。论文指出：这套直觉在<strong>战略消费者</strong>面前可能失灵——因为消费者会把“未来打折时能买到的概率”纳入决策，从而改变<strong>购买时点</strong>，反过来影响利润。</p>
+<h3 id="12">1.2 理论缺口：库存池化文献几乎把消费者当“被动需求”，而战略消费者文献很少把“库存整合”作为决策变量</h3>
+<ul>
+<li><strong>库存池化(risk pooling / inventory pooling)</strong>经典文献（如 Eppen 1979 一系）强调需求聚合降低方差、减少安全库存，通常不建模消费者的前瞻行为。</li>
+<li><strong>战略消费者/清仓承诺（strategic waiting, rational expectations）</strong>文献（如 Liu &amp; van Ryzin；Su &amp; Zhang；Cachon &amp; Swinney）强调“可得性—等待”联动，但多研究定价、配给、快反等机制，<strong>很少把“跨市场库存整合”作为核心对象</strong>。</li>
+<li>少数把消费者引入池化的工作（如消费者搜索/转移）与本文的“<strong>跨期等待（when to buy）</strong>”不是同一类机制。</li>
+</ul>
+<h3 id="13">1.3 核心贡献：把整合价值拆成“运营价值 + 行为价值”，并给出何时会“反噬”的可检验条件</h3>
+<ol>
+<li><strong>概念贡献</strong>：提出并形式化“<strong>运营价值（operational value）</strong>”与“<strong>行为价值（behavioral value）</strong>”两部分：前者永远非负；后者可正可负。</li>
+<li>
+<p><strong>机制贡献</strong>：整合会改变第二期（清仓期）填补率/可得性，进而改变等待激励；并分解出两股对冲力量：</p>
+</li>
+<li>
+<p><strong>需求方差效应（variability effect）</strong>：整合降低聚合需求波动 → 期2可得性上升 → 更想等折扣（坏）。</p>
+</li>
+<li><strong>库存结余效应（inventory effect）</strong>：整合更好匹配供需、减少期1卖不掉的结余库存 → 期2可得性下降 → 不敢等折扣（好）。</li>
+<li><strong>可操作的比较静态</strong>：给出行为价值更可能为负的条件：<strong>高需求不确定性、高市场相关性、低残值/成本比</strong>；并进一步研究<strong>清仓价内生、市场不对称、消费者访问成本</strong>三类扩展，显示结论相当稳健。</li>
+</ol>
+<hr>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="21-players-sequence-information-structure">2.1 Players / Sequence / Information Structure（博弈结构）</h3>
+<h4 id="players">Players</h4>
+<ul>
+<li>单一零售商（firm）</li>
+<li>两个市场（可理解为两渠道/两门店/两区域）中的消费者群体（consumers）</li>
+</ul>
+<h4 id="timeline">Timeline（两期季节性销售）</h4>
+<ol>
+<li><strong>季初</strong>：厂商以单位成本 $c$ 订货/备货（决策：库存水平）。</li>
+<li><strong>Period 1（全价期）</strong>：价格 $p$；消费者到店（无访问成本基准）且若有货可选择“现在买/等清仓”。</li>
+<li><strong>Period 2（清仓期）</strong>：价格 $s$（基准模型外生且 $s&lt;c&lt;p$）；剩余库存先卖给“主流消费者”（第一期来但没买的那部分），如果还剩，再以同一价格 $s$ 卖给无限量“bargain hunters”（确保季末清空）。</li>
+</ol>
+<h4 id="systems"><strong>Systems（两种库存组织方式）</strong></h4>
+<ul>
+<li><strong>Multichannel（分市场独立库存）</strong>：市场 $i$ 备货 $q_i$，不可跨市场调拨/履约。</li>
+<li><strong>Integrated（整合库存池）</strong>：总库存 $q_I$，两市场需求共同从“虚拟总库存”中随机分配（first-come-first-serve 的抽象）。</li>
+</ul>
+<h4 id="information"><strong>Information（关键信息结构：理性预期但不观察库存）</strong></h4>
+<ul>
+<li>消费者不直接观察库存水平，只持有对清仓期可得性的共同信念 $\tilde\xi_{i2}$，均衡要求信念自洽（rational expectations）。</li>
+<li>厂商对“消费者会有多少人全价买”形成信念 $\tilde v_i$（阈值估计），均衡也要求自洽。</li>
+</ul>
+<hr>
+<h3 id="22-notation">2.2 符号体系（Notation）</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$i\in{1,2}$ / $I$</td>
+<td>两个独立市场 / 整合系统</td>
+</tr>
+<tr>
+<td>$D_i$</td>
+<td>市场 $i$ 的潜在消费者规模（随机需求基数），$D_i\sim\mathcal N(\mu_i,\sigma_i)$，相关系数 $\rho$</td>
+</tr>
+<tr>
+<td>$q_i, q_I$</td>
+<td>分市场库存 / 整合总库存（季初决策）</td>
+</tr>
+<tr>
+<td>$p$ / $s$</td>
+<td>period 1 全价 / period 2 清仓价（基准：外生）且 $s&lt;c&lt;p$</td>
+</tr>
+<tr>
+<td>$c$</td>
+<td>单位进货成本</td>
+</tr>
+<tr>
+<td>$v$</td>
+<td>消费者对 period 1 产品估值；分布 $G(\cdot)$，密度 $g(\cdot)$，支持集 $(v_l,v_h)$</td>
+</tr>
+<tr>
+<td>$\delta\in[0,1]$</td>
+<td>period 2 估值折减系数（可理解为产品贬值/消费者耐心）</td>
+</tr>
+<tr>
+<td>$\xi_{i1},\xi_{i2}$</td>
+<td>period 1 / period 2 的可得性（fill rate / obtaining probability）</td>
+</tr>
+<tr>
+<td>$\tilde\xi_{i2}$</td>
+<td>消费者对 period 2 可得性的信念</td>
+</tr>
+<tr>
+<td>$v_i^*$</td>
+<td>均衡下“全价购买阈值估值”（高于此全价买，否则等清仓/不买）</td>
+</tr>
+<tr>
+<td>$\bar G(x)=1-G(x)$</td>
+<td>估值分布的尾分布</td>
+</tr>
+<tr>
+<td>$\Phi,\phi$</td>
+<td>标准正态 CDF/PDF；$\hat z=\Phi^{-1}\left(\frac{p-c}{p-s}\right)$ 为 newsvendor 临界分位点</td>
+</tr>
+<tr>
+<td>$L(\hat z)$</td>
+<td>标准正态损失函数 $L(\hat z)=\int_{\hat z}^{\infty}(t-\hat z)\phi(t),dt$</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="23-proposition-1">2.3 消费者决策与阈值结构（Proposition 1 的核心）</h3>
+<p>消费者估值为 $v$（period 1），若等到 period 2，其估值变为 $\delta v$。基准模型中消费者<strong>无访问成本</strong>，并认为清仓期拿到货的概率为 $\tilde\xi_{i2}$。</p>
+<ul>
+<li>现在买：效用 $v-p$</li>
+<li>等清仓买：期望效用 $\tilde\xi_{i2}(\delta v-s)$（若 $\delta v-s&lt;0$ 则不买）</li>
+<li>不买：0</li>
+</ul>
+<p>因此消费者在 period 1 购买当且仅当
+$$
+v-p\ge \max{\tilde\xi_{i2}(\delta v-s),,0}.
+$$</p>
+<p>论文给出<strong>阈值策略</strong>：存在临界估值 $v_i^<em>$ 使得 $v\ge v_i^</em>$ 的消费者全价买。具体为
+$$
+v_i^*=\min\left{v_h,\ \max\left{\frac{p-\tilde\xi_{i2}s}{1-\tilde\xi_{i2}\delta},\ p\right}\right}. \tag{1}
+$$</p>
+<p>由此得到需求分解：</p>
+<ul>
+<li><strong>Period 1 需求量</strong>：$\bar G(v_i^*)D_i$</li>
+<li><strong>Period 2（主流消费者）需求量</strong>：$[G(v_i^*)-G(s/\delta)]_+D_i$（只包括“愿等且愿在清仓价买”的那部分）</li>
+</ul>
+<blockquote>
+<p><strong>关键假设（保证战略等待“有戏”）</strong>：论文在主体分析（第3–5节）聚焦 $\delta p&gt;s$，否则即使 $\tilde\xi_{i2}=1$，消费者也不会等清仓（清仓太不划算）。</p>
+</blockquote>
+<hr>
+<h3 id="24-23">2.4 厂商利润函数与“有效需求缩放”（式 (2)(3) 的直觉）</h3>
+<p>给定厂商对阈值的信念 $\tilde v_i$，period 1 的有效需求相当于把随机需求基数 $D_i$ 按比例 $\bar G(\tilde v_i)$ <strong>缩放</strong>。于是厂商面对的是一个“带残值”的 newsvendor：</p>
+<p>$$
+\pi_i(q_i)=\mathbb E_{D_i}\Big[(p-s)\min{q_i,\bar G(\tilde v_i)D_i}-(c-s)q_i\Big]. \tag{2}
+$$</p>
+<p>并定义常用的 newsvendor 最优利润上界（对正态需求）：
+$$
+\Pi(\mu,\sigma)=(p-c)\mu-(p-s)\sigma L(\hat z)-(c-s)\hat z\sigma. \tag{3}
+$$</p>
+<hr>
+<h2 id="3-analysis-solution">3. 分析与求解 (Analysis &amp; Solution)</h2>
+<h3 id="31-definition-1">3.1 均衡概念：厂商—消费者同时行动的“理性预期固定点”（Definition 1）</h3>
+<p>均衡由一组 $(q_i^<em>,v_i^</em>,\tilde\xi_{i2})$ 构成，满足：</p>
+<ol>
+<li><strong>厂商最优</strong>：给定对消费者阈值的信念，选 $q_i^*$ 最大化 (2)。</li>
+<li><strong>消费者最优</strong>：给定清仓期可得性信念 $\tilde\xi_{i2}$，阈值由 (1) 给出。</li>
+<li><strong>信念自洽</strong>：$\tilde v_i=v_i^*$。</li>
+<li><strong>可得性信念自洽</strong>：$\tilde\xi_{i2}=\xi_{i2}(q_i^<em>,v_i^</em>)$（期2 fill rate 与均衡结果一致）。</li>
+</ol>
+<hr>
+<h3 id="32-newsvendor-proposition-2">3.2 厂商最优反应：仍然是“正态 newsvendor 分位点 × 需求缩放”（Proposition 2）</h3>
+<p>在对称基准（$\mu_1=\mu_2=\mu,\ \sigma_1=\sigma_2=\sigma$）下：</p>
+<h4 id="i-multichannel"><strong>(i) 分市场系统（multichannel）</strong></h4>
+<p>$$
+q_i^<em>(\tilde v_i)=\bar G(\tilde v_i)(\mu+\hat z\sigma),\qquad
+\pi_i^</em>(\tilde v_i)=\bar G(\tilde v_i)\Pi(\mu,\sigma).
+$$</p>
+<h4 id="ii-integrated"><strong>(ii) 整合系统（integrated）</strong></h4>
+<p>聚合需求 $D_1+D_2$ 的方差为 $2(1+\rho)\sigma^2$
+$$
+q_I^<em>(\tilde v_I)=\bar G(\tilde v_I)\Big(2\mu+\hat z\sqrt{2(1+\rho)},\sigma\Big),\qquad
+\pi_I^</em>(\tilde v_I)=\bar G(\tilde v_I)\Pi\Big(2\mu,\sqrt{2(1+\rho)},\sigma\Big).
+$$</p>
+<blockquote>
+<p><strong>运营学直觉</strong>：战略消费者的复杂性主要“塞进了”一个缩放系数 $\bar G(v^*)$。给定这个缩放，厂商依然按标准 newsvendor 临界分位点 $\frac{p-c}{p-s}$ 来定库存，这就是后面很多比较静态能做得很干净的原因。</p>
+</blockquote>
+<hr>
+<h3 id="33-delta-proposition-3">3.3 均衡存在唯一性与 $\delta$ 的反直觉（Proposition 3）</h3>
+<p>论文证明：两种系统下都存在唯一均衡，且在 multichannel 下对称：$v_1^<em>=v_2^</em>\equiv v_m^<em>$，$q_1^</em>=q_2^<em>\equiv q_m^</em>$。</p>
+<p>更有意思的是：当产品更“耐用”（$\delta$ 上升）时，<strong>期2 fill rate $\xi_{i2}$ 下降</strong>，但“等清仓的人多不多”（即阈值 $v_i^<em>$）</em><em>不一定单调</em><em>。论文用 Figure 1 展示了 $v_m^</em>(\delta)$ 的非单调形状。</p>
+<h4 id="_1"><strong>机制解释（两股力对冲）</strong></h4>
+<ul>
+<li>$\delta\uparrow$ 使得“等清仓的价值”$\delta v-s$ 更高 → 更想等（推高等待）。</li>
+<li>但均衡里 $\delta\uparrow$ 会让厂商与市场互动后产生更低的期2 fill rate（论文证明）→ 等清仓更危险（抑制等待）。
+  谁赢取决于参数区间，所以可能非单调。</li>
+</ul>
+<hr>
+<h2 id="4-main-results-managerial-insights">4. 主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="41-67">4.1 价值分解：整合价值 = 运营价值 + 行为价值（式 (6)(7)）</h3>
+<p>论文把“整合带来的利润提升比例”定义为
+$$
+\Delta_I\equiv \frac{\pi_I^<em>-(\pi_1^</em>+\pi_2^<em>)}{\pi_1^</em>+\pi_2^*}.
+$$</p>
+<p>在基准模型中可写成两项之和（论文式 (6)）：</p>
+<ul>
+<li><strong>运营价值（operational value）</strong>：纯风险池化/供需匹配改进带来的好处，恒为正；并随相关性 $\rho$ 上升而下降。</li>
+<li><strong>行为价值（behavioral value）</strong>：由于整合改变了 $v^*$（也即改变了“多少人全价买/多少人等清仓”）而产生的增量价值，可正可负。</li>
+</ul>
+<p>论文给出一个非常“工程化”的等价写法（式 (7)）：
+$$
+\Delta_I=
+\underbrace{\frac{\pi_I^<em>(v_m^</em>)-(\pi_1^<em>+\pi_2^</em>)}{\pi_1^<em>+\pi_2^</em>}}{\text{运营价值：冻结消费者行为，只看池化}}
++
+\underbrace{\frac{\pi_I^<em>-\pi_I^</em>(v_m^<em>)}{\pi_1^</em>+\pi_2^*}}{\text{行为价值：只看行为改变带来的增量}}. \tag{7}
+$$</p>
+<blockquote>
+<p><strong>管理学翻译</strong>：你可以把“整合”看成一个会同时改变两件事的动作：
+① 运营层面：库存更能跨市场匹配供需（经典利好）；
+② 消费者层面：顾客对“清仓时是否买得到”预期变了，从而改变购买时点（可能利好也可能反噬）。</p>
+</blockquote>
+<hr>
+<h3 id="42-2proposition-45">4.2 行为价值为什么会为负？核心在于“期2可得性”到底升还是降（Proposition 4–5）</h3>
+<h4 id="a-1-fill-rate-proposition-4">(A) 一个很漂亮的基准：期1 fill rate 与战略等待无关（Proposition 4）</h4>
+<p>论文指出：均衡下期1 fill rate <strong>不依赖</strong> $v^*$ 或 $\delta$，因为厂商总是用同一临界分位点去匹配期1有效需求。并且整合系统期1 fill rate 更高：$\xi_{I1}\ge \xi_{m1}$。</p>
+<h4 id="b-2-fill-rate-variability-effect-vs-inventory-effect">(B) 期2 fill rate 的两效应对冲：variability effect vs inventory effect</h4>
+<ul>
+<li><strong>需求方差效应（variability effect）</strong>：整合让聚合需求更平滑（只要 $\rho&lt;1$），给定库存结余，期2 fill rate 上升。</li>
+<li><strong>库存结余效应（inventory effect）</strong>：整合提高期1匹配效率，减少“卖不掉的结余库存”，使得期2可卖库存下降，期2 fill rate 下降。</li>
+</ul>
+<blockquote>
+<p><strong>因此：整合究竟鼓励等待还是抑制等待，不是拍脑袋的，而是看哪股效应占主导。</strong></p>
+</blockquote>
+<h4 id="c-proposition-5-sigma-rho">(C) 关键比较静态（Proposition 5）：高 $\sigma$、高 $\rho$ 更容易让行为价值为负</h4>
+<p>论文证明：</p>
+<ul>
+<li>$\xi_{I2}$ 与 $v_I^<em>$ 在 $\rho$ 和 $\sigma$ 上呈</em><em>拟凹（quasiconcave）</em>*（允许非单调）。</li>
+<li>存在阈值 $\bar\rho$，使得<strong>行为价值为正当且仅当</strong> $\rho&lt;\bar\rho$；同理存在 $\bar\sigma$，使得行为价值为正当且仅当 $\sigma&lt;\bar\sigma$。
+  直观上：</li>
+<li><strong>$\rho$ 高</strong>：两市场“同涨同跌”，池化对减少结余库存的边际改善变小，而方差效应可能更显著 → 期2更有货 → 更等折扣 → 行为价值更可能为负。</li>
+<li><strong>$\sigma$ 高</strong>：不确定性大，池化降低波动带来的“期2更稳更有货”更显著 → 更等折扣 → 行为价值更可能为负。</li>
+</ul>
+<hr>
+<h3 id="43-table-12">4.3 数值模拟的“量级”信息：行为价值真的能吃掉运营价值（Table 1–2）</h3>
+<p>论文在 20,412 组参数上做了数值分析（Table 1 给出网格）。核心发现（Table 2）：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">行为价值为正</th>
+<th style="text-align: right;">行为价值为负</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>样本占比</td>
+<td style="text-align: right;">60%</td>
+<td style="text-align: right;">40%</td>
+</tr>
+<tr>
+<td>行为价值相对运营价值的比例 $R$（均值）</td>
+<td style="text-align: right;">87%</td>
+<td style="text-align: right;">-17%</td>
+</tr>
+<tr>
+<td>$R$ 的极值</td>
+<td style="text-align: right;">最高可达 1456%</td>
+<td style="text-align: right;">最低可到 -298%</td>
+</tr>
+</tbody>
+</table>
+<p>更“惊悚”的是：在<strong>忽略整合实施固定成本</strong>的理想化设定下，仍有 <strong>0.5%</strong> 的情形出现<strong>整合总价值为负</strong>（$\Delta_I&lt;0$）。这意味着：只要消费者足够会等、且整合足够提升清仓可得性，整合可能让利润变差。</p>
+<p><strong>哪些情形更容易行为价值为负？（Table 2 的均值对比）</strong></p>
+<ul>
+<li>更高的 $\sigma$（需求波动大）</li>
+<li>更正的 $\rho$（市场正相关）</li>
+<li>更低的 $s/c$（残值相对低）</li>
+</ul>
+<blockquote>
+<p><strong>管理启示</strong>：当你所在品类/渠道高度同步（$\rho$ 高）且需求很飘（$\sigma$ 高），全渠道整合很可能“把清仓变得太可靠”，从而训练消费者更会等折扣。</p>
+</blockquote>
+<hr>
+<h3 id="44-section-6">4.4 三个扩展：更贴近现实后，负行为价值反而更常见/更少见？（Section 6）</h3>
+<h4 id="1endogenous-clearance-priceproposition-6-table-5">扩展 1：清仓价内生（endogenous clearance price）——负行为价值更常见（Proposition 6 + Table 5）</h4>
+<p>当 period 2 允许零售商根据剩余库存与需求实现<strong>动态清仓定价</strong>时，清仓价（给定 demand realization $x$ 和库存 $q$）为：
+$$
+p_2(x,q)=
+\begin{cases}
+s, &amp; x\le q/\bar G(s/\delta),\
+\delta\,G^{-1}\left(1-\frac{q}{x}\right), &amp; \text{otherwise}.
+\end{cases}
+$$</p>
+<p>在这种情况下，论文指出一个新的机制：<strong>segmentation effect（分层/分割效应）</strong>。期2可动态提价本来能帮助厂商“榨出更多剩余”（价格歧视式的分层），但如果更多战略消费者故意等到期2，就会削弱这种分层能力，使得“行为价值为负”更严重。</p>
+<p>数值结果（Table 5）显示：</p>
+<ul>
+<li>行为价值为负的比例从 <strong>40% 上升到 58%</strong></li>
+<li>总价值为负的比例从 <strong>0.5% 上升到 4%</strong></li>
+</ul>
+<blockquote>
+<p><strong>解读</strong>：当企业本来就依赖清仓动态定价做收益管理时，库存整合更可能引发“消费者集体延迟”从而破坏收益管理的分层结构。</p>
+</blockquote>
+<h4 id="2asymmetric-markets-proposition-7">扩展 2：市场不对称（asymmetric markets）- 本质等价于“更高相关性”，因此更糟（Proposition 7）</h4>
+<p>设 $D_1=\lambda D$、$D_2=(2-\lambda)D$，$1\le\lambda\le2$，保持总均值 $2\mu$ 不变。论文证明：不对称度 $\lambda$ 越高，整合对降低聚合波动越没用，效果类似“相关性更高”。结论：</p>
+<ul>
+<li><strong>运营价值随 $\lambda$ 下降</strong></li>
+<li><strong>行为价值更可能为负</strong>（存在阈值 $\bar\lambda$，$\lambda\ge\bar\lambda$ 更易负）</li>
+</ul>
+<h4 id="3-k0visit-costsproposition-89-table-6">扩展 3：消费者访问成本 $k&gt;0$（visit costs）——负行为价值被“需求内生效应”缓冲（Proposition 8–9 + Table 6）</h4>
+<p>当访问/下单有成本 $k$ 时，整合提高期1可得性（$\xi_{I1}\ge\xi_{m1}$）会吸引更多消费者愿意来买，产生新的正向行为机制：<strong>demand endogeneity effect（需求内生效应）</strong>。</p>
+<p>数值结果（Table 6）：</p>
+<ul>
+<li>行为价值为负的比例降到 <strong>16%</strong></li>
+<li>总价值为负几乎消失（81,648 组里只有 6 组为负，且都在较小 $k$）</li>
+</ul>
+<blockquote>
+<p><strong>管理启示</strong>：当消费者“来一趟/点一次”成本高（例如线下出行、线上高搜寻成本品类），整合提高期1可得性会显著抬升到店/下单意愿，抵消“等清仓”的坏处；反之，访问成本很低的场景（例如一键比价+免运费+轻松退换）更容易出现负行为价值。</p>
+</blockquote>
+<hr>
+<h2 id="5-trade-off">5. 机制揭示：本文到底带来了什么新的 Trade-off？</h2>
+<p>相对经典池化模型（只算供需匹配），本文揭示了一个<strong>跨期可得性-等待</strong>的核心权衡：</p>
+<ul>
+<li><strong>Risk Pooling 的传统收益</strong>：更平滑、更少缺货、更少安全库存 → 正向。</li>
+<li><strong>Strategic Waiting 的行为反噬</strong>：如果整合让清仓期变得更“稳稳买到”，就会把需求从全价期推向清仓期 → 侵蚀毛利，甚至抵消池化收益。</li>
+</ul>
+<p>并且在两个扩展里出现更尖锐的二次权衡：</p>
+<ul>
+<li><strong>内生清仓价：整合 vs. 分层能力（segmentation effect）</strong></li>
+<li><strong>访问成本：整合提高期1可得性 vs. 期2等待诱因（demand endogeneity effect vs waiting）</strong></li>
+</ul>
+<hr>
+<h2 id="6">6. 图表解读（抓住“图想讲什么”）</h2>
+<h3 id="61-figure-1v_mdelta">6.1 Figure 1：$v_m^*(\delta)$ 非单调</h3>
+<p>图展示：随着 $\delta$（耐用/耐心）增加，阈值 $v^<em>$ 有时上升有时下降。
+</em><em>读图方式</em>*：不要把 $\delta$ 只当“更想等折扣”；它还会通过均衡反馈改变期2 fill rate，从而出现“越耐用反而越不敢等”的区间。</p>
+<h3 id="62-table-2-40">6.2 Table 2：行为价值的量级很大，且在 40% 情形为负</h3>
+<p>最重要的信息不是“均值”，而是：</p>
+<ul>
+<li>行为价值极端情况下可以达到运营价值的十几倍（正向）或三倍（负向）</li>
+<li>少数情况下（0.5%）总价值为负 —— 若再加上整合实施成本，负净价值的场景会更多</li>
+</ul>
+<h3 id="63-table-5-vs-table-2">6.3 Table 5 vs Table 2：清仓价内生让负行为价值更常见、更致命</h3>
+<p>把清仓价从外生变成收益管理决策后，整合更容易引发“消费者集体延迟”，并且会顺带破坏厂商的分层收益。</p>
+<h3 id="64-table-6">6.4 Table 6：访问成本让负面显著缓和</h3>
+<p>当消费者“来一趟很麻烦”时，整合提高期1可得性带来的需求扩张能压过等待效应，使负总价值几乎消失。</p>
+<h3 id="65-table-7">6.5 Table 7：一张表总结“何时负/何时正”</h3>
+<p>论文最后把最稳健的方向性结论压缩成一句话：</p>
+<ul>
+<li><strong>行为价值更可能为负</strong>：高 $\sigma$、正相关 $\rho$、低 $s/c$；清仓价内生；市场更不对称；访问成本低。</li>
+<li><strong>行为价值更可能为正</strong>：低 $\sigma$、负相关/低相关；高 $s/c$；外生清仓价；市场更对称；访问成本高。</li>
+</ul>
+<hr>
+<h2 id="7">7. 管理建议（可执行的“怎么办”）</h2>
+<ol>
+<li><strong>别只用“池化节省多少库存”来算 ROI</strong>：必须把消费者等待行为纳入评估（尤其是清仓/季末促销可预测的品类）。</li>
+<li><strong>在高 $\sigma$、高 $\rho$ 的品类/市场里，整合可能“训练消费者更会等”</strong>：</li>
+<li>配套机制：价格承诺（commitment）、限量配给（rationing）、更快补货（quick response）、减少清仓可预测性、提前锁定价值（会员专享、捆绑、赠品）等。</li>
+<li><strong>若清仓价是动态定价系统的一部分</strong>（收益管理依赖分层）：谨慎整合，因为整合可能削弱分层能力（segmentation effect）。</li>
+<li><strong>访问成本高的场景更适合做整合</strong>：整合提升期1可得性会显著提升到店/下单意愿，形成“运营+行为双赢”。</li>
+<li><strong>市场不对称时别迷信整合</strong>：当一个渠道/门店规模压倒另一个时，整合的风险池化收益很有限，却仍可能提升清仓可得性从而刺激等待。</li>
+</ol>
+<hr>
+<h2 id="8-reviewers-critique">8. 你的犀利评论 (Reviewer's Critique)</h2>
+<h3 id="81-senior-editor">8.1 优点（Senior Editor 会认可的点）</h3>
+<ul>
+<li><strong>问题重要且现实</strong>：全渠道整合是过去十几年零售运营的核心动作之一；把战略消费者引入池化评估非常有价值。</li>
+<li><strong>概念分解清晰</strong>：把价值拆成 operational vs behavioral，且给出可操作的判别条件（$\sigma,\rho,s/c$ 等）与扩展稳健性。</li>
+<li><strong>技术上“干净”</strong>：利用“阈值策略 + 需求缩放”把复杂的消费者博弈压缩成可解的 newsvendor 结构；再用理性预期固定点闭合。</li>
+</ul>
+<h3 id="82">8.2 模型限制（可能被挑刺的假设）</h3>
+<ol>
+<li><strong>整合成本为 0</strong>：把整合设为“最好情况”，使得“整合仍可能不划算”的结论更强，但也让实证校准/现实 ROI 需要另行补充（固定成本、变动履约成本、调拨延迟、服务失败等）。</li>
+<li><strong>消费者看不到库存且只有一个共同信念</strong>：现实中消费者能从网站库存提示、社媒、历史经验、门店电话等更新信念；信息披露与信念形成可能与整合深度强相关（这其实是一个很大的后续方向）。</li>
+<li><strong>两期结构与价格外生（基准）</strong>：两期是为了机制凸显与可解性，但现实往往多期 markdown；全价 $p$ <em>外生也忽略了竞争、品牌、渠道差异等。</em></li>
+<li><strong>随机分配规则</strong>：整合下“先到先得 + 两市场无优先级”是合理抽象，但现实常有履约优先级（门店保留、线上优先、会员优先），这会显著改变期2可得性与等待激励。</li>
+<li><strong>需求正态与“负需求近似处理”</strong>：为解析便利而常见，但如果需求重尾/零膨胀/截断，池化与 fill rate 的性质可能改变（论文也在相关文献里提到重尾会颠覆直觉）。</li>
+</ol>
+<h3 id="83">8.3 未来方向</h3>
+<ul>
+<li><strong>信息与信念：整合 × 库存可视化（availability information）</strong>：让消费者部分观察库存、或企业选择披露策略（与 Gallino &amp; Moreno 等库存信息共享文献对接）。</li>
+<li><strong>履约优先级与服务等级差异</strong>：不同渠道/人群有不同履约 SLA，会改变“随机分配”并影响等待。</li>
+<li><strong>竞争与多零售商</strong>：整合往往是竞争武器；在竞争下，战略等待可能跨零售商比较，结论可能更复杂也更有政策含义。</li>
+<li><strong>多期 markdown + 动态库存更新</strong>：把两期扩展成多期，研究整合如何改变“清仓路径可预测性”。</li>
+<li><strong>内生定价与产品策略（快反/补货）联动</strong>：把整合与 quick response、补货提前期、限量策略组合设计。</li>
+</ul>
+<hr>
+<h2 id="9-one-more-thing">9. One More Thing：最值得分享的“灵光一现”</h2>
+<p>我认为这篇论文最漂亮的技巧有两个（都非常“OM 风格”，但又很经济学）：</p>
+<ol>
+<li><strong>把整合价值改写成“冻结行为的池化收益 + 行为变化的增量”</strong>（式 (7) 的重写）。这一下子把“行为价值”从一个抽象概念变成可计算、可比较、可做扩展的对象——后面清仓价内生、访问成本等扩展都能沿用这个框架。</li>
+<li><strong>“期1 fill rate 与战略等待无关”</strong>（Proposition 4/8 的核心）：因为厂商永远在一个固定临界分位点上订货，消费者再怎么等，也只是把需求按比例缩放；厂商会跟着缩放库存，导致期1服务水平在均衡里保持不变。这个结论既反直觉又很强，是理解“为什么行为影响主要通过期2发生”的关键钥匙。</li>
+</ol>
+<h2 id="_2">&gt; ?</h2>
+    </div>
+  </div>
+</body>
+</html>

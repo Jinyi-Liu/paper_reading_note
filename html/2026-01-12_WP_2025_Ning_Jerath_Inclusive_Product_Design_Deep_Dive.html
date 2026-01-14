@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WP_2025_Ning_Jerath_Inclusive_Product_Design_Deep_Dive</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="inclusive-product-design-and-consumer-inferencejerath-ning-2025">Inclusive Product Design and Consumer Inference（Jerath &amp; Ning, 2025）深度解析笔记</h1>
+<blockquote>
+<p>论文：<strong>Inclusive Product Design and Consumer Inference</strong><br>
+作者：Kinshuk Jerath, Z. Eddie Ning（May 2025）<br>
+研究范式：<strong>信号博弈（signaling）+ 产品设计（product design）+ 实验验证（lab experiment）+ 简要政策讨论（equity mandate）</strong></p>
+</blockquote>
+<hr>
+<h2 id="0">0. 一句话抓住本文（先把故事讲清楚）</h2>
+<p>本文把“包容性/公平性产品设计（inclusive / equitable product design）”建模为一种<strong>昂贵且可验证的承诺</strong>，在消费者无法直接观察企业产品研发能力时，它可以充当<strong>能力信号（costly signal of capability）</strong>：即使公平性约束会迫使企业牺牲部分“多数群体”所偏好的质量，<strong>承诺本身带来的信息增量</strong>也可能让两类消费者都更愿意购买，从而让企业在没有任何“社会偏好（social preferences）”假设的情况下，仍然有利润动机去做 DEI 相关的产品设计。</p>
+<hr>
+<h2 id="1-motivation">1. 研究背景与动机（Motivation）</h2>
+<h3 id="11">1.1 实践痛点：行业里到底发生了什么“可观察的运营现象”？</h3>
+<p>论文从非常“运营管理式”的角度切入：产品研发往往在<strong>资源稀缺</strong>与<strong>回报差异</strong>下优化，结果是——历史上大量产品对“经济上更重要的主流群体”更友好，对“经济上较小/购买力较低的群体”表现更差（paper pp.2–3）。</p>
+<p>作者列了一串你几乎每天都能遇到的例子（都是“质量差异”而非“态度”）：</p>
+<ul>
+<li>相机/照片编辑对深色肤色的过度提亮与失真；</li>
+<li>App/网站缺乏无障碍（accessibility）特性；</li>
+<li>语音识别对口音/非母语用户不友好；</li>
+<li>汽车碰撞测试假人偏向“平均男性体型”导致女性风险被系统性低估；</li>
+<li>表情符号缺乏多样性……（paper pp.2–3）</li>
+</ul>
+<p>这背后的简单经济逻辑是：如果少数群体市场规模小（或购买力弱），企业对其相关属性的边际投资回报低，因此“质量不平等”会在没有恶意的情况下长期存在。</p>
+<p>与此同时，近几年企业公开承诺 DEI/包容性设计的现象变得显著，但又出现“撤退/缩减”的摇摆（paper p.2）。因此一个尖锐问题浮出水面：</p>
+<blockquote>
+<p>对一个并不专门服务少数群体的“主流品牌”来说，DEI/包容性产品设计只有在消费者有强烈道德偏好时才可能赚钱吗？还是即便消费者完全自利（self-interested），企业仍可能从中获利？</p>
+</blockquote>
+<p>这就是本文要解释的“机制缺口”。</p>
+<hr>
+<h3 id="12">1.2 理论缺口：现有文献忽略了什么？</h3>
+<p>作者非常明确地把缺口钉在两个点上（paper pp.4–9）：</p>
+<ol>
+<li>
+<p><strong>很多 DEI/CSR 文献依赖“社会偏好”或心理机制</strong><br>
+   比如消费者对道德、身份认同、社会正义的偏好等。<br>
+   但现实里有著名的“attitude–behavior gap”（说支持，不一定买）。</p>
+</li>
+<li>
+<p><strong>关于包容性产品设计的经济机制研究很少</strong><br>
+   既有研究更多是概念框架、心理反应、或者特定情境的实证；而“公开承诺 inclusive design 作为市场策略工具”几乎没人用严谨的信号博弈去刻画。</p>
+</li>
+</ol>
+<p>因此本文选择回到信息经济学老派但强力的武器：<strong>signaling</strong>。</p>
+<hr>
+<h3 id="13-significance">1.3 核心贡献：Significance（理论 + 实践）</h3>
+<p>我把本文贡献拆成“三刀”，每一刀都很锋利：</p>
+<p><strong>贡献 1（机制层面）</strong>：提出一个不靠社会偏好也能成立的 DEI 经济机制  </p>
+<ul>
+<li>inclusive/equitable design 被建模为<strong>额外约束</strong>，对低能力企业更“痛”，因此可以成为<strong>区分能力的信号</strong>。  </li>
+<li>关键是：信号带来的<strong>信念更新（belief updating）</strong>可能大到足以抵消“多数群体质量被迫下降”的直接损失，从而让多数群体需求也上升（paper p.6, Proposition 5）。</li>
+</ul>
+<p><strong>贡献 2（均衡层面）</strong>：给出清晰的均衡分区（pooling / separating）  </p>
+<ul>
+<li>用不确定性参数 $\Delta=\sqrt{k_L/k_H}-1$ 将均衡划分为：  </li>
+<li>低不确定性：没人做（pooling-∅）  </li>
+<li>中等不确定性：H 更可能做并实现分离/半分离（(semi-)separating）  </li>
+<li>高不确定性：L 跟着做导致“都做”（pooling-E）<br>
+  并用 D1 refinement 把离均衡信念钉死（paper Section 3.3）。</li>
+</ul>
+<p><strong>贡献 3（证据层面）</strong>：用实验验证“消费者确实在做这种推断”  </p>
+<ul>
+<li>实验显示：看到“inclusive design 承诺”的公司被认为更有能力、产品对两类人都更好，且对少数群体改善的感知更强（paper Section 4, Figures 5–6）。</li>
+</ul>
+<p>再加一口“政策味儿”的讨论：强制公平性政策可能带来<strong>信息损失</strong>，削弱福利改善（paper Section 5）。</p>
+<hr>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设（Model Setup &amp; Assumptions）</h2>
+<blockquote>
+<p>这一节的目标：让你能“拿起笔就复盘推导”。我会把符号、序列、目标函数、约束、关键假设全部摊开。</p>
+</blockquote>
+<h3 id="21-notation">2.1 符号体系（Notation）</h3>
+<table>
+<thead>
+<tr>
+<th>记号</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>两类消费者</td>
+<td>多数群体 $a$，少数群体 $i$</td>
+<td>多数群体质量 1；少数群体规模 $\beta&lt;1$（paper p.9）</td>
+</tr>
+<tr>
+<td>$\beta$</td>
+<td>少数群体市场规模</td>
+<td>也可理解为“经济权重”</td>
+</tr>
+<tr>
+<td>属性集合</td>
+<td>$\Phi_a,\Phi_i$</td>
+<td>各自测度为 1</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>两群体关注属性的重叠比例</td>
+<td>$</td>
+</tr>
+<tr>
+<td>$t$</td>
+<td>属性索引</td>
+<td>连续型（continuum）</td>
+</tr>
+<tr>
+<td>$q(t)$</td>
+<td>属性 $t$ 的质量</td>
+<td>取值 $[0,1]$</td>
+</tr>
+<tr>
+<td>$u_a,u_i$</td>
+<td>两群体效用</td>
+<td>$u_a=\int_{\Phi_a}q(t)\,dt$，$u_i=\int_{\Phi_i}q(t)\,dt$</td>
+</tr>
+<tr>
+<td>企业类型</td>
+<td>$j\in{H,L}$</td>
+<td>能力高/低</td>
+</tr>
+<tr>
+<td>$k_H,k_L$</td>
+<td>成本参数</td>
+<td>$k_H&lt;k_L$（H 更有效率）</td>
+</tr>
+<tr>
+<td>$\Delta$</td>
+<td>能力不确定性强度</td>
+<td>$$\Delta=\sqrt{\frac{k_L}{k_H}}-1$$（paper p.10）</td>
+</tr>
+<tr>
+<td>承诺行动</td>
+<td>$s\in{\emptyset,E}$</td>
+<td>$E$：承诺公平性（equity）；$\emptyset$：不承诺</td>
+</tr>
+<tr>
+<td>公平性约束</td>
+<td>$u_a=u_i$</td>
+<td>承诺后必须满足（paper p.11）</td>
+</tr>
+<tr>
+<td>信念</td>
+<td>$\mu(s)$</td>
+<td>看到 $s$ 后认为企业是 H 的概率</td>
+</tr>
+<tr>
+<td>外部选项</td>
+<td>$w\sim U(0,1)$</td>
+<td>两期独立抽取</td>
+</tr>
+<tr>
+<td>单位利润</td>
+<td>归一化为 1</td>
+<td>论文抽象掉定价（paper p.12）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="22-players-sequence-information">2.2 博弈/决策结构（Players, Sequence, Information）</h3>
+<p><strong>Players</strong></p>
+<ul>
+<li>单一战略企业（monopolist seller）</li>
+<li>两类消费者：多数群体（质量 1）与少数群体（质量 $\beta$）</li>
+</ul>
+<p><strong>信息结构（Information Structure）</strong></p>
+<ul>
+<li>企业类型 $j\in{H,L}$ 为企业私有信息；</li>
+<li>消费者只观察到企业是否公开承诺公平性设计 $s$；</li>
+<li>产品真实质量 $q(t)$ 在<strong>第二期才被观察</strong>。</li>
+</ul>
+<p><strong>序列（Game Sequence, paper p.12）</strong></p>
+<ol>
+<li>Nature 抽取企业类型 $j$。</li>
+<li>企业选择是否承诺：$s\in{\emptyset,E}$，消费者据此更新信念 $\mu(s)$。</li>
+<li>企业选择各属性质量 $q_j(t)$ 并支付研发成本。</li>
+<li>第一期开启：消费者抽取外部选项 $w$，基于期望效用决定是否采用（未观察质量）。</li>
+<li>第二期开启：消费者观察 $q_j(t)$，再次抽取外部选项 $w$，基于实现效用决定是否采用。</li>
+</ol>
+<hr>
+<h3 id="23-profit-utility-constraints">2.3 目标函数与约束（Profit / Utility / Constraints）</h3>
+<p><strong>消费者效用（paper p.10）</strong></p>
+<p>多数群体：
+$$u_a(q(t))=\int_{t\in\Phi_a}q(t)\,dt$$</p>
+<p>少数群体：
+$$u_i(q(t))=\int_{t\in\Phi_i}q(t)\,dt$$</p>
+<p><strong>研发成本（paper p.10）</strong><br>
+对每个属性采用凸成本形式，趋近 $q\to 1$ 时发散：
+$$c_j(q(t))=\int_{t\in\Phi}k_j\frac{q(t)}{1-q(t)}\,dt$$</p>
+<p><strong>公平性承诺约束（paper p.11）</strong><br>
+若 $s=E$，必须满足：
+$$u_a(q(t))=u_i(q(t))$$</p>
+<p>作者在脚注说明：也可以允许企业“偏离承诺”但要付声誉惩罚（如 $-\epsilon|u_a-u_i|$），并令 $\epsilon$ 足够大使其不偏离。本文直接用“硬约束”处理，等价于强执行的可验证承诺。</p>
+<p><strong>需求与利润：一个关键建模技巧</strong><br>
+每期每个消费者外部选项 $w\sim U(0,1)$，若产品效用为 $u\in[0,1]$，则采用概率为 $\Pr(w&lt;u)=u$。因此“需求 =（期望）效用”。</p>
+<p>企业利润（paper eq.(1)）：
+$$\Pi_j = \mathbb{E}[u_a|s]+\beta\mathbb{E}[u_i|s]+u_a(q_j(t))+\beta u_i(q_j(t)) - c_j(q_j(t))$$</p>
+<p>前两项是第一期（短期）收益，后两项是第二期（长期）收益，最后减去研发成本。</p>
+<p><strong>均衡概念</strong><br>
+求解满足 D1 Criterion 的 mixed-strategy Perfect Bayesian Equilibrium（paper p.12）。直觉版 D1：若观察到离均衡行动，消费者把它归因给“从该偏离中获益更大”的类型。</p>
+<hr>
+<h3 id="24-justification">2.4 关键假设与合理性（Justification）</h3>
+<ol>
+<li>
+<p><strong>两期结构：短期靠预期，长期靠体验</strong><br>
+   对应很多“新产品上线—口碑/复购”的两阶段扩散。</p>
+</li>
+<li>
+<p><strong>抽象掉定价，单位利润归一化</strong><br>
+   把注意力锁定在“设计—信号—学习”机制上。缺点是无法讨论价格与设计的联动（后面我会在 critique 里喷它）。</p>
+</li>
+<li>
+<p><strong>属性连续体 + 对称结构（各自测度 1，重叠 $\gamma$）</strong><br>
+   使得质量选择能降维到少数几个标量（Lemma 1），同时仍然保留“重叠属性”这个非常关键的现实要素：有些改进同时惠及两边（比如更稳定的软件性能），有些改进只惠及某一边（比如对某类肤色的色彩还原）。</p>
+</li>
+<li>
+<p><strong>成本函数选择 $q/(1-q)$：凸且可解</strong><br>
+   这是典型“为了闭式解而做的功能形式选择”，好处是 FOC 一步到位，能在纸上推清楚均衡分区。</p>
+</li>
+<li>
+<p><strong>技术性假设 $k_L&lt;\beta$</strong><br>
+   论文用它确保最优质量是内点 $q\in(0,1)$（paper p.10）。你可以把它理解为：即便是低能力企业，对少数群体市场也仍有足够的经济诱因去做一些（否则角点解会让比较静态变得丑）。</p>
+</li>
+</ol>
+<hr>
+<h2 id="3-analysis-solution">3. 分析与求解（Analysis &amp; Solution）</h2>
+<h3 id="31-lemma-1">3.1 第一步：降维（Lemma 1）</h3>
+<p>属性集合可以分成三块（paper Appendix A.1）：</p>
+<ul>
+<li>多数专属：$\Phi_a\setminus\Phi_i$，测度 $1-\gamma$</li>
+<li>少数专属：$\Phi_i\setminus\Phi_a$，测度 $1-\gamma$</li>
+<li>重叠属性：$\Phi_o=\Phi_a\cap\Phi_i$，测度 $\gamma$</li>
+</ul>
+<p>因为（1）同一子集中消费者对属性权重相同；（2）成本可加且同质；（3）成本凸——企业在同一子集内做“差异化质量”只会白白增加成本而不增效用。于是最优质量只需要三个标量（Lemma 1）：</p>
+<ul>
+<li>$q_{j,a}$：多数专属属性质量</li>
+<li>$q_{j,i}$：少数专属属性质量</li>
+<li>$q_{j,o}$：重叠属性质量</li>
+</ul>
+<p>于是两群体效用化为（paper p.13）：
+$$u_{j,a}=(1-\gamma)q_{j,a}+\gamma q_{j,o}$$
+$$u_{j,i}=(1-\gamma)q_{j,i}+\gamma q_{j,o}$$</p>
+<p>成本化为：
+$$c_j=k_j\left[(1-\gamma)\left(\frac{q_{j,a}}{1-q_{j,a}}+\frac{q_{j,i}}{1-q_{j,i}}\right)+\gamma\frac{q_{j,o}}{1-q_{j,o}}\right]$$</p>
+<hr>
+<h3 id="32-benchmarkproposition-1">3.2 Benchmark：完全信息下为什么“不可能自发公平”（Proposition 1）</h3>
+<p>完全信息 benchmark：第一期消费者就知道企业类型，因此企业的利润相当于把两期需求都建立在真实类型/策略上。</p>
+<p><strong>（A）不承诺公平性（$s=\emptyset$）</strong><br>
+目标函数（等价形式见 paper eq.(3)）在三个质量上可分离，得到闭式解（paper eq.(4)–(6)）：
+$$q^{\emptyset}<em>{j,a}=1-\sqrt{\frac{k_j}{2}}$$
+$$q^{\emptyset}</em>{j,i}=1-\sqrt{\frac{k_j}{2\beta}}$$
+$$q^{\emptyset}_{j,o}=1-\sqrt{\frac{k_j}{2(1+\beta)}}$$</p>
+<p>观察：因为 $\beta&lt;1$，所以 $q^{\emptyset}<em>{j,a}&gt;q^{\emptyset}</em>{j,i}$，即企业天然更照顾多数群体。</p>
+<p><strong>（B）承诺公平性（$s=E$）</strong><br>
+公平约束 $u_a=u_i$ 在本结构下等价于：
+$$q_{j,a}=q_{j,i}$$
+（一句很重要：因为重叠属性 $q_{j,o}$ 同时进入两边效用，所以要让两边效用相等，只能把两边专属属性质量拉平。）</p>
+<p>FOC 给出（paper eq.(8)–(9)）：
+$$q^{E}<em>{j,a}=q^{E}</em>{j,i}=1-\sqrt{\frac{k_j}{1+\beta}}$$
+$$q^{E}_{j,o}=1-\sqrt{\frac{k_j}{2(1+\beta)}}$$</p>
+<p><strong>Proposition 1 的结论（paper p.15）</strong></p>
+<ul>
+<li>不承诺时：多数效用 &gt; 少数效用（系统性不平等）。</li>
+<li>承诺公平性会：  </li>
+<li>提高研发成本（凸成本下“拉平”很贵）；  </li>
+<li>降低多数效用、提高少数效用；  </li>
+<li>但总体利润下降，所以<strong>在完全信息下企业永远不会自发承诺公平性</strong>。</li>
+</ul>
+<p><strong>经济直觉</strong><br>
+在完全信息世界里，承诺公平性只有“约束”没有“信息”，等价于在最优化里加了个紧箍咒；利润最大化的 firm 没理由主动给自己上枷锁。</p>
+<hr>
+<h3 id="33-section-32">3.3 不完全信息下的“质量选择”：先解二期，再看一期（Section 3.2）</h3>
+<p>因为质量只在第二期被观察，企业在选择 $q$ 时，只需最大化“第二期收益 - 研发成本”，再把第一期收益通过信念进入（paper eq.(10)）。</p>
+<p>这里有一个通用求解模板（建议你记下来）：</p>
+<blockquote>
+<p>若要最大化 $Aq - k\frac{q}{1-q}$，FOC 为 $A-\frac{k}{(1-q)^2}=0$，解得 $$q^*=1-\sqrt{\frac{k}{A}}$$</p>
+</blockquote>
+<p>这就是为什么本文很多解都是“1-平方根”。</p>
+<hr>
+<h4 id="331-semptyset">3.3.1 不承诺（$s=\emptyset$）：三个质量独立最优</h4>
+<p>最优质量（paper eq.(12)–(14)）：
+$$q^{\emptyset}<em>{j,a}=1-\sqrt{k_j}$$
+$$q^{\emptyset}</em>{j,i}=1-\sqrt{\frac{k_j}{\beta}}$$
+$$q^{\emptyset}_{j,o}=1-\sqrt{\frac{k_j}{1+\beta}}$$</p>
+<p>对比完全信息 benchmark：这里的“2”消失了，因为企业只在第二期内生地选 $q$，第一期的销量由信念决定，不直接进入 $q$ 的 FOC（它在上一层的承诺选择里起作用）。</p>
+<hr>
+<h4 id="332-se-q_jaq_ji">3.3.2 承诺公平（$s=E$）：约束让 $q_{j,a}=q_{j,i}$</h4>
+<p>最优质量（paper eq.(16)–(17)）：
+$$q^{E}<em>{j,a}=q^{E}</em>{j,i}=1-\sqrt{\frac{2k_j}{1+\beta}}$$
+$$q^{E}_{j,o}=1-\sqrt{\frac{k_j}{1+\beta}}$$</p>
+<p>注意：承诺公平会迫使“专属属性”变得更均衡，但对重叠属性的激励权重其实与两边总规模 $1+\beta$ 相关。</p>
+<hr>
+<h3 id="34-section-33">3.4 第二步：信号博弈的骨架（Section 3.3）</h3>
+<p>企业在第一阶段选择承诺 $s$，消费者观察后形成 $\mu(s)$，于是第一期预期效用为（paper eq.(20)–(21)）：</p>
+<p>$$\mathbb{E}[u_{a}|s]=\mu(s)u^s_{H,a}+(1-\mu(s))u^s_{L,a}$$<br>
+$$\mathbb{E}[u_{i}|s]=\mu(s)u^s_{H,i}+(1-\mu(s))u^s_{L,i}$$</p>
+<p>企业在承诺阶段的“比较两个 $s$ 的收益”（paper eq.(23)）：</p>
+<p>$$\max_{s\in{\emptyset,E}} \ \pi_j(s,\mu(E),\mu(\emptyset))$$</p>
+<p>其关键是：  </p>
+<ul>
+<li>选择 $E$ 会降低二期的“真实最优利润”（因为约束）；  </li>
+<li>但可能提高一期的“预期销量”（因为 $\mu(E)$ 更高）。</li>
+</ul>
+<hr>
+<h3 id="35-h-lemma-2">3.5 核心单调性：H 型永远更想承诺（Lemma 2）</h3>
+<p><strong>Lemma 2（paper p.19）</strong><br>
+对任意信念 $\mu(E),\mu(\emptyset)$，H 型承诺的净收益严格大于 L 型：</p>
+<p>$$\Pi_H(E,\mu(E),\mu(\emptyset))-\Pi_H(\emptyset,\mu(E),\mu(\emptyset))&gt;\Pi_L(E,\mu(E),\mu(\emptyset))-\Pi_L(\emptyset,\mu(E),\mu(\emptyset))$$</p>
+<p><strong>直觉（single-crossing）</strong><br>
+承诺公平本质是“额外约束 + 更高成本”。因为 $k_H&lt;k_L$，H 型实现同样的公平性牺牲更小（或说更“扛得住”）。所以一旦承诺能换来更好的信念，H 型更愿意用它做信号。</p>
+<p><strong>一个重要推论</strong><br>
+不可能出现“两种类型都混合”的均衡：如果 L 型已经无差异，H 型一定严格偏好承诺。</p>
+<hr>
+<h2 id="4-propositions-intuition">4. 核心命题与经济学直觉（Propositions + Intuition）</h2>
+<h3 id="41-2-pooling-e">4.1 命题 2：高不确定性下出现 pooling-E（两种类型都承诺）</h3>
+<p>当不确定性足够大（paper eq.(27)），存在 pooling-E：</p>
+<p>$$\Delta \ge F_1(\beta,\gamma)$$</p>
+<p>其中（paper p.20，eq.(27)）：
+$$
+F_1(\beta,\gamma)=
+\frac{
+3\left(\sqrt{2}+\sqrt{2\beta}-\sqrt{\beta+1}-\sqrt{\beta(\beta+1)}\right)(1-\gamma)
+}{
+\sqrt{\beta+1}\left(
+\left(\frac{5\sqrt{\beta+1}}{2}-\frac{5\sqrt{\beta+1}}{\sqrt{2}}-\frac{3}{\sqrt{\beta+1}}+3\right)\gamma
+-\frac{3\beta\gamma}{\sqrt{\beta+1}}
++3\sqrt{\beta}(\gamma-1)
++\frac{5\sqrt{\beta+1}}{\sqrt{2}}
+-3
+\right)
+}
+$$</p>
+<p>并且在 D1 下，离均衡不承诺会被认为是 L 型：
+$$\mu(\emptyset)=0$$</p>
+<p><strong>经济学直觉</strong><br>
+不确定性大意味着 H/L 的产品质量差距很大，第一期销量对信念非常敏感。L 型即使承诺很痛，也愿意模仿 H 型去换取“被当成高能力”的短期销量，于是出现 pooling：大家都说“我们很公平”，信号被稀释，但承诺依然发生（因为 L 型也跟进）。</p>
+<p><strong>比较静态</strong><br>
+论文指出 $F_1(\beta,\gamma)$ 随 $\beta,\gamma$ 增加而下降（paper p.21）：少数群体越大、重叠越高，公平性约束越不痛，L 型越容易模仿，pooling-E 越容易出现。</p>
+<hr>
+<h3 id="42-3signaling">4.2 命题 3：中等不确定性下出现（半）分离（signaling 有效）</h3>
+<p>存在（纯分离或半分离）均衡的充要条件（paper p.23）：
+$$F_2(\beta,\gamma)\le \Delta \le F_1(\beta,\gamma)$$</p>
+<p>其中下界（paper p.21, eq.(30)）：
+$$
+F_2(\beta,\gamma)=
+\frac{
+3\left(\sqrt{2}\sqrt{\beta+1}-\sqrt{\beta}-1\right)(1-\gamma)
+}{
+-\sqrt{\beta}\gamma+\sqrt{\beta+1}\gamma+\sqrt{\beta-\gamma+1}
+}
+$$</p>
+<p>并且均衡中消费者看到承诺会更相信它是 H 型：
+$$\mu(E)&gt;\mu(\emptyset)$$</p>
+<p><strong>经济学直觉</strong>  </p>
+<ul>
+<li>若不确定性太小：两种类型差不多，第一期销量对信念不敏感，H 型没动力做昂贵承诺去“证明自己”。  </li>
+<li>若不确定性太大：第一期销量对信念太敏感，L 型强烈想模仿，导致 pooling。  </li>
+<li>只有中间区间：承诺足够昂贵，能“卡住” L 型模仿，但又足够有用，让 H 型愿意付费做信号。</li>
+</ul>
+<p>这其实是典型 signaling 模型的经典形状：信号必须“贵得刚刚好”。</p>
+<hr>
+<h3 id="43-4-pooling-">4.3 命题 4：低不确定性下 pooling-∅（没人承诺）</h3>
+<p>存在 pooling-∅ 的条件（paper p.25, eq.(37)）：
+$$\Delta \le F_3(\beta,\gamma)$$</p>
+<p>其中：
+$$
+F_3(\beta,\gamma)=
+\frac{
+6\left(-\sqrt{\beta}+\sqrt{2}\sqrt{\beta+1}-1\right)(1-\gamma)
+}{
+-\sqrt{\beta}\gamma+\sqrt{\beta+1}\gamma+\sqrt{\beta-\gamma+1}
+}
+$$</p>
+<p><strong>经济学直觉</strong><br>
+信息价值太小，H 型不想花钱。于是大家都不承诺。</p>
+<hr>
+<h3 id="44-5">4.4 命题 5：最反直觉的地方——多数群体也会“更喜欢”公平承诺</h3>
+<p><strong>Proposition 5（paper p.27）</strong><br>
+当不确定性足够高（直观理解：进入可分离或 pooling-E 区域时），在均衡中：</p>
+<ol>
+<li>承诺公平会提升消费者对企业能力的信念（认为 $k_j$ 更低）。  </li>
+<li>承诺公平会提升消费者对两群体产品效用的预期：<br>
+   $\mathbb{E}[u_{a}|E]&gt;\mathbb{E}[u_{a}|\emptyset]$ 且 $\mathbb{E}[u_{i}|E]&gt;\mathbb{E}[u_{i}|\emptyset]$。  </li>
+<li>对少数群体的预期提升更大：<br>
+   $\mathbb{E}[u_{i}|E]-\mathbb{E}[u_{i}|\emptyset]&gt;\mathbb{E}[u_{a}|E]-\mathbb{E}[u_{a}|\emptyset]$。</li>
+</ol>
+<p><strong>机制解释（你需要把“两个效应”牢牢记住）</strong></p>
+<ul>
+<li><strong>直接效应（design compromise）</strong>：公平约束迫使企业把 $q_{a}$ 拉下来、把 $q_{i}$ 拉上去。对多数群体来说，这是负面。  </li>
+<li><strong>信息效应（belief uplift）</strong>：承诺是昂贵信号 → 消费者推断企业更能干 → 预期整体质量水平更高。对多数群体来说，这是正面。</li>
+</ul>
+<p>当不确定性足够大时，第二个效应压过第一个效应，于是出现反直觉结论：<strong>多数群体也更愿意买“承诺公平”的产品</strong>。</p>
+<p>这就是本文最值钱的“经济学时刻”。</p>
+<hr>
+<h2 id="5-comparative-statics">5. 比较静态（Comparative Statics）：参数怎么改变均衡？</h2>
+<p>这里我把论文散落在文字里的比较静态整理成你可以直接复述的形式。</p>
+<h3 id="51-delta">5.1 $\Delta$（能力不确定性）——信号的燃料</h3>
+<ul>
+<li>$\Delta$ 小：pooling-∅  </li>
+<li>$\Delta$ 中：分离/半分离（signaling 真正有效）  </li>
+<li>$\Delta$ 大：pooling-E（L 型模仿导致信号稀释但承诺普及）</li>
+</ul>
+<p><strong>一句话</strong>：不确定性既是信号的“必要条件”，也是信号失效（pooling）的“诱因”。</p>
+<hr>
+<h3 id="52-beta">5.2 $\beta$（少数群体规模）——公平约束的“成本稀释器”</h3>
+<p>论文指出 $F_1,F_2,F_3$ 都随 $\beta$ 增加而下降（paper pp.21,25）：  </p>
+<ul>
+<li>少数群体越大，不承诺时企业对少数专属属性的投资本来就更高；  </li>
+<li>因此额外加公平约束的边际痛感更低；  </li>
+<li>所以“承诺”更容易发生。</li>
+</ul>
+<p>但注意一个更细的结论（paper p.29）：当引入不平等厌恶后，分离区间可能反而变小——本质是“约束变得不那么昂贵 → L 型更容易模仿 → signaling 区域缩小”。</p>
+<hr>
+<h3 id="53-gamma">5.3 $\gamma$（偏好重叠）——“共同改进”的比例</h3>
+<p>同理，$F_1,F_2,F_3$ 随 $\gamma$ 增加而下降（paper pp.21,25）：</p>
+<ul>
+<li>重叠越高，企业投在重叠属性上的改进会同时惠及两边；</li>
+<li>不承诺时已经更接近公平；承诺的额外代价更小；</li>
+<li>因此承诺更可能发生。</li>
+</ul>
+<p>直觉上：当两群体“想要的东西更像”，公平更容易，也更难作为区分能力的硬信号（因为更容易做）。</p>
+<hr>
+<h2 id="6-main-results-managerial-insights">6. 主要结论与管理启示（Main Results &amp; Managerial Insights）</h2>
+<h3 id="61-trade-off-vs">6.1 新 trade-off：产品质量 vs 信息价值</h3>
+<p>Benchmark（完全信息）告诉你：公平性是利润的敌人。<br>
+不完全信息模型告诉你：公平性可能是<strong>利润的朋友</strong>，因为它带来信息价值。</p>
+<p>这引出一个非常“OM+Marketing”的 trade-off：</p>
+<blockquote>
+<p><strong>Design Compromise（牺牲静态最优设计）</strong>  vs  <strong>Belief Premium（换取更高的能力信念与需求）</strong></p>
+</blockquote>
+<p>甚至可能出现<strong>多数群体也买单</strong>的反直觉结果。</p>
+<hr>
+<h3 id="62">6.2 对管理者的可操作建议（不是鸡汤，是动作）</h3>
+<ol>
+<li><strong>如果你真的有能力，且消费者对你能力不确定：把 inclusive design 做成“可验证的昂贵承诺”</strong><br>
+   模型里承诺是硬约束，所以才有信号力。现实里对应的动作是：  </li>
+<li>公开可审计的公平性指标（例如性能差异的第三方评估）；  </li>
+<li>发布可追责的路线图与版本更新记录；  </li>
+<li>
+<p>引入外部认证/标准（让“说到做到”变得昂贵）。<br>
+   没有这些，承诺更像 cheap talk，信号机制会塌。</p>
+</li>
+<li>
+<p><strong>把“重叠属性”的改进优先级抬高</strong><br>
+   当 $\gamma$ 高时，很多改进同时惠及两边（例如核心算法、稳定性、速度）。<br>
+   现实里这意味着：先做“everyone benefits”的底层工程，既能提高整体质量，也更容易达成 equity。</p>
+</li>
+<li>
+<p><strong>谨慎看待“一刀切强制公平政策”对市场信息的副作用</strong><br>
+   强制政策把所有人都推到 $u_a=u_i$，直接后果是：  </p>
+</li>
+<li>原本愿意自发承诺的高能力企业失去差异化信号；  </li>
+<li>消费者更难区分好坏，短期决策可能更差。<br>
+   监管如果想兼顾信息效率，可能需要“披露 + 评估”而不仅是“强制达标”。</li>
+</ol>
+<hr>
+<h3 id="63">6.3 图表解释：每张关键图到底在说什么？</h3>
+<p><strong>Figure 1–3（paper pp.20–26）：均衡分区图</strong>  </p>
+<ul>
+<li>横轴是 $\beta$（少数规模），纵轴是 $\Delta$（不确定性）。  </li>
+<li>三条边界 $F_2&lt;F_3&lt;F_1$（图中不同颜色曲线）把空间切成三个区域：  </li>
+<li>上方高 $\Delta$：pooling-E（两种类型都承诺）  </li>
+<li>中间：分离/半分离（signaling 有效）  </li>
+<li>下方低 $\Delta$：pooling-∅（没人承诺）  </li>
+<li>阴影/斜线区域通常标示某类均衡存在区域。</li>
+</ul>
+<p><strong>Figure 4（paper p.30）：理论预测的“符号矩阵”</strong><br>
+它把“无信号（完全信息）”与“有信号（不完全信息）”对比得极清楚：  </p>
+<ul>
+<li>无信号：承诺不改变能力信念；多数预期效用下降，少数上升。  </li>
+<li>有信号：承诺提升能力信念；两边预期效用都上升，且少数上升更多。</li>
+</ul>
+<p><strong>Figure 5（paper p.33）：能力感知的实验结果</strong><br>
+三根柱子分别是“capable / skillful / competent”，都显著高于中性点 3，说明参与者确实把“inclusive design 承诺”解读成更高能力。</p>
+<p><strong>Figure 6（paper p.34）：质量感知的实验结果</strong>  </p>
+<ul>
+<li>总体质量评价更高；  </li>
+<li>对“lighter skins（多数）”也更好（但提升较小）；  </li>
+<li>对“darker skins（少数）”提升更大，且两者差异显著（图上 *** 标注）。<br>
+这正对应 Proposition 5 的三条预测。</li>
+</ul>
+<hr>
+<h2 id="7-section-4">7. 实验部分：把理论预测落到“消费者脑回路”里（Section 4）</h2>
+<h3 id="71-paper-pp3031">7.1 实验设计（paper pp.30–31）</h3>
+<ul>
+<li>样本：Prolific 招募 200 名美国/加拿大参与者。  </li>
+<li>刺激材料：两个虚构照片编辑 app（PixelPro vs LumiLens），功能描述一致。  </li>
+<li>处理组：随机让其中一个 app 的开发者在网站上发布 inclusive design 声明（强调更公平的肤色处理与测试）。  </li>
+<li>测量：比较题（Likert 5 点），问哪个更“costly to make”、哪个开发者更“capable/skillful/competent”，哪个 app 质量更高、对浅色肤色/深色肤色用户更好。  </li>
+<li>注意力检验：剔除未通过者后 $N=174$。</li>
+</ul>
+<h3 id="72-paper-p32">7.2 主要结果（paper p.32）</h3>
+<ol>
+<li><strong>消费者认为 inclusive design 是昂贵的</strong><br>
+   成本感知均值 $M=3.63&gt;3$（显著）。  </li>
+<li><strong>消费者推断承诺者更有能力</strong><br>
+   “capable / skillful / competent”均值约 $3.43$–$3.47$，均显著大于 3。  </li>
+<li><strong>消费者认为承诺者产品对两边都更好，且对少数更强</strong>  </li>
+<li>总体质量：$M=3.57$  </li>
+<li>更适合浅色肤色：$M=3.38$  </li>
+<li>更适合深色肤色：$M=3.81$<br>
+   且对深色肤色提升显著更大（配对 t 检验显著）。</li>
+</ol>
+<h3 id="73-paper-pp3435">7.3 稳健性（paper pp.34–35）</h3>
+<ul>
+<li>调换提问顺序（避免“先问成本”导致 priming）：结果仍成立。  </li>
+<li>给非承诺 app 加一段“无关但等长度”的描述作为 placebo：结果仍成立。</li>
+</ul>
+<p><strong>我的解读（站在 Marketing Science 的语气）</strong><br>
+实验不是在证明“现实世界一定是 signaling”，而是在证明“消费者确实会把 inclusive design 声明当成能力线索”，这就让模型机制具备外部可行性（plausibility）。</p>
+<hr>
+<h2 id="8-equity-mandatesection-5">8. 政策讨论：强制公平（equity mandate）可能带来信息损失（Section 5）</h2>
+<p>作者讨论了一个很现实的问题：如果政府/监管强制所有产品都必须公平（$u_a=u_i$），会怎样？</p>
+<ul>
+<li>若原本就处在 pooling-E 区域：企业自发都承诺，政策几乎无影响。  </li>
+<li>若原本是 pooling-∅：政策能保护少数群体，但伤害多数群体与企业利润（直观）。  </li>
+<li>最有意思是分离均衡：政策不仅改变产品设计，还<strong>抹掉了市场信息</strong>。</li>
+</ul>
+<p>在 Appendix A.7（设 $\gamma=0$ 简化）里，少数群体福利变化写成（paper p.53）：
+$$
+\Delta W_i=
+\frac{(u^E_{L,i})^2-(u^\emptyset_{L,i})^2}{2}
+-
+\frac{(u^E_{H,i}-u^E_{L,i})^2}{8}
+$$</p>
+<ul>
+<li>第一项：政策逼 L 型提升少数相关质量的“直接收益”。  </li>
+<li>第二项：由于政策让两种类型在短期无法区分，少数群体会“买错/错过”，这是信息损失的福利成本。</li>
+</ul>
+<p><strong>政策含义</strong><br>
+强制公平不只是“把质量拉平”这么简单，它还会改变市场的信息结构；在一些区域里，信息损失会显著削弱政策对受保护群体的净收益。</p>
+<hr>
+<h2 id="9-senior-editor-reviewercritique">9. 犀利评论：如果我是 Senior Editor / Reviewer（Critique）</h2>
+<p>下面开始戴上审稿人黑帽（但讲道理，不做人身攻击）。</p>
+<h3 id="91">9.1 我愿意给的优点（强）</h3>
+<ol>
+<li><strong>机制干净</strong>：不靠 social preferences，把 DEI 议题塞进信息经济学，逻辑闭合。  </li>
+<li><strong>均衡分区清晰</strong>：用 $\Delta$ 把世界分成三块，并用 D1 给出离均衡信念，减少“讲故事式”多重均衡。  </li>
+<li><strong>理论—实验闭环</strong>：实验直接对应 Proposition 5 的三条预测，设计简洁。</li>
+</ol>
+<h3 id="92">9.2 我会质疑的点（狠）</h3>
+<ol>
+<li><strong>定价缺失：信号与价格的相互作用被屏蔽</strong><br>
+   在现实里，价格本身就是强信号（Schmalensee 1978; Milgrom &amp; Roberts 1986）。<br>
+   若允许定价，equity 承诺与价格信号可能互补或替代：  </li>
+<li>高能力企业可能用高价+公平承诺双重信号；  </li>
+<li>
+<p>或者用公平承诺替代部分价格溢价。<br>
+   缺乏定价让模型的可迁移性打了折扣。</p>
+</li>
+<li>
+<p><strong>垄断设定过强：竞争下的信号激励可能完全不同</strong><br>
+   两家或多家企业竞争时：  </p>
+</li>
+<li>一家承诺公平会不会迫使对手跟进（类比广告竞赛）？  </li>
+<li>是否出现“信号军备竞赛”导致过度投资？  </li>
+<li>
+<p>分离区域是否收缩？<br>
+   这些对 OM/Marketing 读者非常关键。</p>
+</li>
+<li>
+<p><strong>承诺被当成硬约束：现实中最难的是“可验证性”</strong><br>
+   论文脚注提到声誉惩罚，但把 $\epsilon\to\infty$ 等价于“监管/审计完美”。<br>
+   若承诺可被部分 greenwashing，信号会变成混合的：  </p>
+</li>
+<li>既有能力信号，又有道德/政治立场信号；  </li>
+<li>
+<p>消费者对承诺可信度的异质性会引入新均衡。<br>
+   这是本文最需要现实化的一条扩展线。</p>
+</li>
+<li>
+<p><strong>消费者异质性过弱</strong><br>
+   外部选项 $U(0,1)$ 的好处是“需求=效用”，但代价是：  </p>
+</li>
+<li>缺少对收入、偏好强度、信息处理能力的异质性刻画；  </li>
+<li>
+<p>“多数/少数”在模型里主要通过规模 $\beta$ 区分，而非偏好分布更丰富的差异。<br>
+   若改成一般分布 $F(w)$，结果是否还保持同样的符号？直觉可能仍对，但证明会更难。</p>
+</li>
+<li>
+<p><strong>实验证据更像“存在性证明”，而非结构检验</strong><br>
+   实验确实显示消费者会推断能力，但难以识别：  </p>
+</li>
+<li>是“成本→能力”推断链条在起作用（signaling）；  </li>
+<li>还是参与者把声明解读为“企业价值观更好→产品更好”（某种 halo）。<br>
+   作者做了 placebo，但若能加入更强的操纵（例如提供第三方审计 vs 自我声明）会更贴近模型“昂贵且可验证”的核心。</li>
+</ol>
+<hr>
+<h3 id="93-revision">9.3 未来研究方向（我会建议作者在 revision 里加的）</h3>
+<ol>
+<li><strong>引入价格与设计的联合选择</strong>：研究 equity 承诺与价格信号的替代/互补。  </li>
+<li><strong>竞争结构</strong>：双寡头下的 equilibrium 可能出现“公平承诺竞赛”。  </li>
+<li><strong>承诺可验证性与审计机制</strong>：把 $\epsilon$ 设为有限，或引入第三方认证（endogenous verification）。  </li>
+<li><strong>动态声誉与学习</strong>：多期模型里公平承诺可能是“长期声誉投资”，并与产品迭代关联。  </li>
+<li><strong>更多维度的 minority 定义</strong>：不仅是规模，还可以是不同属性权重、信息噪声、更高的体验不确定性等。  </li>
+<li><strong>现场数据验证</strong>：例如 AI 产品发布“公平/无偏”承诺后，是否出现主流用户需求上升？并能否通过能力信号解释而非道德偏好解释？</li>
+</ol>
+<hr>
+<h2 id="10-one-more-thing">10. One More Thing：我认为最值得分享的“灵光一现”</h2>
+<p>我最喜欢的技巧在 Section 3.5：<strong>把“不平等厌恶（inequality aversion）”做成参数变换，直接还原成原模型</strong>。</p>
+<p>作者设消费者效用为（paper eq.(38)–(39)）：
+$$v_a=u_a-\epsilon(u_a-u_i)$$<br>
+$$v_i=u_i-\epsilon(u_a-u_i)$$</p>
+<p>然后把企业目标中 $v_a+\beta v_i$ 重新整理为一个缩放后的“等价问题”，定义一个“有效少数规模”：
+$$\beta^e=\frac{\beta+\epsilon+\beta\epsilon}{1-\epsilon-\beta\epsilon}$$
+并把成本参数相应缩放：
+$$k^e_j=\frac{k_j}{1-\epsilon-\beta\epsilon}$$</p>
+<p>结果是：模型完全等价于“把少数群体变大、把研发成本变高”的基准模型，而 $\Delta=\sqrt{k_L/k_H}-1$ 还保持不变。于是所有结论几乎不用重做证明。</p>
+<p>这是一种非常高级的建模风格：<strong>用代数变换把鲁棒性检验变成“参数映射”</strong>，既干净又省命（作者省命，读者也省命）。</p>
+<hr>
+<h2 id="pdf">参考定位（方便你回 PDF 对照）</h2>
+<ul>
+<li>模型与符号：Section 2（paper pp.9–12）  </li>
+<li>Benchmark 完全信息：Section 3.1（paper pp.14–16）  </li>
+<li>不完全信息下质量选择：Section 3.2（paper pp.16–18）  </li>
+<li>信号均衡与分区：Section 3.3（paper pp.18–26，Figures 1–3）  </li>
+<li>关键预测 Proposition 5：Section 3.4（paper pp.26–28）  </li>
+<li>不平等厌恶扩展：Section 3.5（paper pp.28–29）  </li>
+<li>实验：Section 4（paper pp.29–35，Figures 4–6）  </li>
+<li>政策讨论：Section 5（paper pp.36–38；Appendix A.7, p.53）</li>
+</ul>
+<hr>
+<p><em>（文档到此结束。建议阅读顺序：先看 Proposition 5 的机制，再回头看 Lemma 2 + 均衡分区图。这样最省脑细胞。）</em></p>
+    </div>
+  </div>
+</body>
+</html>

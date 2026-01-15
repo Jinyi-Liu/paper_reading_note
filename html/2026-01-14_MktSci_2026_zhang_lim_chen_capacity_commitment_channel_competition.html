@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-01-14_MktSci_2026_zhang_lim_chen_capacity_commitment_channel_competition</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="strategic-capacity-commitment-a-channel-competition-perspective">Strategic Capacity Commitment: A Channel Competition Perspective</h1>
+<ul>
+<li>题目：Strategic Capacity Commitment: A Channel Competition Perspective</li>
+<li>作者：Shuguang Zhang, Wei Shi Lim, Lucy Gongtao Chen</li>
+<li>期刊：Marketing Science（Articles in Advance）</li>
+<li>线上发表时间：2026-01-12</li>
+<li>DOI：10.1287/mksc.2023.0139</li>
+</ul>
+<h1 id="1-motivation">1 研究背景与动机 (Motivation)</h1>
+<h2 id="11">1.1 实践痛点：为什么“产能公告”不仅是运营决策，还是竞争武器？</h2>
+<p>现实中，企业经常以“公开的、可被竞争对手解读”的方式宣布扩产/减产计划：例如电动车、消费电子、家电、工程机械等行业，头部厂商会宣布某工厂年产能、某型号周产量目标、或关闭/缩减产能。这些动作当然可以被解释为对需求变化的响应，但论文抓住了更“博弈论味儿”的问题：</p>
+<ul>
+<li>产能（或可供给数量上限）是否可以被当作一种 <strong>strategic commitment</strong>（战略承诺），用来软化（soften）价格战？</li>
+<li>这种承诺是否会通过渠道结构（channel structure）被放大或扭曲？</li>
+<li>承诺是否可能让竞争对手也受益，从而出现“看似竞争、实则双赢”的结果？</li>
+</ul>
+<p>这类问题之所以在实践中重要，是因为很多行业的竞争并不是“厂商对厂商”的单层竞争，而是“渠道对渠道”（channel vs. channel）：例如Tesla（直销、中央化渠道）对传统车企（通过经销商、去中心化渠道）；Apple（强直销/强控制）对依赖零售网络的品牌。渠道结构导致上游定价（wholesale price）与下游定价（retail price）之间存在经典的 <strong>double marginalization</strong>（双重加价）与权力分配问题，而产能承诺可能改变这个结构性张力。</p>
+<h2 id="12">1.2 理论缺口：现有文献忽略了什么？</h2>
+<p>战略承诺（capacity/quantity commitment）的经典结果是：承诺数量会缓解 Bertrand 价格竞争，使均衡更接近 Cournot，从而提高价格和利润（例如 Kreps &amp; Scheinkman 框架）。但大部分研究集中在两类设定：</p>
+<ol>
+<li><strong>Firm-level competition</strong>：竞争双方都是“单体厂商”，忽略渠道内部的上下游互动；</li>
+<li><strong>Single-channel analysis</strong>：研究某一条供应链内部（集中化 vs 去中心化）在面对战略消费者或不确定性时的承诺价值，但缺少“两个渠道相互竞争”的视角。</li>
+</ol>
+<p>关键缺口在于：当竞争对象不是一个“单体厂商”，而是一条去中心化渠道时，承诺影响的不仅是对手的零售价格，还可能通过对手的上游（批发价）传导，从而改变竞争强度与利润分配。也就是说，<strong>对手的渠道结构</strong>可能比“我自己的渠道结构”更决定承诺是否有价值。</p>
+<h2 id="13-significance">1.3 核心贡献：本文的 Significance 在哪里？</h2>
+<p>论文的最核心贡献可以浓缩成一句话：</p>
+<ul>
+<li>产能承诺的战略价值（strategic value of capacity commitment）在很大程度上由“竞争对手的渠道结构”决定，而不是由承诺者自身的渠道结构决定。</li>
+</ul>
+<p>更具体地，本文在理论与管理上给出一组清晰、但不那么直觉的结论：</p>
+<ul>
+<li>当竞争对手是去中心化渠道时，一个制造商（无论自己是集中化还是去中心化）都更容易从产能承诺中获益，因为承诺会诱发对手上游提高批发价，进而减弱零售端竞争。</li>
+<li>在“集中化渠道 vs 去中心化渠道”的不对称竞争中，集中化制造商的产能承诺不仅能让自己赚钱，还可能让对手的去中心化制造商也赚钱（win-win），但零售商可能受损，且受损与否取决于产品差异化程度。</li>
+<li>一个非常反直觉的点：集中化制造商承诺产能后，<strong>可能卖得更多而不是更少</strong>（承诺上限反而提高销量），因为它通过抬高对手批发价来“间接抬高对手零售价”。</li>
+</ul>
+<h1 id="2-model-setup-assumptions">2 模型设定与假设 (Model Setup &amp; Assumptions)</h1>
+<h2 id="21-players">2.1 Players 与渠道结构</h2>
+<h3 id="model-i">Model I：不对称渠道竞争（论文主模型）</h3>
+<ul>
+<li>集中化渠道：只有一个厂商（centralized manufacturer，记为 Firm $cm$），直接面对消费者定价并销售。</li>
+<li>去中心化渠道：上游制造商（decentralized manufacturer，Firm $dm$）先给下游零售商（Firm $r$）设定批发价 $w$；零售商再面向消费者定价并销售。</li>
+</ul>
+<p>两条渠道销售可替代产品，并在消费者端发生竞争。Figure 1 的结构可以概括为：<br>
+$cm \rightarrow$ Consumer（零售价 $p_{cm}$）与 $dm \rightarrow r \rightarrow$ Consumer（批发价 $w$、零售价 $p_r$）并行竞争。</p>
+<h2 id="22-sequence-of-events">2.2 Sequence of Events：四阶段动态博弈</h2>
+<p>基础模型是一个四阶段博弈（均衡概念：Subgame Perfect Equilibrium，用 backward induction 求解）：</p>
+<ol>
+<li>Stage 1（Commitment Choice）：$cm$ 与 $dm$ 同时选择是否采用产能承诺  </li>
+<li>$C$：capacity commitment（承诺上限）  </li>
+<li>
+<p>$F$：capacity flexibility（完全灵活，无上限约束）<br>
+   基础模型中，Stage 1 的选择对双方可观察（后续 Extension 4 放松此假设）。</p>
+</li>
+<li>
+<p>Stage 2（Capacity Level）：若选择 $C$，则厂商 $i \in {cm, dm}$ 选择承诺产能 $k_i$；若选择 $F$，则不存在约束。<br>
+   基础模型假设产能承诺是“无成本”的（后续在线附录讨论有成本与不同建设周期）。</p>
+</li>
+<li>
+<p>Stage 3（Wholesale Price）：$dm$ 观察 $k_{cm}, k_{dm}$（若存在）后，向零售商设定批发价 $w$。论文假设 $w$ 可被竞争渠道观察（基于价格清单、招投标信息、行业报告等现实可观测性）。</p>
+</li>
+<li>
+<p>Stage 4（Retail Price）：$cm$ 与 $r$ 同时设定零售价 $p_{cm}$、$p_r$；消费者需求实现；若存在产能约束则触发 rationing。</p>
+</li>
+</ol>
+<h2 id="23-hotelling">2.3 需求系统：Hotelling 线性城市模型</h2>
+<p>消费者均匀分布在区间 $[0,1]$ 上：</p>
+<ul>
+<li>$cm$ 位于 0 点</li>
+<li>$r$ 位于 1 点</li>
+<li>消费者位置 $x$ 表示对两渠道的偏好：离谁近就更偏好谁</li>
+</ul>
+<p>产品差异化由运输成本参数 $t$ 表示，$t$ 越大，差异化越强、竞争越弱。消费者对产品的基础价值归一化为 1。</p>
+<p>消费者从 Firm $i \in {cm, r}$ 购买的净效用为：</p>
+<p>$$
+U_i(x) = 1 - t d_i(x) - p_i,
+$$</p>
+<p>其中 $d_{cm}(x)=x$，$d_r(x)=1-x$。</p>
+<p>令无差异点为 $\hat x$，满足 $U_{cm}(\hat x)=U_r(\hat x)$，则</p>
+<p>$$
+\hat x = \frac{t + p_r - p_{cm}}{2t}.
+$$</p>
+<p>在“完全竞争/无约束”下，对应需求（市场规模归一化为 1）：</p>
+<p>$$
+q_{cm} = \frac{t + p_r - p_{cm}}{2t}, \quad q_r = \frac{t + p_{cm} - p_r}{2t}.
+$$</p>
+<h3 id="complete-vs-limited-competition">产能约束下的销量表达（论文的 complete vs limited competition 定义）</h3>
+<p>论文将零售端竞争分为两类：</p>
+<ul>
+<li>Complete competition：任何承诺产能都不绑定，实际销量等于“由价格决定的需求”；</li>
+<li>Limited competition：至少有一方承诺产能绑定，销量被产能直接截断（并触发 rationing 与消费者转移）。</li>
+</ul>
+<p>在 Model I（不对称渠道）里，若产能绑定，销量有非常简洁的封闭形式（对应论文式 (3)–(5)）：</p>
+<ol>
+<li>仅 $cm$ 承诺且绑定：$q_{cm}=k_{cm}$，剩余消费者都去零售商，因此 $q_r=1-k_{cm}$。</li>
+<li>仅 $dm$ 承诺且绑定（等价于零售商供给受限）：$q_r=k_{dm}$，因此 $q_{cm}=1-k_{dm}$。</li>
+<li>双方都承诺且都绑定：$q_{cm}=k_{cm}$，$q_r=k_{dm}$，并且均衡要求市场被覆盖 $k_{cm}+k_{dm}=1$（否则双方都有动机扩产去吃掉未服务市场）。</li>
+</ol>
+<p>这些“销量被锁死”的表达式是后续很多机制（例如批发价只影响分配而不影响总量）的技术基础。</p>
+<h3 id="rationing">有产能约束时的 rationing 规则</h3>
+<p>论文采用 <strong>efficient rationing</strong>：当某方需求超过其承诺产能时，优先满足对该方效用最高的消费者（在 Hotelling 上等价于更靠近该方的位置）。</p>
+<p>为了避免出现部分消费者“都不买”的外部选项，论文设定全市场覆盖（full market coverage）。在 Model I 中给出条件 $t \le 4/9$。</p>
+<h2 id="24-notation">2.4 符号体系（Notation）</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>策略</td>
+<td>$C$ / $F$</td>
+<td>产能承诺 / 灵活产能</td>
+</tr>
+<tr>
+<td>零售价格</td>
+<td>$p_{cm}$, $p_r$</td>
+<td>集中化制造商/零售商零售价</td>
+</tr>
+<tr>
+<td>批发价格</td>
+<td>$w$</td>
+<td>去中心化制造商给零售商的批发价</td>
+</tr>
+<tr>
+<td>产能上限</td>
+<td>$k_{cm}$, $k_{dm}$</td>
+<td>若承诺，则为对应制造商的最大可供给量</td>
+</tr>
+<tr>
+<td>销量</td>
+<td>$q_{cm}$, $q_r$</td>
+<td>集中化渠道销量 / 零售商销量</td>
+</tr>
+<tr>
+<td>差异化</td>
+<td>$t$</td>
+<td>Hotelling 运输成本参数（差异化强度）</td>
+</tr>
+<tr>
+<td>利润</td>
+<td>$\pi_i^j$</td>
+<td>Firm $i$ 在子博弈 $j \in {FF, CF, FC, CC}$ 的利润</td>
+</tr>
+</tbody>
+</table>
+<p>子博弈记号：<br>
+- $FF$：双方都灵活<br>
+- $CF$：$cm$ 承诺、$dm$ 灵活<br>
+- $FC$：$cm$ 灵活、$dm$ 承诺<br>
+- $CC$：双方都承诺</p>
+<h2 id="25">2.5 各方目标函数与约束</h2>
+<p>基础模型成本归一化为 0（生产成本与销售成本为 0；Extension 3 引入不对称销售成本）。因此利润函数为：</p>
+<ul>
+<li>集中化制造商：$\pi_{cm} = p_{cm} q_{cm}$</li>
+<li>去中心化制造商：$\pi_{dm} = w q_r$</li>
+<li>零售商：$\pi_r = (p_r - w) q_r$</li>
+</ul>
+<h3 id="_1">对应的决策问题写成数学规划（便于复盘推导）</h3>
+<p>为了强调“承诺 vs 灵活”的区别，论文把决策写成带约束/不带约束的最大化问题。用统一写法表示：</p>
+<ul>
+<li>若 $cm$ 承诺：Stage 2 先选 $k_{cm}$，Stage 4 再选 $p_{cm}$，且始终受 $q_{cm}\le k_{cm}$ 约束。</li>
+<li>若 $dm$ 承诺：Stage 2 先选 $k_{dm}$，Stage 3 再选 $w$，且最终受 $q_r\le k_{dm}$ 约束。</li>
+<li>零售商永远在 Stage 4 选 $p_r$，但如果 $dm$ 承诺，则零售商销量也受 $q_r\le k_{dm}$ 约束。</li>
+</ul>
+<p>用论文的形式（对应式 (6)–(13)），可以写为：</p>
+<p>$cm$（若承诺）：
+$$
+\max_{k_{cm}} \; p_{cm} q_{cm} \quad \text{s.t. } q_{cm}\le k_{cm}.
+$$</p>
+<p>$$
+\max_{p_{cm}} \; p_{cm} q_{cm}(p_{cm},p_r) \quad \text{s.t. } q_{cm}\le k_{cm}.
+$$</p>
+<p>$cm$（若灵活）：
+$$
+\max_{p_{cm}} \; p_{cm} q_{cm}(p_{cm},p_r).
+$$</p>
+<p>$dm$（若承诺）：
+$$
+\max_{k_{dm}} \; w q_r \quad \text{s.t. } q_r\le k_{dm}.
+$$</p>
+<p>$$
+\max_{w} \; w q_r(p_{cm},p_r,w) \quad \text{s.t. } q_r\le k_{dm}.
+$$</p>
+<p>$dm$（若灵活）：
+$$
+\max_{w} \; w q_r(p_{cm},p_r,w).
+$$</p>
+<p>零售商 $r$：
+$$
+\max_{p_r} \; (p_r-w) q_r(p_{cm},p_r) \quad (\text{若 } dm \text{ 承诺，则还需 } q_r\le k_{dm}).
+$$</p>
+<p>读者可以把“是否承诺”的本质理解为：同一个目标函数下，是否引入一个可被对手观察、并在后续阶段真实约束自己的不等式条件。
+若 Firm $i$ 选择承诺，则约束 $q_i \le k_i$ 生效（对 $cm$ 是 $q_{cm} \le k_{cm}$；对 $dm$ 等价于 $q_r \le k_{dm}$，因为它只向零售商供货）。</p>
+<h2 id="26-justification">2.6 关键假设与合理性（Justification）</h2>
+<ol>
+<li>产能承诺可行且可被竞争对手理解：现实中可以通过长建设周期、单一 OEM 产能绑定、专用产线等方式形成“难以短期调整”的上限。</li>
+<li>承诺成本为 0：用来隔离纯战略效应；论文在在线附录再讨论有成本与不同 lead time 的情形。</li>
+<li>批发价可观察：价格表、招投标、行业报告等使 $w$ 在一定程度上可被推断。</li>
+<li>efficient rationing：是 Bertrand-Edgeworth/产能约束竞争中常见的技术假设，用于选定均衡分配规则。</li>
+<li>全市场覆盖：避免外部选项导致的边界条件，使比较静态更聚焦于“竞争强度与渠道结构”而非市场退出。</li>
+</ol>
+<h1 id="3-analysis-solution">3 分析与求解 (Analysis &amp; Solution)</h1>
+<h2 id="31-backward-induction">3.1 总体求解逻辑：Backward Induction + 子博弈分解</h2>
+<p>核心做法是：固定 Stage 1 的承诺组合，分别求解四个子博弈的均衡（Stage 2–4），再回到 Stage 1 做策略比较，得到整体 SPE。</p>
+<p>求解顺序（每个子博弈内）：</p>
+<ol>
+<li>Stage 4：给定 $w$ 与产能上限（若有），求 $p_{cm}, p_r$ 的（可能是混合策略）均衡；</li>
+<li>Stage 3：$dm$ 选 $w$，预见 Stage 4 的定价均衡；</li>
+<li>Stage 2：若 $cm$ 或 $dm$ 承诺，则选择 $k_{cm}$ 或 $k_{dm}$，预见后续 $w$ 与零售定价；</li>
+<li>Stage 1：比较承诺与灵活的期望利润，得到均衡承诺策略。</li>
+</ol>
+<p>一个关键技术点：一旦有产能上限，Stage 4 的价格竞争变成典型的 <strong>Bertrand-Edgeworth</strong> 味道：可能出现区间均衡、甚至混合策略均衡（论文在 Subgame $CF$ 中确实出现 mixed strategy competition）。</p>
+<p>下面按子博弈总结最重要的命题/定理与直觉。</p>
+<h2 id="32-subgame-ff">3.2 Subgame FF：双方都灵活（基准对照）</h2>
+<h3 id="321-stage-4-w">3.2.1 Stage 4：零售端价格均衡（给定 $w$）</h3>
+<p>给定批发价 $w$，$cm$ 与 $r$ 做 Hotelling-Bertrand 定价。论文给出（Lemma 1）：</p>
+<p>$$
+p_{cm}^<em>(w) = \frac{3t + w}{3}, \quad p_r^</em>(w) = \frac{3t + 2w}{3}.
+$$</p>
+<p>直觉：$w$ 是零售商的边际成本，$w$ 越高，零售商报价越高；集中化厂商会“跟着抬价”，但幅度更小（因为它没有 $w$ 的直接成本项）。</p>
+<h3 id="322-stage-3">3.2.2 Stage 3：去中心化制造商的最优批发价</h3>
+<p>把上面的 $p_{cm}^<em>(w), p_r^</em>(w)$ 代入需求函数：</p>
+<p>先算零售商需求：</p>
+<p>$$
+q_r(w) = \frac{t + p_{cm}^<em>(w) - p_r^</em>(w)}{2t}
+       = \frac{t - w/3}{2t}
+       = \frac{3t - w}{6t}.
+$$</p>
+<p>于是 $dm$ 的利润为：</p>
+<p>$$
+\pi_{dm}(w) = w q_r(w) = \frac{w(3t - w)}{6t}.
+$$</p>
+<p>一阶条件给出最优批发价：</p>
+<p>$$
+\frac{d\pi_{dm}}{dw} = \frac{3t - 2w}{6t} = 0 \Rightarrow w^{FF} = \frac{3t}{2}.
+$$</p>
+<p>从而（Proposition 1）：</p>
+<ul>
+<li>$p_{cm}^{FF} = 3t/2$，$p_r^{FF} = 2t$</li>
+<li>$q_{cm}^{FF} = 3/4$，$q_r^{FF} = 1/4$</li>
+<li>$\pi_{cm}^{FF} = 9t/8$，$\pi_{dm}^{FF} = 3t/8$，$\pi_r^{FF} = t/8$</li>
+</ul>
+<h3 id="323">3.2.3 经济直觉</h3>
+<p>基准中存在双重加价：$dm$ 通过 $w$ 抬高零售商边际成本，使零售商在价格竞争中更“软”，这反过来让 $cm$ 也能维持更高的零售价，并获得更大市场份额（$3/4$）。</p>
+<p>这也为后文埋下伏笔：只要能进一步推动 $w$ 上升，就可能进一步软化零售端竞争并重分配份额。</p>
+<h2 id="33-subgame-cfcm-dm">3.3 Subgame CF：$cm$ 承诺产能，$dm$ 灵活（论文最关键的机制）</h2>
+<p>这一子博弈是全文最重要的“机制发生地”：集中化制造商通过选择 $k_{cm}$，影响 $dm$ 的 $w$，再影响零售端竞争强度。</p>
+<h3 id="331-stage-4-w-k_cm">3.3.1 Stage 4：给定 $w$ 与 $k_{cm}$ 的零售端均衡（四种竞争形态）</h3>
+<p>当 $cm$ 有上限 $k_{cm}$ 时，它的“需求”可能超过上限。论文将 Stage 4 的均衡分成四个 regime（Lemma 2），对应不同的 $w$ 区间。</p>
+<p>为写法简洁，先定义三个中间量（来自论文 Lemma 2）：</p>
+<p>$$
+\rho^{CF} = \frac{3\left[2t(1-k_{cm})(1-w-(1-k_{cm})t)\right]^{1/2} + w - 3t}{3\left[2t(1-k_{cm})(1-w-(1-k_{cm})t)\right]^{1/2} + w + 2k_{cm}t - 3t},
+$$</p>
+<p>$$
+\hat w^{CF} = 3\left((3k_{cm}-2)t - \left[(k_{cm}-1)t(7k_{cm}t - t - 2)\right]^{1/2}\right),
+$$</p>
+<p>$$
+\hat p_{cm}^{CF} = w - t + 2\left[2t(1-k_{cm})(1-w-(1-k_{cm})t)\right]^{1/2}.
+$$</p>
+<p>在此基础上：</p>
+<h4 id="regime-acomplete-competition">Regime A：Complete competition（产能不绑定）</h4>
+<p>若 $w &lt; \hat w^{CF}$，则 $cm$ 的约束不绑定，均衡价格与 Subgame $FF$ 相同：</p>
+<p>$$
+p_{cm}^<em>=\frac{3t+w}{3},\quad p_r^</em>=\frac{3t+2w}{3}.
+$$</p>
+<h4 id="regime-bmixed-strategy-competition">Regime B：Mixed strategy competition（只存在混合策略均衡）</h4>
+<p>若 $\hat w^{CF} \le w &lt; 1 - 3t(1-k_{cm})$，不存在纯策略均衡。均衡结构是：</p>
+<ul>
+<li>$cm$ 以概率 1 设定 $p_{cm}^*=\hat p_{cm}^{CF}$；</li>
+<li>零售商在两种价格之间混合：</li>
+<li>$p_r^* = 1 - t(1-k_{cm})$（“不正面硬刚”，只服务剩余 $1-k_{cm}$ 消费者）</li>
+<li>$p_r^* = w + \left[2t(1-k_{cm})(1-w-(1-k_{cm})t)\right]^{1/2}$（“更激进地压价”，试图进入完整竞争）
+  混合概率分别为 $\rho^{CF}$ 与 $1-\rho^{CF}$。</li>
+</ul>
+<p>这部分的直觉很关键：中等 $w$ 让零售商“既想抢更多需求，又抢不到完全竞争的极限”，导致双方最佳反应出现跳跃与循环，最终只剩混合策略能稳定。</p>
+<h4 id="regime-climited-competition">Regime C：Limited competition（产能绑定，但零售商仍覆盖剩余市场）</h4>
+<p>若 $1 - 3t(1-k_{cm}) \le w \le 1 - 2t(1-k_{cm})$，$cm$ 的产能绑定，销量固定为 $q_{cm}=k_{cm}$。在 efficient rationing 下，零售商服务所有剩余消费者，销量 $q_r=1-k_{cm}$。均衡零售价为：</p>
+<p>$$
+p_{cm}^<em> = 1 - t k_{cm},\quad p_r^</em> = 1 - t(1-k_{cm}).
+$$</p>
+<p>推导要点（把它当作一条可复盘的“解题路线”）：</p>
+<ul>
+<li>在该区间里，$cm$ 的最优反应会让产能约束绑定，即 $q_{cm}=k_{cm}$。用 KKT 语言说，就是拉格朗日乘子 $\lambda\ge 0$ 满足 $\lambda(q_{cm}-k_{cm})=0$，并且此处是 $q_{cm}=k_{cm}$、$\lambda&gt;0$ 的情形。</li>
+<li>在 efficient rationing 下，$cm$ 会优先服务“最靠近自己”的消费者，因此被服务的集合等价于区间 $[0,k_{cm}]$，边界消费者的位置是 $x=k_{cm}$。</li>
+<li>$cm$ 想在不丢销量的前提下把价格抬到极限，最紧的约束来自边界消费者的参与约束（utility 非负）。令边界消费者刚好无剩余：
+  $$ 1 - t k_{cm} - p_{cm} = 0 \Rightarrow p_{cm} = 1 - t k_{cm}. $$</li>
+</ul>
+<p>若 $p_{cm}$ 再高一点，则连位置 $k_{cm}$ 的消费者都不愿买，需求会跌到 $k_{cm}$ 以下，约束不再绑定并回到 complete competition 的定价逻辑；若 $p_{cm}$ 更低，则在销量已被锁死为 $k_{cm}$ 的情况下只是“白送剩余”。
+- 同理，零售商服务区间 $[k_{cm},1]$，其边界消费者同样在 $x=k_{cm}$。为了覆盖全部剩余消费者并榨干边界剩余，零售商设：
+  $$ 1 - t(1-k_{cm}) - p_r = 0 \Rightarrow p_r = 1 - t(1-k_{cm}). $$</p>
+<p>剩下的 $w$ 区间条件可以用“偏离动机”解释：<br>
+- 若 $w$ 太低，零售商有足够高的单位利润，会想通过更激进降价去争夺超过 $1-k_{cm}$ 的消费者（把竞争拉回 complete）；<br>
+- 若 $w$ 太高，零售商即使在 $p_r=1-t(1-k_{cm})$ 下也可能无法盈利或无法覆盖剩余市场，转而进入 Monopoly 情形。<br>
+因此只有当 $w$ 落在 $[1-3t(1-k_{cm}),\,1-2t(1-k_{cm})]$ 这类“既不让零售商太激进、也不让零售商退出”的区间时，limited competition 才能自洽。</p>
+<p>可以把它理解为：两家都在各自“地盘”上做局部垄断定价（local monopoly pricing），并把边界消费者（位置 $x=k_{cm}$）的剩余榨干到 0。</p>
+<h4 id="regime-dmonopoly-w">Regime D：Monopoly（极端高 $w$，零售商无法覆盖剩余市场）</h4>
+<p>若 $w &gt; 1 - 2t(1-k_{cm})$，零售商成本太高，只能设“垄断价”：</p>
+<p>$$
+p_{cm}^<em> = 1 - t k_{cm},\quad p_r^</em> = \frac{1+w}{2}.
+$$</p>
+<p>论文指出：当 $k_{cm}$ 非常小、且 $w$ 过高时会落到这个区间，但这对 $cm$ 通常不是最优（它会想提高 $k_{cm}$ 吃掉更多市场）。</p>
+<h3 id="332-stage-3dm-k_cm">3.3.2 Stage 3：$dm$ 的最优批发价是“跟着 $k_{cm}$ 走”的</h3>
+<p>给定 $k_{cm}$，$dm$ 会选择 $w$ 来最大化 $\pi_{dm}=w q_r$。由于 Stage 4 会随 $w$ 进入不同 regime，$dm$ 的最优 $w$ 也呈分段形式（Lemma 3）：</p>
+<p>$$
+w^*=
+\begin{cases}
+\frac{1}{2}, &amp; \text{if } k_{cm}&lt;1-\frac{1}{4t}\quad (\text{Monopoly})\
+1-2t(1-k_{cm}), &amp; \text{if } 1-\frac{1}{4t}\le k_{cm}\le \hat k^{CF}<em>{cm1}\quad (\text{Limited})\
+w^M, &amp; \text{if } \hat k^{CF}</em>{cm1}&lt;k_{cm}\le \hat k^{CF}_{cm2}\quad (\text{Mixed})\
+\frac{3t}{2}, &amp; \text{otherwise}\quad (\text{Complete}).
+\end{cases}
+$$</p>
+<p>论文进一步强调：对 $cm$ 来说，极低 $k_{cm}$ 导致的 Monopoly 不会是最优选择，因此后续重点在 Limited 与 Mixed。</p>
+<p>直觉可以这样理解：</p>
+<ul>
+<li>如果 $k_{cm}$ 足够小，$cm$ 自己已经不可能在零售端“卷”起来，$dm$ 反而可以把 $w$ 抬得更高，让零售商当一个“高价服务剩余市场”的渠道。</li>
+<li>如果 $k_{cm}$ 足够大，则 $dm$ 一旦把 $w$ 抬高，零售商就会被迫抬价，$cm$ 需求会暴涨，导致竞争回到完整竞争（对 $dm$ 未必更好）。于是当 $k_{cm}$ 很大时，$dm$ 的最优 $w$ 回到基准 $3t/2$。</li>
+</ul>
+<p>更“数学习惯”的解释是：</p>
+<ul>
+<li>在 limited competition 下，销量已经被锁死为 $q_{cm}=k_{cm}$、$q_r=1-k_{cm}$，而且（见 Lemma 2(iii)）零售价 $p_{cm}^<em>,p_r^</em>$ 与 $w$ <strong>无关</strong>。因此此时 $dm$ 的利润就是 $\pi_{dm}=w(1-k_{cm})$，对 $w$ 单调递增，最优解必然取在“让 limited competition 仍成立”的 $w$ 上界。Lemma 3 给出的上界正是 $w=1-2t(1-k_{cm})$。</li>
+<li>在 complete competition 下，回到 Hotelling-Bertrand 的光滑解，$dm$ 的最优批发价是 $w=3t/2$（与 $k_{cm}$ 无关），因此 $\pi_{dm}$ 也与 $k_{cm}$ 无关。</li>
+<li>在 mixed strategy 区间里，$w$ 处在一个尴尬的中间地带：它既不足以把零售商完全“推”到 limited competition 的纯策略局部垄断定价，又足以让零售商不愿意一直打完整竞争，于是出现混合策略。论文把这种状态下的完整竞争称为 weakened complete competition：形式上约束可能不绑定，但价格水平比 Subgame $FF$ 更高。</li>
+</ul>
+<p>由此，$\hat k^{CF}<em>{cm1},\hat k^{CF}</em>{cm2}$ 可以直观理解为：当 $k_{cm}$ 增大时，$dm$ 在“用较高 $w$ 诱导 limited/mixed”与“回到 $w=3t/2$ 的 complete”之间的利润比较所产生的临界点。</p>
+<p>所以 $k_{cm}$ 其实是 $cm$ 对 $dm$ 的一个“可观察承诺信号”：我最多卖这么多，你就可以放心提高 $w$，让零售商不要太凶。</p>
+<h3 id="333-stage-2cm-k_cm-proposition-2">3.3.3 Stage 2：$cm$ 选择 $k_{cm}$ 的核心结论（Proposition 2）</h3>
+<p>$cm$ 面对的是一个典型的“通过影响对手上游定价来软化下游竞争”的问题。论文给出一个非常强的结论（Proposition 2）：</p>
+<ul>
+<li>在 Subgame $CF$ 的均衡中，$cm$ 会选择一个 $k_{cm}$，使得零售端竞争 <strong>永远不会落入 complete competition</strong>。</li>
+</ul>
+<p>从 $cm$ 的利润函数看，为什么它会把 $k_{cm}$ 设得“看起来并不紧”？</p>
+<ul>
+<li>若 $k_{cm}$ 诱导的是 limited competition，那么（见 Lemma 2(iii)）$cm$ 的均衡利润可以写成一个非常干净的函数：
+  $$ \pi_{cm}^{LC}(k_{cm}) = p_{cm}^* q_{cm} = (1-tk_{cm})k_{cm} = k_{cm}-t k_{cm}^2. $$</li>
+</ul>
+<p>对 $k_{cm}$ 求导得 $1-2t k_{cm}$。在 Model I 的 full market coverage 条件 $t\le 4/9$ 下，$1/(2t)\ge 9/8&gt;1$，因此在可行域 $k_{cm}\in[0,1]$ 内有 $1-2t k_{cm}&gt;0$，也就是说 $\pi_{cm}^{LC}(k_{cm})$ 在整个区间内单调递增。直观上：$k_{cm}$ 增大虽然会让 $p_{cm}^*=1-tk_{cm}$ 下降，但下降得不够快，净效应仍然是利润上升。
+- 于是，如果只看上式，$cm$ 会想把 $k_{cm}$ 推到 1；但一旦 $k_{cm}$ 太大，$dm$ 会发现“继续抬高 $w$ 反而会把 $cm$ 需求推爆”，从而把最优 $w$ 拉回 $3t/2$，把市场带回 complete competition（见 Lemma 3 的最后一段）。此时 $cm$ 的利润会回落到 $FF$ 时的水平 $9t/8$。
+- 因此 $cm$ 的最优 $k_{cm}$ 不会是“很小的产能限制”，而更像是一个卡在临界点左侧的策略选择：既足够高以保持自身销量与利润，又足够“可信地有限”以诱导 $dm$ 维持较高的 $w$，从而持续软化零售端竞争。</p>
+<p>这也解释了 Corollary 1 的反直觉比较：$k_{cm}^{CF}$（也等于均衡销量 $q_{cm}^{CF}$）可能严格大于基准销量 $q_{cm}^{FF}=3/4$。</p>
+<p>换句话说，$cm$ 通过产能上限把市场“锁”在 Limited 或 Mixed regime，因为一旦进入 complete competition，$w$ 会回落到 $3t/2$，价格战更激烈，$cm$ 利润更低。</p>
+<p>这一点在 Figure 2（page 10）被可视化：当 $k_{cm}$ 跨过某个阈值进入 complete competition 区域时，最优 $w$ 出现离散跳变，且 $cm$ 的利润出现明显下降。因此 $cm$ 会把 $k_{cm}$ 选择在阈值左侧。</p>
+<h3 id="334-corollary-1">3.3.4 比较结果与机制解释（Corollary 1）</h3>
+<p>论文给出 Subgame $CF$ 相对基准 $FF$ 的一组强比较（Corollary 1）：</p>
+<ul>
+<li>$k_{cm}^{CF} &gt; q_{cm}^{FF}$（承诺后的销量上限比原来销量还大）</li>
+<li>$q_r^{CF} &lt; q_r^{FF}$（零售商销量下降）</li>
+<li>$w^{CF} &gt; w^{FF}$，且 $p_r^{CF} &gt; p_r^{FF}$</li>
+<li>$\pi_{cm}^{CF} &gt; \pi_{cm}^{FF}$，$\pi_{dm}^{CF} &gt; \pi_{dm}^{FF}$</li>
+</ul>
+<p>这里最“灵异”的点是第一条：承诺上限反而对应更高销量。其经济直觉是：</p>
+<ul>
+<li>$cm$ 的承诺让 $dm$ 觉得零售端竞争会被削弱，于是提高 $w$；</li>
+<li>$w$ 提高抬升零售商成本，零售商不得不抬 $p_r$；</li>
+<li>当 $p_r$ 抬得足够多时，消费者更偏向 $cm$，$cm$ 的需求上升；</li>
+<li>$cm$ 只要把 $k_{cm}$ 设得“刚好不让竞争回到 complete”，就能在更高价格水平下卖出更多。</li>
+</ul>
+<p>一句话总结 Subgame $CF$ 的机制：<br>
+$k_{cm}$ 不是“产能约束”，而是“战略沟通装置”（strategic communication device），它诱发对手上游提高 $w$，从而让下游价格竞争变得更温和。</p>
+<h3 id="335">3.3.5 零售商的命运：为什么有时受益、有时受损？</h3>
+<p>论文用 Figure 3（page 10）展示：零售商利润变化 $\pi_r^{CF}-\pi_r^{FF}$ 的符号取决于 $t$（差异化程度）。</p>
+<p>原因是两股力量对冲：</p>
+<ol>
+<li>产能承诺削弱零售端竞争（对零售商利好）；</li>
+<li>产能承诺诱发 $w$ 上升（对零售商利空）。</li>
+</ol>
+<p>当 $t$ 小（产品更同质、竞争更激烈）时，第 1 个效应更强，零售商可能净受益；当 $t$ 大（竞争本来就弱）时，第 2 个效应更主导，零售商受损。</p>
+<h2 id="34-subgame-fccm-dm">3.4 Subgame FC：$cm$ 灵活，$dm$ 承诺（为什么去中心化制造商不总能靠承诺赚钱？）</h2>
+<p>论文用 Proposition 3 与 Lemma 5 描述该子博弈的均衡结构：</p>
+<ul>
+<li>存在阈值 $\hat t^{FC}$。</li>
+<li>若竞争强（$t&lt;\hat t^{FC}$），$dm$ 会选择一个有限的 $k_{dm}$ 使竞争进入 limited competition；</li>
+<li>若竞争弱（$t\ge \hat t^{FC}$），$dm$ 的均衡承诺产能不唯一，但会选择足够高的 $k_{dm}$ 使竞争保持 complete competition，从而 $\pi_{dm}^{FC}=\pi_{dm}^{FF}$（承诺不带来额外收益）。</li>
+</ul>
+<p>论文给出一个下界形式（Proposition 3(ii)）：</p>
+<p>$$
+k_{dm}^{FC} \ge \frac{\sqrt{4-18t^2}+4t-2}{4t}.
+$$</p>
+<h3 id="341-cm-cm">3.4.1 核心直觉：去中心化制造商想让 $cm$ “让步”，但 $cm$ 没有下游替它承担让步成本</h3>
+<p>当 $dm$ 承诺较小产能时，它试图向 $cm$ 传递信号：我这边供给有限，你可以抬价，从而让零售商多卖、我也多赚批发利润。</p>
+<p>问题在于：$cm$ 直接面对消费者，没有下游缓冲；它抬价的代价（销量损失）全部由自己承担。只有当竞争极其激烈（$t$ 小）时，抬价带来的“软化竞争收益”才足以抵消销量损失，$cm$ 才愿意配合。竞争一旦不那么激烈，$cm$ 宁可维持激进定价，$dm$ 的承诺就变得无效甚至自伤。</p>
+<p>这也解释了与 Subgame $CF$ 的根本不对称：在 Subgame $CF$ 中，$dm$ 可以把“高 $w$ 的伤害”甩锅给零售商；而 $cm$ 没有甩锅对象。</p>
+<h2 id="35-subgame-cc-cf">3.5 Subgame CC：双方都承诺（为什么结果反而回到 CF？）</h2>
+<p>Proposition 4 的结论非常干脆：</p>
+<ul>
+<li>$cm$ 会承诺一个限制竞争的产能；</li>
+<li>$dm$ 虽然也承诺，但会选择一个“足够高、实际不约束零售商销量”的 $k_{dm}$；</li>
+<li>因此 Subgame $CC$ 的结果与 Subgame $CF$ 相同。</li>
+</ul>
+<p>直觉：$dm$ 若承诺一个紧的产能，会进一步削弱零售商竞争力，反而可能让 $cm$ 更强势；因此 $dm$ 在看到 $cm$ 已经承诺并软化竞争后，最好的做法是保持零售商灵活性（通过设很高的 $k_{dm}$），让零售商尽量能跟 $cm$ 竞争。</p>
+<p>论文进一步用 Lemma 6 总结 best response：</p>
+<ul>
+<li>若 $dm$ 承诺，则 $cm$ 最优也承诺（$\pi_{cm}^{CC}&gt;\pi_{cm}^{FC}$）；</li>
+<li>若 $cm$ 承诺，则 $dm$ 在承诺与灵活之间无差异（$\pi_{dm}^{CC}=\pi_{dm}^{CF}$）。</li>
+</ul>
+<h2 id="36-stage-1-theorem-1">3.6 Stage 1 总均衡（Theorem 1）：集中化制造商承诺，去中心化制造商无差异</h2>
+<p>最终，Theorem 1 给出主模型均衡：</p>
+<ul>
+<li>$cm$ 选择 $C$；</li>
+<li>$dm$ 在 $C$ 与 $F$ 之间无差异。</li>
+</ul>
+<p>经济直觉可以用一句话概括：</p>
+<ul>
+<li><strong>产能承诺的战略价值来自“让对手上游抬价”，而这一机制只有当对手渠道里存在一个下游承担者（零售商）时才稳定。</strong><br>
+集中化制造商面对去中心化渠道，正好能利用这一点；反之去中心化制造商面对集中化渠道，往往缺少让对手“配合抬价”的激励基础。</li>
+</ul>
+<h2 id="37-model-ii">3.7 进一步机制辨识：对称渠道竞争（Model II）</h2>
+<p>为了证明“决定性因素是对手渠道结构”，论文进一步分析两类对称结构。</p>
+<h3 id="371-theorem-2">3.7.1 两条集中化渠道竞争（Theorem 2）</h3>
+<p>当两家都是集中化制造商时，均衡结果依赖 $t$：</p>
+<ul>
+<li>若差异化低（竞争强）：$t &lt; 37/73$，两家都承诺；</li>
+<li>若差异化高：$37/73 \le t \le 2/3$，出现不对称均衡：一家承诺、另一家灵活。</li>
+</ul>
+<p>这与经典的数量承诺缓解价格战的逻辑一致：当竞争足够强时，承诺能显著抬高价格；当竞争本来就弱时，承诺的边际价值下降，甚至出现“谁先承诺、谁后利用”的不对称格局。</p>
+<h3 id="372-theorem-3-proposition-6">3.7.2 两条去中心化渠道竞争（Theorem 3 与 Proposition 6）</h3>
+<p>当两条渠道都去中心化时，结论反而更“极端”：</p>
+<ul>
+<li>承诺 $C$ 对每个去中心化制造商都是 dominant strategy；</li>
+<li>唯一均衡是双方都承诺。</li>
+</ul>
+<p>机制：一方承诺会促使对方上游提高批发价，从而双方批发价上升、零售端竞争变弱；由于每条渠道都有零售商作为缓冲，批发价上升的部分成本可被下游消化，因此上游制造商更愿意通过承诺来“推动行业整体更软”。</p>
+<p>Proposition 6 给出了一系列序关系（用来表达：谁承诺、谁更强势、价格如何排序、份额如何变化），核心 takeaway 是：在对称去中心化竞争中，承诺更像一种“批发价层面的默契触发器”，双方上游都愿意拥抱它。</p>
+<h2 id="38-comparative-statics">3.8 比较静态（Comparative Statics）小结：哪些参数在驱动什么？</h2>
+<ol>
+<li>产品差异化 $t$：</li>
+<li>$t$ 越小（竞争越激烈），Subgame $CF$ 更可能落在 mixed strategy regime；零售商更可能从 $cm$ 的承诺中受益（竞争缓和效应更大）。</li>
+<li>
+<p>$t$ 越大（竞争越弱），$cm$ 仍然承诺并获益，但零售商更可能受损（批发价上升效应更主导）。</p>
+</li>
+<li>
+<p>对手渠道结构：</p>
+</li>
+<li>对手是去中心化渠道：产能承诺更容易产生正的战略价值（能通过 $w$ 传导并软化零售端）。</li>
+<li>对手是集中化渠道：承诺价值更依赖 $t$ 与对手策略（因为缺少下游缓冲，配合动机更弱）。</li>
+</ol>
+<h1 id="4-main-results-managerial-insights">4 主要结论与管理启示 (Main Results &amp; Managerial Insights)</h1>
+<h2 id="41-benchmark-trade-off">4.1 机制揭示：相对 Benchmark，模型揭示了什么新 trade-off？</h2>
+<p>基准（$FF$）里，竞争主要发生在零售端，$dm$ 用 $w$ 部分软化竞争，但力度有限。</p>
+<p>引入 $cm$ 的产能承诺后，出现一个新的 trade-off 与反直觉结果：</p>
+<ul>
+<li>承诺上限 $k_{cm}$ 既限制了 $cm$ 的“最激进供给能力”，又通过信号作用诱发 $dm$ 抬高 $w$；</li>
+<li>$w$ 抬高会伤害零售商，却同时抬高零售端价格水平，软化竞争；</li>
+<li>在一定范围内，$cm$ 的最优策略不是把 $k_{cm}$ 压得很低（那会损失销量），而是把 $k_{cm}$ 设在一个“刚好让 $dm$ 仍愿意抬 $w$、但又不触发 complete competition”的区间；</li>
+<li>结果可能是：$cm$ 抬价且 <strong>销量还上升</strong>（因为对手零售价被 $w$ 推得更高）。</li>
+</ul>
+<p>这是一种非常“渠道视角”的承诺价值：承诺不只是改变零售端的 Bertrand 互动，还改变上游 $w$ 的最优水平，进而改变整个渠道的竞争强度与利润分配。</p>
+<h2 id="42">4.2 管理建议：不同角色应该怎么做？</h2>
+<h3 id="421-dtc">4.2.1 给集中化制造商（直销/DTC/强渠道控制的厂商）</h3>
+<ul>
+<li>当你的竞争对手是“制造商+零售商”的去中心化渠道时，产能承诺几乎总是一个可用的战略工具：它能诱导对手上游提高 $w$，让对手零售端变得不那么 aggressive。</li>
+<li>关键不是“承诺越少越好”，而是选择一个能把市场锁在 limited/mixed regime、避免回到 complete competition 的 $k_{cm}$。</li>
+<li>实务上，这意味着你要让承诺具有可信度（credibility），例如通过专用产线、长 lead time、单一代工绑定等方式，让竞争对手相信你不会在短期内突然扩产“打价格战”。</li>
+</ul>
+<h3 id="422">4.2.2 给去中心化制造商（依赖零售网络的上游）</h3>
+<ul>
+<li>当对手是集中化渠道且其已经承诺时，你自己再承诺往往不会带来额外收益（均衡中无差异）。此时更合理的策略可能是保持灵活性、并通过合同/激励机制缓解双重加价，以免零售商被高 $w$ 挤压到失血。</li>
+<li>若对手没有承诺且市场竞争极其激烈（$t$ 小），你承诺一个有限产能可能迫使对手抬价从而改善你渠道的利润；但这需要非常具体的市场条件。</li>
+</ul>
+<h3 id="423-w-p_cm">4.2.3 给零售商（被夹在 $w$ 与 $p_{cm}$ 之间的人）</h3>
+<ul>
+<li>当对手集中化厂商承诺产能时，你可能面临更高的批发价 $w$（上游趁机抬价），这是直接压力。</li>
+<li>你是否净受益取决于市场竞争强度：竞争越激烈，你越可能从“竞争缓和”中获益；竞争越弱，你越可能被“批发价抬升”伤害。</li>
+<li>因此，零售商的关键管理动作不是“盲目跟随定价”，而是尝试通过合同创新来削弱上游利用承诺抬 $w$ 的空间，例如：</li>
+<li>采用两部制（two-part tariff）/固定费+低批发价</li>
+<li>设计转移支付或返利机制</li>
+<li>争取多源供货（若制度允许）以提升议价能力</li>
+</ul>
+<h3 id="424">4.2.4 给监管者/政策制定者</h3>
+<ul>
+<li>产能公告可能具有“软化竞争”的作用，且不仅影响零售价格，还可能通过批发价机制影响整个行业价格水平。</li>
+<li>在某些市场结构下，这种机制会降低 consumer surplus（论文 Lemma 7 明确给出：$cm$ 的承诺降低消费者剩余）。</li>
+<li>因此，监管的挑战在于区分：哪些产能公告是效率驱动（投资、规模经济），哪些可能近似 tacit coordination（默契协调）。</li>
+</ul>
+<h2 id="43">4.3 图表解读</h2>
+<h3 id="figure-1page-4">Figure 1（page 4）：渠道结构</h3>
+<p>展示了集中化制造商直接面对消费者定价 $p_{cm}$；去中心化制造商先定批发价 $w$ 给零售商，零售商再定价 $p_r$。竞争发生在消费者端。</p>
+<h3 id="figure-2page-10-cm-complete-competition">Figure 2（page 10）：为什么 $cm$ 会选择避免 complete competition？</h3>
+<p>Figure 2 把 Subgame $CF$ 中的关键内生变量画成 $k_{cm}$ 的函数：</p>
+<ul>
+<li>(a) 零售价随 $k_{cm}$ 变化呈分段：进入 complete competition 区间后价格水平回落；</li>
+<li>(b) 批发价 $w$ 在不同 regime 下呈分段且存在跳跃；</li>
+<li>(c) 利润曲线显示：complete competition 区域的 $\pi_{cm}$ 明显更低，因此 $cm$ 的最优 $k_{cm}$ 会落在 mixed 或 limited 区域。</li>
+</ul>
+<p>这张图本质上是在用数值方式说明 Proposition 2：最优承诺的目的，是把行业锁在一个更软的竞争制度里。</p>
+<h3 id="figure-3page-10">Figure 3（page 10）：零售商利润的“符号翻转”</h3>
+<p>Figure 3 画的是 $\pi^{CF}-\pi^{FF}$ 随 $t$ 的变化，三个角色的利润差异：</p>
+<ul>
+<li>$\pi_{cm}^{CF}-\pi_{cm}^{FF}$ 始终为正（集中化制造商总受益）</li>
+<li>$\pi_{dm}^{CF}-\pi_{dm}^{FF}$ 也为正（去中心化制造商也常受益）</li>
+<li>$\pi_r^{CF}-\pi_r^{FF}$ 随 $t$ 可能变号：竞争强时为正，竞争弱时为负</li>
+</ul>
+<p>这张图是管理启示最直接的证据：承诺可能形成“上游双赢、下游被挤压”的格局，但下游是否必然受损取决于市场竞争强度。</p>
+<h2 id="44-extensions">4.4 Extensions：稳健性与边界条件</h2>
+<p>论文在 Section 5 做了多组扩展来检验主结论鲁棒性：</p>
+<ol>
+<li>Extension 1（Quantity competition）：把 Stage 4 的价格竞争改为数量竞争（线性逆需求 $p=a-q_i-q_j$）。均衡承诺策略不变：$cm$ 承诺、$dm$ 无差异（Theorem 4）。但零售商在数量竞争下总是受损（竞争更“温和”，承诺带来的竞争缓和边际更小）。</li>
+<li>Extension 2（零售商承诺而非制造商承诺）：均衡仍是 $cm$ 承诺，零售商无差异（Theorem 5）。直觉：零售商是去中心化渠道的 second-mover，缺乏通过承诺获益的渠道权力，反而容易被上游和对手利用。</li>
+<li>Extension 3（不对称销售成本）：结论保持（Theorem 6）。</li>
+<li>Extension 4（承诺不可观察）：把 Stage 1 与 Stage 2 合并，结论保持（Theorem 7）。</li>
+</ol>
+<p>此外，在线附录讨论了“承诺有成本且存在不同建设周期”的情形。论文指出一个有趣的反转：当产能建设 lead time 很长、成本在承诺下变成 sunk cost 时，去中心化制造商也可能从承诺中获益，因为承诺把边际成本压力变成沉没成本，改变了其对批发价的进攻性选择。</p>
+<h1 id="5-reviewers-critique">5 Reviewer's Critique</h1>
+<h2 id="51">5.1 优点：这篇文章做对了什么？</h2>
+<ol>
+<li>机制贡献清晰：把“产能承诺”从传统的 firm-level 竞争拓展到 channel competition，并明确指出“对手渠道结构”是关键 driver。这是一个能在 OM/Marketing Science 两边都打得响的洞见。</li>
+<li>结果有反直觉但可解释：承诺上限可能提高销量、承诺可能让竞争对手上游赚更多，这些结论很容易引发读者兴趣，而且逻辑链条完整。</li>
+<li>结构化比较扎实：四个子博弈 + 两类对称模型 + 多个扩展，把结论的边界条件交代得比较充分。</li>
+<li>管理启示不空泛：能直接映射到直销 vs 经销的现实结构，也能解释为何产能公告在实践中频繁出现。</li>
+</ol>
+<h2 id="52">5.2 局限：哪些假设过强？哪些现实因素被简化？</h2>
+<ol>
+<li>成本与投资结构过“干净”：主模型承诺无成本、生产成本为 0、销售成本为 0（或扩展里非常线性）。现实中产能投资的固定成本、可变成本、学习曲线、以及产能利用率对边际成本的影响都可能改变承诺的价值。</li>
+<li>单零售商与单批发合同：去中心化渠道只有一个零售商，合同形式仅是线性批发价 $w$。若允许两部制、RPM、返利、转售价格限制等，双重加价与权力分配会被改写，承诺诱发 $w$ 上升的力度可能下降。</li>
+<li>需求端假设较强：Hotelling 全市场覆盖 + 单期静态。现实中存在外部选项、需求不确定、动态购买、战略消费者等，会显著影响“承诺是好是坏”（已有文献指出不确定性时 flexibility 可能更优）。</li>
+<li>efficient rationing 与混合策略均衡的“脆弱性”：混合策略 regime 在理论上合理，但在管理实践中较难直接映射；更重要的是，混合均衡往往对 rationing 规则、信息结构、或微小噪声非常敏感。文章虽然用扩展检验了部分鲁棒性，但混合策略在更一般设置下是否仍出现，是一个潜在争议点。</li>
+<li>可观察性与可信度：论文讨论了可观察/不可观察扩展，但现实中“公告”与“真正的不可逆承诺”之间差距很大。很多产能公告可被撤回或延迟，可能更接近 cheap talk。若引入承诺可信度不足，机制可能弱化。</li>
+</ol>
+<h2 id="53">5.3 未来研究方向：在此基础上可以怎么扩展？</h2>
+<ol>
+<li>内生渠道结构选择：让制造商先选择直销/经销（集中化/去中心化）再竞争承诺与价格，研究“渠道结构本身是否被当作承诺装置”。</li>
+<li>合同设计与承诺互动：允许 $dm$ 用两部制、数量折扣、收益分享等缓解 double marginalization，研究承诺是否仍能诱发批发价上升，或是否转化为其他合同条款的调整。</li>
+<li>不确定性与动态：把模型扩展到多期，允许产能建设 lead time、需求波动、库存与 backorder，研究承诺的动态价值（尤其是面对竞争对手的学习与调整）。</li>
+<li>多零售商/平台竞争：去中心化渠道往往是多经销商网络，零售端竞争不一定是单点 Hotelling；引入多零售商与区域竞争后，承诺如何通过批发价传导值得研究。</li>
+<li>实证/结构估计：用行业数据（例如汽车直销 vs 经销、消费电子直销 vs 零售）检验：产能公告是否系统性地提高对手批发价或终端价格？是否存在可识别的“对手渠道结构异质性”效应？</li>
+</ol>
+<h1 id="6-one-more-thing">6 One More Thing：本文最值得分享的“灵光一现”</h1>
+<p>这篇论文最漂亮的一瞬间，是把产能承诺重新解释成一种“对上游反应的操控”：</p>
+<ul>
+<li>$cm$ 承诺不是为了告诉市场“我会少卖”，而是为了让对手的上游（$dm$）相信：零售端竞争会变软，于是 $dm$ 自己主动把批发价 $w$ 抬高，把零售商变成更弱的竞争者。<br>
+最终，$cm$ 既抬了行业价格水平，又可能抢到更大市场份额，甚至卖得更多。</li>
+</ul>
+<p>如果你只看 firm-level 竞争，你很难看到这条传导链；只有把“渠道结构”放进模型，才会发现：<br>
+<strong>你的承诺，可能主要是用来让对手的上游帮你做软化竞争这件事。</strong></p>
+<blockquote>
+<p>内存颗粒厂宣布退出市场？</p>
+</blockquote>
+    </div>
+  </div>
+</body>
+</html>

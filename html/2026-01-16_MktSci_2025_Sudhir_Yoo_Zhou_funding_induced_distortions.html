@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-01-16_MktSci_2025_Sudhir_Yoo_Zhou_funding_induced_distortions</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="funding-induced-distortions-in-lean-start-up-product-experiments-and-innovation">Funding-Induced Distortions in Lean Start-up Product Experiments and Innovation</h1>
+<p>论文：K. Sudhir, Onesun Steve Yoo, Zihao Zhou (2025). “Entrepreneurs and Investors: Funding-Induced Distortions in Lean Start-up Product Experiments and Innovation.” Marketing Science (Articles in Advance). DOI: 10.1287/mksc.2023.0309.</p>
+<h2 id="0">0. 你需要先记住的一个核心句子</h2>
+<p>这篇论文把 LSM 的“build-test-learn”从一个纯学习问题，改写成了一个带信息不对称的融资博弈：当投资人只能用“测试结果”来推断创业者类型时，创业者会把实验设计当作融资信号工程，从而系统性地偏离“最大化学习”的 MVP。</p>
+<h2 id="1-motivation">1. 研究背景与动机 Motivation</h2>
+<h3 id="11-lsm">1.1 实践痛点：LSM 在现实创业融资环境中的“变形”</h3>
+<p>Lean Start-up Method (LSM) 的经典叙事是：</p>
+<ul>
+<li>创业者用最小可行产品 minimum viable product (MVP) 做低成本实验。</li>
+<li>用市场反馈验证价值主张 (validated learning)。</li>
+<li>若失败就 pivot，尽早、便宜地失败。</li>
+</ul>
+<p>但现实里创业者通常不能自掏腰包把产品推向规模化市场，必须融资。于是 MVP 的“学习工具”身份被融资压力污染：</p>
+<ul>
+<li>测试结果不仅用于学习产品市场匹配 product-market fit，也被用来向投资人证明“你值得投”。</li>
+<li>当投资人（尤其是早期投资）严重信息不足时，他们会把“测试卖出/没卖出”当作对创业者能力与项目前景的强信号。</li>
+<li>这会诱导创业者在实验设计中加入与核心价值主张无关但能提升销量的“bells and whistles”，甚至用 growth hacking 制造“看起来成功”的指标，从而增加 false positives（测试看似成功但真实市场匹配差）。</li>
+</ul>
+<p>论文的直观例子（引言里的 AI 时尚图像创业）：创业者本应通过 MVP 纯粹测试“为设计师做 AI 助手 vs 为设计师做销量预测”哪个更贴合需求，但为了融资，他们可能在 MVP 中叠加额外可显著提升购买概率的垂直属性（更低价、更高质量、更多无关功能），让销量更好看，从而在融资上占优；代价是测试结果对“价值主张是否对”变得不再干净。</p>
+<h3 id="12">1.2 理论缺口：现有文献忽略了“学习—融资”耦合</h3>
+<p>作者指出两条断裂：</p>
+<ul>
+<li>LSM/产品实验理论（例如 Yoo et al. 2021 的理论化分析）把实验视为纯学习：最优 MVP 在于权衡 false positives 与 false negatives，以最大化从市场结果中学到的东西。</li>
+<li>创业融资/创新金融文献更多以投资人视角为中心，讨论融资契约、容忍失败的激励 (Manso 2011)、投资人如何影响创新等，但通常不深入创业者的微观产品实验设计。</li>
+</ul>
+<p>这篇论文要填的缝是：在创业者需要外部融资、且投资人对创业者类型不完全信息的情况下，LSM 的实验设计本身会变成一个博弈策略对象。</p>
+<h3 id="13-learningfunding-trade-off">1.3 核心贡献：提出并刻画“Learning–Funding Trade-off”的一般机制</h3>
+<p>本文的三组贡献非常清晰：</p>
+<ol>
+<li>理论机制：在信息不对称融资博弈下，投资人无法从创业者“行动”（选什么 test product、给多少 equity）中推断创业者类型，只能依赖测试销量结果推断。<strong>这使得创业者把实验当作融资信号而不是学习工具。</strong></li>
+<li>两类系统性实验扭曲：</li>
+<li>向上扭曲：优先融资而非学习（提高 test product 垂直质量/降低价格，让更容易卖出，但增加 false positives）。</li>
+<li>向下扭曲：过度谨慎减少 false positives（降低 test product 垂直质量，保证卖出就几乎等于真匹配），但显著降低卖出概率，从而让很多潜在好点子拿不到资金。</li>
+<li>生态与不平等含义：</li>
+<li>在“资金宽松 vs 资金紧缩”环境下，生态效率损失的来源不同：宽松时是误投低类型；紧缩时是错失高类型（尤其在测试失败时不再给 pivot 的机会）。</li>
+<li>投资人对群体的 stereotype（如性别、种族）会内生地改变实验扭曲方向，并可能自我强化；更尖锐的是，负面 stereotype 的成本主要由被刻板印象的高类型创业者承担，而不是投资人承担。</li>
+</ol>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设 Model Setup &amp; Assumptions</h2>
+<h3 id="21-players">2.1 Players、信息结构与时间线</h3>
+<p>Players：</p>
+<ul>
+<li>消费者：连续体，质量为 1。</li>
+<li>创业者 entrepreneur：类型 $\theta \in {L,H}$，私有信息。</li>
+<li>投资人 investor：观察到创业者的实验设计与结果，但不知道类型。</li>
+</ul>
+<p>Sequence of Events（对应论文 Figure 3）：</p>
+<ol>
+<li>参数实现：真实偏好位置 $W$、创业者类型 $\theta$、创业者信号 $S$ 实现。</li>
+<li>实验阶段：创业者选择 test product $(\lambda,\rho)$，市场产生一次销售结果 $X\in{0,1}$。</li>
+<li>融资谈判：创业者提出 equity share $\alpha$，投资人决定 accept/reject。</li>
+<li>上市阶段：若融资成功，创业者基于后验信念选择最终产品水平属性 $\Lambda$ 并上市。</li>
+</ol>
+<p>信息结构：</p>
+<ul>
+<li>创业者观察 $S$ 与自己的 $\theta$，但不知道 $W$。</li>
+<li>投资人观察 $S$、$(\lambda,\rho)$、$X$、$\alpha$，但不知道 $\theta$。</li>
+<li>投资人对 $\theta$ 有先验 $q=\Pr(\theta=H)$。</li>
+</ul>
+<p>解决概念：pure-strategy Perfect Bayesian Equilibrium (PBE)，并在多均衡时选对高类型创业者最有利的均衡（high-type-optimal equilibrium）。</p>
+<h3 id="22">2.2 符号体系</h3>
+<p>下表综合论文 Table 1 并加入推导时高频用到的派生量。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>取值/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$V$</td>
+<td>消费者从“完美匹配产品”获得的最大效用上界</td>
+<td>外生常数</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>单个消费者的水平偏好位置</td>
+<td>$w\in[0,N)$（圆周）</td>
+</tr>
+<tr>
+<td>$W$</td>
+<td>消费者偏好分布支持集的中点（未知“真实市场位置”）</td>
+<td>$W\in\Omega$ 且对创业者未知</td>
+</tr>
+<tr>
+<td>$\varepsilon$</td>
+<td>偏好支持集半长度（不确定性强度）</td>
+<td>$2\varepsilon$ 为弧长</td>
+</tr>
+<tr>
+<td>$\Omega$</td>
+<td>可选产品水平位置集合</td>
+<td>$\Omega={0,1,\dots,N-1}$</td>
+</tr>
+<tr>
+<td>$N$</td>
+<td>$\Omega$ 的大小</td>
+<td>信息劣势程度；后文常取 $N\to\infty$</td>
+</tr>
+<tr>
+<td>$(\Lambda,P)$</td>
+<td>最终产品：水平位置/价格</td>
+<td>$\Lambda\in\Omega$；$P$ 外生</td>
+</tr>
+<tr>
+<td>$(\lambda,\rho)$</td>
+<td>测试产品：水平位置/价格</td>
+<td>$\lambda\in\Omega$；$\rho\in[0,V]$</td>
+</tr>
+<tr>
+<td>$\theta$</td>
+<td>创业者类型</td>
+<td>$\theta\in{L,H}$</td>
+</tr>
+<tr>
+<td>$S$</td>
+<td>创业者收到的关于 $W$ 的信号</td>
+<td>$S\in\Omega$，投资人也能观察</td>
+</tr>
+<tr>
+<td>$r$</td>
+<td>高类型信号准确性参数</td>
+<td>$r\in(1/2,1)$</td>
+</tr>
+<tr>
+<td>$m$</td>
+<td>低类型执行效率折扣</td>
+<td>$m\in(0,1)$：低类型需求为高类型的 $m$ 倍</td>
+</tr>
+<tr>
+<td>$u_H,u_L$</td>
+<td>创业者外部选项/保留收益</td>
+<td>$u_H\ge u_L\ge 0$</td>
+</tr>
+<tr>
+<td>$K$</td>
+<td>最终产品开发上市所需资金</td>
+<td>投资人一次性投入</td>
+</tr>
+<tr>
+<td>$q$</td>
+<td>投资人先验：创业者为高类型的概率</td>
+<td>$q\in(0,1)$</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>创业者给投资人的股权比例</td>
+<td>$\alpha\in[0,1]$</td>
+</tr>
+<tr>
+<td>$X$</td>
+<td>测试产品是否卖出</td>
+<td>$X=1$ 表示卖出</td>
+</tr>
+<tr>
+<td>$f^{tp}(\rho)$</td>
+<td>测试产品真阳性率：若 $W=\lambda$ 则卖出概率</td>
+<td>与 $V-\rho$ 相关</td>
+</tr>
+<tr>
+<td>$f^{fp}(\rho)$</td>
+<td>测试产品假阳性率：若 $|W-\lambda|=1$ 则卖出概率</td>
+<td>与 $V-\rho$ 相关</td>
+</tr>
+<tr>
+<td>$P^{tp}$</td>
+<td>最终产品真阳性需求：若 $W=\Lambda$ 的需求</td>
+<td>因 $P$ 外生而可视作常数</td>
+</tr>
+<tr>
+<td>$P^{fp}$</td>
+<td>最终产品假阳性需求：若 $|W-\Lambda|=1$ 的需求</td>
+<td>常数</td>
+</tr>
+<tr>
+<td>$b=(\beta_0,\dots,\beta_{N-1})$</td>
+<td>关于 $W$ 的信念分布向量</td>
+<td>$\beta_n=\Pr(W=n)$</td>
+</tr>
+<tr>
+<td>$\Pi(b;\Lambda)$</td>
+<td>高类型在信念 $b$ 下选择 $\Lambda$ 的期望需求</td>
+<td>见下式</td>
+</tr>
+<tr>
+<td>$\Pi^*(b)$</td>
+<td>给定信念 $b$ 的最优期望需求</td>
+<td>$\max_{\Lambda\in\Omega}\Pi(b;\Lambda)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23">2.3 消费者与需求：水平不确定性是关键</h3>
+<p>消费者购买规则（论文式 (1)）：消费者 $w$ 购买水平位置为 $\lambda$、价格为 $p$ 的产品，当且仅当</p>
+<p>$$ V - p - |w-\lambda| \ge 0. $$</p>
+<p>解释：</p>
+<ul>
+<li>$|w-\lambda|$ 是水平不匹配的效用损失（越远越痛）。</li>
+<li>$V-p$ 可理解为“垂直质量”，或者“在完全匹配时能提供的净效用”。</li>
+<li>因为 $V$ 固定、$p$ 越高则 $V-p$ 越低，所以 $p$ 的确像价格/质量折减。</li>
+</ul>
+<p>偏好不确定性：消费者 $w$ 并非全圆均匀，而是均匀分布在以 $W$ 为中点、长度 $2\varepsilon$ 的闭弧上。弧长 $2\varepsilon$ 已知，未知的是中点 $W$。</p>
+<p>因此对创业者而言，“市场在哪”是一个离散位置识别问题：$W$ 以相同概率落在 $\Omega$ 的 $N$ 个点上。</p>
+<p>给定最终产品价格 $P$（外生），需求只由水平距离决定。作者将两种关键需求水平外生化为常数：</p>
+<ul>
+<li>真匹配（true positive）需求</li>
+</ul>
+<p>$$ P^{tp} = \min\left{1,\frac{V-P}{\varepsilon}\right}. $$</p>
+<ul>
+<li>相邻错位 1（false positive）需求</li>
+</ul>
+<p>$$ P^{fp} = \max\left{0,\frac{V-P-1+\varepsilon}{2\varepsilon}\right}. $$</p>
+<p>并由 Assumption 1 保证距离大于 1 时需求为 0（这样模型把所有不确定性压缩到“对/差 1 格/完全错”三种情形）。</p>
+<h3 id="24">2.4 创业者：类型差异被建模为“信息优势 + 执行优势 + 外部选项”</h3>
+<h4 id="241">2.4.1 信号结构（决定类型差异的核心）</h4>
+<p>创业者收到关于 $W$ 的信号 $S$。</p>
+<ul>
+<li>低类型：信号完全无信息</li>
+</ul>
+<p>$$ \Pr(S=n\mid W,\theta=L)=\frac{1}{N}. $$</p>
+<ul>
+<li>高类型：信号高度集中，只可能落在 $W$ 或 $W+1$</li>
+</ul>
+<p>$$
+\Pr(S=n\mid W,\theta=H)=
+\begin{cases}
+ r, &amp; n=W,\
+ 1-r, &amp; n=W+1,\
+ 0, &amp; \text{otherwise},
+\end{cases}
+$$</p>
+<p>其中 $r\in(1/2,1)$。</p>
+<p>由 Bayes 反推得到论文 Proposition 1：给定观察到的信号 $S=s$，高类型对 $W$ 的先验支持集只有 ${s,s+1}$。</p>
+<p>这就是 LSM 语境下“高类型更懂市场”的形式化：他要搜索的市场位置集合更小。</p>
+<p>参数 $N$ 体现低类型的无知程度，$N$ 越大低类型越难靠一次测试碰到真正市场位置。</p>
+<h4 id="242">2.4.2 执行效率与外部选项</h4>
+<ul>
+<li>执行效率：同样的最终产品，如果由低类型执行，需求是高类型的 $m$ 倍（$m\in(0,1)$）。</li>
+<li>外部选项：高类型保留收益 $u_H$，低类型为 $u_L$，且通常假设 $u_H\ge u_L\ge 0$。</li>
+</ul>
+<p>这两个设定分别捕捉：能力不仅是“认知市场”，也包括“把事情做成”；以及现实里强者更容易有好 offer。</p>
+<h3 id="25-bayes">2.5 学习机制：一次性测试产品 + Bayes 更新</h3>
+<p>创业者选择 test product $(\lambda,\rho)$，随机抽取一位消费者决定是否购买，得到 $X\in{0,1}$。</p>
+<p>测试销量概率与最终产品需求结构同型：</p>
+<ul>
+<li>若 $W=\lambda$（真匹配），测试卖出概率</li>
+</ul>
+<p>$$ f^{tp}(\rho)=\min\left{1,\frac{V-\rho}{\varepsilon}\right}. $$</p>
+<ul>
+<li>若 $|W-\lambda|=1$（相邻错位），测试卖出概率（假阳性率）</li>
+</ul>
+<p>$$ f^{fp}(\rho)=\max\left{0,\frac{V-\rho-1+\varepsilon}{2\varepsilon}\right}. $$</p>
+<ul>
+<li>若 $|W-\lambda|&gt;1$，由 Assumption 1 使其为 0。</li>
+</ul>
+<p>关键点：通过选择 $\rho$（即 $V-\rho$ 的大小），创业者能在“更容易卖出”与“卖出时更能说明匹配”之间移动。</p>
+<p>作者用一个非常实用的“信息度量”来比较后验：</p>
+<ul>
+<li>定义高类型在信念 $b$ 下选最终水平位置 $\Lambda$ 的期望需求</li>
+</ul>
+<p>$$ \Pi(b;\Lambda)=\beta_{\Lambda}P^{tp}+(\beta_{\Lambda-1}+\beta_{\Lambda+1})P^{fp}. $$</p>
+<ul>
+<li>给定信念 $b$ 的最优需求</li>
+</ul>
+<p>$$ \Pi^*(b)=\max_{\Lambda\in\Omega}\Pi(b;\Lambda). $$</p>
+<ul>
+<li>Definition 1：若 $\Pi^<em>(b)\ge \Pi^</em>(\tilde b)$，则称 $b$ 比 $\tilde b$ “更有信息”。</li>
+</ul>
+<p>直觉：他们直接把“信息”定义成“你因此能做出更好的最终产品定位”，这非常 OM/Marketing。</p>
+<h3 id="26">2.6 融资与谈判：股权合约 + 投资人的类型推断</h3>
+<p>融资需求：最终产品上市需要资金 $K&gt;0$。</p>
+<p>合约：创业者提出股权比例 $\alpha\in[0,1]$，投资人决定是否投入 $K$。</p>
+<p>投资人判断标准（参与约束）：接受当且仅当</p>
+<p>$$ \mathbb{E}[\alpha\cdot \text{(最终产品收益)}\mid S,\lambda,\rho,X,\alpha] \ge K. $$</p>
+<p>在模型里“最终产品收益”被等同于需求水平（价格外生，等价于把收益单位化）。</p>
+<p>投资人先验：$q=\Pr(\theta=H)$。</p>
+<p>投资人可观察：$S,(\lambda,\rho),X,\alpha$。</p>
+<p>投资人更新：用 Bayes 形成后验 $\Pr(\theta=H\mid S,\lambda,\rho,X,\alpha)$。</p>
+<h3 id="27">2.7 关键假设（以及为什么需要它们）</h3>
+<h4 id="assumption-1-lsm">Assumption 1：水平偏好不确定性在 LSM 场景中“恰好重要”</h4>
+<p>$$ \varepsilon &lt; V &lt; 2-\varepsilon. $$</p>
+<p>含义：</p>
+<ul>
+<li>$V&gt;\varepsilon$：若产品水平位置对了，产品可以覆盖整个需求弧段；相邻错位仍可能有需求。</li>
+<li>$V&lt;2-\varepsilon$：若产品离真实市场位置至少 2，则需求必为 0。</li>
+</ul>
+<p>这确保了模型把“成败”主要归因于水平定位是否靠近 $W$，符合“产品市场匹配”这一核心。</p>
+<h4 id="assumption-2-lsm">Assumption 2：一次测试无法完全揭示市场（保持 LSM 的不确定性本质）</h4>
+<p>$$ \frac{1}{2} &lt; \varepsilon &lt; 1-\frac{V}{3}. $$</p>
+<p>直觉：</p>
+<ul>
+<li>若 $\varepsilon$ 太小，高类型可以把一次测试设计成完全揭示 $W$，那学习问题就没意思。</li>
+<li>上界确保在无信息不对称时，高类型不会跑到信号支持集之外做测试，保持分析聚焦。</li>
+</ul>
+<h4 id="assumption-3">Assumption 3：投资人只想投高类型（把信号博弈拉满）</h4>
+<p>Assumption 3(a)：</p>
+<p>$$ mP^{tp} &lt; K. $$</p>
+<p>含义：就算低类型刚好定位正确，其收益也不值投资成本，故投资人若知道对方是低类型将拒绝任何投资。</p>
+<p>这会让低类型有极强动机“装成高类型”，直接推动后文 Theorem 2 的 pooling 结果。</p>
+<p>Assumption 3(b)：是一个技术性下界，保证高类型在某些测试结果下存在双方可接受的股权报价，从而排除“明明高类型但也无解”的无趣角落。</p>
+<p>作者在 Appendix A 讨论放松 Assumption 3(a) 的后果：pooling 可能不再保证，但核心扭曲机制仍可延续。</p>
+<h2 id="3-analysis-solution">3. 分析与求解 Analysis &amp; Solution</h2>
+<h3 id="31-benchmarkself-funding-lsm">3.1 Benchmark：Self-funding 下的“理想 LSM”</h3>
+<p>这里相当于两种理解：</p>
+<ul>
+<li>创业者自筹资金，不需要投资人；或</li>
+<li>即使有投资人，也不存在信息不对称，融资不受信念扭曲。</li>
+</ul>
+<p>在 label-independent 设定下可令 $S=0$。</p>
+<h4 id="theorem-1">Theorem 1：自筹资金时的最优测试产品</h4>
+<p>结论（论文 Theorem 1）：</p>
+<ul>
+<li>低类型最优选择直接放弃（因为即便成功也不值 $K$）。</li>
+<li>高类型最优测试产品为 $(\lambda,\rho)=(0,V-\varepsilon)$。</li>
+<li>若测试卖出，则坚持，最终产品选 $\Lambda=0$。</li>
+<li>若测试没卖出，则 pivot，最终产品改为 $\Lambda=1$。</li>
+</ul>
+<h5 id="rhov-varepsilon-mvp">为什么 $\rho=V-\varepsilon$ 是 MVP 的数学版本</h5>
+<p>令测试产品垂直质量 $v=V-\rho$。当 $v=\varepsilon$ 时：</p>
+<ul>
+<li>真匹配（$W=0$）卖出概率</li>
+</ul>
+<p>$$ f^{tp}=\min\left{1,\frac{\varepsilon}{\varepsilon}\right}=1. $$</p>
+<p>也就是不存在 false negative：如果真市场在 0，你一定能卖出。</p>
+<ul>
+<li>相邻错位（$W=1$）卖出概率</li>
+</ul>
+<p>$$ f^{fp}=\frac{\varepsilon-1+\varepsilon}{2\varepsilon}=\frac{2\varepsilon-1}{2\varepsilon} \in (0,1). $$</p>
+<p>也就是允许一定的 false positive：市场其实在 1，你仍可能卖出。</p>
+<p>这恰好制造了一个非常“LSM”的信息结构：</p>
+<ul>
+<li>$X=0$（没卖出）是极强的信息：因为 $W=0$ 时必卖出，所以没卖出就意味着 $W=1$，高类型可确定 pivot 方向。</li>
+<li>$X=1$（卖出）信息反而弱一些：可能是 $W=0$ 真成功，也可能是 $W=1$ 的假阳性。</li>
+</ul>
+<h5 id="corollary-1">Corollary 1：负面测试结果更“值钱”</h5>
+<p>论文 Corollary 1 指出：在测试产品 $(0,V-\varepsilon)$ 下，负面结果触发 pivot 后的最终需求是 $P^{tp}$，严格高于正面结果后不 pivot 的期望需求。</p>
+<p>经济学直觉：LSM 的精髓不是“尽量让测试成功”，而是“让失败变成高信息密度的失败”，从而指导 pivot。</p>
+<h5 id="3">自筹资金下的期望收益（论文式 (3)）</h5>
+<p>当 $v=\varepsilon$，高类型先验为 $\Pr(W=0)=r,\Pr(W=1)=1-r$。于是</p>
+<ul>
+<li>若 $W=0$：测试必卖出，最终定位正确，收益 $P^{tp}-K$。</li>
+<li>若 $W=1$：测试以概率 $\frac{2\varepsilon-1}{2\varepsilon}$ 假阳性卖出，定位错误收益 $P^{fp}-K$；以概率 $\frac{1}{2\varepsilon}$ 不卖出，pivot 后定位正确收益 $P^{tp}-K$。</li>
+</ul>
+<p>因此期望收益为</p>
+<p>$$
+\begin{aligned}
+&amp; r(P^{tp}-K) + (1-r)\frac{2\varepsilon-1}{2\varepsilon}(P^{fp}-K) + (1-r)\frac{1}{2\varepsilon}(P^{tp}-K).
+\end{aligned}
+$$</p>
+<p>这是后文比较“融资诱导扭曲”时的 benchmark。</p>
+<h3 id="32-pbepooling">3.2 外部融资：PBE、pooling、以及为何投资人只能看结果</h3>
+<p>在外部融资模型中，投资人更新信念需要一套 belief mapping $\mu(S,\lambda,\rho,X,\alpha)$。均衡为 PBE。</p>
+<p>有两类候选均衡：</p>
+<ul>
+<li>pooling：两类型在每个 $S$ 下选同一 $(\lambda,\rho)$，且给定 $X$ 给同一 $\alpha$。</li>
+<li>separating：某些 $S$ 或 $X$ 下两类型选不同动作。</li>
+</ul>
+<p>核心问题：投资人能不能从创业者的“实验设计/报价”中识别类型？作者给出的答案（在主要参数区间内）是否定的。</p>
+<h3 id="33-theorem-2-pooling">3.3 Theorem 2：高类型只要想拿到高于外部选项的收益，均衡必然 pooling</h3>
+<p>论文 Theorem 2：所有 label-independent、且高类型期望收益严格高于 $u_H$ 的均衡都是 pooling。</p>
+<p>逻辑是一个经典的信号博弈味道：</p>
+<ul>
+<li>由 Assumption 3(a)，若投资人知道对方是低类型，会拒绝任何投资（低类型无论如何都拿不到钱）。</li>
+<li>因此低类型的首要目标不是“学会市场”，而是“别暴露自己”。他最优就是模仿高类型的实验与报价，以混在池子里博取融资机会。</li>
+<li>这意味着投资人无法从创业者的可控动作中推断类型，只能依赖随机结果 $X$。</li>
+</ul>
+<p>这一步非常关键：它把“LSM 的实验”从学习消费者偏好，改造成了“投资人推断创业者类型”的信号产生器。</p>
+<h3 id="34">3.4 逆向归纳：从上市到谈判再到实验</h3>
+<h4 id="341">3.4.1 上市阶段：给定后验，选最优定位</h4>
+<p>若融资成功，创业者（两类型）都选择</p>
+<p>$$ \Lambda \in \arg\max_{\Lambda\in\Omega}\Pi(b;\Lambda). $$</p>
+<p>对高类型在 $S=0$ 的主分析里，其后验只在 ${0,1}$ 上有质量，因此上市决策等价于：</p>
+<ul>
+<li>若 $\Pr(W=0\mid \cdot)&gt;\Pr(W=1\mid \cdot)$ 则 $\Lambda=0$，否则 pivot 到 $\Lambda=1$。</li>
+</ul>
+<h4 id="342-x-n">3.4.2 谈判阶段：投资人后验由 $X$ 主导（尤其当 $N$ 大）</h4>
+<p>投资人看到 $X$ 后，对类型的后验为</p>
+<p>$$
+\Pr(\theta=H\mid X)=\frac{q\Pr(X\mid \theta=H)}{q\Pr(X\mid \theta=H)+(1-q)\Pr(X\mid \theta=L)}.
+$$</p>
+<p>关键渐近：当 $N\to\infty$，低类型几乎不可能靠一次测试卖出（因为他对 $W$ 的支持集太大，而只有当 $W$ 恰好落在 $\lambda$ 附近才可能卖出）。因此</p>
+<ul>
+<li>观察到 $X=1$ 时，$\Pr(\theta=H\mid X=1)\to 1$。</li>
+<li>观察到 $X=0$ 时，后验下降到某个 $\tilde q&lt;q$（论文给出其极限表达式）。</li>
+</ul>
+<p>于是谈判呈现一个不对称结构：</p>
+<ul>
+<li>$X=1$ 时投资人几乎确信对方是高类型，愿意以接近 break-even 的条件投资。</li>
+<li>$X=0$ 时投资人担心遇到低类型，要求更高的 equity（从创业者角度看就是被抽取信息租）。</li>
+</ul>
+<p>创业者作为先动者会给出“刚好让投资人愿意接受”的最低 $\alpha$；若不存在可接受的 $\alpha$，则给 $\alpha=0$ 并被拒绝，项目终止。</p>
+<h4 id="343">3.4.3 实验阶段：融资概率与学习质量的权衡</h4>
+<p>因为 $X$ 同时影响</p>
+<ul>
+<li>融资是否发生（尤其在资金紧缩时，没卖出就直接没钱），以及</li>
+<li>卖出后后验信念的“干净程度”（决定最终产品定位的好坏），</li>
+</ul>
+<p>所以实验不再是“最大化信息”，而是“最大化带融资的期望收益”。这就是 learning–funding trade-off。</p>
+<h3 id="35-theorem-3">3.5 Theorem 3：均衡全景与两类扭曲</h3>
+<p>论文 Theorem 3 在 $N$ 足够大时给出一个非常漂亮的分区图（Figure 4）。存在阈值函数 $q^*(u_H)$，以及两个关于 $u_H$ 的切点 $\underline u_H,\overline u_H$（论文记号略有简化）。</p>
+<p>结论分两大区域：</p>
+<h4 id="351-lsm-regionqqu_h">3.5.1 LSM region：$q&gt;q^*(u_H)$（资金宽松/投资人足够乐观）</h4>
+<p>均衡测试产品：</p>
+<ul>
+<li>$(\lambda,\rho)=(0,V-\varepsilon)$（与自筹资金 benchmark 完全一致）。</li>
+</ul>
+<p>融资与上市：</p>
+<ul>
+<li>无论 $X=1$ 或 $X=0$ 都会融资成功。</li>
+<li>$X=1$ 时上市 $\Lambda=0$；$X=0$ 时 pivot 到 $\Lambda=1$。</li>
+</ul>
+<p>关键机制：当投资人先验足够高，创业者不需要“用成功来换融资”，实验可以回归学习本质。</p>
+<p>但仍有一个融资摩擦：当 $X=0$ 时投资人更悲观，会要求额外信息租。论文给出的高类型期望收益（式 (4)）可视作 benchmark 式 (3) 减去一项</p>
+<p>$$ \frac{(1-q)K}{q}, $$</p>
+<p>它代表在负面测试结果下，创业者为了让投资人接受必须让出额外 surplus。</p>
+<h4 id="352-learningfunding-trade-off-regionqqu_h">3.5.2 Learning–funding trade-off region：$q&lt;q^*(u_H)$（资金紧缩/投资人悲观）</h4>
+<p>此时融资只在 $X=1$（测试卖出）时发生；$X=0$ 时创业者宁愿放弃拿 $u_H$。</p>
+<p>注意一个结构性后果：因为 $X=0$ 时直接没钱，LSM 的关键动作 pivot 被系统性切断。创业者即使从失败中学到“应该 pivot”，也没有资金去 pivot。</p>
+<p>均衡测试产品的水平位置仍是 $\lambda=0$（与 benchmark 一致），但垂直质量 $V-\rho$ 出现三段式：</p>
+<p>$$
+(\lambda,\rho)=
+\begin{cases}
+(0,0), &amp; u_H&lt;\underline u_H,\
+(0,V-\varepsilon), &amp; \underline u_H&lt;u_H&lt;\overline u_H,\
+(0,V-1+\varepsilon), &amp; u_H&gt;\overline u_H.
+\end{cases}
+$$</p>
+<p>把它翻译成人话（也是你复述本文的最好方式）：</p>
+<ul>
+<li>$u_H$ 低（外部选项差、融资饥渴）：选择 $\rho=0$，即把测试产品做得“最好卖”（垂直质量 $V-\rho=V$ 最大）。这是向上扭曲：用高垂直质量制造测试成功，牺牲学习。</li>
+<li>$u_H$ 中：仍做 benchmark 的 MVP（垂直质量 $\varepsilon$），但因为 $X=0$ 时没融资，所以 pivot 机会仍消失。</li>
+<li>$u_H$ 高（外部选项好、对失败容忍度高）：把测试产品做得更“苛刻”$\rho=V-1+\varepsilon$（垂直质量 $1-\varepsilon$ 较低），使得一旦卖出几乎就等价于真匹配（消灭假阳性），但卖出概率下降，很多好点子因此拿不到钱。这是向下扭曲：用筛选强证据换取高质量上市，牺牲融资概率与创新数量。</li>
+</ul>
+<h5 id="_1">两种扭曲的经济学直觉</h5>
+<p>把测试产品垂直质量记为 $v=V-\rho$。对高类型（先验在 ${0,1}$）来说，卖出后认为 $W=0$ 的后验为</p>
+<p>$$
+\Pr(W=0\mid X=1)=\frac{r f^{tp}(\rho)}{r f^{tp}(\rho)+(1-r) f^{fp}(\rho)}.
+$$</p>
+<ul>
+<li>提高 $v$ 会提高 $f^{tp}$ 与 $f^{fp}$，尤其会把 $f^{fp}$ 拉高，从而让“卖出”更可能是 false positive，后验更不集中，$\Pi^*$ 变差。</li>
+<li>降低 $v$ 会降低卖出概率，但能压低 $f^{fp}$，让“卖出”几乎只可能来自真匹配，于是 $X=1$ 变成强证据。</li>
+</ul>
+<p>当融资只在 $X=1$ 时发生，高类型在最大化</p>
+<p>$$ \Pr(X=1)\times \text{(卖出后获得的净收益)} + \Pr(X=0)u_H. $$</p>
+<p>因此：</p>
+<ul>
+<li>$u_H$ 越低，越不愿接受 $X=0$，就越倾向增大 $\Pr(X=1)$（向上扭曲）。</li>
+<li>$u_H$ 越高，越不怕拿外部选项，反而更在意“如果我卖出了并融资，我要确保是个真好项目”，于是倾向把 $X=1$ 做成强信号（向下扭曲）。</li>
+</ul>
+<h3 id="36-proposition-2">3.6 Proposition 2：均衡股权报价的结构</h3>
+<p>论文 Proposition 2 给出股权报价 $\alpha$ 的规律。</p>
+<ul>
+<li>在 LSM region（$q&gt;q^*(u_H)$）：</li>
+<li>若 $X=1$，投资人几乎确定高类型，创业者报价使投资人期望收益恰好为 $K$（break-even）。</li>
+<li>
+<p>若 $X=0$，投资人更悲观，创业者必须报价使投资人期望收益严格大于 $K$（给信息租）。</p>
+</li>
+<li>
+<p>在 trade-off region（$q&lt;q^*(u_H)$）：</p>
+</li>
+<li>只有 $X=1$ 才成交。</li>
+<li>$\alpha$ 是关于 $u_H$ 的递减阶梯函数：外部选项差的人反而要给更高股权。</li>
+</ul>
+<p>这里有一个很有教学价值的“反直觉”：</p>
+<ul>
+<li>不是因为 $u_H$ 直接进入 Nash bargaining 或 Rubinstein bargaining，而是因为 $u_H$ 影响实验扭曲，从而影响“卖出”这个信号的可信度。</li>
+<li>外部选项差的人更倾向向上扭曲，使卖出更不信息化，投资人就需要更高股权补偿风险。</li>
+</ul>
+<h3 id="37-comparative-statics">3.7 比较静态 Comparative Statics（抓住方向比硬背阈值更重要）</h3>
+<p>论文用 Figure 4–8 给了非常清晰的比较静态。你可以用三条主线复盘：</p>
+<ol>
+<li>投资人先验 $q$：决定是否进入 trade-off。</li>
+<li>$q$ 高：融资更“宽松”，LSM 机制能跑起来（但会误投低类型）。</li>
+<li>
+<p>$q$ 低：融资更“紧缩”，失败直接断供，学习价值被融资机制抑制。</p>
+</li>
+<li>
+<p>高类型外部选项 $u_H$：决定扭曲方向。</p>
+</li>
+<li>$u_H$ 低：向上扭曲（提高垂直质量），追求融资概率。</li>
+<li>
+<p>$u_H$ 高：向下扭曲（降低垂直质量），追求卖出即真匹配。</p>
+</li>
+<li>
+<p>信息劣势参数 $N$：决定投资人为何依赖结果。</p>
+</li>
+<li>$N$ 大时，低类型卖出的概率趋近 0，使 $X=1$ 成为强类型信号，均衡更依赖结果而非过程。</li>
+</ol>
+<h2 id="4-main-results-managerial-insights">4. 主要结论与管理启示 Main Results &amp; Managerial Insights</h2>
+<h3 id="41-benchmark-lsm">4.1 机制揭示：在 benchmark LSM 之上新增了一个“融资约束的阴影”</h3>
+<p>对比自筹资金 benchmark，本模型揭示一个新 trade-off：</p>
+<ul>
+<li>benchmark：选择 MVP 的核心是“学习质量”——控制 false positives 与 false negatives。</li>
+<li>加入融资：MVP 还要承担“融资信号”功能——尤其当投资人无法从行动识别类型，只能用 $X$ 推断时。</li>
+</ul>
+<p>因此出现两个生态层面的结构性后果：</p>
+<ol>
+<li>失败的学习价值被融资机制抹杀：在 trade-off region，$X=0$ 时项目直接终止，LSM 最关键的 pivot 通道被掐断。于是“通过失败学到的东西”不能转化为更好的最终产品。</li>
+<li>成功率的观察会被选择效应污染：当 $u_H$ 高的人向下扭曲，只有最强证据项目才融资，导致“被投项目成功率很高”；但这并不代表他们更会创新，而是他们把创新尝试的数量压低了。</li>
+</ol>
+<h3 id="42-proposition-35">4.2 Proposition 3–5：创新数量与质量的错位</h3>
+<p>论文用三条命题把“数量 vs 质量”写得非常直白。</p>
+<h4 id="proposition-3">Proposition 3：融资概率</h4>
+<ul>
+<li>LSM region：融资概率为 1。</li>
+<li>trade-off region：融资概率小于 1，且随 $u_H$ 增大呈递减阶梯。</li>
+</ul>
+<p>直觉：$u_H$ 高的人更愿意设置苛刻测试（低垂直质量），卖出概率下降，因此融资概率下降。</p>
+<h4 id="proposition-4">Proposition 4：给定融资后的最终需求</h4>
+<ul>
+<li>LSM region：如果 $X=0$ 仍融资并 pivot，则可达到最大需求 $P^{tp}$。</li>
+<li>trade-off region：只有 $X=1$ 才融资，此时给定融资的最终需求随 $u_H$ 增加而上升（阶梯），最高可达 $P^{tp}$。</li>
+</ul>
+<p>直觉：$u_H$ 高的人向下扭曲减少 false positives，因此一旦卖出就高度可信，最终产品更可能真匹配。</p>
+<h4 id="proposition-5">Proposition 5：测试前的无条件期望需求</h4>
+<p>在 trade-off region，无条件期望需求严格低于 LSM region，且随 $u_H$ 增加而下降。</p>
+<p>这非常关键：即使某些被投项目看起来更成功，整个生态的总创新产出可能更低，因为大量项目在失败后被断供，无法 pivot。</p>
+<h3 id="43-proposition-6">4.3 Proposition 6：生态效率损失在“中等不确定性”处最大</h3>
+<p>作者用 welfare（创业者+投资人期望收益之和）度量效率，并以自筹资金 benchmark 为效率基准。</p>
+<p>Proposition 6：对给定 $u_H$，效率损失关于 $q$ 呈倒 V 型：</p>
+<ul>
+<li>当 $q\le q^*(u_H)$，效率损失随 $q$ 线性上升。</li>
+<li>当 $q&gt;q^*(u_H)$，效率损失随 $q$ 线性下降。</li>
+</ul>
+<p>直觉：</p>
+<ul>
+<li>$q$ 极低或极高时，投资人几乎没不确定性（要么几乎都低类型，要么几乎都高类型），信息摩擦反而小。</li>
+<li>最大摩擦发生在“你觉得他可能不错但又不太敢信”的中间地带：投资人依赖 $X$，创业者因此扭曲实验，导致两头都不对。</li>
+</ul>
+<p>作者把 $q&gt;q^*$ 称作“loose money”：高类型总能拿钱，但低类型也被误投，损失由投资人承担。</p>
+<p>把 $q&lt;q^*$ 称作“tight money”：低类型被挡住了，但高类型在失败后也被断供，损失表现为创新不足。</p>
+<h3 id="44-stereotypes">4.4 Stereotypes：偏见不仅影响融资，还会改变你做实验的方式</h3>
+<p>论文 Section 5.3 把 stereotype 形式化为：真实高类型比例为 $q_0$，但投资人对某群体的先验是 $q$。</p>
+<ul>
+<li>负面 stereotype：$q&lt;q_0$。</li>
+<li>正面 stereotype：$q&gt;q_0$。</li>
+</ul>
+<p>Corollary 2：当负面 stereotype 把群体从 $q_0&gt;q^<em>$ 推到 $q&lt;q^</em>$（也就是让他们进入 trade-off region），会导致：</p>
+<ul>
+<li>融资更难、总需求更低、创业者期望收益更低。</li>
+<li>且低 $u_H$ 的高类型创业者会向上扭曲实验以争取融资，导致被投后的成功率更低，从而强化 stereotype（自我实现预言）。</li>
+</ul>
+<p>Proposition 7 是本文最“有刺”的一句话：</p>
+<ul>
+<li>正面 stereotype 的效率损失主要由投资人承担（她因为太乐观而误投低类型）。</li>
+<li>负面 stereotype 的效率损失主要由被刻板印象群体中的高类型创业者承担（他们在失败后得不到资金去 pivot）。</li>
+</ul>
+<p>这直接反驳一种常见的“市场会惩罚偏见所以偏见无法长期存在”的天真论证：负面偏见并不一定让持偏见者付出代价。</p>
+<h3 id="45">4.5 图表解释（把每张图当作一个命题的可视化）</h3>
+<h4 id="figure-1n">Figure 1：$N$ 越大，低类型的“搜索集合”越大</h4>
+<p>图展示高类型的先验支持集恒为 ${s,s+1}$，低类型支持集为整个 $\Omega$，且 $N$ 越大越分散。它为后文 $N\to\infty$ 的推断提供直觉：低类型很难靠一次测试卖出。</p>
+<h4 id="figure-2">Figure 2：同样的测试结果，高类型比低类型学到更多</h4>
+<p>左图（高类型）显示：当测试没卖出时，高类型后验几乎退化到 $W=s+1$（强学习）；低类型后验仍很分散（因为他的先验太分散）。这解释了为什么投资人会更愿意投“高类型”：他们从失败中也能 pivot 到更好产品。</p>
+<h4 id="figure-3">Figure 3：四阶段时间线</h4>
+<p>把实验与融资谈判明确串起来：实验结果先发生，融资在之后发生，因此实验天然成为融资信号。</p>
+<h4 id="figure-4-abcd">Figure 4：均衡分区 A/B/C/D</h4>
+<ul>
+<li>A：LSM region，无扭曲，始终融资。</li>
+<li>B：trade-off + 低 $u_H$，向上扭曲（提高 $V-\rho$）。</li>
+<li>C：trade-off + 中 $u_H$，测试产品不扭曲但失败即断供。</li>
+<li>D：trade-off + 高 $u_H$，向下扭曲（降低 $V-\rho$）。</li>
+</ul>
+<p>这张图是本文的“地图”。</p>
+<h4 id="figure-5-v-rho-u_h">Figure 5：测试产品垂直质量 $V-\rho$ 随 $u_H$ 的阶梯</h4>
+<ul>
+<li>左图高 $q$：外部融资与自筹几乎重合（说明融资不扭曲实验）。</li>
+<li>右图低 $q$：出现上扭曲与下扭曲的阶梯（说明融资激励把 MVP 推离学习最优点）。</li>
+</ul>
+<h4 id="figure-6-u_h">Figure 6：股权比例随 $u_H$ 的变化</h4>
+<ul>
+<li>在高 $q$ 下，$X=0$ 时需要给更多 equity（信息租）。</li>
+<li>在低 $q$ 下，只有 $X=1$ 才成交，且 $u_H$ 越低 equity 越高。</li>
+</ul>
+<h4 id="figure-7">Figure 7：融资概率下降时，给定融资的需求反而上升</h4>
+<p>这张图把“数量 vs 质量”的互换画得最直观：</p>
+<ul>
+<li>$u_H$ 增加导致融资概率下降（项目更少）。</li>
+<li>但被投项目的平均需求上升（项目更好）。</li>
+</ul>
+<h4 id="figure-8">Figure 8：无条件需求整体低于自筹</h4>
+<p>关键提醒：生态总产出变差的原因，是失败后不能 pivot。</p>
+<h4 id="figure-9-q-v">Figure 9：效率损失对 $q$ 倒 V 型</h4>
+<p>强调“中间地带最糟”：既不够乐观让 LSM 运行，也不够悲观让投资人干脆不投。</p>
+<h4 id="figure-a1appendix-assumption-3a-pooling">Figure A.1（Appendix）：放松 Assumption 3(a) 后 pooling 可能不存在</h4>
+<p>该图展示某些参数下 pooling 不可持续，可能出现 separating。但作者进一步证明扭曲机制仍存在：高类型仍可能向下扭曲以避免低类型模仿。</p>
+<h3 id="46-extensions">4.6 Extensions（论文已做与可自然延展的方向）</h3>
+<p>论文已做的 extension（Appendix A）：放松 Assumption 3(a) 使低类型也可能值得投资。</p>
+<ul>
+<li>pooling 不再必然存在。</li>
+<li>但在一些条件下 pooling 仍存在且 Theorem 3 的扭曲结构保持。</li>
+<li>还可能出现 separating equilibrium：高类型用更低垂直质量的测试产品作为信号，降低低类型模仿收益。</li>
+</ul>
+<p>论文明确指出但未建模的扩展（脚注与结论）：</p>
+<ul>
+<li>多轮实验：现实中 LSM 是多轮 build-test-learn，融资也可能分阶段。多轮会引入跨期学习与融资的动态耦合。</li>
+<li>其他融资契约：SAFE、convertible note、里程碑融资、learning-contingent contract 是否能缓解扭曲？这是很自然的 OM/Finance 交叉课题。</li>
+</ul>
+<h2 id="5-reviewers-critique-senior-editor">5. Reviewer's Critique（以 Senior Editor 的口吻挑刺，但也讲公道话）</h2>
+<h3 id="51">5.1 主要优点</h3>
+<ol>
+<li>问题重要且被忽视：LSM 在学术上常被当作学习机制，但创业世界里融资才是“硬约束”。把两者绑在同一个 formal model 里，是非常有价值的理论补洞。</li>
+<li>机制抓得准：Theorem 2 的 pooling 结果让“投资人只能看结果”变成内生结论，后续所有扭曲顺理成章。</li>
+<li>结论有可传播性：A/B/C/D 四区图、两类扭曲（向上/向下）都非常易于被引用与教学。</li>
+<li>对 stereotypes 的推论尖锐：Proposition 7 把“负面偏见成本由谁承担”讲得极其清楚，且对经验研究有指导意义。</li>
+</ol>
+<h3 id="52">5.2 关键局限与可能的审稿人质疑</h3>
+<ol>
+<li>一次性实验过于简化：LSM 的精髓是多轮迭代。单次 $X\in{0,1}$ 把学习过程压得很扁，虽然有 tractability，但可能会改变某些动态结论（比如“失败后断供”在多轮融资下会更复杂）。</li>
+<li>测试市场规模为 1 个随机消费者：这让 $X$ 变成极端噪声，且“卖出/不卖出”容易被偶然性驱动。现实中常有多用户测试、留存等多指标。</li>
+<li>投资人观察到 test product 设计：现实里投资人未必能完整看懂实验设计或知道 $\rho$ 的选择细节，可能只看到 KPI。若信息集改变，均衡扭曲的方向与强度可能改变。</li>
+<li>价格/垂直属性外生：论文把最终产品价格 $P$ 外生以聚焦水平匹配，但现实创业常通过定价、功能堆叠、渠道补贴等共同影响 traction 与学习。</li>
+<li>类型结构过于离散：高类型只在 ${s,s+1}$ 上有支持集，低类型完全均匀。这给了非常强的“高类型更懂市场”的二元化结构。更连续的能力分布可能更贴近现实，也可能带来更丰富的筛选均衡。</li>
+<li>依赖 $N\to\infty$：渐近让推断清爽，但需要读者相信市场复杂度足够高；在某些细分行业（$N$ 小）时，低类型也可能卖出，投资人推断会更弱，均衡可能出现更多混合策略。</li>
+<li>welfare 度量偏“投资回报”：作者用创业者+投资人收益衡量效率，基本把消费者剩余与多产品竞争忽略。若从社会福利角度，某些“多尝试但成功率低”的创新也可能有价值。</li>
+</ol>
+<h3 id="53-dissertation">5.3 未来研究方向（可写成 dissertation 的那种）</h3>
+<ol>
+<li>多轮实验 + 分阶段融资：</li>
+<li>每轮实验既产生关于 $W$ 的学习，也产生关于 $\theta$ 的信号。</li>
+<li>投资人可以设计“失败容忍”的续投规则（类似 real options）。</li>
+<li>
+<p>这会把 Theorem 3 的静态三段式扭曲，扩展为动态路径依赖的扭曲。</p>
+</li>
+<li>
+<p>契约设计：从 equity-only 到 learning-contingent</p>
+</li>
+<li>
+<p>允许投资人写入里程碑条款：例如不是用销量 $X$，而是用信息量指标（posterior entropy reduction）来触发融资。</p>
+</li>
+<li>允许投资人选择先小额投实验预算（grant-like）再大额投规模化（staged financing）。</li>
+</ol>
+<p>目标是把创业者从“用实验骗信号”拉回“用实验学东西”。</p>
+<ol>
+<li>
+<p>多投资人竞争与融资市场结构</p>
+</li>
+<li>
+<p>若存在多投资人竞价，信息租如何变化？</p>
+</li>
+<li>
+<p>“loose money vs tight money”是否可内生为市场状态（宏观资金成本）？</p>
+</li>
+<li>
+<p>stereotype 的内生演化与统计歧视</p>
+</li>
+</ol>
+<p>当前模型把偏见当作 exogenous 的 $q$ 偏离 $q_0$。更深的扩展是：投资人从历史数据学习群体成功率，而群体成功率又被偏见诱导的实验扭曲影响，从而形成动态自我强化系统。</p>
+<ol>
+<li>
+<p>可检验的经验预测</p>
+</li>
+<li>
+<p>在资金紧缩期（或对某群体偏见更强的投资环境），创业者的 MVP 更可能加入“非核心但提高 traction 的功能/补贴”。</p>
+</li>
+<li>被负面 stereotype 的群体在拿到钱后，平均成功率可能更低，但这不是能力差，而是实验被迫扭曲。</li>
+</ol>
+<h2 id="6-one-more-thing">6. One More Thing：我认为本文最值得分享的“灵光一现”</h2>
+<p>LSM 经常被当成一句鸡汤：“fail fast”。这篇论文给了一个更残酷也更真实的版本：</p>
+<ul>
+<li>在纯学习世界里，负面测试结果是金子，因为它让你 pivot 到更好的方向。</li>
+<li>在融资世界里，负面测试结果可能是死刑，因为它让你直接拿不到钱，失去 pivot 的机会。</li>
+</ul>
+<p>所以问题不在于创业者是否愿意“fail fast”，而在于融资机制是否允许你“fail and still live”。</p>
+<p>如果你只记住一句话：当资金紧缩时，LSM 的优势不是被削弱，而是被结构性消灭——因为最有信息含量的失败，恰恰最容易导致融资断裂。</p>
+    </div>
+  </div>
+</body>
+</html>

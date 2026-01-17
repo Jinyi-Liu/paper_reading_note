@@ -17,7 +17,7 @@ Feel free to explore the files and reach out if you have any questions or sugges
    - **理论缺口**：现有文献忽略了什么？
    - **核心贡献**：本文在理论或实践上的 Significance 是什么？
 2. **模型设定与假设 (Model Setup & Assumptions)**：
-   - **符号体系**：清晰列出决策变量、参数及其含义（支持 LaTeX）。使用表格形式展示更佳。
+   - **符号体系**：清晰列出决策变量、参数及其含义（支持 LaTeX）。使用表格形式展示。按照|符号|含义|备注/描述|的表格格式。
    - **博弈/决策结构**：如果是理论文章，明确 Players, Sequence of Events, Information Structure (信息结构)；如果是实证文章，明确数据来源和变量构建。
    - **目标函数与约束**：展示各方的 Profit/Utility function 及约束条件。
    - **关键假设**：列出核心假设并解释其合理性（Justification）。

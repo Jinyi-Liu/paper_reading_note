@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-01-20_WP_2025_Cheng_Dogan_Yildirim_AI_team_dynamics</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="artificial-intelligence-in-team-dynamics-who-gets-replaced-and-why">Artificial Intelligence in Team Dynamics: Who Gets Replaced and Why?</h1>
+<p><strong>Authors:</strong> Xienan Cheng, Mustafa Dogan, Pinar Yildirim
+<strong>Link:</strong> <a href="http://www.nber.org/papers/w34259">http://www.nber.org/papers/w34259</a>
+<strong>Year:</strong> 2025
+<strong>Journal:</strong> Working Paper (NBER)</p>
+<h2 id="0">0. 论文速览</h2>
+<h3 id="01">0.1 一句话总结</h3>
+<p>本文把 AI 视为一种“不会偷懒的队友”（无 moral hazard），嵌入一个顺序型团队生产与同伴监督（peer monitoring）模型：当经理只能用有限的 AI 替换少数岗位时，最优策略不是“固定替换某个人”，而是对岗位进行随机化替换，并且倾向替换生产链条的首端与末端、避免替换中间的“信息连接点”；更反直觉的是，经理可能会故意不把 AI 用满；在最优采用下，平均工资上升且团队内部工资差距下降。</p>
+<h3 id="02">0.2 研究问题</h3>
+<p>论文聚焦三个非常“组织+运营”的问题：</p>
+<ol>
+<li>在一个需要激励的团队里（团队成员有偷懒动机），当 AI 可替代部分人力时，经理（principal）该如何最优部署有限 AI 资源？</li>
+<li>在顺序工作流（sequential workflow）中，处于不同位置的员工，谁更可能被 AI 替换，为什么？</li>
+<li>替换（或替换风险）如何通过激励外部性，影响被替换与未被替换员工的工资与工资不平等？</li>
+</ol>
+<h3 id="03">0.3 核心设定</h3>
+<p>团队由 $n\ge 3$ 名工人顺序完成任务，工人 $i$ 在做决定时能观察到前一位 $i-1$ 的努力（peer monitoring），但经理只能观察最终项目是否成功；工资合同采取成功才支付的形式。AI 被建模为：</p>
+<ul>
+<li>与人类同样“有效”（努力对成功概率的贡献相同），同样“努力成本”$c$（由经理承担），但</li>
+<li>不会偷懒：一旦被部署，AI 必定努力。</li>
+</ul>
+<p>经理有一个“有限 AI 容量”约束：在每个项目/班次中，最多只能部署一个 AI（用概率方式表示为 $\bar x=\sum_i x_i\le 1$）。工人知道经理承诺的替换概率向量 $x$，但看不到替换是否发生以及替换了谁，只能看到前一位是否“有贡献/努力”。</p>
+<h3 id="04">0.4 关键结论（论文的四个主结果）</h3>
+<p>论文在基准模型下给出四个核心结论：</p>
+<ol>
+<li>最优 AI 部署必然随机化（stochastic replacement），不会把某一岗位“确定性替换”。</li>
+<li>在三人链条中（前端-中间-末端），中间人最安全：最优策略从不替换中间工人；前端与末端都有正的替换概率，且末端弱更高。</li>
+<li>最优策略可能故意“不用满”AI 容量：$\bar x^*&lt;1$ 在一类生产函数条件下成立。</li>
+<li>最优 AI 采用会提高平均工资并降低团队内部工资差距：低工资岗位涨得多，高工资（末端）工资不变。</li>
+</ol>
+<h3 id="05">0.5 贡献定位：在什么意义上“新”</h3>
+<p>这篇工作对 OM/组织经济学/营销组织三条线同时补洞：</p>
+<ul>
+<li>把“AI adoption”从个体层面推到团队层面，并把 AI 替换的外部性写进激励约束里：AI 替换某人，不只影响被替换者，也会通过信息结构改变其他人偷懒的诱因。</li>
+<li>在 Winter (2010) 的同伴监督链条模型上做“技术冲击”：AI 不是降低成本的黑箱，而是改变 moral hazard 环境与信息传播（domino effect）力度的制度性冲击。</li>
+<li>给出可操作的“替换位置原则”：替换谁不等价于替换工资最高者；最关键的是谁在信息网络里承担连接功能。</li>
+</ul>
+<h3 id="06">0.6 适用场景与边界</h3>
+<p>适用：</p>
+<ul>
+<li>任务顺序依赖强（例如审批链、线性开发流程、生产线、内容制作流水线、咨询项目交付链）。</li>
+<li>过程努力不可观察，结果可观察（典型 moral hazard）。</li>
+<li>同伴监督主要来自“看见前一位是否认真做了”（而不是全体互相监控）。</li>
+<li>AI 能在产出上“看不出是不是 AI”（近似通过 Turing test），导致替换具有信息不透明性。</li>
+</ul>
+<p>边界：</p>
+<ul>
+<li>只考虑每个项目最多一个 AI 的容量约束；AI 与人类同成本；AI 永不偷懒。</li>
+<li>工资只与成功挂钩（失败为 0），忽略风险厌恶与复杂支付结构。</li>
+<li>工人除位置外同质；任务同等关键。</li>
+</ul>
+<h2 id="1">1. 研究背景与动机</h2>
+<h3 id="11">1.1 实践痛点</h3>
+<p>现实组织在上 AI 时经常犯的一个“工程直觉错误”是：把 AI 当作孤立模块，只看局部替换的成本收益。</p>
+<p>在顺序型团队里，替换某个岗位会同时触发三类实践难题：</p>
+<ul>
+<li>局部替换不等于局部影响：AI 替换后，未被替换的人也会改变努力强度与谈薪（激励外部性）。</li>
+<li>工作流原本是为人设计的：很多流程把“互相看着干活”的隐性约束写进了组织结构；AI 进入后可能打断这种约束。</li>
+<li>管理者存在“错位替换”风险：如果只盯着工资最高的人替换，可能反而让团队激励成本飙升（因为信息链条被破坏）。</li>
+</ul>
+<p>论文提供的视角是：AI 作为“永不偷懒的执行者”，会改变同伴监督在团队激励中的作用强度，从而改变最优组织与工资结构。</p>
+<h3 id="12">1.2 理论缺口</h3>
+<p>已有文献对 AI/自动化的组织影响，常见抽象是：</p>
+<ul>
+<li>把劳动者当独立个体（忽略团队内信息传播与激励联动）。</li>
+<li>或把技术当作降低边际成本/提高生产率（忽略技术如何改变 moral hazard 与监控结构）。</li>
+<li>即使研究团队激励，经典团队契约文献往往不把“技术替换概率”作为工人信念的一部分，也不讨论替换带来的不透明性。</li>
+</ul>
+<p>因此缺口是：缺一个能同时刻画“有限 AI 资源”“顺序团队生产”“同伴监督链条”“替换不透明性”的统一框架，用来回答“谁被替换、为什么、以及工资怎么变”。</p>
+<h3 id="13">1.3 核心贡献与意义</h3>
+<p>本文的主要贡献可以用一句话概括：把 AI adoption 变成一个激励与信息结构问题，而不仅是成本问题。</p>
+<p>更具体地：</p>
+<ul>
+<li>理论贡献：在顺序团队+peer monitoring 下，给出最优 AI 替换的结构性刻画（随机化、避开中间连接点、可能保留闲置容量），并揭示替换概率如何进入工人偏离时的成功概率 $\zeta_i$，从而进入最优工资 $w_i$。</li>
+<li>管理意义：给出“替换策略的反直觉指南”——最优替换并不等价于替换最高工资者；信息连接岗位要保护；并且某些时候“少用一点 AI”反而更省钱。</li>
+<li>分配含义：最优 AI 采用提高平均工资、压缩工资差距，但并非人人受益（考虑被替换频率后，末端高薪者的期望收益可能下降）。</li>
+</ul>
+<h2 id="2">2. 模型设定与假设</h2>
+<h3 id="21">2.1 符号体系</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$n$</td>
+<td>团队人数</td>
+<td>$n\ge 3$</td>
+</tr>
+<tr>
+<td>$i\in{1,\dots,n}$</td>
+<td>工人位置索引</td>
+<td>顺序链条中的位置</td>
+</tr>
+<tr>
+<td>$e_i\in{0,1}$</td>
+<td>工人 $i$ 的努力选择</td>
+<td>$1$=努力，$0$=偷懒</td>
+</tr>
+<tr>
+<td>$c(e_i)=c e_i$</td>
+<td>努力成本</td>
+<td>$c&gt;0$，线性；由工人承担</td>
+</tr>
+<tr>
+<td>$k$</td>
+<td>投入努力的岗位数</td>
+<td>$k\in{0,\dots,n}$</td>
+</tr>
+<tr>
+<td>$p_k$</td>
+<td>当有 $k$ 个岗位有效努力时项目成功概率</td>
+<td>严格递增；并满足离散凸性（互补性）</td>
+</tr>
+<tr>
+<td>$p_{k+2}-p_{k+1}&gt;p_{k+1}-p_k$</td>
+<td>努力互补性（complementarity）条件</td>
+<td>边际成功率随 $k$ 上升</td>
+</tr>
+<tr>
+<td>$w=(w_1,\dots,w_n)$</td>
+<td>工资合同</td>
+<td>项目成功时支付；失败支付 0（有限责任）</td>
+</tr>
+<tr>
+<td>$w_i$</td>
+<td>工人 $i$ 在成功时获得的支付</td>
+<td>风险中性，期望最大化</td>
+</tr>
+<tr>
+<td>$x=(x_1,\dots,x_n)$</td>
+<td>AI 替换概率向量</td>
+<td>$x_i$=替换工人 $i$ 的概率（混合策略）</td>
+</tr>
+<tr>
+<td>$\bar x=\sum_{i=1}^n x_i$</td>
+<td>AI 部署的总概率</td>
+<td>容量约束 $\bar x\le 1$</td>
+</tr>
+<tr>
+<td>AI</td>
+<td>AI 代理</td>
+<td>一旦部署必定努力；努力成本 $c$ 由 principal 承担</td>
+</tr>
+<tr>
+<td>$\sigma_i$</td>
+<td>工人 $i$ 的策略</td>
+<td>$\sigma_1\in{0,1}$；$\sigma_i:{0,1}\to{0,1}$ for $i\ge 2$</td>
+</tr>
+<tr>
+<td>$\sigma^*$</td>
+<td>触发策略（trigger strategy）剖面</td>
+<td>“看到前人努力就努力，否则偷懒”</td>
+</tr>
+<tr>
+<td>$\zeta_i^x$</td>
+<td>在给定替换策略 $x$ 下，工人 $i$ 偷懒时的成功概率（从 $i$ 的视角）</td>
+<td>决定诱惑强度与信息租</td>
+</tr>
+<tr>
+<td>$W_{x,w}$</td>
+<td>principal 的期望成本（AI 成本+工资期望）</td>
+<td>principal 最小化目标</td>
+</tr>
+<tr>
+<td>$W_x$</td>
+<td>给定 $x$ 下使用最优工资 $w^x$ 的期望成本</td>
+<td>先解 $w$ 再解 $x$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-players">2.2 Players、时间线与信息结构</h3>
+<p>Players：</p>
+<ul>
+<li>Principal（经理/组织）：设计替换策略 $x$ 与合同 $w$。</li>
+<li>Workers（工人）：按顺序做努力决定。</li>
+<li>AI agent：若被部署，占据某位置并确定性努力。</li>
+</ul>
+<p>Sequence of Events（时间线）：</p>
+<ol>
+<li>Principal 承诺并公开 $(x,w)$。</li>
+<li>工人依次行动：工人 $1$ 先选 $e_1$；对 $i\ge 2$，工人 $i$ 观察到前一位的努力 $e_{i-1}$ 后选择 $e_i$。</li>
+<li>项目成功/失败实现。</li>
+<li>若成功，未被替换的工人获得各自的 $w_i$；若失败，支付为 0。若 AI 被部署，principal 无论成败都承担 AI 努力成本 $c$。</li>
+</ol>
+<p>Information Structure（信息结构）是论文的关键：</p>
+<ul>
+<li>工人观察到前一位的“努力/贡献”，但不能分辨这是人还是 AI 产生的贡献。</li>
+<li>工人看不到替换的实现结果：不知道是否发生替换、也不知道替换了谁。</li>
+<li>但若观察到前一位偷懒（$e_{i-1}=0$），则可推断前一位必为人类（因为 AI 不偷懒）。</li>
+</ul>
+<p>这种设定可以被解释为：工人能看到上一环节是否完成/是否有用，但无法识别产出来源（人/AI）。</p>
+<h3 id="23">2.3 生产技术与成功概率</h3>
+<p>项目成功取决于“有效努力岗位数”$k$：当有 $k$ 个岗位努力时成功概率为 $p_k$。</p>
+<p>关键假设是互补性：边际贡献随总体努力增加而更大，即 $p_{k+2}-p_{k+1}&gt;p_{k+1}-p_k$。直觉上，这是很多团队生产的常态：当更多环节都认真做，新增一个认真环节的价值更大（因为瓶颈减少）。</p>
+<h3 id="24">2.4 合同、工资与目标函数</h3>
+<p>工人风险中性，效用为期望工资减努力成本。principal 只能用“成功时支付”的合同激励努力（有限责任使得失败支付为 0 是最优）。</p>
+<p>principal 的目标：在能够诱导所有工人努力的前提下，最小化期望成本。</p>
+<p>成本由两部分组成：</p>
+<ul>
+<li>AI 成本：若替换工人 $i$，则以概率 $x_i$ 发生，principal 支付努力成本 $c$。</li>
+<li>人类工资成本：若工人 $i$ 未被替换（概率 $1-x_i$），当所有人都努力时成功概率是 $p_n$，因此该工人的期望工资为 $p_n w_i$。</li>
+</ul>
+<p>因此，principal 在给定 $(x,w)$ 下的期望成本为：</p>
+<p>$$ W_{x,w}=\sum_{i=1}^n \left[x_i c+(1-x_i)p_n w_i\right]. $$</p>
+<p>她要在满足激励约束与均衡路径全努力的前提下最小化 $W_{x,w}$。</p>
+<h3 id="25">2.5 关键假设与合理性</h3>
+<ol>
+<li>AI 不偷懒：这是区分 AI 与人的核心；它让“替换=去掉 moral hazard”成为干净的对照。论文也在扩展里讨论可编程 AI（甚至可被设定为偷懒）。</li>
+<li>AI 与人同成本同效率：刻意排除了“AI 更便宜/更强”这类机械渠道，迫使所有结果来自激励与信息结构，而不是生产率差异。</li>
+<li>AI 容量有限（$\bar x\le 1$）：现实中常见（算力、集成成本、预算、治理成本）。这一约束使得“替换谁”变成真正的策略问题。</li>
+<li>替换不透明：许多数字化协作场景里，输入/输出并不容易归因于人或 AI；而且从机制设计角度，principal 也可能偏好这种不透明（扩展 4.5 有讨论）。</li>
+<li>顺序链条+只观察前一位：这是 Winter (2010) 证明为人类团队最优的信息网络结构；本文用它作为基准网络，并在扩展中比较 star network。</li>
+</ol>
+<h2 id="3">3. 分析与求解</h2>
+<h3 id="31-x-trigger-equilibrium">3.1 固定替换策略 $x$ 时的最优工资：为什么是 trigger equilibrium</h3>
+<p>核心思路是“两步走”：</p>
+<ul>
+<li>第一步：把 $x$ 当作外生，求能诱导全努力的最低成本工资 $w^x$。</li>
+<li>第二步：把得到的成本 $W_x$ 作为 $x$ 的函数，选择最优 $x^*$。</li>
+</ul>
+<p>固定 $x$ 后，论文证明最省钱的工资合同会诱导一个触发策略（trigger strategy）均衡：</p>
+<ul>
+<li>工人 1：$\sigma_1^*=1$。</li>
+<li>对 $i\ge 2$：$\sigma_i^<em>(e_{i-1})=1$ 若 $e_{i-1}=1$；否则 $\sigma_i^</em>(e_{i-1})=0$。</li>
+</ul>
+<p>它的经济学意义是：同伴监督被放大成“多米诺效应”（domino effect）。一旦某人被发现偷懒，后面的人就集体偷懒，从而让任何单点偷懒对项目成功概率的打击最大，形成最强威慑。</p>
+<p>关键在于互补性：当看到前人偷懒时，继续努力的边际收益下降（因为后面会被触发为偷懒或成功率变低），使得“跟着偷懒”成为最优反应。</p>
+<h3 id="32-zeta_ix">3.2 工人的激励约束与 $\zeta_i^x$</h3>
+<p>在 trigger 策略的均衡路径上（大家都观察到前人努力，因此继续努力），principal 希望每个未被完全替换的工人 $i$ 刚好无差异：努力与偷懒的期望效用相等（这样工资最低）。</p>
+<p>若工人 $i$ 努力，均衡路径继续，成功概率为 $p_n$，其期望收益为 $p_n w_i - c$。</p>
+<p>若工人 $i$ 偷懒，他会根据对“AI 是否部署、部署在何处”的信念，推断项目仍可能成功的概率。把这个偏离下的成功概率记为 $\zeta_i^x$，则偷懒的期望收益为 $\zeta_i^x w_i$（偷懒无成本）。</p>
+<p>绑定激励约束得到：</p>
+<p>$$ p_n w_i - c = \zeta_i^x w_i \quad\Rightarrow\quad w_i^x=\frac{c}{p_n-\zeta_i^x}. $$</p>
+<p>因此，理解最优工资结构的核心就是理解：</p>
+<ul>
+<li>偷懒时成功概率 $\zeta_i^x$ 越高，偷懒越“无痛”，需要更高工资才能抑制偷懒。</li>
+<li>AI 的引入会抬高某些人的 $\zeta_i^x$（因为即使后面人偷懒，AI 仍会努力），从而推高工资。</li>
+</ul>
+<h3 id="33-zeta_ix-ai">3.3 $\zeta_i^x$ 的结构：AI 如何进入工人的信念</h3>
+<p>论文给出一般形式（这里用直觉化的分解来复盘）：当工人 $i$ 偷懒后，后续工人的行为取决于他们是否看到偷懒（即 $i$ 是否为人类）以及链条是否被 AI “截断”。由于工人看不到替换实现结果，他们会对三类情形加权：</p>
+<ol>
+<li>发生替换且替换在 $i$ 之前：$i$ 后面的工人在看到 $i$ 偷懒后触发为偷懒，成功主要靠 $i-1$ 之前的努力贡献，成功概率是 $p_{i-1}$。</li>
+<li>发生替换且替换在 $i$ 之后某个位置 $k&gt;i$：从 $i$ 到 $k-1$ 的人会在看到前序偷懒后触发偷懒，但 AI 在 $k$ 会努力、其后的人在看到 AI 的努力后继续努力，成功概率变成 $p_{n-k+i}$（等价于“后面从 $k$ 起又恢复了努力链”）。</li>
+<li>没有发生替换：典型 domino，$i$ 后面全偷懒，成功概率是 $p_{i-1}$。</li>
+</ol>
+<p>把这些情形按条件概率加权，得到 $\zeta_i^x$。论文进一步把它写成更便于看比较静态的形式：</p>
+<p>$$ \zeta_i^x = p_{i-1}+\sum_{k=i+1}^n \frac{x_k}{1-x_i}\left(p_{n-k+i}-p_{i-1}\right). $$</p>
+<p>这个式子非常值得反复咀嚼：</p>
+<ul>
+<li>$\zeta_i^x$ 以 $p_{i-1}$ 为基底（后面全塌方时的成功率），再加上“后面某处有 AI 托底”的增量。</li>
+<li>对 $i&lt;n$，$\zeta_i^x$ 会随“后面有 AI 的概率”上升；这意味着后面的替换风险会直接抬高前面人的工资。</li>
+<li>对末端工人 $n$，$\zeta_n^x=p_{n-1}$ 与 $x$ 无关，因为他后面没人，AI 放哪都无法“托底”他的偷懒后果。</li>
+</ul>
+<h3 id="34-principal-trade-off">3.4 principal 的成本函数与三类 trade-off（公式级分解）</h3>
+<p>将最优工资 $w^x$ 代回 principal 成本得到 $W_x$，并对某个 $x_i$ 求边际效应，论文得到一个非常“管理会计感”的分解：</p>
+<p>$$ \frac{\partial W_x}{\partial x_i} = -\left(p_n w_i^x-c\right) + (1-x_i)p_n\frac{\partial w_i^x}{\partial x_i}+\sum_{k=1}^{i-1}(1-x_k)p_n\frac{\partial w_k^x}{\partial x_i}. $$</p>
+<p>把它读成三类效应：</p>
+<ol>
+<li>Direct cost saving：替换 $i$，少付期望工资 $p_n w_i^x$，多付 AI 成本 $c$。因为 $p_n w_i^x\ge c$，这项是节省。</li>
+<li>Direct incentive cost：提高 $x_i$ 会让工人 $i$（在他未被替换时）认为“既然我没被替换，说明别处更可能被替换”，从而推高 $\zeta_i^x$，导致其工资 $w_i^x$ 上升。</li>
+<li>Indirect incentive cost：提高 $x_i$ 还会通过“后面更可能被 AI 托底”推高前面工人的 $\zeta_k^x$，因此不得不提高他们的工资。</li>
+</ol>
+<p>位置在这里变得至关重要：</p>
+<ul>
+<li>替换越靠后，direct saving 越大（后面的人工资本来更高），但 indirect incentive cost 影响的前序人越多。</li>
+<li>替换越靠前，indirect incentive cost 小（前面没人），但 direct saving 也小。</li>
+</ul>
+<p>这套分解是全文的机制骨架：后面所有“谁被替换/是否用满 AI/工资如何变”都是这三项 trade-off 的不同组合。</p>
+<h3 id="35-1-x-trigger-proposition-1">3.5 核心命题 1：固定 $x$ 时的最优工资与 trigger 均衡（Proposition 1）</h3>
+<p>命题内容的可复盘版本：</p>
+<ul>
+<li>给定任意替换策略 $x$，存在一个最优工资 $w^x$ 使得 trigger 策略 $\sigma^*$ 成为均衡。</li>
+<li>该最优工资对每个未被完全替换的工人满足 $w_i^x=\frac{c}{p_n-\zeta_i^x}$。</li>
+</ul>
+<p>直觉：</p>
+<ul>
+<li>trigger 均衡最大化了“偏离会引发的惩罚”（domino），因此在所有能实现全努力的均衡中，它让每个工人的偷懒最不划算，从而工资最低。</li>
+<li>AI 的引入会在某些位置打断 domino（因为 AI 不会因为看到前人偷懒而跟着偷懒），所以 $\zeta_i^x$ 通常上升，工资上升。</li>
+</ul>
+<h3 id="36-2proposition-2">3.6 核心命题 2：最优替换必须随机化（Proposition 2）</h3>
+<p>命题：最优 $x^<em>$ 不会出现任何 $x_i^</em>=1$，且至少有一个 $x_i^*&gt;0$。</p>
+<p>机制直觉：</p>
+<ul>
+<li>纯策略替换（确定替换某一人）会让其他人对 AI 位置的信念变得“太确定”，从而在某些位置产生较大的间接激励成本。</li>
+<li>随机化使得工人对“AI 会不会在后面托底”存在不确定性，从而在平均意义上更便宜地维持激励。</li>
+</ul>
+<p>论文的一个关键数学抓手是：在一类只在首端与末端之间混合的策略族里，principal 的成本是严格凸的，因此内部混合优于两个端点纯策略。</p>
+<p>管理含义：如果把“随机化”翻译成组织动作，不一定是同一条生产线里随机插入 AI，而可以是：</p>
+<ul>
+<li>在不同项目之间轮换：同一岗位有时由 AI 执行，有时由人执行。</li>
+<li>在不同班次轮换：例如夜班更多 AI，白班更多人，形成概率意义上的替换。</li>
+</ul>
+<p>这使得结论具有可实施性：随机化不必等价于“每天抽签裁人”，而是“把任务分配给 AI 的频率做成策略变量”。</p>
+<h3 id="37-3proposition-3">3.7 核心命题 3：三人链条下“谁被替换”（Proposition 3）</h3>
+<p>为获得清晰的异质性结论，论文聚焦 $n=3$：工人 1（前端）、2（中间）、3（末端）。</p>
+<p>命题：$x_2^<em>=0$，$x_3^</em>&gt;0$，且 $x_3^<em>\ge x_1^</em>\ge x_2^*$。</p>
+<p>经济学直觉（把证明读成机制）：</p>
+<ul>
+<li>中间人是信息链条的连接器：他既观察前端，又被末端观察。替换中间人会切断 peer monitoring 的信息流，使 domino 威慑失效，对激励成本非常不友好。</li>
+<li>把替换概率从中间挪到末端通常同时带来两件好事：更大的 direct saving（末端工资最高）与更低的 direct incentive cost（末端没有后继者，其工资不随 $x$ 变）。虽然会增加 indirect cost（更多前序受影响），但综合仍更划算。</li>
+<li>末端更易被替换：末端的 direct saving 最大，而 direct incentive cost 为零；因此末端往往承担更高替换风险。</li>
+</ul>
+<p>用三人情形的 $\zeta$ 写得更透明：</p>
+<ul>
+<li>$\zeta_1^x = p_0 + \frac{x_2}{1-x_1}(p_2-p_0)+\frac{x_3}{1-x_1}(p_1-p_0)$。</li>
+<li>$\zeta_2^x = p_1 + \frac{x_3}{1-x_2}(p_2-p_1)$。</li>
+<li>$\zeta_3^x = p_2$。</li>
+</ul>
+<p>因此末端工资 $w_3^x=\frac{c}{p_3-p_2}$ 与 $x$ 无关，而前两位工资会随着“后面有 AI 托底”的概率上升而上升。</p>
+<h3 id="38-4ai-proposition-4">3.8 核心命题 4：为什么会“AI 留着不用”（Proposition 4）</h3>
+<p>命题：在三人链条中，principal 会选择 $\bar x^*&lt;1$ 当且仅当 $p_1^2-p_3 p_0&gt;0$。</p>
+<p>把这个条件改写一下更有味道：$\frac{p_1}{p_0}&gt;\frac{p_3}{p_1}$。它表示：</p>
+<ul>
+<li>从“无人努力”到“有 1 单位努力”的相对增益很大；</li>
+<li>而从“有 1 单位努力”到“全体努力”的相对增益反而没那么大。</li>
+</ul>
+<p>此时如果 AI 容量用满（$\bar x=1$），等于“项目里必有一个位置确定努力”，会显著抬高工人偏离时的成功概率 $\zeta_i$，让偷懒变得不那么致命，从而需要付更高工资才能压住偷懒。</p>
+<p>反直觉点在于：即使 AI 不偷懒且同成本，AI 的存在也可能削弱“偷懒会导致项目失败”的威胁，从而提高激励所需的信息租。为了避免支付更高信息租，principal 会保留一定概率“不部署 AI”，用不确定性恢复纪律。</p>
+<p>这其实是一个经典机制设计味道的结论：principal 把“环境不确定性”当作激励工具。</p>
+<h3 id="39-proposition-5-corollary-1-proposition-6">3.9 工资、工资差距与期望收益（Proposition 5, Corollary 1, Proposition 6）</h3>
+<p>Proposition 5（工资水平）：最优 AI 采用后仍保持 $w_3^{x^<em>}&gt;w_2^{x^</em>}&gt;w_1^{x^<em>}$，并且 $w_1^{x^</em>}&gt;w_1^0$、$w_2^{x^<em>}&gt;w_2^0$、$w_3^{x^</em>}=w_3^0$。</p>
+<p>直觉：</p>
+<ul>
+<li>前端与中间人的工资上升不是因为他们更稀缺，而是因为他们的后继者有被 AI 替换的概率，使得他们偷懒的后果被“AI 托底”，需要更高工资压住。</li>
+<li>末端人没有后继者，所以无论 AI 放在哪里，他偷懒后的成功概率不变，因此工资不变。</li>
+</ul>
+<p>Corollary 1（工资差距）：团队内最高与最低工资差距下降。</p>
+<p>机制：最高工资（末端）不涨，最低工资（前端）上涨，差距自然缩小。</p>
+<p>Proposition 6（期望收益/福利）：若把被替换的频率也算进去，结论更细：</p>
+<ul>
+<li>中间人不被替换且工资上升，因此期望收益上升。</li>
+<li>末端人有被替换概率、工资不变，因此期望收益下降。</li>
+<li>前端人既工资上升又有被替换概率，净效应不确定。</li>
+</ul>
+<p>这提醒我们：工资上升不等于福利上升，尤其当“工时/上岗概率”被 AI 随机化压缩时。</p>
+<h3 id="310">3.10 比较静态：哪些参数会推着结论走</h3>
+<p>这篇论文的比较静态有两类：</p>
+<ol>
+<li>生产函数形状（$p_k$ 的曲率/互补性强弱）影响“domino 威慑”的价值，从而影响最优替换位置与是否用满 AI。</li>
+<li>信息结构（网络拓扑、可观察性）影响 peer monitoring 的有效性，从而改变替换的外部性。</li>
+</ol>
+<p>在主模型中，最关键的阈值条件是 underutilization：$p_1^2&gt;p_0 p_3$。</p>
+<ul>
+<li>当“第一单位努力非常关键”时，AI 若总在场会把偏离时的成功率抬得太高，激励变贵，所以会少用 AI。</li>
+<li>当互补性较强、后续努力的边际贡献更凸（更像 O-ring），这个条件往往不成立，于是更可能用满 AI（扩展 4.1 就给了一个封闭解并显示总是用满）。</li>
+</ul>
+<h2 id="4">4. 主要结论与管理启示</h2>
+<h3 id="41-benchmark-trade-off">4.1 机制揭示：相对 benchmark 的新 trade-off</h3>
+<p>Benchmark（无 AI）里，Winter (2010) 的核心机制是：</p>
+<ul>
+<li>用顺序链条与同伴监督制造 domino：任何人偷懒都会引发后面集体偷懒，严重降低成功率，从而以较低工资实现全努力。</li>
+</ul>
+<p>引入 AI 后，出现了一个新的三角张力：</p>
+<ul>
+<li>替换带来直接省工资（direct saving），但</li>
+<li>AI 不会响应式偷懒，可能打断 domino，抬高 $\zeta$，导致工资上升（direct + indirect incentive costs）。</li>
+</ul>
+<p>因此最优策略不是“替换工资最高者”，而是“在省工资与维持信息链条之间做结构化权衡”。</p>
+<h3 id="42">4.2 可操作的管理建议</h3>
+<ol>
+<li>把 AI 当作激励结构的一部分，而不是单点成本工具<ul>
+<li>在顺序工作流里，替换某个岗位会改变前后岗位的偷懒诱因，必须在合同/绩效体系里同步调整。</li>
+</ul>
+</li>
+<li>优先保护“信息连接点”岗位<ul>
+<li>三人链条中间人不替换；更一般地，在任何网络中，承担信息汇聚/传递的节点更不该被替换（扩展 4.3 的 star network 也得到类似结论）。</li>
+</ul>
+</li>
+<li>采用随机化的人机协作，而非确定性裁撤<ul>
+<li>让 AI 在不同项目/班次/时段轮换承担某些岗位，相当于在概率意义上替换。</li>
+<li>随机化能减少激励外部性在特定岗位的集中爆发，降低总成本。</li>
+</ul>
+</li>
+<li>不要默认“AI 越多越好”<ul>
+<li>当 underutilization 条件成立时，用满 AI 会让偷懒后果不够严重，反而迫使你加薪才能让人干活。</li>
+<li>管理上可理解为：保留一定人类占比/一定不确定性，可能是更便宜地纪律装置。</li>
+</ul>
+</li>
+<li>预期工资会整体上扬，尤其是未被替换但处于前序位置的人<ul>
+<li>AI 引入并不必然压工资；在该模型里，前序员工会要求更高工资来补偿更高的偷懒诱因（或者说更高的机会成本）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="43">4.3 图表/表格解读</h3>
+<p>论文最核心的总结型呈现是 Table 1（Key Managerial Insights）。它可以被读成一个“从机制到处方”的映射表：</p>
+<ul>
+<li>随机化替换：对应命题 2。</li>
+<li>前端与末端替换风险更高，中间不替换：对应命题 3。</li>
+<li>工资影响：对应命题 5 与推论 1。</li>
+<li>部分任务替换不优：对应扩展 4.2 的命题 9。</li>
+</ul>
+<p>如果要把 Table 1 的价值再上一个台阶，它其实在告诉读者：AI adoption 的正确 KPI 不是“替换了多少人”，而是“在不破坏激励与信息流的情况下，减少了多少总激励成本并提高了多少产出一致性”。</p>
+<h3 id="44-extensions">4.4 Extensions 逐一解读</h3>
+<h4 id="441-o-ring-section-41">4.4.1 团队协同与任务互补性：O-ring 生产函数（Section 4.1）</h4>
+<p>为了把“互补性强弱”参数化，论文采用 O-ring：$p_k=\alpha^{n-k}$，其中 $\alpha\in(0,1)$。</p>
+<ul>
+<li>$\alpha$ 越小，互补性越强（任何一个人偷懒都很致命）。</li>
+<li>在该设定下（特别是三人团队），最优策略仍然是中间不替换、首尾随机化替换，并且给出封闭解：</li>
+</ul>
+<p>$$ x_1^<em>=\frac{\sqrt{1+\alpha}-1}{\alpha},\quad x_2^</em>=0,\quad x_3^<em>=1-x_1^</em>. $$</p>
+<p>比较静态：互补性越强（$\alpha$ 越小），$x_1^<em>$ 上升、$x_3^</em>$ 下降，直觉是：</p>
+<ul>
+<li>当互补性很强时，domino 的边际惩罚空间变小（因为本来任何偷懒都几乎让项目完蛋），因此“替换末端以获得巨大 direct saving”这件事的相对优势下降，首尾的替换概率更接近对称。</li>
+</ul>
+<p>工资封闭解也给出：</p>
+<p>$$ w_1^{x^<em>}=\frac{c}{1-\alpha^2},\quad w_2^{x^</em>}=\frac{c}{(1-\alpha)\sqrt{1+\alpha}},\quad w_3^{x^*}=\frac{c}{1-\alpha}. $$</p>
+<p>关于不平等：AI 减少工资差距的效果在“互补性弱”（任务更独立）时更强。因为任务越独立，domino 机制越关键，AI 打断 domino 的外部性越大，工资结构被扭曲得越明显，因而 AI 的重新配置更能压缩差距。</p>
+<h4 id="442-task-based-substitutionsection-42">4.4.2 任务级替代（task-based substitution，Section 4.2）</h4>
+<p>扩展允许 AI 只替代一个岗位的一部分任务：$x_i\in[0,1]$ 表示 AI 完成工人 $i$ 的任务占比，工人的努力成本变为 $(1-x_i)c$。</p>
+<p>关键新增是：部分替代同时降低了工人偷懒的可检测性（因为 AI 做了一部分，后继者不一定能发现前人偷懒）。这导致一个“抵消效应”：</p>
+<ul>
+<li>你帮他做了一部分，他更省力；</li>
+<li>但你也帮他遮住了偷懒，他更难被抓。</li>
+</ul>
+<p>结果：除非把一个岗位完全替代（$x_i=1$），否则部分替代并不能降低该岗位的总激励成本。最优解退化为“要么全替代，要么不替代”，对应命题 9：</p>
+<ul>
+<li>若 $p_0&gt;0$，最优是完全替代最前或最后的整岗任务。</li>
+<li>若 $p_0=0$，不替代也可能同样最优。</li>
+</ul>
+<p>这对现实有个微妙启示：很多人期望 GenAI 先从“做一部分工作”开始，但在强激励环境下，部分替代可能引入监控稀释效应，未必真的省钱。</p>
+<h4 id="443-chain-starsection-43">4.4.3 团队网络结构：从 chain 到 star（Section 4.3）</h4>
+<p>把网络从链条换成星型：$n-1$ 个外围工人先做，中心工人（可能是经理/总装配者）观察他们。</p>
+<p>在一定条件 $p_{n-1}^2-p_n p_{n-2}\le 0$ 下，最优替换策略的特征是：</p>
+<ul>
+<li>中心节点不替换（$x_n=0$），因为它是信息流的关键；</li>
+<li>AI 替换概率分配在外围节点上，只要总和等于容量即可。</li>
+</ul>
+<p>这说明“不要替换信息枢纽”并非链条特例，而是更一般的网络机制：AI 替换的本质约束来自信息结构，而不仅是任务顺序。</p>
+<h4 id="444-aisection-44">4.4.4 可编程/战略性 AI（Section 4.4）</h4>
+<p>这里是全篇最“脑洞但很有用”的扩展：允许 principal 把 AI 编程成像人一样根据前人是否偷懒来决定是否努力。</p>
+<p>如果编程无成本，那么最优是把 AI 也设为 trigger：看到前人偷懒就偷懒。这样 AI 不再打断 domino，激励外部性消失，principal 就只剩下“替换谁最省钱”的问题，于是最优变成确定性替换末端高薪者。</p>
+<p>更反直觉的管理寓意：principal 可能偏好“会偷懒的 AI”（在特定信息下选择不努力），因为这能作为纪律装置帮她省工资。</p>
+<h4 id="445-section-45">4.4.5 其他讨论（Section 4.5）</h4>
+<p>论文还讨论了三类放松：</p>
+<ul>
+<li>放松 AI 容量约束：若 AI 足够多且无额外成本，极端下会替代全部工人，许多分配与随机化结论消失。</li>
+<li>允许工人观察 AI 是否在岗：可观察会削弱 principal 利用不确定性的空间，随机化与 underutilization 的好处下降。</li>
+<li>工人异质性：若中间人更低效/更贵，则“中间不替换”可能不再成立；位置与类型将共同决定替换风险。</li>
+</ul>
+<h2 id="5-reviewers-critique">5. Reviewer's Critique</h2>
+<h3 id="51-senior-editor">5.1 我会给的优点（像一个挑剔但讲理的 Senior Editor）</h3>
+<ol>
+<li>机制清晰且抓住了当下组织问题的要害<ul>
+<li>不是泛泛谈 AI，而是把 AI 变成一个结构化的激励冲击：它改变了 moral hazard 与信息传播。</li>
+</ul>
+</li>
+<li>
+<p>结果有辨识度：随机化、保护连接节点、可能少用 AI、工资差距下降</p>
+<ul>
+<li>每条结论都不是“当然如此”，都有反直觉性与管理可操作性。</li>
+</ul>
+</li>
+<li>
+<p>建模选择克制</p>
+<ul>
+<li>把 AI 与人类的成本与效率对齐，迫使所有洞见来自激励外部性，这让理论贡献更干净。</li>
+</ul>
+</li>
+<li>
+<p>扩展做得有方向感</p>
+<ul>
+<li>O-ring、任务级替代、网络结构、战略 AI：这些扩展不是堆砌，而是逐步探测核心机制的鲁棒性。</li>
+</ul>
+</li>
+</ol>
+<h3 id="52">5.2 我会卡住的点（强假设与现实简化）</h3>
+<ol>
+<li>
+<p>AI “永不偷懒”可能过强</p>
+<ul>
+<li>现实中的 AI 也会出错、会被错误目标函数驱动、会产生低质量输出；把这一切当作 0 moral hazard 是一个很强的抽象。</li>
+<li>论文确实在扩展 4.4 提到可编程 AI，但那更像策略性而不是“质量不确定性”。</li>
+</ul>
+</li>
+<li>
+<p>工人看不到 AI 是否在岗的设定很关键，但在很多组织里并不成立</p>
+<ul>
+<li>很多团队协作里，人们知道哪些任务是自动化的（甚至会在 Slack/工单系统里标注 Bot），从而信念更新不同。</li>
+<li>论文说“不透明对 principal 更好”，这在伦理与治理上可能有张力：组织是否应刻意隐藏 AI 使用？这涉及合规与信任成本。</li>
+</ul>
+</li>
+<li>
+<p>单项目、一次性博弈：忽略动态声誉、学习与长期关系</p>
+<ul>
+<li>在真实组织里，重复互动、晋升与职业声誉（career concerns）会构成另一套激励装置，可能弱化 domino 的必要性。</li>
+<li>若是重复博弈，AI 替换的随机化是否仍最优？可能出现截然不同的动态路径依赖。</li>
+</ul>
+</li>
+<li>
+<p>工资结构过于简化（成功才付）</p>
+<ul>
+<li>现实激励常见固定工资+奖金，且存在风险厌恶与工资粘性；这些会改变 $w_i^x=\frac{c}{p_n-\zeta_i^x}$ 的线性结构。</li>
+</ul>
+</li>
+<li>
+<p>同质工人与同质任务的假设限制外推</p>
+<ul>
+<li>现实中“中间人”常常是协调者/项目经理/架构师，技能更稀缺、工资更高；位置与技能会高度相关。</li>
+<li>若让任务重要性异质，替换策略可能从“位置逻辑”转向“关键任务逻辑”。</li>
+</ul>
+</li>
+</ol>
+<h3 id="53-msommanagement-science">5.3 我希望作者补强的方向（如果要冲 MSOM/Management Science 的主刊审稿）</h3>
+<ol>
+<li>
+<p>更强的可检验预测与证据连接</p>
+<ul>
+<li>理论已经给出“中间连接岗位最不易被替换”“替换风险更高的岗位工资上升”等可检验预测。</li>
+<li>一个自然的下一步是：用组织内部流程数据或工单链路数据，把岗位在信息网络中的介数中心性（betweenness centrality）与自动化替代风险联系起来。</li>
+</ul>
+</li>
+<li>
+<p>把“AI 质量/可靠性”引入为连续参数</p>
+<ul>
+<li>让 AI 有概率失误或输出低质量，相当于把 AI 从确定性努力变成随机有效努力。这样可以研究：当 AI 质量低时，是否更需要保留人类连接点？随机化是否仍然最优？</li>
+</ul>
+</li>
+<li>
+<p>把“替换可观察性”从 0/1 变成连续</p>
+<ul>
+<li>现实中存在部分可观察：工人可能从风格、延迟、系统提示推断 AI 参与概率。可以引入一个信号精度参数，研究信息透明度如何影响最优部署与工资。</li>
+</ul>
+</li>
+<li>
+<p>让容量约束更贴近运营语言</p>
+<ul>
+<li>现在的 $\bar x\le 1$ 是概率容量。可以将其微观基础化为：AI 使用产生凸的算力成本、合规成本或监管成本，从而把 underutilization 与成本曲线联系起来。</li>
+</ul>
+</li>
+</ol>
+<h3 id="54">5.4 未来研究方向（能拓出好几篇）</h3>
+<ul>
+<li>多项目/多团队的资源配置：一套 AI 容量如何跨团队分配？会出现“把 AI 放在更依赖 peer monitoring 的团队”这种二级选择。</li>
+<li>劳动力市场与工资形成：把外生 $w_i$ 契约与外部工人退出/招聘成本结合，研究长期工资结构与离职。</li>
+<li>AI 与组织设计共同决定：允许 principal 先选网络结构（链条、星型、矩阵），再选 AI 部署；问“AI 时代最优组织结构是否改变”。</li>
+<li>行为因素：工人对 AI 的厌恶/公平偏好/心理安全感对努力决策的影响。</li>
+<li>合规与治理：若隐藏 AI 参与对 principal 有利，但带来信任与合规成本，最优透明度如何权衡？</li>
+</ul>
+<h2 id="6-one-more-thing">6. One More Thing</h2>
+<p>如果只能带走一个“灵光一现”，我会选这个：</p>
+<p>AI 的价值不只在于“它会干活”，还在于“它会改变人类对后果的想象”。在这个模型里，AI 越可靠、越必然努力，反而越可能让人类觉得“偷懒也没那么致命”，从而把激励成本推高。于是最优策略竟可能是：故意留一点 AI 不用，甚至在扩展里故意把 AI 设定成会在某些情况下偷懒。</p>
+<p>这是一种很组织经济学的黑色幽默：你买来的最勤奋的机器，可能会把人类的纪律感稀释掉；而你最聪明的管理手段，可能是让系统保留一点“失败的可能性”。</p>
+    </div>
+  </div>
+</body>
+</html>

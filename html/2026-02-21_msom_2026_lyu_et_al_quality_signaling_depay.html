@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-02-21_msom_2026_lyu_et_al_quality_signaling_depay</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="quality-signaling-in-rewards-based-crowdfunding-the-role-of-deferred-payments">Quality Signaling in Rewards-Based Crowdfunding: The Role of Deferred Payments</h1>
+<p>Authors: Jiancheng Lyu (School of Management, University of Science and Technology of China); Xiaobei Shen (School of Management, University of Science and Technology of China; School of Management, Zhejiang University); Yuqian Zhou (School of Management, University of Science and Technology of China; Hefei Xingtai Financial Holdings (Group) Co., Ltd.); Xiangyin Kong (School of Management, University of Science and Technology of China)</p>
+<p>Year: 2026</p>
+<p>Journal: Manufacturing &amp; Service Operations Management (M&amp;SOM)</p>
+<p>摘要（中文翻译）：众筹的快速发展背后隐藏着一个结构性缺陷：创作者关于产品质量的私人信息难以被支持者观察，从而可能被用来“剥削”支持者并损害平台长期信任。为保护支持者，越来越多平台开始将部分募集资金托管，作为与交付绑定的延期支付保险（Deferred Payment, DePay）。本文研究：在存在私人信息的环境下，DePay 会如何改变众筹中的质量信号传递？平台又应如何设计 DePay 以获得更好的众筹结果？作者构建了一个代表性创作者的信号博弈模型。在当前实践中，DePay 往往是强制的，创作者主要通过提高筹资目标（信号工具 T）或降低回报价格（信号工具 P）来传递质量。本文提出将 DePay 改为自愿采用，并允许创作者选择延期比例，从而形成新的信号工具 D。在 “all-or-nothing” (AON) 机制下，只要引入 DePay，就能保证存在分离均衡，且 T、P、D 都可能有效。不同于既有文献将 T 视为唯一最优工具的结论，本文发现：(i) 当平台设定的留存比例较低时，P 反而优于 T；(ii) 若允许创作者自行选择留存比例，则 D 同时优于 T 和 P，并能实现支持者与高质量创作者的双赢。在 “keep-it-all” (KIA) 机制下，由于 T 失效，要实现（作者所强调的）“偏好型”分离均衡，DePay 变得不可或缺；但此时自愿 DePay 并不必然优于强制 DePay。管理启示上，本文为平台何时应采取强制或自愿 DePay、以及创作者如何利用 DePay 进行质量信号设计提供了可操作的指导。</p>
+<h2 id="0">0. 论文速览</h2>
+<h3 id="01">0.1 一句话总结</h3>
+<p>把 “延期支付/托管资金” 从单纯的风险控制工具，提升为一个可调节的质量信号工具：它不仅能保证分离均衡的出现，还会改变传统信号（筹资目标 T、价格 P）的相对优劣，并在合适设计下实现平台、支持者与高质量创作者的共赢。</p>
+<h3 id="02">0.2 研究问题</h3>
+<ol>
+<li>在奖励型众筹中，创作者质量不可观察时，DePay 是否会改变均衡类型（分离 vs 池化）？</li>
+<li>若存在分离均衡，高质量创作者应使用什么信号工具：提高筹资目标 T、降低价格 P，还是通过自愿采用 DePay（以及选择延期比例）形成的新工具 D？</li>
+<li>平台应如何在强制 DePay (MDP) 与自愿 DePay (VDP) 之间选择？AON 与 KIA 两种融资机制下结论是否不同？</li>
+</ol>
+<h3 id="03">0.3 核心发现概览</h3>
+<ol>
+<li>AON 下，只要实施 DePay（无论强制还是自愿），分离均衡都存在；甚至当高低质量的开发成本相同（传统模型会出现池化）时，DePay 仍能保证分离。</li>
+<li>AON + MDP 下，传统“筹资目标 T 永远最优”的结论不再成立：当平台设定的留存比例 α 较低（平台扣留更多资金）时，价格信号 P 可能优于 T。</li>
+<li>AON + VDP 且允许创作者选择 α 时，新工具 D 会成为最优信号：高质量创作者可以在不降价、不抬高筹资目标的情况下，用“选择合适的延期比例”以更低信号成本实现分离，并通常带来双赢。</li>
+<li>KIA 下，筹资目标 T 失效，且成本异质性不再帮助分离，反而可能强化低质量模仿；要得到作者强调的“偏好型”分离均衡（高质量创作者定价更高、交付概率更高），DePay 是必要条件。但在 KIA 中，VDP 并不总是优于 MDP。</li>
+<li>在加入“不可避免的生产不确定性”扩展后，AON 下的主要结论仍稳健：MDP + DePay 仍能保证分离，且 P 与 T 的优劣仍取决于 α 的大小。</li>
+</ol>
+<h3 id="04">0.4 读者最关心的三件事</h3>
+<ol>
+<li>理论上：DePay 提供了第二种“信号力量”，从而重写了 T 与 P 的比较，以及均衡存在性。</li>
+<li>管理上：AON 与 KIA 下对 MDP/VDP 的推荐不同；平台不能简单地“把 α 调得越低越好”。</li>
+<li>方法上：一个高度可解析的信号博弈框架，把平台政策（托管比例）与营销变量（价格、目标）统一在同一组激励约束中。</li>
+</ol>
+<h2 id="1-motivation">1. 研究背景与动机 (Motivation)</h2>
+<h3 id="11">1.1 实践痛点：众筹的“交付失败”与信任坍塌</h3>
+<p>奖励型众筹的典型流程是：创作者在平台发布项目，设定回报价格 p、筹资目标 C 和截止日期；支持者在无法充分检验产品质量与交付能力的情况下预付资金，等待产品交付。现实中的痛点是交付失败与质量偏差非常普遍，且其根源往往不是简单的需求不确定性，而是信息不对称与“夸大承诺”。</p>
+<p>平台实践中出现的应对机制之一，是托管部分资金并延期支付给创作者（DePay）：创作者在募资成功后只能先拿到 α 比例的资金用于研发生产，剩余 1-α 在交付后再释放；若未交付或交付不符，托管部分将被退款给支持者。Indiegogo 的 Reserved Funds、以及中国平台的“尾款/押金”式做法都体现了这种比例型托管。</p>
+<p>关键现象：DePay 在实践中不仅是保险或风控工具，它本身也可能成为一个可观察、可承诺的“自我约束”，从而影响支持者对质量的推断与参与决策。</p>
+<h3 id="12-depay">1.2 理论缺口：现有文献忽略了“比例型 DePay”对质量信号的作用</h3>
+<p>已有研究对 DePay 的讨论主要集中在两类机制：
+1. 作为平台治理工具缓解道德风险（例如创作者拿钱不交付）。
+2. 作为目标相关的机制（target-based）在某些情形下遏制欺诈。</p>
+<p>但比例型 DePay（平台按比例扣留资金）在实践更常见，其在“质量信号”意义下的作用缺乏系统分析。另一方面，众筹质量信号文献（尤其是 AON 场景）通常强调筹资目标 T 是更有效的信号工具，甚至在某些经典设定下被证明是唯一最优工具；价格信号 P 往往被认为效率较低或被目标信号压制。</p>
+<p>本文提出的核心缺口：当平台引入 DePay 后，低质量模仿者的收益函数会被结构性改变（因为被扣留的资金会被退还给支持者），这会改变激励约束的形态，从而可能颠覆“目标信号主导”的既有结论，并产生新的最优信号工具。</p>
+<h3 id="13-depay">1.3 核心贡献：DePay 作为“可调惩罚”带来的新信号机制</h3>
+<p>本文的贡献可概括为三条主线：
+1. 均衡存在性贡献：在 AON 下，只要实施 DePay，就能保证分离均衡存在；即使高低质量开发成本相同，DePay 也能创造可分离的激励结构。
+2. 工具选择贡献：在 MDP 下，价格信号 P 可能优于筹资目标信号 T，尤其当平台设定的留存比例 α 较低时；这与既有文献对 T 的“加冕”形成鲜明对比。
+3. 机制设计贡献：提出“自愿 DePay (VDP)”并引入新信号工具 D（自愿采用 DePay 以及选择延期比例）。当创作者可选择 α 时，D 能以更低信号成本实现分离，并在 AON 下带来支持者与高质量创作者的双赢。作者还展示了在 KIA 下 D 的作用边界，强调在不同融资规则下平台应做差异化设计。</p>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="21">2.1 场景与基本要素</h3>
+<ol>
+<li>平台：决定是否实施 DePay，以及在某些政策下决定留存比例 α。</li>
+<li>创作者：拥有私人信息的质量类型 i ∈ {H,L}，在众筹开始时选择回报价格 p、筹资目标 C，并在 VDP 下可能选择是否采用 DePay 以及 α。</li>
+<li>支持者：对项目质量有共同先验 q，观察到众筹页面上的设计变量后形成后验信念并决定是否支持。</li>
+</ol>
+<p>产品与成本：
+- 产品质量分为高质量 (H) 与低质量 (L)，支持者估值满足 vH &gt; vL。
+- 创作者开发成本为 SH ≥ SL，且为简化起见，单位变动成本被归一化为 0（融资足够则可满足全部需求）。</p>
+<p>需求不确定性：
+- 可能支持的支持者数量 n 服从均匀分布 n ~ U[0,N]，密度 f(n)=1/N。该设定使得“众筹成功概率”与“预期利润”可解析。</p>
+<p>融资机制：
+- 基准分析采用 AON：只有当募集资金 pn ≥ C 时项目成功，否则全额退款。
+- 扩展分析考虑 KIA：无论是否达到目标，创作者都可以保留募集资金。</p>
+<p>DePay 的定义：
+- 留存比例 α ∈ [0,1]：创作者在募资成功时先得到 αpn 用于开发，平台托管 (1-α)pn，交付后再支付给创作者；若未交付或交付不符，托管部分退给支持者。
+- 由于创作者需要用可得资金覆盖开发成本，约束为 αC ≥ Si。</p>
+<h3 id="22">2.2 符号体系</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$i \in {H,L}$</td>
+<td>创作者类型/产品质量类型</td>
+<td>$H$ 高质量，$L$ 低质量</td>
+</tr>
+<tr>
+<td>$v_H, v_L$</td>
+<td>支持者对高/低质量产品估值</td>
+<td>满足 $v_H&gt;v_L$</td>
+</tr>
+<tr>
+<td>$S_H, S_L$</td>
+<td>高/低质量产品开发成本</td>
+<td>满足 $S_H \ge S_L$，变动成本归一为 0</td>
+</tr>
+<tr>
+<td>$q$</td>
+<td>先验信念</td>
+<td>支持者认为为高质量的概率 $Pr{S=S_H}=q$</td>
+</tr>
+<tr>
+<td>$p$</td>
+<td>回报价格</td>
+<td>创作者决策变量（信号工具 P）</td>
+</tr>
+<tr>
+<td>$C$</td>
+<td>筹资目标</td>
+<td>创作者决策变量（信号工具 T）</td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>潜在支持者数量/需求</td>
+<td>随机变量，$n\sim U[0,N]$</td>
+</tr>
+<tr>
+<td>$N$</td>
+<td>需求上界</td>
+<td>使得 $n \in [0,N]$</td>
+</tr>
+<tr>
+<td>$f(n)$</td>
+<td>密度函数</td>
+<td>基准设定为 $f(n)=1/N$</td>
+</tr>
+<tr>
+<td>$\alpha$</td>
+<td>留存比例/可动用资金比例</td>
+<td>DePay 下创作者即时可用资金占比；平台托管比例为 $1-\alpha$</td>
+</tr>
+<tr>
+<td>MDP</td>
+<td>强制 DePay</td>
+<td>平台强制所有项目执行 DePay，且通常由平台给定 $\alpha$</td>
+</tr>
+<tr>
+<td>VDP</td>
+<td>自愿 DePay</td>
+<td>创作者可选择是否执行 DePay；在某些情形还可选择 $\alpha$</td>
+</tr>
+<tr>
+<td>工具 $T$</td>
+<td>筹资目标信号</td>
+<td>提高 $C$ 来区分高质量</td>
+</tr>
+<tr>
+<td>工具 $P$</td>
+<td>价格信号</td>
+<td>降低 $p$（或相对基准改变 $p$）来区分高质量</td>
+</tr>
+<tr>
+<td>工具 $D$</td>
+<td>DePay 信号</td>
+<td>自愿采用 DePay 以及（可能）选择 $\alpha$ 来区分高质量</td>
+</tr>
+<tr>
+<td>$\Pi_i(\cdot)$</td>
+<td>类型 $i$ 创作者期望利润</td>
+<td>取决于机制（AON/KIA）、政策（MDP/VDP）与是否模仿</td>
+</tr>
+<tr>
+<td>$\Pi_L^H(\cdot)$</td>
+<td>低质量模仿高质量的期望利润</td>
+<td>DePay 下会因托管资金被退回而下降</td>
+</tr>
+<tr>
+<td>PBE</td>
+<td>Perfect Bayesian Equilibrium</td>
+<td>本文的均衡概念；并用直觉准则（intuitive criterion）做精炼</td>
+</tr>
+<tr>
+<td>$p_{am}(\alpha), C_{am}(\alpha)$</td>
+<td>AON+MDP 下的关键阈值/均衡对象</td>
+<td>决定何时需要信号以及用哪种信号</td>
+</tr>
+<tr>
+<td>$p_{ap}(\alpha)$</td>
+<td>AON+VDP 下的关键阈值</td>
+<td>用于刻画自愿采用 DePay 的条件与最优 $\alpha$</td>
+</tr>
+<tr>
+<td>$\alpha_p^*$</td>
+<td>AON+VDP（创作者定 $\alpha$）的最优留存比例</td>
+<td>典型形式为 $\alpha_p^*=p_{ap}(1)/v_H$</td>
+</tr>
+<tr>
+<td>KIA 下 $U_i(p)$</td>
+<td>支持者期望效用</td>
+<td>考虑“可能不交付但部分退款”的风险</td>
+</tr>
+<tr>
+<td>KIA 下 $p_i(\alpha), \bar p_i(\alpha)$</td>
+<td>支持者参与约束诱导的可行价格区间</td>
+<td>满足 $U_i(p)\ge 0 \Leftrightarrow p\in[p_i(\alpha),\bar p_i(\alpha)]$</td>
+</tr>
+<tr>
+<td>$x_i$</td>
+<td>交付成功概率（扩展）</td>
+<td>生产不确定性扩展中引入，$0&lt;x_L&lt;x_H&lt;1$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-players-sequence-of-events-information-structure">2.3 博弈结构：Players, Sequence of Events, Information Structure</h3>
+<p>AON + MDP（平台给定 α）的序列：
+1. 平台公布 DePay 政策并设定留存比例 α。
+2. 创作者观察到 α 后选择 (C,p) 发布项目。
+3. 支持者观察 (C,p) 后形成后验信念 q'，并在效用非负时支持（形成随机需求 n）。
+4. 若 pn ≥ C，则项目成功；平台托管 (1-α)pn，创作者用 αpn 覆盖开发成本并交付；否则退款。
+5. 交付后平台释放托管资金给创作者；若交付不符（如低质量冒充高质量），托管资金退给支持者。</p>
+<p>AON + VDP 的差异：
+- 在步骤 2 之前，创作者先决定是否采用 DePay；若允许创作者定 α，则同时选择 α。于是信号集合从 (C,p) 扩展为 (C,p,α)。</p>
+<p>信息结构与信念更新：
+- 创作者类型 i 为私人信息；支持者只知道先验 q。
+- 支持者用观察到的 (C,p) 或 (C,p,α) 更新信念 q'。
+- 离均衡路径的信念：若观察到不在均衡支持集内的设计，支持者认为创作者为低质量（q'=0）。在此基础上，作者进一步用 Cho-Kreps (1987) 的直觉准则精炼均衡，从而在关键情形下得到唯一可信的 PBE。</p>
+<h3 id="24">2.4 目标函数与约束</h3>
+<p>AON（基准，无生产不确定性）下，类型 i 创作者在被正确识别时的期望利润为
+$$ \Pi_i(C,p)=\int_{C/p}^{N} (p n - S_i) f(n) \, dn, \quad \text{s.t. } \alpha C \ge S_i,\; p \le v_i. $$</p>
+<p>关键解释：
+- 积分下界 $C/p$ 对应众筹成功所需的最小需求水平（因为成功条件是 $pn\ge C$）。
+- DePay 通过约束 $\alpha C \ge S_i$ 把“最低筹资目标”从 $S_i$ 抬升到 $S_i/\alpha$。</p>
+<p>低质量创作者模仿高质量（在 DePay 下会被“扣留资金退款”惩罚）时，期望利润变为
+$$ \Pi_L^H(C,p)=\int_{C/p}^{N} (\alpha p n - S_L) f(n)\, dn. $$</p>
+<p>这条式子是本文所有机制差异的核心：DePay 不是简单地改变成功概率，而是直接改变了模仿者的边际收益（从 $pn$ 变为 $\alpha pn$）。</p>
+<p>KIA 扩展中，支持者效用显式依赖“不交付但部分退款”的概率。类型 i、价格 p 下的支持者期望效用写为
+$$ U_i(p)=\int_{0}^{S_i/(\alpha p)} (-\alpha p) f(n)\, dn + \int_{S_i/(\alpha p)}^{N} (v_i-p) f(n)\, dn. $$</p>
+<p>对应的创作者期望利润为
+$$ \Pi_i(p)=\int_{0}^{S_i/(\alpha p)} (\alpha n p) f(n)\, dn + \int_{S_i/(\alpha p)}^{N} (n p - S_i) f(n)\, dn, \quad \text{s.t. } U_i(p)\ge 0. $$</p>
+<p>生产不确定性扩展（AON + MDP）中，引入交付成功概率 $x_i$ 与共同估值 $v$。支持者的参与约束可写成 $p\le \hat p_i$，其中
+$$ \hat p_i=\frac{x_i v}{x_i+\alpha(1-x_i)}=\frac{x_i v}{1-(1-x_i)(1-\alpha)}. $$
+类型 i 创作者在 (C,p) 下的期望利润为
+$$ \Pi_i(C,p)=x_i\int_{C/p}^{N} (p n - S_i) f(n)\, dn + (1-x_i)\int_{C/p}^{N} (\alpha p n - S_i) f(n)\, dn, \quad \text{s.t. } \alpha C \ge S_i,\; p \le \hat p_i. $$</p>
+<h3 id="25-justification">2.5 关键假设与合理性 (Justification)</h3>
+<ol>
+<li>单一回报（每个支持者得到 1 单位产品）。合理性：把信号选择聚焦在核心可见变量 (C,p,α)，避免多层级菜单带来的机制干扰；作者在结论部分也将“多回报菜单”作为未来研究方向。</li>
+<li>变动成本归一为 0，仅保留开发成本 S。合理性：奖励型众筹中，早期最大的资金约束往往是开发与量产启动的固定投入；该归一化使模型可解析并与既有文献可比。</li>
+<li>需求 n 服从均匀分布。合理性：用一个简单的连续分布刻画需求不确定性，便于得到闭式解并突出比较静态；关键机制来自激励约束的相对变化，而非特定分布形状。</li>
+<li>支持者同质、随机到达且忽略从众/信息瀑布。合理性：把“信息不对称”集中在创作者一侧（质量私人信息），避免支持者之间的策略互动掩盖 DePay 的信号作用。</li>
+<li>基准模型排除不可预见的交付失败与道德风险（只讨论质量私人信息）。合理性：用于隔离 DePay 的信号功能；同时作者在扩展中讨论了生产不确定性，并指出当道德风险显著时 MDP 可能是唯一可行政策。</li>
+<li>平台手续费归零。合理性：避免引入与信号无关的线性项；不会改变关键激励约束的结构。</li>
+</ol>
+<h2 id="3-analysis-solution">3. 分析与求解 (Analysis &amp; Solution)</h2>
+<h3 id="31-aon-depay-1">3.1 基准：AON 且无 DePay (α=1) 的信号结论</h3>
+<p>没有 DePay 时，低质量模仿高质量的收益并不会被“扣留资金退款”削弱，因此分离主要依赖成本异质性 $S_H&gt;S_L$ 这一单一“信号力量”。</p>
+<p>在该基准（Chakraborty &amp; Swinney 2021）中：
+1. 若 $S_H&gt;S_L$，存在分离均衡。低质量选择其完全信息最优 (C,p)=(SL,vL)。高质量通常定价 p=vH，并在需要时通过提高筹资目标来阻止模仿：当 vH 足够高，必须把目标提高到 $C_{am}(1)&gt;S_H$ 才能让低质量不愿模仿。
+2. 若 $S_H=S_L$，分离失败，出现池化均衡：因为两类型的成本结构相同，任何通过 C 或 p 的扭曲都会被低质量以同样代价复制，从而支持者无法从设计变量中得到可信信息。</p>
+<p>直觉：在 AON 中，提高目标 C 的本质是降低众筹成功概率。由于低质量成本更低，其“最想要”的目标更低；高质量把目标抬高，会让低质量必须更大幅度偏离自身最优，从而降低其模仿收益。这是典型的“高类型通过牺牲成功率/销量进行分离”的机制。</p>
+<h3 id="32-aon-mdp-proposition-1">3.2 AON + MDP（平台定 α）：Proposition 1 的核心结论与直觉</h3>
+<p>结论（均衡形态）：
+- 在任何 $S_H \ge S_L$ 下，只要实施 MDP 且 α&lt;1，就存在分离均衡，并在直觉准则下成为唯一可信的 PBE。
+- 低质量在分离均衡中选择 (C,p)=(SL/α, vL)。
+- 高质量的策略分三类（用 $p_{am}(\alpha)$ 表示一个由模仿激励约束推导的价格阈值）：
+    1. 若 $v_H \le p_{am}(\alpha)$：高质量直接采用完全信息设计 (SH/α, vH)，无需额外信号，分离为“无成本分离”。
+    2. 若 $v_H &gt; p_{am}(\alpha)$ 且 $\alpha \ge S_L/S_H$：高质量使用工具 T，提高目标到 $C_{am}(\alpha)$ 并保持 p=vH。
+    3. 若 $v_H &gt; p_{am}(\alpha)$ 且 $\alpha &lt; S_L/S_H$：高质量使用工具 P，保持最低目标 SH/α，但把价格降到 $p_{am}(\alpha)$。</p>
+<p>关键反直觉点：在既有文献中，AON 下 T 被认为“永远最优”。但在 MDP 下，当 α 足够低时，P 会优于 T。</p>
+<p>经济学直觉（为什么 DePay 会重写 T vs P）：
+1. DePay 引入第二种“信号力量”。在 MDP 下，低质量一旦模仿高质量，托管资金 (1-α)pn 会被退回给支持者，因此其模仿收益从 $pn-S_L$ 变成 $\alpha pn-S_L$。换言之，DePay 对模仿者施加了一个与需求规模 n 成正比的可观察惩罚。
+2. 信号选择取决于“哪种扭曲更便宜地压住低质量的模仿激励”。当 vH 很高时，低质量模仿动机强，高质量必须让低质量的模仿利润不超过其诚实利润。高质量可以通过两条路径降低模仿利润：
+    1. 提高目标 C（工具 T）：降低模仿的成功概率。
+    2. 降低价格 p（工具 P）：降低模仿时每个支持者带来的收益，且在 DePay 下这一收益还要再乘以 α。
+3. 为什么 α 低时 P 更强：当 α 很低，DePay 本身已经大幅压缩了模仿者的“单位收益”，此时再去提高目标 C 的边际威慑效果变弱（因为模仿的利润已经被 α 压扁），而提高目标对高质量自身成功率的损害仍然存在。反之，降低 p 既降低模仿者收益，也能配合 DePay 的乘数效应（模仿者只拿到 αp），因此更“省成本”地满足激励约束。
+4. 形式上，这一比较最终体现在阈值条件 $\alpha \lessgtr S_L/S_H$：当平台扣留更多（α 更小）且相对扣留强度超过成本异质性的分离作用时，P 成为更优信号。</p>
+<p>比较静态（Corollary 1 的精髓）：
+- α 的影响非单调。降低 α 有两种相反效应：
+    1. 威慑效应：模仿者收益被 α 压缩，分离更容易，均衡价格可以更高、目标可以更低。
+    2. 可行性/成功率效应：由于开发约束 $\alpha C \ge S$，较低 α 会机械性抬高最低目标 $S/\alpha$，从而降低成功概率。
+- 因此高质量利润与成功率随 α 可能呈现单峰或双峰；平台不能通过“无限降低 α”来简单惩罚低质量。</p>
+<h3 id="33-aon-vdp-depay">3.3 AON + VDP（平台定 α）：DePay 的“自愿采用”本身就是信号</h3>
+<p>在 VDP 下，低质量在分离均衡中永远不采用 DePay，因为 DePay 会在模仿时直接砍掉其收益（只能拿到 αpn）。这意味着：
+- 高质量若选择采用 DePay，相当于公开承诺“若我是低质量并想骗你，我会被自动罚掉托管部分”，因此采用行为本身传递了质量信息。
+- 相比 MDP，VDP 消除了一个关键扭曲：在 MDP 中，即便是诚实的低质量也要被扣留资金，从而降低其参与激励；VDP 则让低质量避开这笔“无谓成本”。</p>
+<p>作者在平台定 α 的设定下证明：对任何可行 α，都存在分离均衡；且当高质量选择采用 DePay 时，其利润一定不低于在 MDP 下的利润（因为同样的分离约束下，VDP 不会强迫低质量也承受 DePay）。</p>
+<h3 id="34-aon-vdp-proposition-2-d">3.4 AON + VDP（创作者定 α）：Proposition 2 与新工具 D 的“统治性”</h3>
+<p>这是本文最具机制设计味道的结论：当允许高质量创作者自行选择 α 时，D 成为一个独立于 T、P 的更强信号工具。</p>
+<p>均衡结构（核心形式）：
+- 当 vH 足够高（典型地在 $S_H=S_L$ 时必然满足），高质量会自愿采用 DePay 并选择一个最优留存比例
+$$ \alpha_p^<em>=\frac{p_{ap}(1)}{v_H}, $$
+然后设置
+$$ (C,p,\alpha)=\left(\frac{S_H}{\alpha_p^</em>},\, v_H,\, \alpha_p^*\right). $$
+- 低质量不采用 DePay，并设置 (C,p,α)=(SL, vL, 1)。
+- 当 vH 不高时，高质量不需要额外信号，两类型都采用完全信息设计 (Si, vi, 1)，得到无成本分离。</p>
+<p>为何 D 会优于 T 与 P（机制解释）：
+1. D 的本质是“把惩罚强度内生化”。在 MDP 下，惩罚强度由平台给定 α，创作者只能用 C 与 p 做二次扭曲来满足低质量的模仿约束。VDP + 创作者定 α 把 α 变成可承诺、可观察的决策变量，使得高质量可以直接选择一个恰到好处的惩罚强度，让低质量的模仿激励约束刚好绑定，从而把自身的扭曲压到最小。
+2. 与 T 的关键区别：T 需要“额外抬高目标”来降低成功率；而 D 虽然也会通过 $S_H/\alpha$ 影响最低目标，但它允许高质量在保持 p=vH 的同时，把目标控制在“由开发成本约束决定的最小值”。在基准对比中，没有 DePay 时高质量需要把目标提高到 $C_{am}(1)&gt;S_H$ 来分离；而用 D 时高质量能保持目标为 $S_H/\alpha_p^*$，并且在 vH 越大时，这一差距越大（论文中的 Figure 1 用数值例子展示了这一点）。
+3. 从信号成本角度：D 让高质量用“自愿上交一部分可被退回的资金”来换取可信度，而不是用“降低价格”或“牺牲成功概率”来买可信度，因此总体信号成本更低。</p>
+<h3 id="35-proposition-3">3.5 平台政策比较：Proposition 3</h3>
+<p>在 AON 下：
+1. MDP 与 VDP 都能保证分离均衡，从而保护支持者识别质量。
+2. 但 VDP（且允许创作者定 α）在均衡中会提高创作者期望利润与成功率，相比 MDP 呈现“双赢”。
+3. 一个微妙点：在 VDP（创作者定 α）的分离均衡中，创作者会定价 p=vi，使得支持者剩余为 0；而在 MDP 中若需要用 P 信号，价格会被压低，支持者剩余反而可能为正。换言之，若平台的目标函数更强调支持者剩余而非创作者参与，MDP 的某些参数区间可能更“亲支持者”。</p>
+<h3 id="36-1kia-depay">3.6 扩展 1：KIA 机制下的信号逻辑（为何 DePay 变得不可或缺）</h3>
+<p>KIA 的结构性变化：
+1. 目标 C 失去可信度：因为创作者即便达不到目标也能保留资金，因此提高 C 不再有效地降低“拿到钱”的概率，工具 T 在信号上崩塌。
+2. 模仿动机出现第二维：低质量不仅想通过更高价格获得更多收入，还可能通过模仿高质量来提高“拿到钱但不生产”的概率（当募集不足以覆盖开发成本时，创作者可能选择不交付）。
+3. 成本异质性不再帮助分离，甚至可能加剧模仿：当 $S_H$ 更高时，低质量模仿高质量后更容易落在“资金不足以开发”的区域，从而可以拿钱不交付，这反而提升了其模仿吸引力。</p>
+<p>因此作者提出并聚焦于一个对支持者更友好的均衡筛选：偏好型分离均衡，即高质量定价更高、接近其可行价格上界，从而提高成功开发与交付概率。</p>
+<p>核心结论（Propositions 4–6 的直觉版）：
+1. 无 DePay 时，要么池化，要么出现“非偏好”的分离（高质量被迫压低价格甚至低于低质量），这会显著降低交付概率并伤害支持者。
+2. 只有引入 DePay（MDP 或 VDP），才可能实现偏好型分离：DePay 使模仿者在“交付低质量”时损失托管部分，从而降低模仿吸引力，让高质量能够在较高价格下分离。
+3. 在 KIA 中，VDP 并不总是优于 MDP：在某些参数区间只有 MDP 或只有 VDP 能诱导偏好型分离；当两者都能诱导时，VDP 通常给创作者更高利润，因此更可取。
+4. KIA 下平台应保留对 α 的控制权：因为偏好型分离对 α 的校准更敏感，若让创作者自行选择 α，可能牺牲支持者保护目标。</p>
+<h3 id="37-2proposition-7">3.7 扩展 2：生产不确定性下的稳健性（Proposition 7）</h3>
+<p>当引入不可避免的生产不确定性（交付成功概率 $x_i$）时，AON 下支持者参与不再只看 p 与 v，还要看“失败退款”的力度，因此 α 会反向影响支持者愿付价格。作者在该扩展中指出：
+1. 在生产不确定性存在时，为保护支持者，DePay 必须强制实施（MDP 更现实）。
+2. 即便如此，AON 下仍然保证分离均衡存在。
+3. 与基准模型一致，工具选择依然呈现“α 小则 P 更优、α 大则 T 更优”的结构；且当高质量的交付概率 xH 更高时，P 更容易成为更优信号（因为支持者愿付价格更高，低质量模仿动机更强，且 P 配合 DePay 的惩罚更有效）。</p>
+<h2 id="4-main-results-managerial-insights">4. 主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="41-depay-trade-off">4.1 机制揭示：DePay 带来的新 trade-off</h3>
+<p>对比无 DePay 基准，DePay 同时引入了两种相互拉扯的作用：
+1. 惩罚与信号作用：通过把模仿者收益从 $pn$ 变为 $\alpha pn$，DePay 创造了额外分离能力，甚至在 $S_H=S_L$ 时也能实现分离。
+2. 成功率与参与抑制作用：通过开发约束把最低目标从 $S$ 抬升到 $S/\alpha$，DePay 会降低众筹成功率并压低创作者利润，尤其在 MDP 下低质量也被强制承受该成本。</p>
+<p>平台设计的难点就在于：要在“更强的惩罚/更易分离”与“更低的成功率/更弱的参与激励”之间找到平衡，因此 α 的最优选择通常非单调。</p>
+<h3 id="42">4.2 反直觉结果</h3>
+<ol>
+<li>AON 下价格信号 P 可能优于目标信号 T：当 α 较低时，P 配合 DePay 的惩罚更省成本地满足低质量的模仿约束。</li>
+<li>KIA 下成本异质性可能加剧模仿：更高的 $S_H$ 会增加“拿到钱但不生产”的区间，从而提升低质量模仿的吸引力，这与 AON 的直觉相反。</li>
+<li>最强的信号不一定来自更大扭曲：在 VDP 且创作者可定 α 时，高质量反而能把目标压到“刚好可开发”的最低水平，并保持 p=vH，通过选择合适 α 来实现分离，信号成本更低。</li>
+</ol>
+<h3 id="43">4.3 平台的行动建议</h3>
+<ol>
+<li>AON 平台应实施 DePay 以保证分离与支持者保护，尤其当难以依赖成本异质性或其它外部信号时（例如新行业、新品类）。</li>
+<li>若平台具备较强监督、道德风险较弱，推荐提供 VDP 并允许创作者选择 α：这能减少不必要的参与抑制并降低高质量信号成本，提升成功率与创作者利润。</li>
+<li>若道德风险显著或生产不确定性不可避免，MDP 更合适：此时让创作者自选 α 可能损害支持者保护目标。</li>
+<li>不要简单地把 α 调到很低：由于成功率效应的存在，α 的影响可能非单调；平台可依据论文给出的候选集合（由阈值函数决定）做枚举搜索来选择近似最优 α。</li>
+<li>KIA 平台中，DePay 几乎是实现“偏好型分离”的必要条件；同时平台应保留对 α 的控制权，并在 MDP 与 VDP 之间依据参数区间进行策略选择。</li>
+<li>信息展示层面的可操作做法：平台可以在项目页面用徽章或标签显式标注是否采用 DePay 以及 α（尤其在 VDP 下），把 D 变成可见的可信承诺。</li>
+</ol>
+<h3 id="44">4.4 创作者的行动建议</h3>
+<ol>
+<li>在 MDP 下，创作者应先判断需要用哪种信号：<ol>
+<li>若 $v_H$ 不高（低质量模仿动机弱），高质量直接采用最低目标 $S_H/\alpha$ 与最高可行价格 vH 即可。</li>
+<li>若 $v_H$ 高且 $\alpha \ge S_L/S_H$，倾向用 T：保持价格高，抬高目标来压低模仿成功率。</li>
+<li>若 $v_H$ 高且 $\alpha &lt; S_L/S_H$，倾向用 P：保持最低目标，主动降价以压低模仿收益。</li>
+</ol>
+</li>
+<li>在 VDP 且允许自选 α 时，高质量可把 DePay 作为主信号工具：选择能使低质量模仿刚好无利可图的 α，并设置价格接近 vH、目标接近 $S_H/\alpha$ 的最低水平，从而以更低成本实现分离。</li>
+<li>在 KIA 中，若平台提供 DePay 选项，高质量更应利用 DePay 承诺来支撑较高价格，从而提升交付概率并形成对支持者更友好的均衡。</li>
+</ol>
+<h3 id="45">4.5 扩展总结</h3>
+<ol>
+<li>KIA 扩展强调：融资规则会决定哪些信号工具在逻辑上可行；在 KIA 中，DePay 的作用从“增强分离”变成“使偏好型分离成为可能”。</li>
+<li>生产不确定性扩展强调：当退款与交付风险进入支持者效用，α 也会影响愿付价格；但 DePay 改写激励约束从而保证分离的核心机制仍然稳健。</li>
+</ol>
+<h2 id="5-reviewers-critique">5. Reviewer's Critique (严厉审稿人视角)</h2>
+<h3 id="51">5.1 优点</h3>
+<ol>
+<li>问题重要且紧贴平台实践：DePay（托管/尾款/押金）在众筹平台上确实普遍，且与信任和长期增长直接相关。</li>
+<li>机制贡献清晰：把 DePay 的“托管比例”解释为一种可观察、可承诺、可调节的惩罚强度，从而成为信号工具 D，这是一个漂亮且可推广的思想。</li>
+<li>对既有结论的非平凡纠偏：证明了在引入 DePay 后 P 可能优于 T，而不是在旧模型上做边际修补。</li>
+<li>扩展设计合理：KIA 与生产不确定性分别对应两类重要现实摩擦，帮助读者理解哪些结论稳健、哪些依赖制度环境。</li>
+</ol>
+<h3 id="52">5.2 主要局限与可能的“过强假设”</h3>
+<ol>
+<li>质量可验证与惩罚执行过强：模型隐含平台能在交付后准确判断“是否兑现承诺质量”，从而把托管部分退给支持者。这在现实中可能需要昂贵的仲裁、抽检或大量投诉处理，且存在误判与争议。</li>
+<li>基准模型抽象掉道德风险与不可预见失败：但 DePay 在实践中的首要目的常是防止“不交付/跑路”。作者用扩展部分回应了部分问题，但基准结论对现实的外推需要谨慎。</li>
+<li>支持者同质与需求分布设定较强：真实众筹存在估值异质性、从众行为、信息级联与社交传播，可能改变价格与目标的比较优势。</li>
+<li>单一项目、单一创作者：忽略了同平台多项目竞争、平台推荐算法、以及创作者在重复博弈中的声誉机制。</li>
+<li>平台决策未内生化：平台为何选择 MDP/VDP、如何设定 α，以及托管/监督成本与平台利润之间的权衡，在本文中主要作为外生背景。若平台利润是核心目标，结论可能会变化（例如平台可能偏好提高成交量或抽成，而非支持者保护）。</li>
+<li>均衡选择依赖特定精炼：离路径信念取 q'=0，并用直觉准则精炼，虽然在信号文献中常见，但读者仍会关心结论对不同精炼的敏感性。</li>
+</ol>
+<h3 id="53">5.3 未来研究方向（在本文基础上的自然扩展）</h3>
+<ol>
+<li>多回报等级菜单：把 (C,p) 扩展为一组价格-回报组合，DePay 是否会改变“菜单设计作为信号”的性质？</li>
+<li>支持者估值异质性：引入分布式估值与选择性参与，研究 DePay 是否会引发价格歧视或筛选效应。</li>
+<li>平台最优机制设计：把平台利润、托管成本、质量核验成本、投诉成本显式纳入目标函数，求解最优 α 与 MDP/VDP 的选择。</li>
+<li>不完全可验证质量：若平台只能以噪声信号判断交付质量，托管退款将不再是确定惩罚，信号强度如何变化？</li>
+<li>动态与声誉：允许创作者重复上线项目，DePay 与声誉系统（历史交付率、评分）如何互补或替代？</li>
+<li>实证检验：利用平台政策变更（例如某些平台引入 Reserved Funds 或改变托管比例）做差分或事件研究，检验 (i) 价格 vs 目标作为信号的切换，(ii) 自愿采用 DePay 的“徽章效应”，以及 (iii) AON/KIA 下差异化预测。</li>
+</ol>
+<h2 id="6-one-more-thing">6. One More Thing</h2>
+<p>本文最值得分享的“灵光一现”是：把 α 看成一个可承诺的“自我惩罚强度旋钮”。传统信号模型里，高质量往往只能通过更高成本的扭曲（抬高目标、压低价格）来分离；而在众筹这个制度环境里，只要平台提供托管，创作者就可以通过选择托管比例，让“模仿的收益函数结构”发生变化。于是分离不一定要靠更大的扭曲，反而可以靠更精细的承诺：高质量把价格保持在估值上限、把目标保持在可开发的最低水平，仅用一个合适的 α 让低质量无利可图。这种从“扭曲信号”到“承诺惩罚”的转化，是本文最核心、也最可迁移的洞见。</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,489 @@
+# The Role of Product Quality in Marketplaces
+
+Authors: Leela Nageswaran (Michael G. Foster School of Business, University of Washington); Aditya Jain (Zicklin School of Business, The City University of New York - Baruch College); Haresh Gurnani (College of Business, Stony Brook University)
+
+Year: 2026 (Published Online: 2026-02-26; Accepted: 2026-01-25)
+
+Journal: Manufacturing & Service Operations Management (M&SOM), Articles in Advance
+
+Abstract:
+**Problem definition:** Online retailers who operated as traditional resellers have also started to adopt the marketplace approach, wherein the retailer charges a commission, and the suppliers determine the retail price. We model the interactions between a retailer and two suppliers, who offer products of differing qualities, face loyal consumers, and enjoy quality- and price-dependent demand functions. We identify what contract type – only marketplace, only wholesale, or a combination of marketplace and wholesale (i.e., hybrid) – will prevail. **Methodology/results:** In contrast to marketplace’s dominance when there is a single supplier, depending on the heterogeneity in the suppliers’ product quality, operating only a marketplace may result in either a suboptimal commission rate or the exclusion of the supplier offering the high-quality product from the contract. We find that the retailer may then choose a hybrid contract to better tailor the contract to each supplier type. We show that the hybrid contract can emerge under four realistic scenarios: when suppliers determine quality level endogenously; suppliers select the contract type; the retailer is dominant and proposes tiered commission rates; and a continuum of supplier types. Moreover, in all these cases, when the hybrid contract is adopted, the lower quality product is sold via marketplace while the higher quality product is sold via wholesale. Using data from a leading US-based retailer, we also provide empirical support for this specific equilibrium outcome. **Managerial implications:** Our findings provide guidance to retail managers who are transitioning into marketplaces on when and what type of hybrid contract would be advisable to offer. By introducing heterogeneity in the suppliers’ product quality, our work also contributes to the literature by uncovering new driving forces for why the hybrid contract emerges as an equilibrium outcome.
+
+摘要（中文翻译）：
+传统“转售型”在线零售商正在转向“平台型”市场（marketplace）：零售商收取按销售额计提的佣金，而由供应商决定零售价。本文刻画一个零售商与两个供应商的互动：两家供应商提供不同质量的产品，面对对各自产品“忠诚”的消费者，需求同时依赖质量与价格。作者识别在什么条件下会出现三类合同结构：仅 marketplace、仅 wholesale、或两者并存的混合（hybrid）合同。与单一供应商场景下 marketplace 往往占优不同，当供应商产品质量存在显著异质性时，仅 marketplace 可能导致（i）佣金率被迫设在次优水平，或（ii）高质量供应商因难以承受佣金而被排除。此时零售商会选择 hybrid，以便针对不同质量类型“定制”交易模式。作者进一步在四个更贴近现实的设定中证明 hybrid 的稳健性：供应商内生选择质量、供应商自选合同类型、零售商占主导并采用分层佣金且可谈判批发价、以及供应商质量类型连续分布。并且在这些设定下，一旦采用 hybrid，均衡都呈现同一方向：低质量产品走 marketplace，高质量产品走 wholesale。作者还利用一家美国领先零售商的商品级数据，对该“低质走 marketplace、高质走 wholesale”的均衡模式提供了经验证据。
+
+## 0. 论文速览
+
+研究问题：
+在线零售商从“自营转售（wholesale/reselling）”转向“平台抽佣（marketplace/agency）”时，面对不同质量的第三方供应商，应该采用哪种合同结构？如果采用 hybrid，哪些产品/供应商应该被放在 marketplace，哪些应该走 wholesale？
+
+核心结论（最重要的一句话版本）：
+当供应商质量异质性足够大时，零售商往往不应只做 marketplace；最优结构要么是纯 marketplace（质量差异不大时），要么是 hybrid（质量差异大时）。在更现实的扩展模型与数据中，hybrid 几乎总是表现为“低质量 marketplace + 高质量 wholesale”（WM）。
+
+方法：
+构建一个零售商-供应商的序贯博弈模型，对比三种合同：纯 wholesale、纯 marketplace（统一佣金率）、hybrid（两种模式并存）。在多个扩展（内生质量、自选合同、零售商主导与分层佣金、质量连续分布）下做均衡分析，并用零售商线上商品数据做 logit 实证检验。
+
+主要贡献（相对既有文献）：
+
+1. 新的驱动力：仅仅引入“供应商产品质量异质性”，即使供应商之间不进行价格竞争，也能内生推出 hybrid 合同是零售商最优选择。
+2. 方向性的预测：在多种现实机制下，hybrid 的均衡方向收敛为 WM（低质 marketplace，高质 wholesale）。
+3. 理论 + 实证闭环：用真实零售商商品数据表明 marketplace 商品的质量（以评分度量）显著更低，与 WM 预测一致。
+
+## 1. 研究背景与动机 (Motivation)
+
+### 1.1 实践痛点：为什么“只做 marketplace”并不总是对
+
+1. 合同模式的现实混用：
+   许多线上零售商最初以 wholesale/reselling 为主（向供应商进货、自己定价），但近年来开始引入 marketplace（抽佣、由供应商定价）。实践中常见现象是：同一品类里，零售商一部分商品采用 marketplace，另一部分仍走 wholesale（例如服饰类零售商的“自营 + 第三方”混合）。这引出一个运营管理上的直接问题：什么时候应当采用 hybrid？以及“哪些商品”更适合哪种模式？
+
+2. 供应商质量异质性快速上升：
+   平台化降低进入门槛后，涌入的供应商质量差异显著：既有低价低质，也有小众高质品牌。现实中 marketplace 佣金往往按品类统一设定（统一 referral fee），这使得“用一个佣金率同时管理不同质量供应商”非常困难。
+
+3. 统一佣金与高质量供应商的矛盾：
+   高质量产品的生产成本通常随质量上升而上升得更快；当 marketplace 抽佣相当于对供应商销售额“征税”时，高质量供应商对佣金更敏感，可能选择不入驻或无法盈利。平台若为了留住高质供应商而压低统一佣金，又会牺牲对大量低质供应商的抽佣能力。
+
+### 1.2 理论缺口：现有文献忽略了什么
+
+1. 单一供应商结论的外推问题：
+   大量文献在“单供应商”框架下得到 marketplace 优于 wholesale 的结论（经典逻辑：marketplace 缓解 double marginalization，平台还能通过佣金率分成）。但把这个结论外推到“多供应商且质量异质”并不显然。
+
+2. hybrid 的来源解释不足：
+   既有研究解释 hybrid 往往依赖供应商之间的价格竞争强度、信息不对称、服务/履约等机制。本文强调：即使没有价格竞争，仅靠质量异质性与统一佣金约束，也能推出 hybrid 的均衡出现。
+
+3. “哪些产品走 marketplace”缺乏可检验预测：
+   实务上更关心：hybrid 下到底是谁走 marketplace、谁走 wholesale？本文给出明确且可检验的方向性预测，并用数据验证。
+
+### 1.3 核心贡献：Significance 在哪里
+
+理论贡献：
+
+1. 揭示一个新的合同选择机制：统一佣金使得 pure marketplace 难以对不同质量类型“精准定价”，从而导致佣金率次优或高质量供应商退出；hybrid 提供了一个“用交易模式作为分割工具”的合同设计自由度。
+2. 在多种扩展下将 hybrid 的方向性收敛到 WM：低质量 marketplace、高质量 wholesale。这比“hybrid 可能出现”更强，因为它对实践有明确的指导含义，也方便做经验检验。
+
+实践贡献：
+为正在从转售型零售商向平台化转型的零售管理者提供可操作的决策规则：何时需要 hybrid；如果需要 hybrid，应把哪些供应商/商品放在 marketplace，并如何理解其背后的质量与佣金敏感性机制。
+
+## 2. 模型设定与假设 (Model Setup & Assumptions)
+
+### 2.1 符号体系（基准模型 + 扩展）
+
+| 符号                 | 含义                                        | 备注/描述                                                     |
+| -------------------- | ------------------------------------------- | ------------------------------------------------------------- |
+| $i \in {L,H}$        | 供应商类型/产品类型索引                     | $H$ 为高质量，$L$ 为低质量                                    |
+| $q_H, q_L$           | 两类产品的质量水平                          | 外生且已知；$0 < q_L < q_H$                                   |
+| $q_i$                | 类型 $i$ 产品质量                           | 扩展中可内生选择                                              |
+| $p_i$                | 零售价                                      | 在 wholesale 下由零售商定；在 marketplace 下由供应商定        |
+| $w_i$                | 批发价                                      | wholesale 模式下由供应商定（扩展中可谈判）                    |
+| $\phi$               | marketplace 佣金率                          | 按销售额比例抽佣；基准模型对同一品类统一                      |
+| $\theta$             | 消费者对质量的敏感度                        | $\theta \sim U[0,1]$                                          |
+| $u_i$                | 消费者购买类型 $i$ 的净效用                 | $u_i = \theta q_i - p_i$                                      |
+| $\gamma$             | 忠诚于高质量产品的消费者比例                | $\gamma_H = \gamma$，$\gamma_L = 1-\gamma$                    |
+| $d_i(p_i;q_i)$       | 类型 $i$ 的需求函数                         | 忠诚分割：$d_i = \gamma_i(1 - p_i/q_i)$（当 $p_i \le q_i$）   |
+| $\kappa$             | 质量成本系数/效率参数                       | 单位成本为 $\kappa q_i^2$；越大代表越“低效”                   |
+| $\Pi_r^w, \Pi_r^m$   | 零售商在 wholesale/marketplace 下的利润贡献 | 见下文利润函数                                                |
+| $\Pi_s^w, \Pi_s^m$   | 供应商在 wholesale/marketplace 下的利润     | 见下文利润函数                                                |
+| $I_i$                | 供应商 $i$ 是否参与合作的指示变量           | 参与当且仅当其利润非负（IR 约束）                             |
+| $z_i^w, z_i^m$       | 零售商给供应商 $i$ 指派的模式               | $z_i^w + z_i^m \le 1$                                         |
+| $\phi^b$             | 单供应商最优佣金率                          | 由一阶条件给出（Proposition 1）                               |
+| $\phi^m$             | 两供应商 pure marketplace 下最优佣金率      | 需要兼顾两方参与与价格反应（Proposition 3）                   |
+| $\gamma^m, \gamma^h$ | 阈值参数                                    | 决定 pure marketplace 是否排除高质、以及 hybrid 的 WM/MW 选择 |
+| $\beta$              | 零售商在 Nash bargaining 中的议价能力       | 扩展：dominant retailer（Section 4.3）                        |
+| $q_0$                | dominant retailer 下单供应商合同切换阈值    | $q < q_0$ 选 marketplace，反之选 wholesale（Proposition 10）  |
+| $\mu, \Delta$        | 质量连续分布的均值与离散度                  | $q \sim U[\mu-\Delta,\mu+\Delta]$（Section 4.4）              |
+| MARKETPLACE          | 实证：是否为 marketplace 商品               | 页面标签为 marketplace 则为 1                                 |
+| AVGRATING            | 实证：平均评分                              | 用作质量代理变量，范围 $[1,5]$                                |
+| PRICE                | 实证：零售价                                | 控制变量，使用 $\log(PRICE)$                                  |
+| CATEGORY$_k$         | 实证：品类虚拟变量                          | 控制品类固定效应                                              |
+
+### 2.2 Players、决策顺序与信息结构（基准模型）
+
+参与者：
+    1. 零售商（平台/电商）：决定采用 wholesale、marketplace 或 hybrid，并设定 marketplace 的佣金率 $\phi$（若适用）。
+    2. 两个供应商：高质量 $H$ 与低质量 $L$，质量水平在基准模型中外生且已知。
+    3. 消费者：对质量敏感度 $\theta$ 异质，且对产品类型“忠诚”。
+
+信息结构：
+      1. 供应商质量 $q_H, q_L$ 在基准模型中外生、可观察，零售商知道类型。
+      2. 消费者只在意本类型产品的 $p_i$ 与 $q_i$（忠诚假设使其不比较两产品）。
+
+决策顺序（对应论文 Figure 3）：
+      1. 零售商先选择合同结构：pure wholesale、pure marketplace、或 hybrid；并决定是否与两家都合作或排他合作。
+      2. 若包含 marketplace 模式，零售商同时设定统一佣金率 $\phi$。
+      3. 供应商决定是否参与（Individual Rationality：利润非负才参与）。
+      4. 定价阶段：
+            1. wholesale：供应商先设 $w_i$，零售商后设 $p_i$。
+            2. marketplace：供应商给定 $\phi$ 直接设 $p_i$。
+      5. 消费者购买，需求实现，利润结算。
+
+### 2.3 需求、成本与目标函数
+
+消费者效用与需求：
+给定质量 $q_i$ 与价格 $p_i$，消费者效用为 $u_i = \theta q_i - p_i$。当 $u_i \ge 0$ 即 $\theta \ge p_i/q_i$ 时购买。由于 $\theta \sim U[0,1]$ 且消费者对类型 $i$ 忠诚（市场规模为 $\gamma_i$），得到线性需求
+
+$$ d_i(p_i; q_i) = \gamma_i\left(1 - \frac{p_i}{q_i}\right), \quad \text{for } 0 \le p_i \le q_i. $$
+
+质量成本：
+供应商单位成本为 $c_i = \kappa q_i^2$。关键可行性假设是 $\kappa q_H < 1$，否则高质量产品的单位成本超过消费者最高愿付（$p_i \le q_i$）而无法盈利销售。
+
+利润函数（论文式 (1)(2)）：
+      1. wholesale（W）模式：
+            i. 零售商：$\Pi_r^w = d_i(p_i;q_i)(p_i - w_i)$
+            ii. 供应商：$\Pi_s^w = d_i(p_i;q_i)(w_i - \kappa q_i^2)$
+      2. marketplace（M）模式（佣金率 $\phi$）：
+            i. 零售商：$\Pi_r^m = \phi\cdot d_i(p_i;q_i)$
+            ii. 供应商：$\Pi_s^m = d_i(p_i;q_i)\big((1-\phi)p_i - \kappa q_i^2\big)$
+
+关键约束：
+      1. 需求域：$0 \le p_i \le q_i$
+      2. 参与约束（IR）：供应商仅当其利润 $\ge 0$ 才参与
+      3. 模式指派：对每个供应商 $i$，$z_i^w + z_i^m \le 1$，且 $\phi \in [0,1]$
+
+零售商的总体问题（论文 Problem (P) 的思想）：
+零售商选择对每个供应商是否合作、合作模式，以及佣金率（若适用），并预期供应商/自身在后续阶段的最优定价反应，从而最大化总利润。
+
+### 2.4 关键建模假设与合理性 (Justification)
+
+1. 忠诚消费者（无跨产品替代）：
+   假设一部分消费者只考虑高质量产品，另一部分只考虑低质量产品。这让两供应商在需求侧不直接进行价格竞争，从而隔离“质量异质 + 统一佣金”的核心机制。作者也指出一个包含价格竞争的变体同样可产生 hybrid，但主模型用忠诚假设更清晰地识别因果机制。
+
+2. 线性需求来自 $\theta \sim U[0,1]$：
+   垂直差异（质量）模型的标准设定。线性形式使闭式解可得，便于解析比较静态。
+
+3. 质量成本 $\kappa q^2$（随质量凸增）：
+   质量提升往往具有递增边际成本，凸成本确保“更高质量不必然更赚钱”。该设定也是区分高质供应商对佣金更敏感的关键：成本随 $q$ 的增长快于市场潜在需求上界。
+
+4. marketplace 统一佣金（基准）：
+   现实中平台多按品类设统一佣金，便于运营与沟通；同时也制造了本文的关键张力：同一 $\phi$ 无法同时适配不同质量类型。作者在扩展中也允许 dominant retailer 采用分层佣金来检验稳健性。
+
+## 3. 分析与求解 (Analysis & Solution)
+
+### 3.1 基准：单供应商（用于对照的“经典结论”）
+
+这一部分对应论文 Section 3.1，核心是重现文献常见结论：面对单一供应商时，零售商更偏好 marketplace。
+
+#### 3.1.1 纯 wholesale 的定价与利润（Lemma 1(i)）
+
+给定批发价 $w$，零售商选择 $p$ 最大化
+$$ \Pi_r^w(p) = \left(1-\frac{p}{q}\right)(p-w). $$
+一阶条件给出最优零售价
+$$ p^*(w) = \frac{q+w}{2}. $$
+
+供应商预期该反应后选择 $w$ 最大化
+$$ \Pi_s^w(w) = \left(1-\frac{p^*(w)}{q}\right)(w-\kappa q^2). $$
+解得
+$$ w^* = \frac{1}{2}(q+\kappa q^2), \quad p^* = \frac{w^*+q}{2}. $$
+
+利润（与论文 Lemma 1 一致）可写为
+$$ \pi_s^w(q)=\frac{q}{8}(1-\kappa q)^2, \quad \pi_r^w(q)=\frac{q}{16}(1-\kappa q)^2. $$
+
+直觉：
+wholesale 结构下存在 double marginalization：供应商在 $w$ 上加价，零售商在 $p$ 上再加价，最终 $p$ 偏高、需求偏低，渠道利润被“重复加价”吃掉。
+
+#### 3.1.2 纯 marketplace 的定价、参与与利润（Lemma 1(ii)）
+
+给定佣金率 $\phi$，供应商选择 $p$ 最大化
+$$ \Pi_s^m(p) = \left(1-\frac{p}{q}\right)\big((1-\phi)p-\kappa q^2\big). $$
+
+可将其看成“有效单位成本被放大”的定价问题：把利润除以 $(1-\phi)$，相当于供应商在零售价格上面对有效成本 $\kappa q^2/(1-\phi)$。最优定价为
+$$ p^*(\phi)=\frac{1}{2}\left(q+\frac{\kappa q^2}{1-\phi}\right). $$
+
+参与约束：
+由于需求要求 $p \le q$，供应商参与需满足 $\kappa q^2/(1-\phi) < q$，即
+$$ \phi < 1-\kappa q. $$
+这给出一个非常关键的对象：供应商可承受的最高佣金率
+$$ \phi_{\max}(q)=1-\kappa q, $$
+它随质量 $q$ 单调下降。
+
+利润（论文 Lemma 1）：
+$$ \pi_s^m(q,\phi)=\frac{1-\phi}{4}q\left(1-\frac{\kappa q}{1-\phi}\right)^2, \quad
+\pi_r^m(q,\phi)=\frac{\phi}{4}q\left(1-\frac{(\kappa q)^2}{(1-\phi)^2}\right). $$
+
+直觉：
+
+1. $\phi$ 上升会推高 $p$（供应商把佣金“转嫁”到价格里），需求下降。
+2. $\phi$ 太高会使有效成本超过最高愿付，供应商直接退出。
+   因此零售商存在一个“抽成比例 vs 销量萎缩/退出风险”的权衡。
+
+#### 3.1.3 零售商为何偏好 marketplace（Proposition 1）
+
+零售商在 marketplace 下选择 $\phi$ 最大化 $\pi_r^m(q,\phi)$ 且满足 $\phi < 1-\kappa q$。最优佣金率 $\phi^b$ 由如下一阶条件唯一确定：
+
+$$ (1-\phi)^3-\kappa^2 q^2(1+\phi)=0, \quad \phi^b\in (0,1-\kappa q). $$
+
+结论（Proposition 1）：
+面对单一供应商时，零售商的最优合同是纯 marketplace。
+
+经济学直觉（用一段话抓住机制）：
+marketplace 把零售定价权交给供应商，缓解 double marginalization；同时零售商作为先行动者用 $\phi$ 直接“切分”供应商收入。面对单一供应商时，零售商能把 $\phi$ 精准调到最适配该质量 $q$ 的水平，从而 marketplace 的好处占上风。
+
+**这一段是全文的对照基准：后面多供应商时，正是“无法对每个质量类型精准调 $\phi$”导致结论反转。**
+
+### 3.2 两供应商：质量异质性如何改变合同选择（基准模型核心）
+
+这一部分对应论文 Section 3.2，是全文最核心的理论块：引入两个不同质量供应商后，pure marketplace 不再必然最优，hybrid 会出现。
+
+#### 3.2.1 纯 wholesale：一定合作两家（Proposition 2）
+
+由于消费者忠诚，两类产品的需求互不挤压；wholesale 下每个供应商都能通过选择合适的 $w_i$（在 $p_i \le q_i$ 的可行域内）保证非负利润，只要 $\kappa q_i < 1$。因此零售商严格偏好“两家都上架”。
+
+结论（Proposition 2）：
+在纯 wholesale 下，与两家供应商合作是最优的；价格与单供应商解一致，只是各自利润按市场规模 $\gamma_i$ 缩放。
+
+直觉：
+没有“统一佣金”约束，零售商的新增产品带来新增利润且不牺牲另一产品收益（忠诚假设下需求可加），因此不做排他。
+
+#### 3.2.2 纯 marketplace：统一佣金带来的“高质量排除”风险（Proposition 3）
+
+关键差异：如果两家都采用 marketplace，零售商必须用同一个 $\phi$ 管两类供应商。
+
+参与约束变为：
+      1. 两家都参与需要 $\phi < 1-\kappa q_H$（由高质量供应商决定，因为 $q_H>q_L$ 使其更敏感）。
+      2. 仅低质量参与只需 $\phi < 1-\kappa q_L$，可允许更高 $\phi$。
+
+当两家都参与时，供应商定价为
+$$ p_i^*(\phi)=\frac{1}{2}\left(q_i+\frac{\kappa q_i^2}{1-\phi}\right). $$
+
+零售商选择最优 $\phi^m$ 时要兼顾两类需求权重 $\gamma_i$，其一阶条件给出（论文式 (3)）：
+$$ (1-\phi)^3-\kappa^2\frac{\sum_{i\in{L,H}}\gamma_i q_i^3}{\sum_{i\in{L,H}}\gamma_i q_i}(1+\phi)=0, $$
+并且还受上界 $\phi < 1-\kappa q_H$ 约束。
+
+**最关键结论（Proposition 3）：**
+存在阈值 $\gamma^m$，当高质量产品市场权重 $\gamma$ 足够大（$\gamma>\gamma^m$）时，零售商愿意用较低的统一佣金留住高质量供应商，从而两家都参与；当 $\gamma$ 较小（低质量产品市场更大）时，零售商反而选择排他地只合作低质量供应商，以便把佣金率设得更高并最大化对“主流低质”市场的抽成。
+
+运营机制（为什么会排除高质）：
+      1. 高质量供应商的可承受佣金上界 $\phi_{\max}(q_H)=1-\kappa q_H$ 更低。
+      2. 若零售商坚持两家都在 marketplace，必须把 $\phi$ 压到高质量供应商能接受的水平；这会显著降低从低质量大市场（若 $1-\gamma$ 大）抽取的平台收益。
+      3. 因此当低质量市场足够大时，平台宁可“放弃高质小众”，用更高的 $\phi$ 榨取低质主流市场。
+
+这就是本文最重要的反直觉之一：高质量并不保证更容易被平台纳入；在统一佣金下，高质量反而可能更容易被排除。
+
+#### 3.2.3 hybrid：用“交易模式”替代“个性化佣金”的定制工具（Proposition 4）
+
+hybrid 的设计：
+零售商允许 wholesale 与 marketplace 同时存在，并把两家供应商分配到不同模式。存在两种可能：
+      1. WM：高质量走 wholesale（W），低质量走 marketplace（M）。
+      2. MW：高质量走 marketplace（M），低质量走 wholesale（W）。
+
+以 WM 为例：
+      1. 高质量产品 wholesale：$w_H^* = \frac{1}{2}(q_H+\kappa q_H^2)$，零售商定价 $p_H^* = (w_H^*+q_H)/2$。
+      2. 低质量产品 marketplace：供应商定价 $p_L^*(\phi)=\frac{1}{2}\left(q_L+\frac{\kappa q_L^2}{1-\phi}\right)$，参与约束为 $\phi < 1-\kappa q_L$。
+
+零售商总利润为两部分相加：
+$$ \Pi_r^{h,WM}(\phi)=\gamma,\pi_r^w(q_H)+(1-\gamma),\pi_r^m(q_L,\phi). $$
+注意 $\phi$ 只影响 marketplace 那一侧，因此零售商会把 $\phi$ 设为“针对 marketplace 侧质量”的单供应商最优值，即 $\phi^b(q_L)$。
+
+结论（Proposition 4）：
+存在阈值 $\gamma^h$，当高质量产品市场权重较低（$\gamma<\gamma^h$）时，最优 hybrid 是 WM；反之更可能选择 MW。
+
+直觉：
+hybrid 让零售商把“佣金率的定制”从一个数（统一 $\phi$）扩展成一个组合工具：对某一类供应商用 marketplace（抽佣并缓解 double marginalization），对另一类用 wholesale（避免佣金约束、但有 double marginalization）。当某一侧市场更大时，把 marketplace 分配给“更重要”的那一侧可以最大化抽佣收益；另一侧用 wholesale 作为“补充利润”并避免其退出。
+
+#### 3.2.4 最优合同选择：为什么 pure wholesale 永远不最优（Proposition 5）
+
+核心结论（Proposition 5）：
+在基准模型里，零售商的最优选择只可能是 pure marketplace 或 hybrid；pure wholesale 从不最优。
+
+更细的结构：
+      1. 当质量差异不大（$q_H$ 不太高）时，pure marketplace 依旧最优：统一佣金可以同时适配两类供应商，且能减轻 double marginalization。
+      2. 当质量差异拉大时，pure marketplace 会遇到“要么佣金次优、要么排除高质”的困境；hybrid 通过给其中一家供应商 wholesale 来规避该困境，因此成为最优。
+      3. 一个重要的福利面含义是：虽然 pure marketplace 可能排除高质供应商，*但在总体最优合同里不会排除任何供应商，因为零售商可以用 wholesale 把原本会退出的一方“拉回来”，hybrid 从而带来更丰富的品类供给。*
+
+结合论文 Figure 4 的读图方式：
+横轴是 $\gamma$（高质量市场份额），纵轴是 $q_H$（质量差异的强度）。当 $q_H$ 上升（异质性增加）时，hybrid 区域扩大；当 $\gamma$ 极端偏向某一方时，更容易出现 hybrid（平台会把 marketplace 分配给市场更大的那一方）。
+
+### 3.3 比较静态分析：关键参数如何推动合同切换
+
+这一部分把 Proposition 3-5 的阈值逻辑用“方向性结论”整理出来，便于管理者直接使用。
+
+1. 质量差异 $q_H/q_L$ 上升（高质更高或低质更低）：
+      1. 高质量供应商的可承受佣金上界 $\phi_{\max}(q_H)=1-\kappa q_H$ 下降，pure marketplace 在“包含两家”时可行域缩小。
+      2. 统一佣金被迫降低使平台从低质量侧的抽佣空间被压缩，导致 pure marketplace 更容易变成“排除高质”的排他均衡。
+      3. 因此，质量异质性越强，hybrid 越可能成为最优。
+2. 市场结构 $\gamma$ 变化（谁拥有更大忠诚人群）：
+      1. 当 $\gamma$ 大（高质市场更大）时，平台更愿意保留高质供应商，即使因此压低佣金；更可能出现“双方都在 marketplace”或 hybrid 的 MW（把 marketplace 分配给高质）。
+      2. 当 $\gamma$ 小（低质市场更大）时，平台的利润主战场在低质侧，更倾向于把 marketplace 给低质，形成 WM；在 pure marketplace 下甚至直接排除高质以提高 $\phi$。
+3. 质量成本系数 $\kappa$ 上升（生产更低效）：
+      1. 对任一质量 $q$，$\phi_{\max}(q)=1-\kappa q$ 下降，供应商对佣金更敏感。
+      2. 对高质而言，由于成本随 $q^2$ 增长，高 $\kappa$ 会更强烈地压缩其 marketplace 可行性，推动平台用 wholesale 安置高质（WM 概率上升）。
+4. 一个可记忆的“经验法则”：
+      如果一个品类里存在一类供应商在 marketplace 下对佣金极其敏感（很容易因费率稍高就不入驻/不盈利），而另一类供应商对佣金不敏感（可承受较高费率），则统一佣金的 pure marketplace 很可能不是最优；hybrid 或分层费率更有价值。
+
+## 4. 主要结论与管理启示 (Main Results & Managerial Insights)
+
+### 4.1 机制揭示：本文相对 benchmark 揭示了什么新 trade-off
+
+benchmark（单供应商）里，平台能把 $\phi$ 精准调到最适合该供应商质量 $q$ 的水平，因此 marketplace 占优。
+
+多供应商 + 质量异质后出现新的核心 trade-off：
+
+1. “统一佣金”的可行性由最敏感的供应商决定：
+   若两家都在 marketplace，则 $\phi$ 受制于高质供应商的参与上界 $1-\kappa q_H$。高质越高、成本越凸，能承受的 $\phi$ 越低。
+2. 平台利润的矛盾：留住高质 vs 榨取低质
+      1. 留住高质需要压低 $\phi$，但低质侧可能是更大的市场（$1-\gamma$ 大），平台会损失大量抽佣利润。
+      2. 榨取低质需要提高 $\phi$，但高质会退出或被排除，导致产品组合变窄、也丢失高质市场利润。
+3. hybrid 的本质作用：用“交易模式”替代“个性化费率”
+   当平台无法（或不愿）对每个供应商单独设定佣金时，hybrid 提供一种离散化的合同定制：对一类供应商用 marketplace（抽佣 + 减少 double marginalization），对另一类用 wholesale（避免佣金导致的退出）。因此 hybrid 是对“个性化佣金缺失”的一种结构性补救。
+
+**反直觉点：**
+在统一佣金的 pure marketplace 下，平台可能理性地排除高质量供应商。原因不是平台不想卖高质，而是“高质对费率更敏感”导致统一费率无法兼顾两类利润池。
+
+### 4.2 四个扩展如何把 hybrid 的方向性收敛为 WM
+
+论文 Section 4 给出四个“现实杠杆”，它们共同的效果是：一旦出现 hybrid，均衡几乎都锁定为 WM（低质 marketplace、高质 wholesale）。这使得本文对实践有强预测力。
+
+#### 4.2.1 扩展 1：供应商内生选择质量（Section 4.1, Proposition 6-7）
+
+关键结果 1（单供应商）：
+供应商在 wholesale 下选择质量 $q^w=1/(3\kappa)$；在 marketplace（佣金率 $\phi$）下选择更低的质量 $q^m=(1-\phi)/(3\kappa)$。尽管 marketplace 会诱导更低质量，pure marketplace 仍是唯一纯策略均衡（Proposition 6）。
+
+关键结果 2（两供应商）：
+存在阈值 $\gamma^E$，当 $\gamma < \gamma^E$ 时，hybrid WM 与 pure marketplace 都可能是纯策略均衡（Proposition 7）。在 WM 均衡中：
+
+1. wholesale 侧供应商选择较高质量 $1/(3\kappa)$；
+2. marketplace 侧供应商选择显著更低质量 $1/(15\kappa)$。
+
+直觉（为什么 MW 不再可持续）：
+因为 marketplace 会系统性地压低供应商的质量选择。如果把高质放进 marketplace（MW），其质量会下降，破坏“高质”的类型差异；同时低质若在 wholesale 会提升质量，使得两者类型排序被扭曲，MW 难以作为稳定均衡存在。结果是：一旦要用 hybrid 来维持质量分层，必须让高质走 wholesale、低质走 marketplace（WM）。
+
+管理含义：
+marketplace 抽佣不仅影响价格，还会通过“有效成本放大”削弱供应商质量投资激励。若品类中质量/创新很关键，平台可以用 wholesale（或更低费率/补贴）来保护高质供应商的质量投入。
+
+#### 4.2.2 扩展 2：供应商自选合同模式（Section 4.2, Proposition 8）
+
+设定：
+零售商提供 pure wholesale、pure marketplace 或 hybrid 菜单，供应商自行选择采用哪种模式（相当于合同筛选/激励相容问题）。
+
+结果：
+最优合同仍然是 pure marketplace 或 hybrid，但 hybrid 能成立时只会是 WM（Proposition 8）。
+
+机制：
+要让高质选择 marketplace，需要把 $\phi$ 压得很低；在这么低的 $\phi$ 下，低质也会更偏好 marketplace，导致无法实现“高质 M、低质 W”的分离。相反，让高质选择 wholesale 很自然：高质对佣金敏感、在 wholesale 下没有佣金税负；低质能忍受较高佣金、因此愿意进 marketplace。于是 WM 成为可实现的筛选均衡。
+
+管理含义：
+当平台对供应商质量信息不充分时，hybrid 本身可作为筛选机制：选择 marketplace 的供应商更可能是低质量类型，选择 wholesale 的更可能是高质量类型。平台可利用这一点设计入驻政策、品控、服务承诺与标签展示。
+
+#### 4.2.3 扩展 3：dominant retailer（分层佣金 + 批发价可谈判）（Section 4.3, Proposition 9-10）
+
+设定：
+dominant retailer 可以对不同供应商设定不同佣金率（tiered commissions），并且 wholesale 价格通过 Nash bargaining 决定。令 $\beta\in(0,1)$ 表示零售商议价能力权重。
+
+关键结果：
+
+1. 单供应商时，存在质量阈值 $q_0$：若 $q < q_0$ 选 pure marketplace，若 $q > q_0$ 反而选 pure wholesale（Proposition 10(a)）。直觉是：在高质量（高成本）场景下，通过谈判压低批发价可以让 wholesale 变得更有吸引力。
+2. 两供应商时，当 $q_L < q_0 < q_H$（一高一低跨过阈值）时，最优结构是 WM hybrid：高质量走 wholesale（享受谈判批发价带来的利润），低质量走 marketplace（抽取较高佣金）（Proposition 10(b)(ii)）。
+
+管理含义：
+即使你有能力做“分层佣金”，hybrid 仍可能最优，因为 wholesale 的谈判机制为高质量供应商创造了平台利润的新来源；而低质量供应商仍适合用 marketplace 的抽佣机制变现。
+
+#### 4.2.4 扩展 4：供应商质量连续分布（Section 4.4, Proposition 11）
+
+设定：
+供应商质量 $q \sim U[\mu-\Delta,\mu+\Delta]$，其中 $\mu$ 表示品类整体“品牌/定位”的平均质量，$\Delta$ 表示质量异质性。
+
+核心结论：
+当 $\mu$ 较高且 $\Delta$ 足够大时，hybrid 成为最优；并且在 hybrid 中存在一个质量阈值 $\bar q$，使得 $q<\bar q$ 的供应商走 marketplace，$q>\bar q$ 的供应商走 wholesale（即连续型 WM）。
+
+直觉：
+低质量供应商可承受更高佣金（$\phi_{\max}(q)=1-\kappa q$ 更大），因此平台倾向于用 marketplace 收割低端长尾；高质量供应商对佣金更敏感，平台用 wholesale 保留并变现高端供给。
+
+### 4.3 实证证据：marketplace 商品质量更低（Section 5）
+
+数据：
+来自一家美国领先零售商的公开商品页面数据，覆盖六大核心品类，2022 年 4 月三天窗口抓取，原始样本 7,449 个在售商品。零售商对 marketplace 商品有显著标签。剔除无评论商品后得到 2,029 个样本用于质量度量。
+
+质量代理：
+用商品平均评分 AVGRATING（1-5 分）作为质量度量，符合线上评论文献惯例（例如将评分视为消费者对质量的简化信号）。
+
+估计模型：
+以 MARKETPLACE（是否 marketplace）为因变量的 logit：
+
+$$ \log\left(\frac{p}{1-p}\right)=\beta_0+\beta_1,AVGRATING+\beta_2,\log(PRICE)+\sum_k \beta_{3,k},CATEGORY_k, $$
+
+其中 $p$ 为商品以 marketplace 模式销售的概率。
+
+结果（方向性）：
+$\beta_1$ 显著为负（论文报告约为 $-0.413$，且 $p<0.001$），意味着评分越高，越不可能是 marketplace 商品；每增加 1 分评分，成为 marketplace 的赔率约乘以 $\exp(-0.413)\approx 0.66$。
+
+解释：
+这为 WM 方向提供了经验支持：在该零售商的 hybrid 运营中，marketplace 商品更可能是低质量（低评分）商品。
+
+### 4.4 管理建议：如何把模型转成可执行决策
+
+1. 何时考虑 hybrid（而不是 pure marketplace）：
+
+   1. 品类内供应商质量差异很大（高质与低质的成本/品牌差距明显）。
+   2. 统一佣金无法同时让高质愿意入驻、又能从低质主流市场抽取足够利润。
+   3. 平台发现高质供应商对费率/服务条款极敏感，稍有不利就不参与。
+
+2. hybrid 下的模式分配规则（最稳健的经验法则）：
+   把低质量、长尾、对佣金不敏感的供应商放在 marketplace；把高质量、对佣金敏感、需要质量投入激励的供应商放在 wholesale（WM）。这在多种扩展与数据中都得到支持。
+
+3. 用 hybrid 解决两类运营目标：
+
+   1. 利润目标：marketplace 侧通过较高佣金率变现低质大盘；wholesale 侧通过定价控制与谈判批发价变现高质利润池。
+   2. 品类与品牌目标：wholesale 侧能更好地控制商品质量与一致性；marketplace 侧扩充 SKU、覆盖长尾需求。
+
+4. 对长期质量/创新的提醒：
+   marketplace 抽佣在模型中等价于提高供应商的“有效成本”，会降低其最优质量选择。若平台希望鼓励高质供应商持续创新，可以考虑：
+
+   1. 对高质供应商提供 wholesale 或更低费率/返利；
+   2. 在 marketplace 侧引入非价格激励（流量扶持、履约服务）来缓解质量投资不足。
+
+## 5. 你的犀利评论 (Reviewer's Critique)
+
+### 5.1 主要优点（作为 Senior Editor 也认可的部分）
+
+1. 机制清晰且新颖：
+   论文抓住一个非常现实但文献相对忽视的点：统一佣金约束下，质量异质性会让 pure marketplace 失去“对每个供应商精准定制”的能力，从而推出 hybrid。机制简洁、可解释性强。
+
+2. 结果具有方向性与可检验性：
+   不是泛泛地说“hybrid 可能出现”，而是通过多个扩展把 hybrid 的方向收敛为 WM，并用数据检验“marketplace 更低质”。这提高了理论对实践的指导价值。
+
+3. 理论-经验闭环较完整：
+   在 OM 理论文章中，能用真实平台商品数据做出与核心预测一致的证据，增强说服力。
+
+### 5.2 模型限制：哪些假设偏强/哪些现实因素被简化
+
+1. 忠诚消费者假设削弱了竞争结构：
+   需求被外生分割为 $\gamma$ 与 $1-\gamma$，供应商之间没有价格竞争与需求替代。现实中消费者往往会在不同质量/品牌之间比较，平台的合同选择也会影响替代弹性与价格竞争强度。虽然作者提到一个竞争变体，但主文未充分展示其稳健性边界。
+
+2. 质量成本设为“单位成本 $\kappa q^2$”可能不贴近某些品类：
+   许多质量提升更像固定成本（研发、设计）而非单位边际成本。若质量成本结构改变，供应商对佣金的敏感度以及 $\phi_{\max}(q)$ 的形式可能改变，从而影响结论强度。
+
+3. 统一佣金的制度细节与多维收费缺失：
+   平台现实收费常包含：上架费、广告费、履约服务费、阶梯费率、最低保证金等。若允许更丰富的非线性合同工具，hybrid 是否仍以相同机制出现需要进一步验证。
+
+4. 缺少平台侧的关键运营收益/成本维度：
+   marketplace 的优势不仅是缓解 double marginalization，还包括库存风险转移、运营复杂度、退货/履约责任分配等。本文主要聚焦价格-质量-佣金机制，可能低估了“库存与履约”在合同选择中的作用。
+
+5. 实证识别偏相关性：
+   评分既可能反映质量，也可能受到“marketplace 卖家服务/退货体验/物流”的影响；而交易模式本身可能影响评分生成机制（例如评论选择、曝光、样本量）。目前 logit 更多是相关性证据，距离因果识别仍有空间（需要工具变量、自然实验或面板变化）。
+
+### 5.3 未来方向：在此基础上可以做哪些扩展研究
+
+1. 让消费者在两产品间做选择（引入垂直差异竞争）：
+   将忠诚假设替换为标准垂直差异选择（消费者在 $H$ 与 $L$ 间比较），研究合同结构如何影响替代、价格分布、以及平台是否会“刻意降低高质供给”来抬高抽佣空间。
+
+2. 引入动态与声誉：
+   评分/评论是动态积累的，平台也会通过排序算法与推荐机制影响需求。研究合同结构、质量投资与声誉积累的动态互动，可能得到更强的政策含义（例如平台为何对 marketplace 卖家更强调评分治理）。
+
+3. 更丰富的合同工具：
+   在 marketplace 下加入二部收费（固定费 + 抽成）、阶梯佣金、最低保证金、广告竞价等；在 wholesale 下加入 buyback、markdown money 等；比较这些工具与 hybrid 的替代/互补关系。
+
+4. 供应商进入与平台筛选：
+   让供应商是否进入与平台筛选规则内生化，研究平台如何通过合同菜单与准入标准共同塑造供应商质量分布。
+
+5. 更强的实证策略：
+   若能观察到平台在某一时间点对某品类引入 marketplace 或调整费率/合同结构，可做差分法或事件研究；或者利用外部冲击（物流政策、平台规则变化）做工具变量，从而更接近因果。
+
+## 6. One More Thing
+
+本文最值得分享的“灵光一现”在于把 marketplace 佣金看成一种对供应商的“有效成本放大器”，从而得到一个简单但极有解释力的结论：高质量供应商反而更难承受统一佣金。
+
+具体来说，供应商在 marketplace 下的最优定价等价于面对有效单位成本 $\kappa q^2/(1-\phi)$。这立即推出参与上界
+
+$$ \phi < 1-\kappa q. $$
+
+也就是说，质量越高（$q$ 越大），能承受的最高佣金率越低。把这个一行公式与“平台必须对同一品类统一设 $\phi$”拼在一起，就自然推导出 pure marketplace 的核心困境与 hybrid 的必要性：平台要么为高质压低费率（牺牲低质大盘利润），要么排除高质；hybrid 则用 wholesale 把高质从佣金税负里“解放”出来，同时继续用 marketplace 变现低质长尾。
+
+这也是 WM（低质 marketplace、高质 wholesale）在多个扩展与数据中反复出现的根本原因：不是平台偏爱低质，而是高质对佣金的边际敏感度更高。

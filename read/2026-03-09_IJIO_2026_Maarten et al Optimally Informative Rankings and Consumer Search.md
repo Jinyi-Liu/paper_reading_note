@@ -306,14 +306,7 @@ $$
 
 这是全文第二个核心公式。对 $\lambda$ 求导后，平台成交概率变化可写成两部分：
 
-$$
-\frac{d\Pi}{d\lambda}
-=
-\underbrace{S_h\bigl(1-F_l(v_R)\bigr)-S_l\bigl(1-F_h(v_R)\bigr)}_{\text{DSE}(v_R)}
--
-\underbrace{\left(\frac{f_h(v_R)S_l}{1-\lambda}+\frac{f_l(v_R)S_h}{\lambda}\right)
-\frac{1}{\frac{d\log L(v_R(\lambda,s))}{dv_R(\lambda,s)}}}_{\text{ARE}(\lambda,v_R)}.
-$$
+$$\frac{d\Pi}{d\lambda}=\underbrace{S_h\bigl(1-F_l(v_R)\bigr)-S_l\bigl(1-F_h(v_R)\bigr)}_{\text{DSE}(v_R)}-\underbrace{\left(\frac{f_h(v_R)S_l}{1-\lambda}+\frac{f_l(v_R)S_h}{\lambda}\right)\frac{1}{\frac{d\log L(v_R(\lambda,s))}{dv_R(\lambda,s)}}}_{\text{ARE}(\lambda,v_R)}$$
 
 #### DSE：distributional shift effect
 

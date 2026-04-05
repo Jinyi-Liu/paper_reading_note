@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-03-26_MktgSci_2026_Iyer_Yao_Zhong_algorithmic_targeting_precision_recall</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="algorithmic-targeting-and-the-precision-recall-tradeoff">Algorithmic Targeting and the Precision-Recall Tradeoff</h1>
+<p><strong>作者：</strong> Ganesh Iyer (University of California, Berkeley), Yunfei (Jesse) Yao (The Chinese University of Hong Kong), Zemin (Zachary) Zhong (Rotman School of Management, University of Toronto &amp; City University of Hong Kong)</p>
+<p><strong>期刊：</strong> <em>Marketing Science</em>, Articles in Advance, pp. 1–20, 2026</p>
+<p><strong>DOI：</strong> https://doi.org/10.1287/mksc.2024.0930</p>
+<p><strong>Senior Editor：</strong> Anthony Dukes</p>
+<hr>
+<p><strong>摘要（中文翻译）：</strong></p>
+<p>本文研究了竞争性算法定向投放的均衡效应，其中算法的输出是针对个体消费者的转化概率预测。在此情境下，企业隐性地面临机器学习中经典的<strong>精确率-召回率权衡 (Precision-Recall Tradeoff)</strong>：企业可以选择定向投放给一小部分高转化概率的消费者（高精确率），但会遗漏许多潜在感兴趣的消费者；反之，企业也可以扩大投放范围覆盖更多消费者（高召回率），但会在不感兴趣的消费者上浪费预算。本文在两家企业战略性选择算法定向策略的竞争框架下分析了这一权衡。研究表明：相比垄断企业，竞争企业偏好<strong>更高精确率但更低召回率</strong>的定向策略；当企业的算法预测相关性更高时，企业会定向更少的消费者；企业还有动机战略性地降低自身定向策略的精确率以缓和竞争。若企业可内生选择算法相关性，则均衡中存在降低相关性的激励。</p>
+<hr>
+<h2 id="0">0. 论文速览</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>研究问题</strong></td>
+<td>当算法输出为个体消费者转化概率时，竞争企业如何在精确率与召回率之间做出最优权衡？</td>
+</tr>
+<tr>
+<td><strong>理论框架</strong></td>
+<td>双寡头同时博弈 (Simultaneous Duopoly Game)，混合策略均衡 (Mixed-Strategy Equilibrium)</td>
+</tr>
+<tr>
+<td><strong>核心发现</strong></td>
+<td>竞争导致企业偏好高精确率/低召回率；算法预测相关性升高会同时降低精确率和召回率；企业有激励投资私有数据以降低预测相关性</td>
+</tr>
+<tr>
+<td><strong>方法论</strong></td>
+<td>理论模型 + 数值模拟 (Beta 分布)</td>
+</tr>
+<tr>
+<td><strong>主要贡献</strong></td>
+<td>将 ML 中的 Precision-Recall Tradeoff 引入竞争定向投放的战略分析框架</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="1-motivation">1. 研究背景与动机 (Motivation)</h2>
+<h3 id="11">1.1 实践痛点</h3>
+<p>在数字经济中，企业越来越依赖 AI 和机器学习算法（从简单的 Logit 回归到复杂的神经网络）进行消费者定向投放。算法的典型输出并非传统文献假设的"二元信号"（感兴趣/不感兴趣），而是一个<strong>连续的转化概率分布</strong>。例如，阿里巴巴利用高维消费者数据生成的算法评分来决定向哪些客户发送促销信息 (Shi et al., 2024)。LinkedIn 建议广告主在定向策略中"平衡精确率与覆盖量"；B2B 营销技术公司 Admetrics 则建议广告主在 Temu 和 Shein 加剧竞争的环境下优先精确率。</p>
+<p>这引出一个核心实践问题：面对算法输出的概率分布，企业究竟应该将投放阈值设在多高？这一决策本质上就是机器学习分类问题中经典的 <strong>Precision-Recall Tradeoff</strong>。</p>
+<h3 id="12">1.2 理论缺口</h3>
+<p>现有竞争定向投放文献（如 Chen et al. 2001, Iyer et al. 2005, Bergemann and Bonatti 2011 等）通常假设企业接收到的是关于消费者类型的<strong>二元信号 (binary signal)</strong>，即在消费者细分层级进行定向。这一离散化假设有两个根本局限：</p>
+<ol>
+<li><strong>未能反映算法实际输出</strong>：现实中的机器学习算法输出的是连续概率分布，而非二元分类结果。</li>
+<li><strong>限制了策略空间</strong>：离散信号下企业的定向策略空间高度受限，无法连续调整精确率与召回率，可能产生"随着相关性增加企业反而定向更多消费者"这种不自然的结果（一种离散化的 artifact）。</li>
+</ol>
+<p>此外，虽有少数文献涉及精确率-召回率概念（如 Berman et al. 2022 研究推荐算法的信息结构设计，Jerath and Ren 2021 研究消费者注意力分配），但它们关注的是<strong>信息结构设计以影响消费者</strong>，而非企业在给定算法预测后的<strong>竞争定向部署策略</strong>。</p>
+<p>与 Iyer and Ke (2024) 的区别也很关键：后者研究的是"如何<strong>选择</strong>算法模型"（Bias-Variance Tradeoff），而本文研究的是"给定模型预测后，如何<strong>部署</strong>算法定向"（Precision-Recall Tradeoff）。这是模型选择之后、实际执行层面的决策问题。</p>
+<h3 id="13">1.3 核心贡献</h3>
+<ol>
+<li><strong>建模创新</strong>：首次将 ML 分类问题中的 Precision-Recall Tradeoff 嵌入竞争定向投放的微观基础模型中，将算法输出建模为消费者转化概率的连续分布 $f(p)$，而非传统的二元信号。</li>
+<li><strong>核心发现</strong>：竞争企业偏好"高精确率、低召回率"的定向策略（Proposition 1）；预测相关性 $\rho$ 升高时，精确率和召回率<strong>同时下降</strong>（反直觉结果）。</li>
+<li><strong>连续 vs. 离散</strong>：证明了基于个体级概率预测的连续定向策略空间消除了传统离散定向中召回率可能随相关性上升的 artifact。</li>
+<li><strong>内生相关性</strong>：证明降低预测相关性的投资具有公共品性质，可能导致<strong>私有数据投资不足</strong>，尤其在 LLM 合成数据流行的背景下。</li>
+</ol>
+<hr>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="21">2.1 符号体系</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\mu_0$</td>
+<td>消费者感兴趣的先验概率</td>
+<td>$\mu_0 = \int p f(p) dp$，Bayesian 一致性</td>
+</tr>
+<tr>
+<td>$p_i$</td>
+<td>算法对消费者 $i$ 的预测概率</td>
+<td>$p_i \in [0, 1]$，表示消费者 $i$ 感兴趣的后验概率</td>
+</tr>
+<tr>
+<td>$f(p)$</td>
+<td>预测概率的分布密度</td>
+<td>定义在 $[0,1]$ 上，刻画算法信息量</td>
+</tr>
+<tr>
+<td>$v$</td>
+<td>独家定向感兴趣消费者的价值</td>
+<td>仅一家企业定向该消费者时的利润</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>共同定向感兴趣消费者的价值</td>
+<td>两家企业同时定向时每家的期望利润，$0 \leq w &lt; v$</td>
+</tr>
+<tr>
+<td>$c$</td>
+<td>单位定向成本</td>
+<td>$w &lt; c &lt; v$（Assumption 1）</td>
+</tr>
+<tr>
+<td>$q(p)$</td>
+<td>定向策略函数</td>
+<td>$q(p) \in [0,1]$，对概率为 $p$ 的消费者的定向概率</td>
+</tr>
+<tr>
+<td>$\rho$</td>
+<td>两家企业预测完全一致的概率</td>
+<td>非 Pearson 相关系数，而是预测精确匹配的概率</td>
+</tr>
+<tr>
+<td>$\underline{p}$</td>
+<td>最低定向消费者的预测概率</td>
+<td>$\underline{p} = \inf{p : q(p) &gt; 0}$</td>
+</tr>
+<tr>
+<td>$\overline{p}$</td>
+<td>确定定向的阈值</td>
+<td>$q(p) = 1, \forall p &gt; \overline{p}$；若 $\overline{p} = 1$，则不存在确定定向</td>
+</tr>
+<tr>
+<td>$p_m$</td>
+<td>垄断企业的定向阈值</td>
+<td>$p_m = c/v$</td>
+</tr>
+<tr>
+<td>$a$</td>
+<td>总定向强度</td>
+<td>$a = \int_{\underline{p}}^{1} f(p)q(p)dp$</td>
+</tr>
+<tr>
+<td>$R$</td>
+<td>召回率 (Recall)</td>
+<td>$R = \int_{\underline{p}}^{1} pq(p)f(p)dp / \mu_0$</td>
+</tr>
+<tr>
+<td>$\hat{\rho}$</td>
+<td>临界相关性阈值</td>
+<td>$\hat{\rho} \in [0, (v-c)/(v-w)]$，区分两类均衡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 博弈/决策结构</h3>
+<p><strong>Players：</strong> 两家对称企业 (Symmetric Duopoly) + 一个单位质量的消费者群体。</p>
+<p><strong>消费者类型：</strong> 二元类型——感兴趣 (interested) 或不感兴趣 (uninterested)。感兴趣且被定向的消费者会购买；不感兴趣的消费者或未被定向的消费者不会购买。这可理解为广告作为信息 (advertising as information)：广告创造产品认知。</p>
+<p><strong>Sequence of Events (Main Model)：</strong></p>
+<ol>
+<li>两家企业各自拥有一个预测算法，该算法为每个消费者生成一个转化概率 $p_i \in [0,1]$。</li>
+<li>两家企业<strong>同时</strong>选择各自的定向策略 $q_i(p)$。</li>
+<li>被定向的感兴趣消费者购买，收益实现。</li>
+</ol>
+<p><strong>Information Structure（预测相关性结构）：</strong></p>
+<p>对于一个消费者，假设企业 1 的预测为 $p_1$。企业 2 的条件预测分布为：</p>
+<p>$$
+f(p|p_1) = \rho \cdot \delta(p_1) + (1 - \rho)\left[\frac{p_1 \cdot p f(p)}{\mu_0} + \frac{(1-p_1)(1-p)f(p)}{1 - \mu_0}\right]
+$$</p>
+<p>其经济含义为：</p>
+<ul>
+<li>以概率 $\rho$，企业 2 的预测与企业 1 完全一致（使用相同的公共数据）。</li>
+<li>以概率 $1 - \rho$，企业 2 的预测来自条件分布：若消费者确实感兴趣（概率 $p_1$），则企业 2 的预测倾向于分布的右尾 $pf(p)/\mu_0$；若不感兴趣（概率 $1 - p_1$），则倾向于左尾 $(1-p)f(p)/(1-\mu_0)$。</li>
+</ul>
+<p><strong>关键性质：</strong> 当算法接近完美时（$f(p)$ 集中在 0 和 1），两家企业的预测几乎总是一致的，无论 $\rho$ 取何值。这比简单的"以 $1-\rho$ 的概率完全独立"的相关性结构更加合理。</p>
+<h3 id="23">2.3 目标函数与约束</h3>
+<p><strong>垄断企业目标函数：</strong></p>
+<p>垄断企业选择阈值 $p_m$ 最大化利润。在阈值处，边际收益等于边际成本：</p>
+<p>$$
+p_m \cdot v = c \quad \Rightarrow \quad p_m = \frac{c}{v}
+$$</p>
+<p>定向策略为 $q(p) = \mathbf{1}_{p \geq p_m}$，即定向所有预测概率不低于 $c/v$ 的消费者。</p>
+<p><strong>双寡头企业的期望收益：</strong></p>
+<p>对一个预测概率为 $p$ 的消费者，企业定向该消费者的期望收益为：</p>
+<p>$$
+\pi(p) = [\rho q(p) + (1-\rho)R] \cdot p \cdot w + [1 - \rho q(p) - (1-\rho)R] \cdot p \cdot v - c
+$$</p>
+<p>其中：</p>
+<ul>
+<li>$[\rho q(p) + (1-\rho)R] \cdot p$ 是该消费者感兴趣且被两家企业同时定向的概率，此时每家获得 $w$。</li>
+<li>$[1 - \rho q(p) - (1-\rho)R] \cdot p$ 是该消费者感兴趣但仅被本企业定向的概率，此时获得 $v$。</li>
+<li>$c$ 是定向成本（无论消费者是否感兴趣都需支付）。</li>
+</ul>
+<p><strong>精确率与召回率的定义：</strong></p>
+<p>垄断情形下的精确率 (Precision) 和召回率 (Recall)：</p>
+<p>$$
+\text{Precision}<em>m = \frac{\int</em>{p_m}^{1} p f(p) dp}{\int_{p_m}^{1} f(p) dp} = \frac{\int_{p_m}^{1} p f(p) dp}{a_m}
+$$</p>
+<p>$$
+\text{Recall}<em>m = \frac{\int</em>{p_m}^{1} p f(p) dp}{\int_{0}^{1} p f(p) dp} = \frac{\int_{p_m}^{1} p f(p) dp}{\mu_0}
+$$</p>
+<p>竞争情形下（允许混合策略 $q(p)$）：</p>
+<p>$$
+\text{Precision}<em>d = \frac{\int</em>{\underline{p}}^{1} p q(p) f(p) dp}{\int_{\underline{p}}^{1} q(p) f(p) dp}
+$$</p>
+<p>$$
+\text{Recall}<em>d = \frac{\int</em>{\underline{p}}^{1} p q(p) f(p) dp}{\mu_0}
+$$</p>
+<h3 id="24">2.4 关键假设</h3>
+<p><strong>Assumption 1：</strong> $0 \leq w &lt; c &lt; v$</p>
+<ul>
+<li><strong>含义：</strong> 企业愿意独家定向感兴趣的消费者（$pv - c &gt; 0$ 对足够高的 $p$），但不愿定向一个一定会被竞争对手同时定向的感兴趣消费者（$w &lt; c$）。</li>
+<li><strong>合理性：</strong> 当两家企业同时定向同一消费者时，竞争压缩了利润（如价格竞争或消费者随机选择），使得共同定向的期望收益低于成本。这反映了定向投放中的<strong>拥挤效应 (Congestion Effect)</strong>。</li>
+</ul>
+<p><strong>Bayesian 一致性：</strong> $\int p f(p) dp = \mu_0$，即算法预测概率的期望等于先验概率。</p>
+<p><strong>算法信息量的分布刻画：</strong> 完美算法对应双峰分布（质点在 0 和 1）；完全无信息算法对应单峰分布（质点在 $\mu_0$）。</p>
+<hr>
+<h2 id="3-analysis-solution">3. 分析与求解 (Analysis &amp; Solution)</h2>
+<h3 id="31-monopoly-benchmark">3.1 垄断基准 (Monopoly Benchmark)</h3>
+<p>垄断企业采用简单的阈值策略：定向所有 $p \geq p_m = c/v$ 的消费者。</p>
+<p><strong>直觉：</strong> 阈值处的消费者，其期望贡献 $p_m \cdot v$ 恰好覆盖定向成本 $c$。低于此阈值的消费者定向"不划算"。</p>
+<p><strong>Precision-Recall 随阈值的变化：</strong></p>
+<ul>
+<li>$p_m \to 1$：Precision $\to 1$，Recall $\to 0$（只定向最确定的消费者，几乎不遗漏但覆盖极少）。</li>
+<li>$p_m \to 0$：Precision $\to \mu_0$，Recall $\to 1$（定向几乎所有人，覆盖完全但精确率回退到先验）。</li>
+<li>高 $c/v$ 倾向精确率；低 $c/v$ 倾向召回率。</li>
+</ul>
+<h3 id="32-competitive-equilibrium">3.2 竞争均衡 (Competitive Equilibrium)</h3>
+<h4 id="lemma-1">Lemma 1：均衡结构</h4>
+<blockquote>
+<p><strong>Lemma 1.</strong> 在任何对称均衡中，要么 $q(p) \in (0,1), \forall p \in (\underline{p}, 1]$（从不确定定向），要么存在 $\overline{p} \in (\underline{p}, 1)$ 使得 $q(p) = 1, \forall p &gt; \overline{p}$，且 $q(p) \in (0,1), \forall p \in (\underline{p}, \overline{p})$。</p>
+</blockquote>
+<p><strong>经济直觉：</strong> 均衡中，企业对高概率消费者确定定向（获取正利润），对中等概率消费者混合定向（零期望利润的无差异条件）。这是因为对中等概率消费者，确定定向会导致显著的重叠概率和净亏损，所以企业通过随机化来缓和竞争。</p>
+<h4 id="_1">混合策略的推导</h4>
+<p>在混合区间 $(\underline{p}, \overline{p})$，企业对定向与否无差异，期望利润为零：</p>
+<p>$$
+[\rho q(p) + (1-\rho)R] \cdot p \cdot w + [1 - \rho q(p) - (1-\rho)R] \cdot p \cdot v - c = 0
+$$</p>
+<p>解出均衡定向概率：</p>
+<p>$$
+q(p) = \frac{v - (1-\rho)(v-w)R - c/p}{\rho(v-w)}, \quad \forall p \in (\underline{p}, \overline{p})
+$$</p>
+<p>在下界处 $q(\underline{p}) = 0$，得到：</p>
+<p>$$
+\underline{p} = \frac{c}{v - (1-\rho)(v-w)R}
+$$</p>
+<p><strong>关键观察：</strong> $q(p)$ 关于 $p$ 是<strong>非线性递增</strong>的（包含 $c/p$ 项），因为定向收益与 $p$ 成正比而成本为常数 $c$。</p>
+<h4 id="lemma-2">Lemma 2：均衡的存在与唯一性</h4>
+<blockquote>
+<p><strong>Lemma 2.</strong> 存在唯一的混合策略对称均衡。存在 $\hat{\rho} \in [0, (v-c)/(v-w)]$ 使得：
+- 当 $\rho \geq \hat{\rho}$ 时，企业从不确定定向任何消费者（$\overline{p} = 1$）。
+- 当 $\rho &lt; \hat{\rho}$ 时，企业对 $p \geq \overline{p}$ 的消费者确定定向，对 $p \in (\underline{p}, \overline{p})$ 的消费者混合定向。</p>
+</blockquote>
+<p><strong>唯一性证明思路：</strong> 定义函数 $G(R)$（或 $H(R)$），通过隐函数定理证明 $G(R)$ 关于 $R$ 严格递减且 $G(0) &gt; 0$，因此存在唯一的不动点 $R^*$。</p>
+<p><strong>经济直觉：</strong> 当相关性高时，对手极可能对同一消费者有相同预测并定向，确定定向的期望收益为负（$w &lt; c$），所以企业只能混合；当相关性低时，高概率消费者被对手同时定向的可能性较小，确定定向仍有利可图。</p>
+<h3 id="33">3.3 核心命题</h3>
+<h4 id="proposition-1">Proposition 1：竞争偏好精确率</h4>
+<blockquote>
+<p><strong>Proposition 1.</strong> 双寡头的最优定向策略具有比垄断<strong>更高的精确率</strong>和<strong>更低的召回率</strong>。</p>
+</blockquote>
+<p><strong>证明核心思路：</strong> 构造概率密度函数 $f_d(p) \propto q(p)f(p)$ 和 $f_m(p) \propto f(p)$（限定在 $[p_m, 1]$ 上）。因为 $q(p)$ 关于 $p$ 弱递增，比率 $f_d(p)/f_m(p) \propto q(p)$ 也弱递增。利用一阶随机占优 (First-Order Stochastic Dominance) 的引理（Lemma A.1），$X_d$ 一阶随机占优 $X_m$，因此 $E[X_d] &gt; E[X_m]$，即双寡头精确率高于垄断。</p>
+<p><strong>经济直觉（核心机制）：</strong></p>
+<p>竞争导致定向重叠，降低了期望利润。企业的最优反应是<strong>集中火力于高概率消费者</strong>——这些消费者单位定向成本的"投资回报率"最高。低概率消费者在竞争下变得更加"不划算"（原本期望收益就低，加上重叠损失更大），所以被放弃。这自然地推高了精确率、压低了召回率。</p>
+<p>这是一个关于<strong>竞争如何塑造定向部署策略</strong>的深刻结论：企业不是因为算法更好了才更精确，而是因为竞争压力迫使企业"精确化"。</p>
+<h3 id="34-comparative-statics">3.4 比较静态分析 (Comparative Statics)</h3>
+<h4 id="341-rho">3.4.1 相关性 $\rho$ 的影响</h4>
+<p><strong>召回率 $R$ 关于 $\rho$ 严格递减：</strong></p>
+<p>$$
+\frac{\partial R}{\partial \rho} &lt; 0
+$$</p>
+<p><strong>直觉：</strong> 预测越相关，定向重叠越多，回报越低，企业战略性地减少定向。</p>
+<p><strong>精确率关于 $\rho$ 的变化（$\rho &gt; \hat{\rho}$ 时递减，反直觉）：</strong></p>
+<p>当 $\rho$ 较高时，高概率消费者变得<strong>不再那么有吸引力</strong>——因为两家企业都更可能将其识别为高价值目标并激烈争夺。相对地，中等概率消费者变得<strong>相对更有吸引力</strong>——竞争对手不太可能将其预测为高概率消费者，因此竞争强度较低。结果是 $q(p)$ 曲线变得更加平坦（高概率消费者的定向概率降低，低概率消费者的定向概率上升），导致<strong>精确率下降</strong>。</p>
+<p><strong>利润关于 $\rho$ 递减：</strong></p>
+<p>当 $\rho &lt; \hat{\rho}$ 时，降低 $\rho$ 会增加利润。当 $\rho \geq \hat{\rho}$ 时，利润为零。</p>
+<p><strong>下界 $\underline{p}$ 关于 $\rho$ 递减：</strong></p>
+<p>$\rho$ 升高时，企业反而定向更低概率的消费者（extensive margin 扩展）。直觉是：高相关性下，边际消费者被对手定向的概率很低（因为对手也认为其概率低），反而成为"安全区域"。</p>
+<table>
+<thead>
+<tr>
+<th>参数变化</th>
+<th>Recall</th>
+<th>Precision</th>
+<th>利润</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\rho \uparrow$</td>
+<td>$\downarrow$</td>
+<td>$\downarrow$（当 $\rho &gt; \hat{\rho}$）</td>
+<td>$\downarrow$（至零）</td>
+</tr>
+<tr>
+<td>$c \uparrow$</td>
+<td>$\downarrow$</td>
+<td>$\uparrow$（数值）</td>
+<td>$\downarrow$</td>
+</tr>
+<tr>
+<td>$w \uparrow$</td>
+<td>$\uparrow$</td>
+<td>$\downarrow$（数值）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>$v \uparrow$</td>
+<td>不确定</td>
+<td>$\downarrow$（数值）</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h4 id="342">3.4.2 与传统离散定向的对比</h4>
+<p>传统定向（如 Chen et al. 2001）基于消费者细分层级的离散信号，策略空间受限。本文的个体级连续预测提供了更灵活的策略空间：</p>
+<ul>
+<li><strong>连续预测下</strong>：召回率<strong>严格递减</strong>于 $\rho$（无例外）。</li>
+<li><strong>离散预测下</strong>：可能出现随 $\rho$ 增加召回率反而上升的 artifact，因为企业无法精细调整定向。</li>
+</ul>
+<p>这说明算法定向技术的进步（从细分级到个体级）从根本上改变了竞争的精确率-召回率动态。</p>
+<hr>
+<h2 id="4-main-results-managerial-insights">4. 主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="41">4.1 核心机制与反直觉结果</h3>
+<p><strong>机制对比（Monopoly vs. Duopoly）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>垄断</th>
+<th>双寡头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定向策略</td>
+<td>简单阈值 $p_m = c/v$</td>
+<td>混合策略 $q(p)$，非线性递增</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>较低</td>
+<td>较高（一阶随机占优）</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>较高</td>
+<td>较低（定向更少消费者）</td>
+</tr>
+<tr>
+<td>利润</td>
+<td>正</td>
+<td>可能为零（高 $\rho$ 时）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键 Trade-off：</strong> 竞争不仅减少了企业的定向范围（recall $\downarrow$），还改变了定向的<strong>构成</strong>（precision $\uparrow$）。企业从"广撒网"转向"精准打击"。</p>
+<p><strong>反直觉结果：相关性升高 $\Rightarrow$ 精确率下降</strong></p>
+<p>直觉上，可能认为更高相关性下企业会更聚焦高概率消费者（精确率上升）。但实际上，高相关性使高概率消费者成为"红海"（两家都抢），而中等概率消费者成为"蓝海"（竞争较轻），企业的定向概率函数 $q(p)$ 变平坦，导致精确率反而下降。</p>
+<h3 id="42-extensions">4.2 Extensions</h3>
+<h4 id="extension-1-endogenous-correlation-section-41">Extension 1：内生预测相关性 (Endogenous Correlation, Section 4.1)</h4>
+<p><strong>模型设定：</strong> 第一阶段两家企业同时投资 $I_j$ 以获取私有数据，降低预测相关性 $\rho(I_1, I_2)$。第二阶段按主模型进行定向博弈。</p>
+<p>$$
+\rho(I_1, I_2) = (\sqrt{\rho_0} - d(I_1))(\sqrt{\rho_0} - d(I_2))
+$$</p>
+<p>其中 $d(I)$ 递增凹，$d(0) = 0$。</p>
+<blockquote>
+<p><strong>Proposition 2.</strong> 若 $\rho_0 &lt; \hat{\rho}$，企业投资并获得正利润。若 $\rho_0 &gt; \hat{\rho}$，企业可能不投资且利润为零。</p>
+</blockquote>
+<p><strong>核心洞察——公共品问题：</strong> 一家企业投资降低相关性，两家都受益（因为 $\rho$ 取决于双方投资）。这是典型的<strong>公共品生产问题 (Public Good Problem)</strong>，导致搭便车和<strong>私有数据投资不足</strong>。</p>
+<p><strong>反直觉结论：</strong> 初始相关性越高的企业，投资激励反而越低。因为利润在 $\rho \in [\hat{\rho}, 1]$ 区间为零，只有投资到 $\rho &lt; \hat{\rho}$ 才有正利润回报，但这需要大量投资，成本可能超过收益。这意味着当公共数据生态（如 LLM 合成数据）占主导时，企业可能陷入"零利润陷阱"。</p>
+<p><strong>现实含义：</strong> 在 LLM 合成数据日益流行的背景下，企业可能过度依赖公共但高相关性的合成消费者数据，而<strong>投资不足</strong>于第一方 Cookie 等私有且低相关性的数据。</p>
+<h4 id="extension-2-endogenous-pricing-section-42">Extension 2：内生定价 (Endogenous Pricing, Section 4.2)</h4>
+<p><strong>设定：</strong> 两种可行价格 $P_H &gt; P_L$，企业同时选择价格和定向策略。</p>
+<p><strong>结果（数值模拟）：</strong></p>
+<ul>
+<li>$\rho$ 低时：双方均定高价 $(P_H, P_H)$，因为定向重叠少，降价的收益不足以弥补独家客户的利润损失。</li>
+<li>$\rho$ 高时：转向非对称均衡 $(P_H, P_L)$ 或 $(P_L, P_H)$，一方降价以抢夺重叠消费者。</li>
+</ul>
+<p><strong>核心结论不变：</strong> 无论哪种定价均衡，每家企业的 recall 都低于垄断，至少一家企业的 precision 高于垄断。</p>
+<h4 id="extension-3-asymmetric-pure-strategy-equilibria-section-43">Extension 3：非对称纯策略均衡 (Asymmetric Pure Strategy Equilibria, Section 4.3)</h4>
+<blockquote>
+<p><strong>Proposition 3.</strong> 在非对称纯策略均衡中，存在 $p_0 \in (\underline{p}, 1)$，使得恰好一家企业定向 $p \in (\underline{p}, p_0)$ 的消费者（市场划分以缓和竞争）。高概率消费者 $p &gt; p_0$ 由一家或两家企业定向。<strong>任一企业的 recall 低于垄断，至少一家的 precision 高于垄断。</strong></p>
+</blockquote>
+<p>三种可能的非对称均衡形态：</p>
+<ol>
+<li><strong>垄断均衡 (Foreclosure)</strong>：当 $\rho$ 足够高时，一家企业充当垄断者，另一家退出市场。</li>
+<li><strong>市场划分 (Partition)</strong>：中等概率消费者被两家分别覆盖，无重叠。</li>
+<li><strong>高概率重叠 (Overlapping at high-$p$)</strong>：高概率消费者被两家同时定向，中等概率消费者被划分。</li>
+</ol>
+<h3 id="43">4.3 管理建议</h3>
+<ol>
+<li><strong>定向部署策略：</strong> 竞争企业在部署算法定向时，应有意识地向高精确率倾斜，即使这意味着放弃一些潜在客户。"广撒网"在竞争下是次优策略。</li>
+<li><strong>差异化数据战略：</strong> 企业应投资建设<strong>私有数据体系</strong>（如第一方数据、自有分析能力），以降低与竞争对手的预测相关性。这不仅提升预测准确性，更重要的是<strong>战略性地软化竞争</strong>。</li>
+<li><strong>关注竞争对手的预测：</strong> 企业在设计定向策略时，不能仅考虑自身算法的输出，还需评估竞争对手预测与自身预测的<strong>相关程度</strong>，并据此调整精确率-召回率的权衡。</li>
+<li><strong>政策启示（隐私监管的非预期效应）：</strong> 隐私法规可能阻止企业使用私有数据来差异化预测，间接推高预测相关性 $\rho$，导致精确率和召回率<strong>同时下降</strong>——这对行业和消费者都可能是负面的。</li>
+</ol>
+<hr>
+<h2 id="5-reviewers-critique">5. 你的犀利评论 (Reviewer's Critique)</h2>
+<h3 id="51">5.1 优点</h3>
+<ol>
+<li><strong>问题选择精准且时机恰当：</strong> 将 ML 中的 Precision-Recall Tradeoff 引入竞争营销战略分析，完美契合当下 AI 算法大规模部署于定向投放的行业趋势，研究问题极具实践相关性。</li>
+<li><strong>建模优雅：</strong> 用连续分布 $f(p)$ 取代传统二元信号的做法既简洁又深刻，不仅更贴合现实，还消除了离散化带来的 artifacts，并自然地链接到 ML 中的经典概念。</li>
+<li><strong>核心结果强健：</strong> Proposition 1 在对称混合策略均衡、非对称纯策略均衡、内生定价等多种设定下均成立，体现了结论的高度稳健性。</li>
+<li><strong>相关性结构设计巧妙：</strong> 条件分布的设定保证了当算法趋于完美时两家预测自然趋同，避免了简单独立假设的不合理性。</li>
+<li><strong>公共品视角的私有数据投资分析</strong> 提供了组织战略层面的深刻洞察，对当前 LLM 合成数据的讨论尤为及时。</li>
+</ol>
+<h3 id="52">5.2 模型限制与过强假设</h3>
+<ol>
+<li><strong>消费者被动性：</strong> 模型中消费者是完全被动的——被定向就购买（如果感兴趣），不被定向就不购买。现实中消费者有搜索行为、多归属 (multi-homing) 能力、对广告的策略性反应（如 ad avoidance, Choi et al. 2023）。消费者的内生反应可能改变精确率-召回率的均衡效应。</li>
+<li><strong>定向成本同质：</strong> 假设单位定向成本 $c$ 对所有消费者相同，忽略了现实中竞价广告 (auction-based advertising) 中 CPC/CPM 因竞争强度而异的事实。内生化定向成本（如通过广告拍卖机制）可能是重要的拓展方向。</li>
+<li><strong>$w &lt; c$ 的假设可能过强：</strong> Assumption 1 排除了即使共同定向仍有利可图的情形。在某些行业（如品牌广告），重复触达可能有正向价值（reinforcement effect），此时 $w \geq c$ 可能成立。</li>
+<li><strong>二元消费者类型：</strong> 仅有"感兴趣/不感兴趣"两种类型，未考虑消费者偏好的连续异质性（如不同 willingness to pay）。扩展到连续类型后，定向与定价的交互可能更加丰富。</li>
+<li><strong>同质产品假设：</strong> 两家企业的产品差异仅体现在 $v$ vs. $w$ 的值上，未明确建模产品差异化 (product differentiation) 或消费者品牌偏好。</li>
+<li><strong>$\rho$ 的简化：</strong> 相关性参数 $\rho$ 是外生且统一的，但现实中不同消费者（如高活跃度 vs. 低活跃度用户）的预测相关性可能有系统性差异。</li>
+</ol>
+<h3 id="53">5.3 未来研究方向</h3>
+<ol>
+<li><strong>内生消费者行为：</strong> 允许消费者对定向做出策略性反应（如隐私保护行为、搜索行为），研究消费者端的博弈如何反过来影响企业的 Precision-Recall 选择。</li>
+<li><strong>动态定向与学习：</strong> 考虑多期博弈，企业可以根据过往定向结果更新算法预测。探索"探索-利用"(Exploration-Exploitation) 权衡如何与 Precision-Recall 权衡交互。</li>
+<li><strong>平台经济中的应用：</strong> 将框架嵌入广告平台的拍卖机制中，研究平台如何设计拍卖规则以影响企业的 Precision-Recall 选择。</li>
+<li><strong>算法歧视 (Algorithmic Discrimination)：</strong> 论文末尾提到，当消费者的受保护特征（如种族、性别）可被算法利用时，精确率-召回率框架可用于分析定向中的歧视问题。这是极具社会价值的方向。</li>
+<li><strong>多企业竞争与非对称算法：</strong> 将模型扩展到 $N$ 家企业，且允许企业拥有不同质量的算法（非对称 $f(p)$），分析"算法军备竞赛"的均衡效应。</li>
+<li><strong>消费者福利分析的深化：</strong> 论文对消费者信息价值 (information value) 的讨论仅为猜想。形式化分析竞争与相关性如何影响消费者总福利将是有价值的补充。</li>
+</ol>
+<hr>
+<h2 id="6-one-more-thing">6. One More Thing</h2>
+<p>本文最令人拍案叫绝的"灵光一现"时刻在于<strong>精确率随相关性升高而下降</strong>这一反直觉结果的揭示。</p>
+<p>直觉上，人们会自然认为：当两家企业的预测越来越像时，竞争集中在同一群高概率消费者身上，企业应该更加"精确"地聚焦最优质客户。但模型揭示了相反的逻辑——正是因为高概率消费者成为"众矢之的"，企业反而有激励"逃离红海"，将注意力分散到中等概率消费者上，导致定向概率函数 $q(p)$ 变平，精确率反而下降。</p>
+<p>这一结果的深层机制是：<strong>在竞争中，一个消费者的"价值"不仅取决于其自身的转化概率，还取决于竞争对手对该消费者的争夺强度。</strong> 当预测高度相关时，高概率消费者的"竞争溢价"最高（对手一定在争夺），而中等概率消费者反而成为"竞争洼地"。这与产业组织中的<strong>赫特林竞争 (Hotelling Competition)</strong> 逻辑异曲同工——企业在竞争最激烈的维度上"退让"，在竞争较弱的维度上"进攻"——但在这里，这一逻辑发生在<strong>算法预测空间</strong>而非物理空间或产品空间上。</p>
+<p>这个洞察对实践的启示极为直接：当你的竞争对手使用与你高度类似的数据和算法时，追逐那些"算法评分最高"的消费者可能恰恰是最差的策略。真正的竞争优势可能来自于对"中等潜力"消费者的差异化覆盖——这需要的不仅是更好的算法，更是<strong>不同的数据</strong>。</p>
+    </div>
+  </div>
+</body>
+</html>

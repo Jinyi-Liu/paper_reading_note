@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-03-09_IJIO_2026_Maarten et al Optimally Informative Rankings and Consumer Search</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="optimally-informative-rankings-and-consumer-search">Optimally Informative Rankings and Consumer Search</h1>
+<p>作者与机构：Maarten C.W. Janssen（University of Vienna, Department of Economics）；Thomas Jungbauer（Cornell University, SC Johnson College of Business）；Marcel Preuss（Cornell University, SC Johnson College of Business）；Cole Williams（University of Nebraska-Lincoln, Department of Economics）</p>
+<p>期刊：International Journal of Industrial Organization（to appear）</p>
+<p>DOI：10.1016/j.ijindorg.2026.103282</p>
+<p>摘要（中文翻译）：</p>
+<p>本文研究在线平台（或多产品企业）在回应消费者搜索请求时，应当选择何种最优信息政策来排列商品。排序的信息性可以从完全信息到完全混淆不等；消费者则通过有成本的序贯搜索来学习自己与商品之间的匹配价值。引入连续型匹配价值分布后，作者得到一个关于消费者搜索的新结论：当匹配价值高时，消费者会购买；当匹配价值低时，消费者会继续搜索；而当匹配价值处于中间区间时，消费者会停止搜索且不购买任何商品。对于一大类分布而言，当平台的目标是最大化消费者最终购买某件商品的概率时，最优策略要么是提供完全信息，要么是在“刚好足以让消费者开始搜索”的约束下提供最少的信息。因此，平台福利与消费者福利要么完全一致，要么彼此对立。</p>
+<h2 id="0">0. 论文速览</h2>
+<h3 id="01">0.1 一句话摘要</h3>
+<p>这篇文章最核心的发现是：排序信息不是“越多越好”或“越少越好”，而是会通过两个相反机制影响成交概率。一方面，更 informative 的排序会把更好的商品更可能放在第一位，提高第一件被买走的概率；另一方面，更 informative 的排序也会摧毁消费者对剩余商品的希望，从而扩大“看了第一件后既不买也不继续搜”的 abort region。平台最优信息政策因此呈现非常鲜明的 bang-bang 结构：低搜索成本时偏向混淆，高搜索成本时偏向完全信息。</p>
+<h3 id="02">0.2 这篇论文到底问了什么</h3>
+<p>平台明明掌握了大量关于消费者偏好的信息，为什么有时反而不愿意把这些信息通过排序完整传达出来？如果平台真正关心的是“让消费者最终买一件东西”，那么它到底会选择清晰推荐，还是故意把搜索结果做得模糊？</p>
+<h3 id="03">0.3 作者的短答案</h3>
+<p>作者的回答是：这取决于搜索成本 $s$。当 $s$ 较低时，平台更愿意保留甚至放大消费者对第二件商品的期待，于是会混淆排序；当 $s$ 较高时，平台知道消费者大概率不会继续搜，于是宁愿把更好的商品直接放在前面，转向 fully informative ranking。</p>
+<h3 id="04">0.4 我对本文的总体评价</h3>
+<p>这是一个很强的理论型 paper。它把 information design、consumer search、platform ranking 三块文献真正接到了一起，而且抓住了一个非常新、非常干净的机制：连续型匹配价值下会内生出现“中间值导致放弃搜索”的区间。这个机制不仅改变消费者行为，也改变平台最优排序政策的方向。文章最漂亮的地方不只是证明了最优政策会从 obfuscation 跳到 full information，更在于解释了为什么这种跳跃来自两种力量的相对强弱变化，而不是来自某种机械的 participation constraint。</p>
+<h2 id="1">1. 研究背景与动机</h2>
+<h3 id="11">1.1 实践痛点</h3>
+<p>现实中的搜索平台并不只是“帮你找到最相关商品”，它们还会决定你先看到什么、是否愿意继续翻页、以及你会不会在看了几项结果后直接退出。对于 Booking.com、Target.com、Check24.de 这类平台而言，如果其收益近似取决于“消费者是否下单”，那么排序的任务就不仅是匹配质量最大化，而是成交概率最大化。</p>
+<p>实践中的痛点有两个层面：</p>
+<ol>
+<li>平台知道得比消费者多，但并不总愿意如实揭示。</li>
+<li>消费者搜索是有成本的，排序会改变消费者是否继续搜索，从而改变最终成交。</li>
+</ol>
+<p>于是，排序本身就变成了一种战略性信息披露工具，而不是中性的推荐技术。</p>
+<h3 id="12">1.2 理论缺口</h3>
+<p>作者指出，既有平台排序研究大多聚焦 sponsored positions、广告拍卖或位置外部性，而不是 organic ranking 如何通过影响搜索顺序与搜索学习，进而影响成交。更关键的是，既有相关 consumer search 研究中，一个重要 benchmark 是 dichotomous match value (DMV) 环境：商品要么“匹配”，要么“不匹配”；只要找到了匹配品，消费者就立刻购买。</p>
+<p>本文认为这个设定过于粗糙。真实世界里，消费者对商品的评价更像是连续型的：不是“合适/不合适”二元，而是“有多合适”。一旦进入 continuous match value (CMV) 环境，搜索中的学习逻辑会发生根本变化。消费者看到第一件商品后，对第二件商品的期待不再只会单调上升或下降，而会出现更微妙的“希望是否被保留”的问题。这正是既有文献没有充分刻画的地方。</p>
+<h3 id="13">1.3 核心贡献</h3>
+<p>本文的贡献可以概括为三点。</p>
+<ol>
+<li>在存在搜索学习的前提下，作者仍然证明了消费者最优策略可以用一个唯一 reservation value 来刻画。</li>
+<li>在连续型匹配价值环境中，作者发现了一个全新的行为区域：消费者在看到中等水平的第一件商品后，会 abort search without buying。</li>
+<li>作者把平台排序的作用精炼成两个对立机制：distributional shift effect 与 abort region effect，并在一个相当宽泛的分布类上证明平台最优信息政策是 bang-bang 的。</li>
+</ol>
+<p>从理论上看，这篇文章把“平台要不要讲真话”变成了一个标准但不平凡的 equilibrium design 问题；从实践上看，它说明平台并非总是因为“怕消费者不来”才混淆信息，而可能是在消费者已经会来搜索的前提下，仍然故意压低排序信息度。</p>
+<h2 id="2">2. 模型设定与假设</h2>
+<h3 id="21">2.1 记号清理与阅读说明</h3>
+<p>原文 PDF 在两个地方容易让读者混淆：</p>
+<ol>
+<li>文中有两个不同的 $s_2$ 阈值，原文依靠上下装饰符区分，但在 PDF 抽取文本里不够清楚。为便于笔记，下面我记为低阈值 $s_2^L$ 与高阈值 $s_2^U$。</li>
+<li>文中不同区域里都用过 $\lambda(s)$ 这一写法，但含义并不完全一样。为避免歧义，下面我区分为：</li>
+<li>$\lambda^{\text{no-abort}}(s)$：Region I 中“使 $v_R=p$ 的最高信息度”；</li>
+<li>$\lambda^{\text{part}}(s)$：Region III 中“刚好满足消费者参与约束 $U(\lambda,s)=0$ 的最低信息度”。</li>
+</ol>
+<p>这样的记号清理不改变原文逻辑，只是让复盘更顺。</p>
+<h3 id="22">2.2 基本环境</h3>
+<p>平台面临两个商品。消费者至多购买一件商品，但事前不知道哪件更适合自己。消费者可以序贯搜索两个商品，每检查一个商品需要付出搜索成本 $s&gt;0$，并由此学到自己对该商品的匹配价值 $v_i$。平台掌握关于消费者偏好的额外信息，这体现在商品的 match score $\theta_i$ 上。高分商品的价值分布相对于低分商品在 likelihood ratio 意义下更优。</p>
+<p>平台的唯一决策是：对两件商品的排序信息性设定为多高。作者用 $\lambda \in [1/2,1]$ 表示“第一位是高价值商品”的概率。$\lambda=1$ 表示 fully informative ranking；$\lambda=1/2$ 表示 full obfuscation。</p>
+<p>两件商品价格相同且外生给定，为 $p$；边际成本归一为 0。因为两件商品利润边际相同，平台最大化利润就等价于最大化“消费者最终买到某件商品”的概率。</p>
+<h3 id="23">2.3 符号体系</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$i \in {1,2}$</td>
+<td>商品索引</td>
+<td>平台排序后的两个位置对应的商品</td>
+</tr>
+<tr>
+<td>$v_i$</td>
+<td>消费者对商品 $i$ 的匹配价值</td>
+<td>搜索后才观察到</td>
+</tr>
+<tr>
+<td>$\theta_i$</td>
+<td>平台掌握的商品匹配分数</td>
+<td>反映平台对消费者偏好的额外信息</td>
+</tr>
+<tr>
+<td>$\theta_h, \theta_l$</td>
+<td>高、低匹配分数</td>
+<td>满足 $\theta_h &gt; \theta_l$</td>
+</tr>
+<tr>
+<td>$F_i(v)$</td>
+<td>商品 $i$ 的匹配价值分布</td>
+<td>写作 $F(v\mid \theta_i)$</td>
+</tr>
+<tr>
+<td>$f_i(v)$</td>
+<td>对应密度函数</td>
+<td>连续、log-concave</td>
+</tr>
+<tr>
+<td>$[\underline v, \bar v]$</td>
+<td>匹配价值支持集</td>
+<td>可有界，也可无界</td>
+</tr>
+<tr>
+<td>$\lambda$</td>
+<td>排序信息度</td>
+<td>第一位是高价值商品的概率，$\lambda \in [1/2,1]$</td>
+</tr>
+<tr>
+<td>$p$</td>
+<td>商品价格</td>
+<td>两件商品相同、外生给定</td>
+</tr>
+<tr>
+<td>$s$</td>
+<td>每次搜索成本</td>
+<td>消费者每检查一件商品都要支付</td>
+</tr>
+<tr>
+<td>$L(v)=f_h(v)/f_l(v)$</td>
+<td>likelihood ratio</td>
+<td>严格递增，体现 strict MLRP</td>
+</tr>
+<tr>
+<td>$S_i = 1-F_i(p)$</td>
+<td>商品 $i$ 被“买得起且值得买”的概率</td>
+<td>即匹配价值超过价格的概率</td>
+</tr>
+<tr>
+<td>$E_i = \mathbb E[\max(v_i-p,0)\mid \theta_i]$</td>
+<td>商品 $i$ 给消费者带来的期望剩余</td>
+<td>条件于匹配分数</td>
+</tr>
+<tr>
+<td>$\pi(v_1,\lambda)$</td>
+<td>看到第一件商品价值 $v_1$ 后，第二位是高价值商品的后验概率</td>
+<td>由 Bayes rule 给出</td>
+</tr>
+<tr>
+<td>$U(\lambda,s)$</td>
+<td>消费者在信息度 $\lambda$、搜索成本 $s$ 下最优搜索的事前期望效用</td>
+<td>用于参与约束</td>
+</tr>
+<tr>
+<td>$U_{\text{cont}}(v_1,\lambda,s)$</td>
+<td>继续搜索的效用</td>
+<td>看完第一件后是否搜第二件</td>
+</tr>
+<tr>
+<td>$U_{\text{stop}}(v_1)$</td>
+<td>停止搜索的效用</td>
+<td>可能是购买当前商品，也可能是直接退出</td>
+</tr>
+<tr>
+<td>$V(v_1,\lambda,s)$</td>
+<td>继续搜索的边际价值</td>
+<td>定义为 $U_{\text{cont}}-U_{\text{stop}}$</td>
+</tr>
+<tr>
+<td>$v_R(\lambda,s)$</td>
+<td>reservation value</td>
+<td>消费者在第一件商品上继续搜索与停止搜索的无差异点</td>
+</tr>
+<tr>
+<td>$s_2^L$</td>
+<td>低搜索成本阈值</td>
+<td>定义为 $V(p,1/2,s_2^L)=0$，Region I/II 分界</td>
+</tr>
+<tr>
+<td>$s_1$</td>
+<td>参与约束阈值</td>
+<td>定义为 $U(1/2,s_1)=0$，Region II/III 分界</td>
+</tr>
+<tr>
+<td>$s_2^U$</td>
+<td>高搜索成本阈值</td>
+<td>定义为 $\lim_{v\to \underline v}V(v,1/2,s_2^U)=0$，Region III/IV 分界</td>
+</tr>
+<tr>
+<td>$\Pi(\lambda)$</td>
+<td>平台成交概率</td>
+<td>也是平台目标函数</td>
+</tr>
+<tr>
+<td>DSE</td>
+<td>distributional shift effect</td>
+<td>提高 $\lambda$ 带来的“更好商品更早被看见”效应</td>
+</tr>
+<tr>
+<td>ARE</td>
+<td>abort region effect</td>
+<td>提高 $\lambda$ 带来的“消费者更容易中途放弃”效应</td>
+</tr>
+<tr>
+<td>$s^*$</td>
+<td>平台策略切换阈值</td>
+<td>Region II/III 内部的最优政策切换点</td>
+</tr>
+<tr>
+<td>$K(s)$</td>
+<td>辅助比率</td>
+<td>在 Assumption 1 和数值例子中很有用，$K(s)=\frac{E_h-s}{s-E_l}$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24">2.4 博弈/决策结构</h3>
+<ol>
+<li>平台先选择排序信息度 $\lambda$。</li>
+<li>消费者观察到平台的排序机制后，决定是否开始搜索。</li>
+<li>若开始搜索，消费者先检查第一位商品。</li>
+<li>观察到第一件商品的匹配价值 $v_1$ 后，消费者有三种可能动作：</li>
+<li>直接购买第一件；</li>
+<li>不买也不继续搜，直接退出；</li>
+<li>继续搜索第二件。</li>
+<li>如果继续搜，消费者观察 $v_2$，并在 free recall 下从两件商品中选择效用更高且净剩余非负的一件购买，否则不买。</li>
+</ol>
+<p>信息结构上，平台知道商品在“高价值/低价值”意义上的相对优劣，并通过排序向消费者释放有限信息。消费者知道分布、知道高低匹配分数存在，也知道平台选择的 $\lambda$，但事前并不知道哪个具体商品是高价值商品；消费者通过看到第一件商品的 realized match value 来更新对第二件商品的判断。</p>
+<h3 id="25">2.5 目标函数与约束</h3>
+<p>消费者在看到第一件商品后，如果继续搜索，则效用为</p>
+<p>$$
+U_{\text{cont}}(v_1,\lambda,s)=\mathbb E_{v_2}\left[\max(v_1-p, v_2-p, 0)\mid v_1,\lambda\right]-s.
+$$</p>
+<p>如果停止搜索，则效用为</p>
+<p>$$
+U_{\text{stop}}(v_1)=\max(v_1-p,0).
+$$</p>
+<p>于是，继续搜索的边际价值为</p>
+<p>$$
+V(v_1,\lambda,s)=U_{\text{cont}}(v_1,\lambda,s)-U_{\text{stop}}(v_1).
+$$</p>
+<p>reservation value $v_R(\lambda,s)$ 由下式定义：</p>
+<p>$$
+V(v_R(\lambda,s),\lambda,s)=0.
+$$</p>
+<p>消费者的后验概率由 Bayes rule 给出：</p>
+<p>$$
+\pi(v_1,\lambda)=\frac{1-\lambda}{\lambda L(v_1)+(1-\lambda)}.
+$$</p>
+<p>平台目标是最大化成交概率。当 $p \le v_R(\lambda)$ 时，平台能实现 first-best 成交概率：</p>
+<p>$$
+1-F_h(p)F_l(p).
+$$</p>
+<p>当 $p&gt;v_R(\lambda)$ 时，平台成交概率为</p>
+<p>$$
+\Pi(\lambda)=\lambda S_h+(1-\lambda)S_l+\lambda F_h(v_R(\lambda))S_l+(1-\lambda)F_l(v_R(\lambda))S_h.
+$$</p>
+<p>第一部分是“第一件就成交”的概率，第二部分是“第一件没成交但第二件成交”的概率。</p>
+<h3 id="26">2.6 关键假设及其合理性</h3>
+<h4 id="1strict-mlrp">假设 1：strict MLRP</h4>
+<p>$$
+L(v)=\frac{f_h(v)}{f_l(v)}
+$$</p>
+<p>严格递增。直觉上，这意味着一个 realized value 越高，它来自高分布而非低分布的可能性越大。</p>
+<p>合理性：这保证了学习方向是平滑且单调的。消费者看到更高的第一件商品价值时，会更确信自己已经碰到了“更好的那件”，因此对第二件商品更悲观。这是 reservation rule 能成立的核心。</p>
+<h4 id="2log-concavity">假设 2：log-concavity</h4>
+<p>分布密度是 log-concave。</p>
+<p>合理性：这主要服务于平台最优政策的曲率分析，避免尾部行为过度怪异。作者也明确说明，对多数结果而言该假设并不强，但对证明 quasi-convexity 很关键。</p>
+<h4 id="3">假设 3：价格外生且两件商品同价</h4>
+<p>合理性：作者要把焦点集中在“排序作为信息设计”而不是“排序与定价联动”的复杂联立问题上。对许多平台或多产品企业来说，这并非不可接受，尤其在平台收固定佣金或多商品毛利近似相同时，平台目标确实更接近成交概率最大化。</p>
+<h4 id="4">假设 4：消费者知道高低匹配分数存在，但不知道具体哪件商品是高分商品</h4>
+<p>合理性：这保留了搜索中的学习，但避免引入“消费者连平台信号本身都不确定”的额外一层复杂性。作者也强调，若进一步允许消费者对平台信息本身不确定，最优搜索策略可能就不再能用 reservation value 描述。</p>
+<h2 id="3_1">3. 分析与求解</h2>
+<h3 id="31-abort">3.1 最关键的行为机制：为什么会出现中间值 abort</h3>
+<p>这是全文最值得先抓住的点。</p>
+<p>在传统 DMV 环境里，消费者看到“不是匹配”的商品后，往往只会对剩余商品更乐观；但在本文 CMV 环境里，第一件商品的 realized value 可能落在三个区域：</p>
+<ol>
+<li>很高：当前商品已经足够好，直接买。</li>
+<li>很低：当前商品太差，于是消费者反而对第二件商品更抱希望，愿意继续搜。</li>
+<li>中间：当前商品又没有好到值得买，但也没有差到足以激发“第二件可能明显更好”的 optimism，于是最优动作变成既不买也不继续搜。</li>
+</ol>
+<p>这个第三种情况，就是本文的新结果。它不是 behavioral bias，而是 fully rational search with learning 的产物。</p>
+<h3 id="32-proposition-1-reservation-rule">3.2 Proposition 1：消费者最优搜索是 reservation rule</h3>
+<p>作者证明，消费者的最优策略有三个层面的结论。</p>
+<ol>
+<li>若 $\lambda&gt;1/2$，消费者最优地从第一位开始搜索。</li>
+<li>消费者的最优停止策略由唯一 reservation value $v_R(\lambda,s)$ 描述：当且仅当 $v_1 &lt; v_R(\lambda,s)$ 时，消费者继续搜索。</li>
+<li>$v_R(\lambda,s)$ 随 $\lambda$ 和 $s$ 下降；当 $v_R(\lambda,s)&lt;p$ 时，$\frac{dv_R}{d\lambda}&lt;0$。</li>
+</ol>
+<p>这一定理背后的经济学直觉非常强。</p>
+<p>第一，$v_1$ 越高，当前商品本身越有吸引力，所以继续搜的边际收益越低。</p>
+<p>第二，学习效应与直接效应方向一致。因为 strict MLRP 成立，看到更高的 $v_1$ 意味着“我大概率已经看到了高价值商品”，于是第二件商品是高价值商品的后验概率 $\pi(v_1,\lambda)$ 会下降。也就是说，更高的 $v_1$ 不仅让当前商品更值得买，也让下一件商品更不值得期待。</p>
+<p>正因为两个力量同向，$V(v_1,\lambda,s)$ 会对 $v_1$ 单调下降，从而生成唯一 reservation value。这个结果并不平凡，因为 search with learning 的文献里，reservation rule 并不总是存在。</p>
+<h3 id="33">3.3 更细地看消费者决策：买、搜、弃三分法</h3>
+<p>有了 reservation value 之后，消费者的动作不是传统二分法，而是三分法。</p>
+<h4 id="av_rlambdas-p">情形 A：$v_R(\lambda,s) &gt; p$</h4>
+<p>此时不存在 abort region。消费者行为是：</p>
+<ol>
+<li>若 $v_1 \ge v_R$，直接购买第一件；</li>
+<li>若 $v_1 &lt; v_R$，继续搜索第二件。</li>
+</ol>
+<p>也就是说，只要第一件不买，就会继续搜。</p>
+<h4 id="bv_rlambdas-le-p">情形 B：$v_R(\lambda,s) \le p$</h4>
+<p>此时会出现真正的新区域：</p>
+<ol>
+<li>若 $v_1 &gt; p$，购买第一件；</li>
+<li>若 $v_R \le v_1 \le p$，停止搜索且不购买；</li>
+<li>若 $v_1 &lt; v_R$，继续搜索。</li>
+</ol>
+<p>这里的区间 $[v_R,p]$ 就是 abort region。</p>
+<p>我认为这篇文章真正的“灵魂”就在这里。因为一旦存在 abort region，平台就不再只是权衡“让消费者看更好的第一件”与“让消费者多看几件”，而是在权衡“立刻成交”与“保留希望”。</p>
+<h3 id="34">3.4 三个临界阈值与四个区域</h3>
+<p>作者定义三个关键搜索成本阈值：</p>
+<p>$$
+U(1/2,s_1)=0,
+$$</p>
+<p>$$
+V(p,1/2,s_2^L)=0,
+$$</p>
+<p>$$
+\lim_{v\to \underline v}V(v,1/2,s_2^U)=0.
+$$</p>
+<p>并证明</p>
+<p>$$
+s_2^L &lt; s_1 &lt; s_2^U.
+$$</p>
+<p>这把参数空间切成四个区域。</p>
+<h4 id="region-is-s_2l">Region I：$s &lt; s_2^L$</h4>
+<p>搜索便宜到什么程度？便宜到即使平台比较模糊，只要第一件不够好，消费者仍会继续搜第二件。abort region 为空。</p>
+<h4 id="region-iis_2l-le-s-s_1">Region II：$s_2^L \le s &lt; s_1$</h4>
+<p>消费者一定会开始搜索，但已经会在一部分中间值上停止搜索且不买。</p>
+<h4 id="region-iiis_1-le-s-s_2u">Region III：$s_1 \le s &lt; s_2^U$</h4>
+<p>如果平台完全混淆，消费者连搜索都不开始；平台必须给出足够信息，才能让消费者愿意进入搜索。即便如此，abort region 仍存在。</p>
+<h4 id="region-ivs_2u-le-s">Region IV：$s_2^U \le s$</h4>
+<p>搜索贵到即使消费者在最有利的后验下，也不会去搜第二件。此时一旦开始搜索，基本就是“一锤子买卖”：只看第一件，然后买或走。</p>
+<h3 id="35-proposition-3">3.5 Proposition 3：低搜索成本区域的平台策略</h3>
+<p>在 Region I 里，平台非常舒服。因为只要把信息度控制在足够低的区间内，消费者就会在“不买第一件”的所有情况下继续搜第二件，于是平台可以实现最大成交概率</p>
+<p>$$
+1-F_h(p)F_l(p).
+$$</p>
+<p>作者证明：只要 $\lambda \in [1/2, \lambda^{\text{no-abort}}(s)]$，平台都能达到同样的最优成交概率。其中 $\lambda^{\text{no-abort}}(s)$ 随 $s$ 上升而下降，并在 $s=s_2^L$ 时降到 $1/2$。</p>
+<p>这意味着在低搜索成本区域，fully obfuscated ranking 是最优的，但不是唯一最优。对消费者来说，更 informative 的排序更好；对平台来说，只要不把信息度提高到让 abort region 出现，利润都一样。所以在 Region I，平台与消费者之间已经出现“可兼容但不必兼容”的张力。</p>
+<h3 id="36-dse-are">3.6 平台利润分解：DSE 与 ARE</h3>
+<p>这是全文第二个核心公式。对 $\lambda$ 求导后，平台成交概率变化可写成两部分：</p>
+<p>$$\frac{d\Pi}{d\lambda}=\underbrace{S_h\bigl(1-F_l(v_R)\bigr)-S_l\bigl(1-F_h(v_R)\bigr)}<em>{\text{DSE}(v_R)}-\underbrace{\left(\frac{f_h(v_R)S_l}{1-\lambda}+\frac{f_l(v_R)S_h}{\lambda}\right)\frac{1}{\frac{d\log L(v_R(\lambda,s))}{dv_R(\lambda,s)}}}</em>{\text{ARE}(\lambda,v_R)}$$</p>
+<h4 id="dsedistributional-shift-effect">DSE：distributional shift effect</h4>
+<p>它衡量的是：当 $\lambda$ 上升时，更高价值商品更可能排在第一位，因此被看见、被买走的概率提高多少。这个效应永远为正。</p>
+<p>通俗地说，排序更 informative，第一件商品“更像对的那件”。这当然会提高立即成交概率。</p>
+<h4 id="areabort-region-effect">ARE：abort region effect</h4>
+<p>它衡量的是：当 $\lambda$ 上升时，消费者看到第一件商品后，对第二件商品是高价值商品的希望下降多少，从而 abort region 扩大多少。这个效应永远为负。</p>
+<p>通俗地说，排序更 informative，也意味着“如果第一件不满意，那第二件大概率更差”。这会削弱继续搜索的激励。</p>
+<p>平台真正要解决的，就是正的 DSE 和负的 ARE 之间的权衡。</p>
+<h3 id="37-assumption-1-lemma-2-bang-bang">3.7 Assumption 1 与 Lemma 2：为什么会出现 bang-bang</h3>
+<p>作者再加一个结构性假设：</p>
+<p>$$
+\frac{d\log L(v)}{dv}=k&gt;0,
+$$</p>
+<p>即 log-likelihood ratio 的增长率恒定。</p>
+<p>这个假设的直觉是：无论你处于价值分布的哪个位置，匹配价值增加一个单位，对“它来自高分布”的支持力度是一样的。这个设定在很多常见分布中都成立，例如同方差正态分布、某些 Gamma 分布、指数分布等。</p>
+<p>在该假设下，作者证明平台目标函数 $\Pi(\lambda)$ 对 $\lambda$ 是 quasi-convex 的。经济含义非常直接：内部最优点通常不稳，平台更倾向于把信息度推到边界。于是最优政策天然容易呈现“两极化”：不是尽量混淆，就是尽量清晰。</p>
+<p>这一步非常漂亮，因为它把复杂的搜索-学习-更新问题，压缩成一个很有解释力的几何性质：平台利润函数的形状逼着它做边界选择。</p>
+<h3 id="38-proposition-4region-ii-iii">3.8 Proposition 4：Region II 与 III 的最优信息政策</h3>
+<p>在 Assumption 1 下，作者证明存在唯一切换阈值 $s^* \in (s_2^L,s_2^U)$，使得平台最优信息政策满足：</p>
+<p>$$
+\lambda^<em>(s)=
+\begin{cases}
+1/2, &amp; s_2^L \le s &lt; \min{s_1,s^</em>},\
+\lambda^{\text{part}}(s), &amp; s_1 \le s &lt; s^<em>,\
+1, &amp; s^</em> \le s &lt; s_2^U.
+\end{cases}
+$$</p>
+<p>这意味着平台最优信息度随着搜索成本 $s$ 弱上升。</p>
+<p>这一定理的经济学直觉是：</p>
+<ol>
+<li>当 $s$ 较低时，继续搜索本来就不难，平台更重视“不要过早杀死消费者对第二件商品的希望”，所以 ARE 更重要，平台选择 obfuscation。</li>
+<li>当 $s$ 较高时，消费者本来就不太会继续搜。此时保留第二件商品希望的边际价值变小，而让第一件更可能是高质量商品的价值变大，所以 DSE 更重要，平台转向 full information。</li>
+</ol>
+<p>作者还强调了两个非常反直觉但很有力量的结论：</p>
+<ol>
+<li>存在一段低搜索成本区间，平台即使知道消费者会在中间值上 abort，仍然选择 full obfuscation。</li>
+<li>存在一段高搜索成本区间，平台即使知道 fully informative ranking 下消费者根本不会搜第二件，仍然选择 full information。</li>
+</ol>
+<p>换句话说，平台不是在“保证继续搜索”和“提高第一件成交”之间简单切换；它是在比较两个 effect 的边际强弱。</p>
+<h3 id="39-region-iv-fully-informative">3.9 Region IV：高搜索成本下为什么必然 fully informative</h3>
+<p>当 $s \ge s_2^U$ 时，消费者不会继续搜第二件。于是平台无须再担心 ARE，因为第二件商品本来就不会被看。此时最优策略显然是把更可能的高价值商品放在第一位，即 $\lambda^*(s)=1$。</p>
+<p>这部分虽然形式上最简单，但它非常好地锁定了全文逻辑：一旦 continuation margin 不存在，信息只剩下“第一件能否尽量对路”这一维度，fully informative 排序就压倒一切。</p>
+<h3 id="310">3.10 比较静态分析</h3>
+<h4 id="lambda">关于 $\lambda$</h4>
+<ol>
+<li>$\lambda$ 上升时，消费者对第二件商品是高价值商品的后验 $\pi(v_1,\lambda)$ 下降。</li>
+<li>因而 $v_R(\lambda,s)$ 下降。</li>
+<li>只要 $v_R&lt;p$，abort region 就扩大。</li>
+<li>但与此同时，第一件商品成为高价值商品的概率上升，DSE 变强。</li>
+</ol>
+<p>所以，$\lambda$ 的变化永远不是单调改善或单调恶化，而是“立即成交”和“继续搜索”之间的此消彼长。</p>
+<h4 id="s">关于 $s$</h4>
+<ol>
+<li>$s$ 上升会降低 $v_R(\lambda,s)$。</li>
+<li>因而消费者更少继续搜索，abort region 更大。</li>
+<li>结果上，平台最优信息度 $\lambda^*(s)$ 弱上升。</li>
+</ol>
+<p>这就是全文最关键的比较静态：搜索成本越高，平台越愿意说真话。</p>
+<h4 id="p">关于 $p$</h4>
+<p>价格上升会降低 $E_h$ 和 $E_l$，从而压低继续搜索的价值，扩大 abort region，并使各个临界搜索成本阈值整体左移。作者在正态例子里进一步展示：价格更高时，平台更早切换到 full information。</p>
+<h2 id="4_1">4. 主要结论与管理启示</h2>
+<h3 id="41-trade-off">4.1 机制揭示：本文到底揭示了什么新的 trade-off</h3>
+<p>本文揭示的不是传统“搜索越多，匹配越好”这种老式 trade-off，而是一个更平台化的 trade-off：</p>
+<ol>
+<li>把更好的商品排在前面，可以提高 immediate conversion。</li>
+<li>但把排序做得太清楚，会让消费者在第一件商品不理想时迅速对后续结果失去兴趣。</li>
+</ol>
+<p>所以，信息披露会同时改变商品分配与消费者信念。平台排序不是单纯的 allocation rule，而是信念管理工具。</p>
+<p>最反直觉的一点是：在低搜索成本下，平台最优地让排序更模糊，不是因为消费者不愿意继续搜，而是因为平台不想让消费者太早失去对后续商品的期待。这是一种极其 platform-native 的逻辑。</p>
+<h3 id="42-benchmarkbase-model">4.2 与 benchmark/base model 的对比</h3>
+<h4 id="benchmark-1dmv">对比 benchmark 1：DMV 环境</h4>
+<p>在 DMV 环境下，搜索过程更像“找到匹配就停”。而本文 CMV 环境中，中间值 abort 的出现使问题从“是否找到 match”变成“当前商品的适配程度是否足以压倒对剩余商品的希望”。这一步把消费者搜索从离散命中逻辑，推进到了连续信念逻辑。</p>
+<h4 id="benchmark-2fully-informative-ranking">对比 benchmark 2：fully informative ranking</h4>
+<p>如果平台完全诚实，第一件商品通常更好，但第二件商品的 option value 会被打掉。fully informative ranking 不是无条件最优，它只在高搜索成本下才占优。</p>
+<h4 id="benchmark-3full-obfuscation">对比 benchmark 3：full obfuscation</h4>
+<p>如果平台完全混淆，消费者更愿意继续搜，但也更可能把第一件“其实不错”的商品错过。full obfuscation 也不是无条件最优，它只在低搜索成本下占优。</p>
+<h4 id="_1">真正的新结果</h4>
+<p>在相当一般的条件下，平台不会选择一个“中间信息度”长期折中，而会直接贴边：低成本时贴向 $1/2$，高成本时贴向 $1$。这就是 bang-bang policy 的管理学含义：平台排序策略会非常离散，而不是温和线性地随环境变化。</p>
+<h3 id="43">4.3 管理建议</h3>
+<h4 id="_2">对平台/多产品企业</h4>
+<ol>
+<li>如果你的品类搜索成本低，消费者愿意多点几项、多看几页，那么过度精确的排序未必提升成交。适度混淆，反而能维持继续搜索的动力。</li>
+<li>如果你的品类搜索成本高，或者界面摩擦大、比较成本大、消费者不愿意继续看，那么最优做法是尽量把高相关商品排在前面，直接争取 first-click conversion。</li>
+<li>不能只看“排序准确率”。平台真正该优化的是“排序准确率如何改变搜索中途流失”。</li>
+<li>若平台利润主要来自成交本身而非单品毛利差异，那么排序政策应围绕 conversion funnel 设计，而不是围绕 relevance score 机械设计。</li>
+</ol>
+<h4 id="_3">对政策制定者/监管者</h4>
+<ol>
+<li>不能把“平台掌握更多信息”直接等同于“消费者一定受益”。在低搜索成本环境中，平台可能有激励故意混淆。</li>
+<li>要监管 ranking transparency，关键不只是问平台是否在做个性化，而是问：这种个性化是在帮助匹配，还是在操纵 continuation incentive。</li>
+<li>当平台具有 market power 时，消费者无法轻易转向更透明的平台，排序混淆就可能成为福利损失来源。</li>
+</ol>
+<h3 id="44-extension">4.4 数值例子与本文的“准 extension”部分</h3>
+<p>严格说，这篇论文没有额外的理论 extension；第 4 节提供的是 Normal 分布下的数值说明，Online Appendix 给出具体计算方法。这部分虽然不是 extension model，但非常有助于理解机制。</p>
+<p>在正态 location-shift 设定下：</p>
+<p>$$
+F_h \sim N(\mu_h,\sigma^2), \qquad F_l \sim N(\mu_l,\sigma^2), \qquad \Delta=\mu_h-\mu_l&gt;0.
+$$</p>
+<p>此时</p>
+<p>$$
+L(v)=\exp\left(\frac{v\Delta}{\sigma^2}\right),
+$$</p>
+<p>因此 Assumption 1 自动成立。</p>
+<p>作者给出两个例子。</p>
+<h4 id="1delta1-p0-sigma1">例 1：$\Delta=1, p=0, \sigma=1$</h4>
+<p>阈值大致为：</p>
+<ul>
+<li>$s_2^L \approx 0.44780$</li>
+<li>$s_1 \approx 0.48072$</li>
+<li>$s^* \approx 0.49289$</li>
+<li>$s_2^U \approx 0.69780$</li>
+</ul>
+<p>解释：</p>
+<ol>
+<li>很低搜索成本时，平台可以在一段区间内任选信息度而不损失最优成交概率；消费者则偏好这段区间里最 informative 的那个排序。</li>
+<li>接着出现一个 full obfuscation 最优区间。</li>
+<li>再往上，平台先只提供刚好足以满足参与约束的信息，再进一步跳到 full information。</li>
+</ol>
+<h4 id="2delta1-p12-sigma1">例 2：$\Delta=1, p=1/2, \sigma=1$</h4>
+<p>阈值大致为：</p>
+<ul>
+<li>$s_2^L \approx 0.20248$</li>
+<li>$s_1 \approx 0.26191$</li>
+<li>$s^* \approx 0.25880$</li>
+<li>$s_2^U \approx 0.39894$</li>
+</ul>
+<p>这里更有意思：$s^*$ 已经落在 Region II，所以平台会更早跳到 full information。直觉是，价格更高时，abort region 更早变得重要，平台更倾向于争取 immediate sale。</p>
+<h4 id="_4">我对数值部分的解读</h4>
+<p>数值例子最重要的不是数值本身，而是告诉你：</p>
+<ol>
+<li>平台最优政策确实会随着参数变化发生离散切换；</li>
+<li>提高价格会让 full information 提前变得最优；</li>
+<li>abort probability 不只是存在，而且在较高搜索成本时相当可观。</li>
+</ol>
+<p>这让理论结果从“存在性证明”变成了“可操作的参数洞察”。</p>
+<h2 id="5-reviewers-critique">5. Reviewer's Critique</h2>
+<h3 id="51-senior-editor">5.1 作为 Senior Editor，我会给这篇论文的积极评价</h3>
+<h4 id="1_1">优点 1：机制非常新，而且不是表面创新</h4>
+<p>很多论文说自己“发现了一个新 trade-off”，其实只是把两个已有效应并排写出来。本文不一样。它的 trade-off 是由连续型匹配价值与搜索学习共同生成的，中间值 abort region 是此前框架里没有的结构性对象。</p>
+<h4 id="2_1">优点 2：技术处理很克制，但足够锋利</h4>
+<p>作者没有把模型做得很大，而是用两商品模型把问题切到最核心。正因如此，DSE 与 ARE 的分解极其清楚，读者能真正抓住机制。</p>
+<h4 id="3_2">优点 3：福利含义强</h4>
+<p>文章不只是在说“平台有时会混淆”，而是清楚说明：高搜索成本时平台与消费者利益一致，低搜索成本时两者利益冲突。这个结论对平台治理、排序透明度、数字市场监管都有直接价值。</p>
+<h3 id="52">5.2 我会提出的主要保留意见</h3>
+<h4 id="1_2">限制 1：两商品设定太干净</h4>
+<p>两商品模型让分析极漂亮，但也意味着很多现实平台中的排序问题被压缩掉了。真实世界里，平台面对的是一长串结果列表；消费者可能会看前三项、前五项、翻两页，然后退出。多商品环境下，后验更新与最优 stopping rule 可能完全不同。</p>
+<h4 id="2_2">限制 2：价格外生且相同，这会压掉很多市场互动</h4>
+<p>在 Amazon 这类平台上，卖家定价、广告投放、排名购买与 organic ranking 往往是联动的。本文把价格外生化、把利润边际设为相同，从而把问题锁定在成交概率最大化上。这个处理在理论上合理，但外部效度明显依赖场景。</p>
+<h4 id="3_3">限制 3：消费者对平台信息结构的认知比较强</h4>
+<p>模型里，消费者知道高低匹配分数存在，也知道平台排序信息度。现实中，消费者通常只知道“这个平台可能在推荐”，却不知道推荐到底多可靠。若消费者对平台 signal precision 本身也要学习，最优搜索可能不再是 reservation rule。</p>
+<h4 id="4_2">限制 4：平台目标过于单一</h4>
+<p>很多平台并不只关心一次成交。它们还关心 sponsored revenue、长期留存、品牌体验、卖家关系、价格形象、甚至 regulatory risk。本文平台目标函数非常干净，但也因此更像一个重要基准，而不是完整现实画像。</p>
+<h4 id="5bang-bang-assumption-1">限制 5：bang-bang 结果部分依赖 Assumption 1</h4>
+<p>平台最优政策的“边界化”很漂亮，但它建立在 log-likelihood ratio constant growth 的分布结构上。虽然这个类已经不小，但如果分布更复杂、重尾、混合型，是否仍然 quasi-convex，就未必了。</p>
+<h3 id="53">5.3 如果我让作者继续做，这篇论文最值得往哪里扩展</h3>
+<ol>
+<li>多商品环境：把两商品拓展到 $n$ 商品，研究 top-$k$ 可见性、分页、position bias 与 stopping depth。</li>
+<li>内生价格：让卖家定价或平台同时定价与排序，考察价格与排序透明度之间的联动。</li>
+<li>平台竞争：若消费者能在多个平台间切换，obfuscation 是否还能持续，还是会被透明平台竞争掉？</li>
+<li>消费者不确定平台精度：让消费者在搜索过程中同时学习“商品质量”和“平台排序是否可信”。</li>
+<li>相关匹配价值：不同商品的 match value 若存在相关性，abort region 的形状和平台最优政策可能会变。</li>
+<li>混合目标函数：把 sponsored position、广告收入、卖家支付和长期 engagement 纳入平台目标，考察 DSE/ARE 是否会被新的 revenue motive 改写。</li>
+</ol>
+<h2 id="6-one-more-thing">6. One More Thing</h2>
+<p>我认为本文最值得分享的那个“灵光一现”时刻是：</p>
+<p>消费者在第一件商品上看到一个“中不溜”的 realized value 时，最优动作居然是既不买也不继续搜。</p>
+<p>这个瞬间把整篇文章一下子点亮了。因为一旦你接受这个行为是理性的，后面所有平台策略就都顺了：</p>
+<ol>
+<li>更多信息会提高第一件被买走的概率；</li>
+<li>但更多信息也会让这个中间区间更大；</li>
+<li>于是“更精准的排序”不再天然更好，而是可能更早把消费者送进退出状态。</li>
+</ol>
+<p>这正是本文最聪明的地方。它不是在说平台会不会推荐得更准，而是在说：推荐越准，消费者越可能失去继续找下去的理由。</p>
+<p>从 OM/Marketing 的角度看，这个 insight 非常重要，因为它提醒我们：转化率优化不只是“把最好的东西放前面”，还包括“如何管理消费者对下一项的期待”。</p>
+    </div>
+  </div>
+</body>
+</html>

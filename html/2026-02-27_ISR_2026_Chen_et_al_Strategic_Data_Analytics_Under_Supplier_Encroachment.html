@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-02-27-ISR_2026_Chen et al Strategic Data Analytics Under Supplier Encroachment</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="strategic-data-analytics-under-supplier-encroachment">Strategic Data Analytics Under Supplier Encroachment</h1>
+<p>Authors and affiliations:</p>
+<ul>
+<li>Yonghui Chen — Management School, University of Liverpool (UK)</li>
+<li>Guangrui Ma — Department of Supply Chain Optimization, Meituan Group (China)</li>
+<li>Qiao-Chu He — School of Business, Southern University of Science and Technology (China)</li>
+<li>Ying-Ju Chen — School of Business and Management, The Hong Kong University of Science and Technology (Hong Kong)</li>
+<li>Zuo-Jun Max Shen — Faculty of Engineering; Faculty of Business and Economics, The University of Hong Kong (Hong Kong)</li>
+</ul>
+<p>Publication year: 2026<br>
+Journal: Manufacturing &amp; Service Operations Management (M&amp;SOM)</p>
+<p>Abstract (中文翻译):
+为提升供应链协同，大型零售商正越来越多地向供应商开放其数据平台，并借助数据分析向供应商提供有价值的需求洞察。然而，开放数据也会提高供应商渠道侵入（supplier encroachment）的风险。本文研究在供应商可能侵入的情况下，零售商应如何部署数据分析策略。方法上，作者在 Bayesian persuasion 框架下，将零售商的数据分析策略建模为一种信号设计：把市场状态映射为具有部分信息粒度的预测信号。进一步地，作者比较两种数据治理的组织结构：共享数据平台（shared platform），向零售商与供应商同时提供相同的需求预测；以及分离数据平台（separate platform），零售商获得更准确的预测，而供应商只能得到更不精确的洞察。结果显示：在共享平台上，当供应商侵入成本非常高或非常低时，零售商会采用完全准确的分析；当侵入成本处于中间水平时，共享平台会生成“信息性但带偏差”的预测，且这种偏差出人意料地能同时提升双方利润，因为它更容易缓解双重加价（Double Marginalization）。相比之下，在分离平台下，中等侵入成本时不会向供应商产生任何信息性预测。总体而言，当供应商侵入成本相对较高时，零售商更偏好共享平台。管理启示方面，本文揭示了数据分析准确率与供应商侵入效率之间的非单调关系，并强调在纵向分销渠道中透明、集成的数据分析与数据治理的价值。</p>
+<h2 id="0">0. 论文速览</h2>
+<p>本文研究一个现实中愈发普遍的矛盾：零售商为了协同效率把数据平台开放给供应商，供应商却可能借此更高效地“直销侵入”零售商的消费者，从而加剧渠道竞争。作者将“数据分析/ML 预测”抽象为可被零售商战略性选择的信号精度，并比较共享平台与分离平台两种数据治理结构下的均衡与福利。</p>
+<p>核心结论可概括为三点：
+1. 共享平台下，零售商往往想“诱导供应商侵入”，因为侵入会压低批发价（wholesale price effect of encroachment），从而缓解双重加价；因此在中等侵入成本区间，最优预测是带偏差的（而非完全准确）。
+2. 分离平台下，由于零售商私享准确信息且订单可泄露信息，供应商可能通过高批发价导致“独家直销”把零售渠道挤出；零售商反而倾向于“压低/抹平”供应商侧的信息，使其更难采取激进行为。
+3. 组织结构上，当供应商侵入成本较高（供应商相对弱势）时，零售商更偏好共享平台（透明、集成）；当供应商侵入成本较低（供应商更强势）时，分离平台更有利。</p>
+<h2 id="1-motivation">1. 研究背景与动机 (Motivation)</h2>
+<h3 id="11">1.1 实践痛点：数据平台共享与“供应商反向竞争”的冲突</h3>
+<p>现实中大型零售商积累了海量一手交易数据，并通过数据平台（如 Walmart 的 Scintilla/Luminate）向供应商提供需求洞察与行动建议。供应商据此优化包装、促销、备货等，从而提升渠道效率与销量。</p>
+<p>但与此同时，电商与第三方物流降低了供应商直面消费者的门槛，供应商可以建立直销渠道（direct-to-consumer, D2C），形成 supplier encroachment。此时，数据平台的洞察既能提升协同，也可能让供应商更高效地侵入零售商的市场，导致零售商利润被渠道竞争挤压。</p>
+<p>因此出现一个非常具体的运营决策冲突：
+- 更准确的预测有助于供应链匹配供需、减少浪费；
+- 但更准确的预测也可能增强供应商直销侵入能力，激化竞争并损害零售商。</p>
+<h3 id="12">1.2 理论缺口：信息共享文献把“信息精度”外生化了</h3>
+<p>传统供应链信息共享（information sharing）研究多聚焦于“是否分享”或“分享多少”的离散或简单精度设定，通常将信息准确率视为外生：零售商决定 share vs not share，而信号精度固定。</p>
+<p>然而现实数据分析（尤其 ML）并非一个外生精度黑箱：数据抽样、特征选择、训练目标、评价指标、fine-tuning 都会系统性影响预测误差结构（Type I/Type II）。这意味着零售商可能“战略性地”选择预测的偏差与粒度，而不只是选择“开/不开”。</p>
+<p>此外，供应商侵入文献强调 encroachment 的价格效应与双重加价缓解，但很少将其与“内生信息精度选择”结合，也缺乏对“数据治理结构（共享平台 vs 分离平台）”的系统比较。</p>
+<h3 id="13-ml">1.3 核心贡献：把 ML 的“算法偏差”纳入信息设计与渠道竞争</h3>
+<p>本文贡献可拆为三类：</p>
+<ol>
+<li>理论方法贡献：把 Bayesian persuasion 引入供应链数据分析决策，把“学习算法”抽象为信号规则 $(\delta_H,\delta_L)$，并通过 Bayes plausibility（可信约束）将问题化简为选择后验均值分布 $(A_h,A_l)$ 的信息设计。</li>
+<li>运营机制贡献：在“供应商可侵入”的纵向渠道中，存在一个强机制——供应商侵入会压低批发价。零售商因此可能主动诱导侵入，并通过有偏预测来操纵供应商的侵入概率与批发价。</li>
+<li>组织与治理贡献：比较 shared vs separate 两种数据平台治理结构，揭示“让零售商私享信息”未必更好；当供应商侵入成本高时，共享平台反而带来更高的学习价值与更强协调效果，解释了现实中强势零售商往往愿意给供应商同等数据视图的现象。</li>
+</ol>
+<h2 id="2-model-setup-assumptions">2. 模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="21">2.1 符号体系（核心变量与含义）</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$R$</td>
+<td>零售商（retailer）</td>
+<td>下游渠道，转售成本为 0</td>
+</tr>
+<tr>
+<td>$S$</td>
+<td>供应商（supplier）</td>
+<td>上游，可设批发价并可直销侵入</td>
+</tr>
+<tr>
+<td>$i\in{H,L}$</td>
+<td>市场状态</td>
+<td>$H$ 好状态，$L$ 坏状态</td>
+</tr>
+<tr>
+<td>$\lambda$</td>
+<td>好状态先验概率</td>
+<td>$P(i=H)=\lambda$</td>
+</tr>
+<tr>
+<td>$a_H,a_L$</td>
+<td>状态对应市场潜力</td>
+<td>$a_L&lt;a_H$</td>
+</tr>
+<tr>
+<td>$\tilde a$</td>
+<td>实现的市场潜力</td>
+<td>在状态 $i$ 下等于 $a_i$（扩展可允许随机）</td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td>先验期望市场潜力</td>
+<td>$\mu=\lambda a_H+(1-\lambda)a_L$</td>
+</tr>
+<tr>
+<td>$p$</td>
+<td>市场出清价格</td>
+<td>逆需求：$p=\tilde a-Q$</td>
+</tr>
+<tr>
+<td>$Q$</td>
+<td>总供给量</td>
+<td>$Q=q_R+q_S$</td>
+</tr>
+<tr>
+<td>$q_R$</td>
+<td>零售渠道销量（订货量）</td>
+<td>由零售商决策</td>
+</tr>
+<tr>
+<td>$q_S$</td>
+<td>供应商直销渠道销量</td>
+<td>由供应商决策</td>
+</tr>
+<tr>
+<td>$w$</td>
+<td>批发价</td>
+<td>供应商先定价，零售商后下单</td>
+</tr>
+<tr>
+<td>$c$</td>
+<td>供应商直销边际成本</td>
+<td>“侵入成本”，体现供应商触达消费者劣势/优势</td>
+</tr>
+<tr>
+<td>$s\in{h,l}$</td>
+<td>平台输出预测信号</td>
+<td>$h$ 正向预测，$l$ 负向预测</td>
+</tr>
+<tr>
+<td>$\delta_H$</td>
+<td>真阳性率</td>
+<td>$\delta_H=P(h</td>
+</tr>
+<tr>
+<td>$\delta_L$</td>
+<td>真阴性率</td>
+<td>$\delta_L=P(l</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>算法总体准确率</td>
+<td>$\gamma=\lambda\delta_H+(1-\lambda)\delta_L$</td>
+</tr>
+<tr>
+<td>$A_s$</td>
+<td>给定信号的后验均值</td>
+<td>$A_s=E(\tilde a</td>
+</tr>
+<tr>
+<td>$A_h,A_l$</td>
+<td>正/负预测对应后验均值</td>
+<td>信息设计核心选择变量</td>
+</tr>
+<tr>
+<td>$\tau$</td>
+<td>生成正向预测的概率</td>
+<td>$\tau=P(h)$（由信号规则内生）</td>
+</tr>
+<tr>
+<td>$\rho_h,\rho_l$</td>
+<td>预测精度（posterior）</td>
+<td>$\rho_h=P(H</td>
+</tr>
+<tr>
+<td>$\pi_R,\pi_S$</td>
+<td>实现利润（ex post）</td>
+<td>见下</td>
+</tr>
+<tr>
+<td>$E(\pi_R</td>
+<td>s),E(\pi_S</td>
+<td>s)$</td>
+</tr>
+<tr>
+<td>$\Pi_R,\Pi_S$</td>
+<td>事前期望利润（ex ante）</td>
+<td>对 $s$ 再取期望</td>
+</tr>
+<tr>
+<td>$\tilde{\Pi}_R$</td>
+<td>分离平台下零售商事前利润</td>
+<td>零售商私享准确信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 博弈与信息结构</h3>
+<p>本文核心比较两种数据平台组织结构：</p>
+<ol>
+<li>共享数据平台 (shared platform)  </li>
+<li>平台输出同一预测 $s$，零售商与供应商都观察到，并据此形成同一后验均值 $A_s$。</li>
+<li>信息对称：双方在运营阶段的需求信息一致。</li>
+<li>分离数据平台 (separate platform)  </li>
+<li>供应商只得到零售商选择性披露的、较粗/较不准的预测（$A_h,A_l$）。</li>
+<li>零售商内部同时获得更准确的信息（在文中相当于准确知道状态/得到准确预测），因此在运营阶段存在信息不对称。</li>
+<li>供应商可通过观察零售商订单量推断状态（signaling game）。</li>
+</ol>
+<p>共享平台下是“标准 Bayesian persuasion + 后续完全信息（同信息）渠道竞争”；分离平台下是“Bayesian persuasion（影响供应商先验/后验）+ 嵌入一个 signaling game（订单传递私有信息）”。</p>
+<h3 id="23">2.3 需求、成本与利润函数</h3>
+<p>需求：线性逆需求
+$$
+p=\tilde a-Q=\tilde a-(q_R+q_S).
+$$</p>
+<p>零售商利润（实现）：
+$$
+\pi_R=(p-w)q_R=(\tilde a-q_R-q_S-w)q_R.
+$$</p>
+<p>供应商利润（实现）：
+$$
+\pi_S=(p-c)q_S+wq_R=(\tilde a-q_R-q_S-c)q_S+wq_R.
+$$</p>
+<p>给定信号 $s$ 的后验均值 $A_s=E(\tilde a|s)$ 后，双方在第二阶段最大化的期望利润为
+$$
+E(\pi_R|s)=(A_s-q_R-q_S-w)q_R,\quad E(\pi_S|s)=(A_s-q_R-q_S-c)q_S+wq_R.
+$$</p>
+<p>关键点：由于利润是线性依赖 $\tilde a$，且决策只通过期望收益进入，故“后验分布的高阶矩”不重要，后验均值 $A_s$ 充分统计。</p>
+<h3 id="24-bayesian-persuasion">2.4 关键信号约束：Bayesian persuasion 的可信约束与“正负预测”解释</h3>
+<p>平台输出二元信号 $s\in{h,l}$。定义
+- $\delta_H=P(h|H)$（真阳性率，Type II error 为 $1-\delta_H$）
+- $\delta_L=P(l|L)$（真阴性率，Type I error 为 $1-\delta_L$）</p>
+<p>作者要求 $\delta_H\ge 1-\delta_L$，使得“正向预测更可能来自好状态”，从而保持语义一致：$h$ 对应更高后验均值 $A_h\ge \mu\ge A_l$。</p>
+<p>Bayes plausibility（可信约束）体现为：后验均值的加权平均必须等于先验均值
+$$
+\tau A_h+(1-\tau)A_l=\mu,
+$$</p>
+<p>其中 $\tau=P(h)$ 由信号规则内生决定。直观含义：你可以把信息“拆成两种后验”，但平均不能改变。</p>
+<p>于是信息设计的核心就变成：在约束 $a_L\le A_l\le \mu\le A_h\le a_H$ 与可信约束下，选择 $(A_h,A_l,\tau)$ 以最大化零售商事前利润。</p>
+<h3 id="25-justification">2.5 核心假设与合理性 (Justification)</h3>
+<ol>
+<li>二元市场状态 $i\in{H,L}$  </li>
+<li>合理性：贴合“高需求 vs 低需求”的分类问题，与 ML 分类算法的 Type I/II error 对应。</li>
+<li>线性逆需求 $p=\tilde a-Q$  </li>
+<li>合理性：Cournot 数量竞争下可解析，且后验均值充分统计，使信息设计可闭式求解。</li>
+<li>供应商直销成本 $c$ 外生且常数  </li>
+<li>合理性：用一个参数压缩供应商触达消费者的效率差异（物流、品牌、流量、售后等）。在比较静态中可解释为“侵入效率”。</li>
+<li>零售商可承诺信号规则（commitment）  </li>
+<li>合理性：平台算法一旦上线（模型、指标、数据选择）具有粘性；供应商也能形成对平台“长期偏差”的预期，符合 persuasion 的承诺含义。</li>
+<li>零售商转售成本为 0，供应商直销成本为 $c$  </li>
+<li>合理性：体现零售商的渠道优势；并把“直销劣势”集中到 $c$。</li>
+<li>在基准分析中关注“有意义的侵入成本区间”  </li>
+<li>文中强调当 $c$ 太高直销无意义，太低直销必然发生；最有运营意义的是中间区间，此时信息设计最有价值。</li>
+</ol>
+<h2 id="3-shared-data-platform">3. 分析与求解：共享数据平台 (Shared Data Platform)</h2>
+<h3 id="31-a_s">3.1 给定预测 $A_s$ 的渠道竞争均衡：阈值、威慑与侵入</h3>
+<p>共享平台下双方同知 $A_s$。运营阶段顺序是：供应商先定批发价 $w$，零售商订货 $q_R$，供应商再决定直销量 $q_S$。</p>
+<p>(1) 供应商给定 $q_R$ 的直销最优反应<br>
+供应商直销利润为 $(A_s-q_R-q_S-c)q_S$，一阶条件给出
+$$
+q_S(q_R)=\left(\frac{A_s-q_R-c}{2}\right)^+,
+$$
+即当零售商订货太大（$q_R\ge A_s-c$）时，供应商最优直销为 0。</p>
+<p>(2) 零售商给定 $w$ 的最优订货<br>
+零售商最大化 $(A_s-q_R-q_S(q_R)-w)q_R$，得到文中式 (3) 的分段最优：
+$$
+q_R(w)=
+\begin{cases}
+A_s-c, &amp; \text{if } w\le \frac{3c-A_s}{2},\
+\left(\frac{A_s+c-2w}{2}\right)^+, &amp; \text{if } w&gt; \frac{3c-A_s}{2}.
+\end{cases}
+$$</p>
+<p>这里出现一个关键阈值
+$$
+w_d(A_s)=\frac{3c-A_s}{2}.
+$$</p>
+<p>Lemma 1 的含义：</p>
+<ul>
+<li>当 $w&lt;w_d$：批发价很低，零售商愿意订货到 $q_R=A_s-c$，恰好把供应商直销空间压到 0（威慑直销）。</li>
+<li>当 $w&gt;w_d$：批发价较高，零售商宁可少订货，让供应商去直销一部分（进入 Cournot 竞争区间）。</li>
+<li>且 $w_d$ 随 $A_s$ 增大而下降：需求越好，想维持“威慑直销”，就需要供应商给更低的批发价（因为否则零售商更愿意少订货、让供应商直销分担）。</li>
+</ul>
+<p>(3) 供应商的批发价选择<br>
+供应商预见 $q_R(w)$ 与后续 $q_S$，解
+$$
+\max_w\ (A_s-q_R-q_S(q_R)-c)q_S(q_R)+wq_R.
+$$</p>
+<p>文中给出解析解（Table 2），关键在于一个“侵入触发阈值”：
+$$
+A_s\ge \frac{5c}{3}\quad \Rightarrow \quad \text{供应商会实际直销侵入}.
+$$</p>
+<p>对应的均衡（共享平台）可概括为：</p>
+<ul>
+<li>若 $A_s&lt;\frac{5c}{3}$（需求偏低）：供应商不实际直销，但以直销选项作为“威胁”压迫零售商多订货；供应商设低批发价使零售商刚好选择威慑直销（$q_S=0$）。</li>
+<li>若 $A_s\ge \frac{5c}{3}$（需求偏高）：供应商实际直销，进入数量竞争。</li>
+</ul>
+<p>零售商在共享平台下给定 $A_s$ 的均衡利润（文中式 (5)）为：
+$$
+\pi_R(A_s)=
+\begin{cases}
+\frac{(A_s-c)^2}{2}, &amp; A_s&lt;\frac{5c}{3},\
+\frac{2c^2}{9}, &amp; A_s\ge \frac{5c}{3}.
+\end{cases}
+$$</p>
+<p>重要特征：一旦进入“实际直销侵入”区间（$A_s\ge 5c/3$），零售商利润变成常数 $2c^2/9$，不再随 $A_s$ 变化。这是后续信息设计出现“把预测推到阈值附近”的关键数学原因。</p>
+<h3 id="32">3.2 外层：零售商的信息设计（把算法准确率写成后验均值分布）</h3>
+<p>零售商选择 $(A_h,A_l,\tau)$ 来最大化事前期望利润：
+$$
+\max_{A_h,A_l,\tau}\ \tau\pi_R(A_h)+(1-\tau)\pi_R(A_l)
+$$</p>
+<p>s.t.
+$$
+\tau A_h+(1-\tau)A_l=\mu,\quad a_L\le A_l\le \mu\le A_h\le a_H.
+$$</p>
+<p>理解方式：</p>
+<ul>
+<li>选择更“分离”的后验（更高 $A_h$、更低 $A_l$）意味着信号更精确，但会改变 $\tau$ 以满足可信约束：更高的 $A_h$ 必须配合更小的 $\tau$（否则平均会超过 $\mu$）。</li>
+<li>因此信息设计体现“精度 vs 发生概率”的权衡。</li>
+</ul>
+<p>Lemma 3 进一步指出，当两种预测都落在同一运营区间时，零售商对精度的边际价值不同：</p>
+<ul>
+<li>若 $A_l\le A_h&lt;5c/3$（两种预测都只导致“威胁”而非实际侵入）：提高 $A_h$（更频繁更乐观）与降低 $A_l$（更精准区分坏状态）都能降低批发价、提高零售商利润，因此倾向于更精确。</li>
+<li>若 $A_h\ge A_l\ge 5c/3$（两种预测都导致实际侵入）：零售商利润对 $A_s$ 不敏感，因此对信息精度无所谓；此时可在 Pareto 意义上选择精确而不损害自己。</li>
+</ul>
+<h3 id="33">3.3 核心命题与机制解释（共享平台）</h3>
+<h4 id="331-lemma-2-wholesale-price-effect">3.3.1 Lemma 2：侵入的批发价效应 (wholesale price effect)</h4>
+<p>Lemma 2 的关键陈述（直观表述）：</p>
+<ul>
+<li>当 $A_s&lt;5c/3$（供应商还没真正侵入，只是威胁）：提高 $A_s$ 会让供应商愿意把批发价压低（$\partial w/\partial A_s&lt;0$），零售商利润随 $A_s$ 上升（$\partial\pi_R/\partial A_s&gt;0$）。</li>
+<li>当 $A_s\ge 5c/3$（供应商已侵入）：$A_s$ 上升反而推高批发价（$\partial w/\partial A_s&gt;0$），但零售商利润不变（$\partial\pi_R/\partial A_s=0$）。</li>
+</ul>
+<p>经济学直觉：
+- 低需求区间里，供应商用“可能直销”作为威胁迫使零售商多订货；如果需求预期变好，供应商更愿意在批发价上让利以扩大零售渠道销量（因为直销还不发生）。
+- 一旦实际侵入发生，直销与批发销售的边际替代关系改变：更高需求意味着供应商直销收益更高，因此批发价上升，但零售商最终被“锁定”在一个与 $A_s$ 无关的利润水平（因为批发价随 $A_s$ 同步调整抵消掉零售商端收益）。</p>
+<p>这形成一个非常锋利的激励：零售商希望把信号设计成更容易跨过 $5c/3$ 的阈值，从而进入“侵入导致低批发价”的区域。</p>
+<h4 id="332-proposition-1">3.3.2 Proposition 1：极端侵入成本下的“完全准确”最优性</h4>
+<p>当 $c$ 很低或很高时，最优是完全准确的预测：</p>
+<ul>
+<li>若 $c\le 3a_L/5$：供应商直销“不可避免”，无论预测如何都侵入；零售商利润对信息不敏感，于是 Pareto 上偏好准确披露（帮助供应商更好决策而不伤害自己）。</li>
+<li>若 $c&gt;3a_H/5$：供应商直销“几乎不可能”，始终只构成威胁；零售商对更高 $A_s$ 有严格偏好（降低批发价），于是最优也是让信号精确揭示状态（消除 false positives/negatives）。</li>
+</ul>
+<p>运营直觉：</p>
+<ul>
+<li>当侵入效率极端（太强或太弱）时，信息只影响“配给效率”，而不改变竞争结构，故准确最优。</li>
+<li>真正的战略扭曲只发生在“侵入边界可被预测推来推去”的中间区间。</li>
+</ul>
+<h4 id="333-proposition-2-vs">3.3.3 Proposition 2：中等侵入成本下的策略性偏差（悲观 vs 乐观）</h4>
+<p>在中间区间 $3a_L/5&lt;c&lt;3a_H/5$，最优信号会故意引入系统偏差，且偏差方向取决于 $c$ 相对 $\mu$ 的位置。</p>
+<p>(i) 侵入成本较低：$3a_L/5&lt;c\le 3\mu/5$<br>
+最优是“悲观方案” (pessimistic scheme)：
+$$
+A_h^<em>=a_H,\quad A_l^</em>=\frac{5c}{3}.
+$$
+含义：把负预测的后验均值往上抬到侵入阈值 $5c/3$，使得即便收到负预测，供应商也（更可能）侵入。</p>
+<p>机制解释：</p>
+<ul>
+<li>当 $c$ 低，供应商侵入很容易；零售商的收益来自“诱导侵入以压低批发价”。</li>
+<li>因为在共享平台上供应商与零售商共享同一预测，若负预测足够“差”，供应商可能仅威胁不侵入，此时批发价更高；零售商不喜欢。</li>
+<li>所以零售商把算法调得“<strong>更容易给出坏消息</strong>”（更多 $l$）但让坏消息本身“不那么坏”（$A_l$ 被抬高），从而在统计意义上制造 false negatives，让供应商在坏信号下也倾向侵入。</li>
+</ul>
+<p>(ii) 侵入成本较高：$3\mu/5&lt;c&lt;3a_H/5$<br>
+最优是“乐观方案” (optimistic scheme)：
+$$
+A_h^<em>=\frac{5c}{3},\quad A_l^</em>=a_L.
+$$
+含义：把正预测的后验均值压到侵入阈值附近，并通过增加正预测发生概率来诱导侵入（对应增加 false positives）。</p>
+<p>机制解释：</p>
+<ul>
+<li>当 $c$ 高时，供应商只有在非常看好需求时才侵入；零售商于是更偏好“多发好信号”来触发侵入，从而获得低批发价。</li>
+<li>但好信号必须仍然足够信息性（不然供应商不信），因此把 $A_h$ 卡在刚好能触发侵入的 $5c/3$，并通过提升 $P(h|L)$（Type I error）来增加好信号频率。</li>
+</ul>
+<p>一句话总结共享平台的偏差方向：</p>
+<ul>
+<li>侵入容易（$c$ 低）时：零售商做“悲观偏差”——增加 false negatives（在好状态里更多给 $l$），并把 $A_l$ 抬高到阈值。</li>
+<li>侵入困难（$c$ 高）时：零售商做“乐观偏差”——增加 false positives（在坏状态里更多给 $h$），并把 $A_h$ 压到阈值。</li>
+</ul>
+<h4 id="334-corollary-1">3.3.4 Corollary 1：算法准确率与侵入效率的非单调关系</h4>
+<p>在 $3a_L/5&lt;c&lt;3a_H/5$ 区间，最优算法准确率
+$$
+\gamma^<em>=\lambda\delta_H^</em>+(1-\lambda)\delta_L^*
+$$
+随 $c$ 呈现“先下降后上升”的非单调关系：随着 $c$ 从低到中等上升，零售商为了持续诱导侵入而不断加大偏差，最终会退化到几乎不披露信息（no-information）；再进一步当 $c$ 变得较高时，零售商需要恢复一定信息性才能触发侵入，于是准确率回升。</p>
+<p>运营启示：</p>
+<ul>
+<li>不要以为“供应商越强（越低 $c$）就越应该提高预测精度”。恰恰相反，<strong>中间区间里最优可能是有偏、甚至近乎不披露</strong>。</li>
+<li>数据科学团队的 KPI（accuracy）可能与渠道战略目标冲突；必须把“渠道博弈”纳入模型选择与评估指标。</li>
+</ul>
+<h3 id="34">3.4 比较静态（共享平台）：关键参数如何驱动最优偏差</h3>
+<p>围绕共享平台最核心的比较静态主要是 $c$ 与 $\mu$：</p>
+<ol>
+<li>$c$ 越低（供应商越高效侵入），越容易通过抬高 $A_l$ 来让负信号也触发侵入，因此偏差更倾向“悲观方案”。当 $c$ 进一步下降到 $3a_L/5$ 以下，侵入无论如何都会发生，零售商对精度无所谓，回到全披露。</li>
+<li>$c$ 越高（供应商越低效侵入），要诱导侵入必须依赖正信号，因此偏差转为“乐观方案”（增加 false positives）。当 $c$ 高到 $3a_H/5$ 以上，侵入几乎不可能，零售商回到全披露以压低批发价（因为此时仍处于威胁区间）。</li>
+<li>$\mu$（先验需求）决定区间分割点 $3\mu/5$：当先验本就高时，更容易触发侵入，悲观方案区间缩小，乐观方案区间扩大。</li>
+</ol>
+<h2 id="4-separate-data-platform">4. 分析与求解：分离数据平台 (Separate Data Platform)</h2>
+<p>分离平台的关键区别：零售商内部获得更准确的需求信息（可视为直接知道状态），而供应商只收到零售商“对外披露”的预测信号 $s$。因此第二阶段出现信息不对称，且零售商订单量可能泄露信息，形成 signaling game。</p>
+<h3 id="41-signaling-gamelemma-4">4.1 Signaling game：订单如何泄露私有信息（Lemma 4 的结构）</h3>
+<p>在运营阶段，零售商的类型是状态 $i\in{H,L}$。零售商先下订单 $q_R$，供应商观察订单并决定直销量 $q_S$。直观上，H-type 零售商可能想“装作 L-type”来降低供应商直销量（减少竞争），因此存在激励兼容约束。</p>
+<p>文中采用 Li et al. (2014) 的结论：只有 separating equilibrium 能通过 intuitive criterion。均衡用一个标准的筛选问题刻画：
+- H-type 选择对自己最优的 $q_R^H(w)$；
+- L-type 在满足 H-type 不想模仿的约束下选择 $q_R^L(w)$。</p>
+<p>Lemma 4 给出均衡订单量的解析结构：
+- H-type：$q_R^H(w)=\frac{a_H+c-2w}{2}$（其直销不可避免，因最终会被识别）。
+- L-type：分段，低 $w$ 可威慑直销，高 $w$ 可能需要下调订单来分离。</p>
+<p>作者为突出“战略数据分析”而非订单扭曲，后续聚焦较高 $c$ 区间，使得 L-type 无需扭曲也能分离（否则订单扭曲只会强化“私有信息未必好”的结论）。</p>
+<h3 id="42-table-4-lemma-5">4.2 供应商批发定价与“独家直销”风险（Table 4 与 Lemma 5）</h3>
+<p>供应商收到预测 $s$ 后形成后验均值 $A_s$，但知道零售商随后会基于真实状态下单。于是供应商批发价问题变成：
+$$
+\tilde w(A_s)=\arg\max_w\ P(H|s)\pi_S^H(w)+P(L|s)\pi_S^L(w).
+$$</p>
+<p>Table 4 给出均衡结构，核心阈值有两个：</p>
+<ol>
+<li>当 $A_s$ 较低（$A_s\le 10c/3-a_L$）：供应商行为类似“只威胁不侵入”，批发价固定在 $w= \frac{3c-a_L}{2}$，零售渠道在 L-state 仍有销量。</li>
+<li>当 $A_s$ 中等（$10c/3-a_L &lt; A_s\le \hat A$）：进入直销侵入区间，批发价 $w=\frac{3A_s-c}{6}$，且 L-state 下零售销量下降。</li>
+<li>当 $A_s$ 很高（$A_s&gt;\hat A$）：出现“独家直销”（exclusive direct selling），L-state 下零售销量为 0，即供应商通过高批发价把零售渠道挤出。</li>
+</ol>
+<p>其中
+$$
+\hat A=a_L+\frac{16c^2}{9(a_H-a_L)}.
+$$</p>
+<p>Lemma 5 的方向性结果（直观表述）：
+- 分离平台下，提高 $A_s$ 会提高批发价（$\partial \tilde w/\partial A_s\ge 0$），从而降低零售渠道销量。
+- 且当 $A_s$ 足够高时，L-state 下零售销量为 0（被独家直销挤出）。</p>
+<p>与共享平台的对比：
+- 共享平台里，提高 $A_s$ 在威胁区间反而压低批发价（供应商“让利”换订单）；分离平台里，提高 $A_s$ 提高批发价（供应商更倾向榨取零售渠道，甚至挤出）。</p>
+<p>因此，零售商在分离平台下的策略目标从“诱导侵入以压低批发价”转为“压低供应商认知以降低批发价、避免独家直销”。</p>
+<h3 id="43-proposition-5-lemma-6">4.3 分离平台下的最优数据策略（Proposition 5 与 Lemma 6）</h3>
+<p>零售商选择对外披露的 $(A_h,A_l,\tau)$，其事前利润为
+$$
+E\tilde\pi_R(A_h,A_l)=\tau\tilde\pi_R(A_h)+(1-\tau)\tilde\pi_R(A_l),
+$$
+其中 $\tilde\pi_R(A_s)$ 是在供应商以 $A_s$ 定价、而零售商用真实状态下单所得到的期望利润。</p>
+<p>Lemma 6 的关键直觉：
+- 零售商必须保证负预测足够精确，以避免供应商进入“独家直销”（即要求 $A_l\le \hat A$）。
+- 当两种预测都只导致威胁区间时，零售商对信息分布无所谓（利润不敏感），可 Pareto 上更精确。
+- 其他情况下，零售商更偏好“更多负预测”因为负预测带来更低批发价（与共享平台相反）。</p>
+<p>Proposition 5 将最优策略分为三段（在文中还需要 $c$ 相对较高以避免订单扭曲复杂性）：</p>
+<ol>
+<li>低侵入成本区间（供应商易激进）：最优是“悲观方案”，但与共享平台的逻辑不同  </li>
+<li>正预测精确：$A_h=\ a_H$  </li>
+<li>负预测被卡在避免独家直销的阈值：$A_l=\hat A$  </li>
+<li>
+<p>直觉：正预测一旦太强会触发供应商独家直销；因此用负预测的精确性来“刹车”，同时通过制造 false negatives 尽量让供应商处在更低批发价区域。</p>
+</li>
+<li>
+<p>中等侵入成本：最优为“无信息披露”  </p>
+</li>
+<li>通过让供应商几乎总收到负预测，使其后验均值回到 $\mu$，从而在批发价上维持对零售商更有利的水平。</li>
+<li>
+<p>这是一个非常强的结论：分离平台在某些区间下完全不向供应商提供信息性预测。</p>
+</li>
+<li>
+<p>高侵入成本（供应商不太会直销）：最优变为“乐观方案”  </p>
+</li>
+<li>负预测精确：$A_l=a_L$  </li>
+<li>正预测被压到一个不至于让供应商激进定价的上界：$A_h=\min{10c/3-a_L,\ a_H}$  </li>
+<li>直觉：此时零售商需要用正预测去影响供应商，但又不希望过度抬高 $A_s$ 导致批发价上升。</li>
+</ol>
+<h3 id="44-corollary-2">4.4 私有信息如何改变算法准确率（Corollary 2）</h3>
+<p>Corollary 2 给出一个“反直觉但重要”的比较：零售商拥有私有准确信息（分离平台）时，对外披露的最优算法准确率可能更高。</p>
+<p>其机制是：私有信息引入了一个新的风险——供应商可能在坏状态下通过高批发价诱发独家直销，从而使零售商必须在信号设计中披露一定“坏消息”以阻止该激进行为。这个约束迫使零售商保持一定的信号精度（尤其是负预测的精度），从而提升了算法准确率。</p>
+<p>因此，“拥有私有信息”并不必然导致更强的信息操纵；在某些区间反而使披露更接近真实（因为需要满足行为约束）。</p>
+<h3 id="45-vs-proposition-67">4.5 平台治理选择：共享 vs 分离（Proposition 6–7）</h3>
+<p>作者定义“学习价值”：
+- 共享平台学习价值 $V=\Pi_R-\pi_R(\mu)$；
+- 分离平台学习价值 $\tilde V=\tilde\Pi_R-\tilde\pi_R(\mu)$。</p>
+<p>Proposition 6：相对“无信息”基准，何时平台创造价值？
+- 共享平台在实施乐观方案（高 $c$ 区间）时创造价值：通过信息诱导侵入，从而压低批发价。
+- 分离平台在实施悲观方案（低 $c$ 区间）时创造价值：通过信息防止独家直销，把零售渠道保住。</p>
+<p>Proposition 7：零售商在两种治理结构间的偏好：
+- 当 $c$ 低（供应商强势）时，分离平台更优：零售商既获得私有信息的订货优势，又能通过披露策略压低批发价并避免被挤出。
+- 当 $c$ 高（供应商弱势）时，共享平台更优：虽然分离平台给了零售商私有信息，但对供应商侧披露的学习价值很低（甚至为 0），反而不如共享平台通过透明信息诱导“有益的侵入”来缓解双重加价。</p>
+<p>管理含义：
+- 强势零售商（供应商直销相对弱）更应选择共享平台，透明与集成反而提高渠道效率与自身利润。
+- 面对强势供应商（直销能力强）时，分离平台与信息隔离更像是一种“防御性数据治理”。</p>
+<h2 id="5-vertical-vs-horizontal">5. 扩展：渠道竞争形式 (Vertical vs. Horizontal)</h2>
+<h3 id="51-benchmarkproposition-8">5.1 Benchmark：无侵入时为何总是全披露（Proposition 8）</h3>
+<p>若供应商没有直销渠道，只通过零售商销售，则运营阶段是标准批发定价 + 零售订货的双重加价问题。作者求得此时零售商事前利润目标为
+$$
+\max_{A_h,A_l,\tau}\ \tau\frac{A_h^2}{16}+(1-\tau)\frac{A_l^2}{16},
+$$
+在可信约束下最优是完全揭示：$A_h=a_H,\ A_l=a_L$（对应 $\delta_H=\delta_L=1$）。</p>
+<p>直觉：无侵入时信息激励对齐，精确预测能让零售商更好匹配需求并从高需求中获利，且不会带来竞争结构变化。</p>
+<h3 id="52-winwinloselose-proposition-9">5.2 纵向侵入下的供应链绩效：win–win/lose–lose 的分区（Proposition 9）</h3>
+<p>在共享平台且允许战略数据分析的情况下，供应商是否建立直销侵入渠道会导致三种可能的绩效格局：
+- win–win：双方利润都高于无侵入；
+- win–lose：供应商受益、零售商受损；
+- lose–lose：双方都受损。</p>
+<p>关键驱动是市场潜力 $a_H$ 与侵入成本 $c$：
+- 当市场潜力较低时，侵入与战略数据分析共同降低批发价、缓解双重加价，容易 win–win。
+- 当市场潜力很高且 $c$ 也高时，战略预测偏差导致“销量匹配损失”很大，供应商可能因信息扭曲而受损，甚至出现 lose–lose。</p>
+<p>注意本文模型不出现 lose–win（供应商受损但零售商受益），其原因是共享平台下供应商与零售商同信息，战略数据分析倾向增加零售商订货量，从而通常也为供应商带来批发收益。</p>
+<h3 id="53-proposition-10">5.3 横向竞争：第三方转售商进入（Proposition 10）</h3>
+<p>扩展考虑供应商通过第三方转售商 $T$ 扩张分销网络，形成两家零售商之间的横向竞争（R 与 T 同时订货竞争），第三方的零售成本为 $c$。</p>
+<p>关键结果：
+- 只有当需求预测 $A_s$ 高于阈值 $(2+\sqrt 3)c$ 时第三方才进入竞争。
+- 相比纵向侵入（阈值 $5c/3$），横向竞争触发阈值更高，因为供应商对第三方渠道的控制力更弱，需要更高需求才值得引入竞争。</p>
+<p>Proposition 10 显示：零售商仍会在中间区间进行悲观/乐观偏差，但相较纵向侵入：
+- 在某些区间下信息准确率可能更低或更高（取决于第三方进入门槛与其无法像供应商直销那样作为“威胁”工具）。
+- 总体上横向竞争给零售商带来更高利润，因为零售商可以利用数据策略更灵活地调节第三方进入与批发价。</p>
+<h2 id="6-main-results-managerial-insights">6. 主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="61-trade-off">6.1 新机制：战略数据分析揭示了什么新的 trade-off？</h3>
+<p>相对传统“精确信息总更好”的观点，本文揭示了一个结构性 trade-off：</p>
+<ul>
+<li>信息更精确会提升运营匹配效率，但也会改变渠道竞争的发生概率与批发价，进而影响双重加价程度与利润分配。</li>
+<li>在共享平台下，零售商存在诱导侵入的激励，因为侵入会压低批发价；因此其最优算法偏差可能是“让供应商更容易侵入”，即通过 false negatives 或 false positives 把信号推向侵入阈值附近。</li>
+<li>在分离平台下，私有信息与订单泄露使供应商可能采取“独家直销”挤出零售渠道；零售商因此倾向于压低供应商侧信息，甚至完全不披露。</li>
+</ul>
+<p>反直觉结果（尤其值得强调）：</p>
+<ul>
+<li>共享平台中等侵入成本时，带偏差但仍信息性的预测可能同时提升零售商与供应商利润（所谓 Bright Side）：偏差诱导零售商“过量订货”，反而缓解双重加价。</li>
+<li>分离平台的私有信息未必提高协同，反而可能削弱学习价值，使零售商在高 $c$ 区间更偏好共享平台。</li>
+</ul>
+<h3 id="62">6.2 管理建议：零售商应如何设计学习算法与平台治理？</h3>
+<p>结合本文阈值结构，可以形成一套“数据平台与算法治理”的可操作建议：</p>
+<ol>
+<li>把供应商直销能力映射为一个“侵入成本/效率”指标 $c$（可由履约成本、流量获取成本、品牌直达能力等估计）。  </li>
+<li>若供应商直销极强（$c$ 很低）或极弱（$c$ 很高）：应追求高准确率预测（balanced data, robust training），因为此时精度提升主要带来运营效率，不会显著改变竞争结构。</li>
+<li>共享平台下的算法偏差策略（当 $c$ 处于中间）：  </li>
+<li>供应商易侵入（较低 $c$）：用“悲观偏差”（更多 false negatives）把负预测抬高到侵入阈值，增加侵入概率以压低批发价。  </li>
+<li>供应商难侵入（较高 $c$）：用“乐观偏差”（更多 false positives）提高正预测发生概率，同时保持正预测刚好足够触发侵入。</li>
+<li>分离平台下的防御性披露：  </li>
+<li>当存在“独家直销挤出”风险时（供应商可能通过高批发价让零售渠道销量为 0），必须维持负预测的精度以阻止该行为；必要时可选择“无信息披露”来压低供应商定价。  </li>
+<li>数据治理结构选择：  </li>
+<li>供应商相对弱势（高 $c$）：共享平台更优，因为透明信息能带来学习价值并诱导有益行为（缓解双重加价）。  </li>
+<li>供应商相对强势（低 $c$）：分离平台更优，因为私有信息与信息隔离能防止被挤出，并控制供应商定价。</li>
+</ol>
+<p>对零售商组织而言，这意味着：数据科学团队的 objective function 不应只看 accuracy，而应把“批发价、侵入概率、渠道销量结构”纳入评价；平台治理（shared vs separate）是战略层面的组织设计问题，而非纯 IT/权限配置问题。</p>
+<h3 id="63-extensions">6.3 Extensions 的启示总结</h3>
+<ul>
+<li>垂直侵入 vs 水平竞争：竞争形式改变进入阈值与威胁结构，但“中间区间进行策略性偏差”的逻辑稳健。</li>
+<li>无侵入 benchmark：信息共享激励对齐时，全披露是最优，这为“偏差来自竞争结构变化”提供清晰对照。</li>
+</ul>
+<h2 id="7-reviewers-critique-senior-editor">7. Reviewer's Critique（以严厉 Senior Editor 视角）</h2>
+<h3 id="71">7.1 主要优点</h3>
+<ol>
+<li>选题高度现实：数据平台开放与 supplier encroachment 的矛盾是当下零售数字化的核心痛点。</li>
+<li>方法上把 ML 的 error structure（Type I/II）与 Bayesian persuasion 连接得很自然，且在 OM 场景中有明确可解释的运营机制（批发价效应、双重加价）。</li>
+<li>组织结构比较（shared vs separate）是本文的加分项：不仅在均衡层面比较，还讨论“学习价值”与“私有信息收益”的分解，增强管理启示的力度。</li>
+<li>解析可读性强：关键阈值（$5c/3$、$10c/3-a_L$、$\hat A$ 等）使结果具备可沟通性。</li>
+</ol>
+<h3 id="72">7.2 模型限制与可能过强的假设</h3>
+<ol>
+<li>二元需求状态的简化  </li>
+<li>二元状态使 persuasion 问题干净，但现实需求是连续或多峰；多状态下最优信号可能出现更复杂的分割与多阈值结构，且“偏差方向”可能不再只表现为单一的 false positive/negative。</li>
+<li>零售商可完全承诺信号规则  </li>
+<li>在实践中，供应商可能对算法偏差进行审计或通过外部数据验证；若承诺不可信，可能需要加入 reputational constraints 或 repeated-game 结构。</li>
+<li>信息只通过后验均值影响决策  </li>
+<li>线性需求与风险中性让后验均值充分统计；若引入风险厌恶、库存/缺货成本、或非线性需求，后验方差等高阶信息也会进入决策，信息设计空间会不同。</li>
+<li>竞争采用数量竞争（Cournot）且顺序固定  </li>
+<li>若现实是 Bertrand 价格竞争，或订货/定价时序不同，批发价效应与阈值结构可能改变。</li>
+<li>分离平台下对订单扭曲的处理需要更清晰  </li>
+<li>文中为了突出信息设计，在部分区间假设 $c$ 较高使得 L-type 不需要扭曲订单。虽然作者指出考虑订单扭曲会强化结论，但读者可能希望看到更系统的讨论或至少在主文提供更完整的直觉。</li>
+</ol>
+<h3 id="73">7.3 未来研究方向（基于本文可自然延伸的项目）</h3>
+<ol>
+<li>多状态/连续状态的 persuasion：从二元分类走向连续预测（回归）  </li>
+<li>把 ML 输出从二元分类扩展为连续预测区间，研究最优“分桶粒度”如何随侵入效率变化（更接近实际 demand forecasting）。</li>
+<li>重复互动与算法信誉  </li>
+<li>若供应商能通过长期观察评估平台偏差，零售商的操纵会受到动态约束；此时最优可能是“短期偏差、长期收敛”的路径。</li>
+<li>加入库存/服务水平与动态需求  </li>
+<li>把订货决策改为 Newsvendor 或动态补货，使信息设计影响缺货与滞销风险，从而改变“过量订货缓解双重加价”的边界。</li>
+<li>多供应商、多品类数据平台  </li>
+<li>实际平台面对多个供应商与品类，存在交叉学习与信息外溢。供应商之间的竞争会改变零售商的信息设计动机（可能更倾向信息隔离以防止串谋或加剧竞争）。</li>
+<li>实证验证与结构估计  </li>
+<li>利用零售平台的算法版本迭代、供应商直销进入事件、以及批发价/订单变化做 quasi-experiment，检验“非单调准确率”与“偏差方向随侵入效率切换”的预测。</li>
+</ol>
+<h2 id="8-one-more-thing">8. One More Thing：一个最值得分享的“灵光一现”</h2>
+<p>共享平台下最“点亮”的一刻是：零售商并不一定害怕供应商侵入，反而可能希望供应商侵入，因为侵入会压低批发价并缓解双重加价；而数据分析的偏差（false positives/false negatives）正是零售商用来“操纵侵入发生在哪个需求区间”的工具。</p>
+<p>换句话说，算法偏差在这里不是“噪声”或“误差”，而是一个可设计的契约变量，作用类似于把渠道竞争从“是否发生”变成“在什么信息条件下发生”。这把 ML 的工程问题（error types）与 OM 的机制设计问题（诱导/威慑行为）非常漂亮地连在了一起。</p>
+    </div>
+  </div>
+</body>
+</html>

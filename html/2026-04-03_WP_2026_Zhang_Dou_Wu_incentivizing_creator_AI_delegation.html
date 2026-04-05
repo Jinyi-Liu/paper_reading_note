@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-04-03_WP_2026_Zhang_Dou_Wu_incentivizing_creator_AI_delegation</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="incentivizing-the-content-creator-when-tasks-can-be-delegated-to-artificial-intelligence">Incentivizing The Content Creator When Tasks Can Be Delegated to Artificial Intelligence</h1>
+<p><strong>作者</strong>：Xu Zhang (复旦大学管理学院), Yifan Dou (复旦大学管理学院), D.J. Wu (Georgia Institute of Technology, Scheller College of Business)</p>
+<p><strong>年份</strong>：2026 (Working Paper, March 2026 version)</p>
+<p><strong>期刊</strong>：Working Paper</p>
+<hr>
+<p><strong>摘要</strong>：人工智能（AI）工具的出现为人类创作者在平台内容贡献中提供了大量资源，但也带来了新的挑战——创作者可能过度将任务委托给 AI 以降低成本。本文聚焦于 AI 尚未完全替代人类创作者的场景，构建了一个博弈论模型，探讨平台应如何调整收入分成比例以激励人类创作者。模型揭示：若允许创作者以近零成本将任务委托给 AI（即 automation）能有效提升整体产出，平台应降低分成比例；反之，若此类委托未能充分提升产出，平台应提高分成比例以鼓励创作者在 AI 表现不佳的任务上投入人力。此外，引入过强的 AI 工具可能损害平台利益，因为创作者会过度偷懒——仅靠提高分成无法解决这一问题。有趣的是，若平台可内生调节 AI 强度，最优分成比例与无 AI 场景保持一致。文章还展示了过强 AI 对其他利益相关者和社会福利的负面影响，并通过两个扩展验证了结论的稳健性。</p>
+<hr>
+<h2 id="_1">论文速览</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>研究问题</strong></td>
+<td style="text-align: left;">当人类创作者可将任务委托给 AI 时，内容平台应如何调整收入分成比例？AI 强度如何影响平台利润与社会福利？</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>研究方法</strong></td>
+<td style="text-align: left;">解析博弈论模型（Principal-Agent 框架），含 Backward Induction 求解、比较静态分析、线性函数形式的闭式解</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>核心机制</strong></td>
+<td style="text-align: left;">AI 引入导致<strong>任务委托中的道德风险</strong>：创作者即使知道某些任务人类做得更好，仍因偷懒动机过度委托给 AI（excessive automation），造成产出损失</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>主要发现</strong></td>
+<td style="text-align: left;">(1) 创作者总是过度委托；(2) 最优分成随 AI 强度先降后升（非单调）；(3) 存在"AI Profit Trap"——过强 AI 反而降低平台利润；(4) 平台内生选择 AI 强度时，分成无需调整</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>主要贡献</strong></td>
+<td style="text-align: left;">将 AI task delegation 嵌入经典 Principal-Agent 模型，揭示 AI 对激励结构的双向影响（depreciate human effort vs. amplify shirking），提出"AI Profit Trap"和"AI Welfare Trap"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>适用场景</strong></td>
+<td style="text-align: left;">内容平台（YouTube/TikTok/CapCut）、广告设计公司、科研机构等需管理 human-AI task assignment 的组织</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="tldr">TL;DR</h2>
+<p>当内容平台给创作者提供 AI 工具后，创作者一定会"偷懒"——把本该自己做的任务也甩给 AI，导致内容质量下降。平台想通过调分成来纠正这个问题，但分成该涨还是该降取决于 AI 到底帮了多少忙：帮得多就降分成，帮得少反而要涨分成来"逼"创作者干活。更麻烦的是，AI 太强但又没强到能完全替代人类时，平台利润反而会掉进一个"陷阱"，谁都没好处。</p>
+<hr>
+<h2 id="one-more-thing">One More Thing</h2>
+<p>🪤 <strong>"AI Profit Trap"——最危险的不是 AI 太弱或太强，而是"不上不下"</strong></p>
+<p>想象这样一个场景：你是 YouTube 的产品负责人，刚给创作者上线了一款 AI 视频生成工具。AI 够强，能独立处理不少任务——但还没强到能完全替代人类。你以为这是最好的"人机协作"甜蜜点，结果发现：创作者乐得把越来越多的活儿甩给 AI，包括那些 AI 其实做不好的任务（比如创意脚本）。你涨分成想逼他们干活？没用，因为偷懒的边际收益太高了。你不涨？内容质量肉眼可见地下滑。最讽刺的是，如果 AI 再强一点——强到你干脆完全不用人类创作者——平台利润反而会重新回升。这就是 "AI Profit Trap"：<strong>中等强度的 AI 可能是最糟糕的选择</strong>，因为它同时放大了人类偷懒的动机，又没有强到足以独挑大梁。这个洞察给所有正在部署 AI 辅助工具的平台敲了个警钟：别以为 AI 能力越接近人类就越好——在激励结构没理顺的情况下，"半桶水" AI 的破坏力可能最大。</p>
+<hr>
+<h2 id="motivation">研究背景与动机 (Motivation)</h2>
+<h3 id="_2">实践痛点</h3>
+<p>CapCut（TikTok 的姊妹应用）推出了"脚本转视频"功能，创作者可以将创意生成、脚本撰写、素材获取、视频剪辑等任务委托给 AI 或借助 AI 提升表现。类似地，AdCreative.ai 让广告设计员工可以将创意任务交给 AI，ChatGPT 让科研人员可以将写作任务外包。核心问题在于：当 agent（创作者/员工）被赋予了将任务分配给 AI 的权力时，principal（平台/雇主）面临新的 moral hazard——agent 可能为了省力而<strong>过度使用 AI</strong>，即使在 AI 表现不如人类的任务上也选择委托。</p>
+<h3 id="_3">理论缺口</h3>
+<p>现有文献关注的是 <strong>task allocation 的最优设计</strong>（如 Fügener et al. 2026），但忽略了一个关键的实施问题：<strong>最优设计能否被实际执行？</strong> 当组织将 task-assignment authority 委托给 worker 时，worker 出于自身利益（effort aversion）可能不会按组织意愿分配任务。此外，现有关于 AI 对工资影响的文献存在两种对立观点：一方认为 AI 替代性要求提高激励（Shapiro &amp; Stiglitz 1984; De Varo &amp; Prasad 2015），另一方认为 AI 互补性允许降低激励（Acemoglu &amp; Restrepo 2018, 2019）。本文首次在统一框架中整合这两种机制。</p>
+<h3 id="_4">核心贡献</h3>
+<ol>
+<li><strong>揭示 AI 时代的新型道德风险</strong>：即使创作者拥有完全的 meta-knowledge（准确了解自己和 AI 的能力），仍然会因 effort aversion 过度委托，这为人类不良委托行为提供了经济学解释（区别于 Fügener et al. 2022 的认知解释）。</li>
+<li><strong>发现分成政策的双向调整机制</strong>：AI 同时产生"贬值人力"（降分成）和"放大偷懒"（升分成）两种效应，最优分成随 AI 强度非单调变化。</li>
+<li><strong>识别 "AI Profit Trap" 和 "AI Welfare Trap"</strong>：中等强度 AI 可能对平台利润、消费者剩余和社会福利均造成损害。</li>
+<li><strong>给出 AI 强度的最优配置原则</strong>：若平台可内生选择 AI 强度，最优分成等于无 AI 基准——极大简化了 AI 时代的薪酬决策。</li>
+</ol>
+<hr>
+<h2 id="model-setup-assumptions">模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="_5">符号体系</h3>
+<h4 id="_6">任务与产出模块</h4>
+<p>本模块定义了内容创作过程中任务的基本结构——每个任务由人类或 AI 完成，产出和成本各异。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$t$</td>
+<td style="text-align: left;">任务索引，$t \geq 0$</td>
+<td style="text-align: left;">按人类相对 AI 的比较优势升序排列：$t$ 越大，人类越有优势</td>
+</tr>
+<tr>
+<td style="text-align: left;">$f(t)$</td>
+<td style="text-align: left;">人类完成任务 $t$ 的边际成本</td>
+<td style="text-align: left;">$f(t) &gt; 0$，且 $f'(t) &gt; 0$（高索引任务成本更高）</td>
+</tr>
+<tr>
+<td style="text-align: left;">$h(t)$</td>
+<td style="text-align: left;">人类完成任务 $t$ 的边际产出</td>
+<td style="text-align: left;">$h(t) &gt; 0$，且 $h'(t) = 0$（所有任务对最终内容同等重要）</td>
+</tr>
+<tr>
+<td style="text-align: left;">$g(t)$</td>
+<td style="text-align: left;">AI 完成任务 $t$ 的边际产出</td>
+<td style="text-align: left;">$g(t) \geq 0$，低索引任务 AI 表现更好</td>
+</tr>
+<tr>
+<td style="text-align: left;">$d(t)$</td>
+<td style="text-align: left;">AI 相对人类的产出优势</td>
+<td style="text-align: left;">$d(t) = g(t) - h(t)$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$t_0$</td>
+<td style="text-align: left;">AI 与人类产出相等的阈值</td>
+<td style="text-align: left;">$d(t_0) = 0$；$t \leq t_0$ 时 AI 更强，$t &gt; t_0$ 时人类更强</td>
+</tr>
+<tr>
+<td style="text-align: left;">$N$</td>
+<td style="text-align: left;">人类创作的最大可行任务范围</td>
+<td style="text-align: left;">由 $h(N) = f(N)$ 定义，即边际产出 = 边际成本</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_7">决策变量模块</h4>
+<p>本模块刻画了平台和创作者的核心决策变量。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$r$</td>
+<td style="text-align: left;">平台的收入分成比例</td>
+<td style="text-align: left;">$r \in [0, 1]$，平台在 Stage 1 设定</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\theta$</td>
+<td style="text-align: left;">委托给 AI 的任务数量</td>
+<td style="text-align: left;">$0 \leq \theta \leq s$，创作者在 Stage 2 决定</td>
+</tr>
+<tr>
+<td style="text-align: left;">$e$</td>
+<td style="text-align: left;">人类创作者可行任务的上限</td>
+<td style="text-align: left;">$e &gt; \theta$，创作者在 Stage 2 决定</td>
+</tr>
+<tr>
+<td style="text-align: left;">$s$</td>
+<td style="text-align: left;">AI 可行任务的上限</td>
+<td style="text-align: left;">由 $rg(s) = 0$ 定义</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_8">收益与福利模块</h4>
+<p>本模块定义了各方的利润和社会福利函数。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$V$</td>
+<td style="text-align: left;">总内容产出（= 广告商支付）</td>
+<td style="text-align: left;">$V = \int_0^{\theta} g(t)\,\mathrm{d}t + \int_{\theta}^{e} h(t)\,\mathrm{d}t$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\Pi$</td>
+<td style="text-align: left;">平台利润</td>
+<td style="text-align: left;">$\Pi = (1-r)V$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\pi$</td>
+<td style="text-align: left;">创作者利润</td>
+<td style="text-align: left;">$\pi = rV - \int_{\theta}^{e} f(t)\,\mathrm{d}t$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$CS$</td>
+<td style="text-align: left;">消费者剩余</td>
+<td style="text-align: left;">$CS = V^2/2$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$W$</td>
+<td style="text-align: left;">社会福利</td>
+<td style="text-align: left;">$W = CS + \pi + \Pi$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="section-5">线性函数形式参数（Section 5 起使用）</h4>
+<p>用于 AI 强度的比较静态分析。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$a$</td>
+<td style="text-align: left;">AI 在最低索引任务上的产出</td>
+<td style="text-align: left;">$h &lt; a &lt; \frac{3h}{2}$，确保 AI 不完全主导</td>
+</tr>
+<tr>
+<td style="text-align: left;">$b$</td>
+<td style="text-align: left;">AI 强度参数</td>
+<td style="text-align: left;">$b$ 越大，$g(t) = a - t/b$ 越"平坦"，AI 在更多任务上有优势</td>
+</tr>
+<tr>
+<td style="text-align: left;">$c$</td>
+<td style="text-align: left;">人类成本系数</td>
+<td style="text-align: left;">$f(t) = ct$，$c &gt; 0$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$h$</td>
+<td style="text-align: left;">人类产出系数</td>
+<td style="text-align: left;">$h(t) = h$（常数）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">博弈/决策结构</h3>
+<p><strong>Players</strong>：(1) 垄断性内容平台（Principal），(2) 代表性人类创作者（Agent），(3) 观众群体（被动），(4) 代表性广告商（被动）</p>
+<p><strong>Sequence of Events</strong>：</p>
+<ol>
+<li><strong>Stage 1 — 平台决策</strong>：平台选择收入分成比例 $r \in [0,1]$。</li>
+<li><strong>Stage 2 — 创作者决策</strong>：创作者观察 $r$ 后，同时选择委托水平 $\theta$（多少任务交给 AI）和创作水平 $e$（总共做多少任务）。</li>
+<li><strong>Stage 3 — 收益实现</strong>：观众消费内容，广告商根据总产出 $V$ 支付。</li>
+</ol>
+<p><strong>Information Structure</strong>：完全信息——创作者准确了解 $f(t)$, $h(t)$, $g(t)$（即拥有完全的 meta-knowledge）。平台能观察到总产出 $V$，但不能直接观察 $\theta$（无法逐任务监控 AI 使用）。</p>
+<h3 id="_10">目标函数与约束</h3>
+<p><strong>平台目标函数</strong>：</p>
+<p>$$\max_{r} \Pi = (1 - r) V$$</p>
+<blockquote>
+<p>平台获取总产出的 $(1-r)$ 份额。提高 $r$ 激励创作者多干活（做大"蛋糕"），但平台自己拿到的"切片"变小，这是经典的 "larger pie vs. bigger slice" trade-off。</p>
+</blockquote>
+<p><strong>创作者目标函数</strong>：</p>
+<p>$$\max_{\theta, e} \pi = rV - \int_{\theta}^{e} f(t)\,\mathrm{d}t$$</p>
+<blockquote>
+<p>创作者获取总产出的 $r$ 份额，减去自己动手完成 $[\theta, e]$ 区间任务的人力成本。注意委托给 AI 的任务（$[0, \theta]$）成本为零。创作者有两个决策杠杆：$\theta$（向左扩大 AI 委托范围以省力）和 $e$（向右扩展总任务范围以增收）。</p>
+</blockquote>
+<p><strong>总产出构成</strong>：</p>
+<p>$$V = \int_0^{\theta} g(t)\,\mathrm{d}t + \int_{\theta}^{e} h(t)\,\mathrm{d}t$$</p>
+<blockquote>
+<p>前半段是 AI 生成的产出（低索引任务），后半段是人类生成的产出（高索引任务）。平台希望 $\theta = t_0$（恰好让 AI 做它擅长的），但创作者可能选 $\theta &gt; t_0$。</p>
+</blockquote>
+<h3 id="_11">关键假设</h3>
+<p><strong>Assumption 1</strong>：$d(0) &gt; 0$ 且 $d'(t) &lt; 0$，其中 $d(t) = g(t) - h(t)$。</p>
+<ul>
+<li><em>合理性</em>：任务按人类比较优势排序，低索引任务 AI 更强，随着索引增加人类逐渐胜出。这与 Acemoglu &amp; Restrepo (2019) 的 task-based framework 一致。</li>
+<li><em>若放松</em>：若 $d'(t)$ 在某些区间为正（AI 在中间任务突然变强），则可能出现多个委托阈值，均衡结构更复杂，但核心偷懒动机不变。</li>
+</ul>
+<p><strong>Assumption 2</strong>：$f'(t) &gt; 0$ 且 $h'(t) = 0$，使得 $h'(t) - f'(t) &lt; 0$。</p>
+<ul>
+<li><em>合理性</em>：AI 难以执行的任务（高索引）通常需要更多人力投入（如剧本创作 vs. 视频剪辑）。$h'(t) = 0$ 表示所有任务对最终内容同等重要，简化分析。</li>
+<li><em>若放松</em>：若 $h'(t) \neq 0$，只要 $h(t)$ 与 $f(t)$ 有唯一交点，结论定性不变。但若高索引任务产出显著更高，过度委托的福利损失会更大。</li>
+</ul>
+<p><strong>Assumption 3</strong>：$rd(0) + f(0) &gt; 0$ 且 $rd'(t) + f'(t) &lt; 0$。</p>
+<ul>
+<li><em>合理性</em>：确保创作者的委托决策存在唯一的内部阈值 $\theta$——低索引任务委托给 AI 更划算，高索引任务自己做更划算。这是 well-behaved 的单交叉条件。</li>
+<li><em>若放松</em>：若此条件不满足，可能出现"全部委托"或"全部自做"的角点解，丧失内部 trade-off 的丰富性。</li>
+</ul>
+<hr>
+<h2 id="roadmap-of-analysis">分析路线图 (Roadmap of Analysis)</h2>
+<ol>
+<li><strong>Benchmark（无 AI）</strong>：平台设定 $r$，创作者仅选择 $e$（做多少任务）。求解得到 $\hat{r}$ 和 $\hat{e}$，作为后续比较的基准。</li>
+<li><strong>基准模型（有 AI，一般函数形式）</strong>：创作者可将 $[0, \theta]$ 委托给 AI。先用 backward induction 解 Stage 2（Lemma 1：$\theta^<em>$ 随 $r$ 递减，$e^</em>$ 随 $r$ 递增），再解 Stage 1（Proposition 2：分成可能高于或低于 benchmark，取决于 $D(\theta^<em>)$ 的大小；引入 AI 可能对平台不利）。</em><em>核心发现：创作者总是过度委托（Proposition 1）。</em>*</li>
+<li><strong>AI 强度的比较静态（线性函数形式）</strong>：引入 $g(t) = a - t/b$ 等线性形式，参数化 AI 强度 $b$。分析 $r^<em>$ 和 $\Pi^</em>$ 随 $b$ 的变化（Proposition 3: $r^<em>$ 先降后升；Proposition 4: $\Pi^</em>$ 先升后降），识别 "AI Profit Trap" 和 AI-only equilibrium 的切换。</li>
+<li><strong>社会福利分析</strong>：考察消费者剩余、创作者利润和总福利随 AI 强度的变化（Proposition 5），识别 "AI Welfare Trap"。</li>
+<li><strong>Extension 1 — Within-Task Augmentation</strong>：允许 AI 在任务层面增强人类产出（$h_c(t) = h(t)^{1-\varphi} g_c(t)^{\varphi}$），验证过度自动化仍然存在，主要结论定性稳健（Proposition 6）。</li>
+<li><strong>Extension 2 — AI 使用定价</strong>：平台对 AI 使用收费 $p(t)$。发现定价无法消除过度自动化（Proposition 7），虽可帮平台避免 "AI Profit Trap"，但可能加剧 "Turing Trap"（Proposition 8, Corollary 3）。</li>
+</ol>
+<hr>
+<h2 id="analysis-solution">核心分析与求解 (Analysis &amp; Solution)</h2>
+<h3 id="stage-2">Stage 2：创作者的委托与创作决策</h3>
+<p><strong>Lemma 1</strong>（创作者最优响应）</p>
+<p>(a) 最优委托水平 $\theta^<em>$ 随分成 $r$ 递减：$\frac{\partial \theta^</em>}{\partial r} = \frac{d(\theta^<em>)}{[\epsilon(\theta^</em>) - 1] f'(\theta^*)} &lt; 0$。</p>
+<p>(b) 最优创作水平 $e^<em>$ 随分成 $r$ 递增：$\frac{\partial e^</em>}{\partial r} = \frac{h(e^<em>)}{[1 - \eta(e^</em>)] f'(e^*)} &gt; 0$。</p>
+<p>其中 $\eta(t) = \frac{h'(t) f(t)}{f'(t) h(t)}$，$\epsilon(t) = \frac{d'(t) f(t)}{f'(t) d(t)}$。</p>
+<blockquote>
+<p><strong>直觉</strong>：分成越高，创作者从人力劳动中获取的边际报酬越大，因此 (a) 她会减少委托给 AI 的任务数量（自己做更划算了），(b) 同时扩展总任务范围（更多任务变得有利可图）。$\epsilon(\theta^<em>) &gt; 1$ 保证了 $\theta^</em>$ 对 $r$ 的响应方向正确，但其绝对值决定了平台通过调分成来"纠偏"的有效性。</p>
+</blockquote>
+<hr>
+<p>Lemma 1 确立了创作者的最优响应函数，接下来 Proposition 1 揭示均衡中的核心问题——过度委托的必然性。</p>
+<p><strong>Proposition 1</strong>（过度委托的必然性）</p>
+<p>人类创作者由于 effort aversion，总是过度将任务委托给 AI，即 $t_0 &lt; \theta^*$ 恒成立，这导致平台产出损失。</p>
+<blockquote>
+<p><strong>直觉</strong>：创作者比较的不是"任务 $t$ 是 AI 做得好还是人做得好"（平台视角：$g(t)$ vs. $h(t)$），而是"委托给 AI 的收益 $rg(t)$ 是否大于自己做的净收益 $rh(t) - f(t)$"（创作者视角）。由于自己做有正的成本 $f(t) &gt; 0$，即使 $h(t) &gt; g(t)$（人类产出更高），只要 $f(t)$ 足够大，创作者仍会选择委托。<strong>过度委托的根源不是认知偏差，而是激励错位</strong>——创作者承担了全部人力成本，但只获取 $r$ 份额的产出。</p>
+</blockquote>
+<p><strong>关键 trade-off：平台面临三重力量的角力</strong></p>
+<p>平台在设定 $r$ 时面临三种力量：<strong>(1) 产出增益效应</strong>（AI 在 $[0, t_0]$ 做得更好，允许降低 $r$）；<strong>(2) 过度委托纠偏效应</strong>（需提高 $r$ 以减小 $\theta^<em>$，缓解 $[t_0, \theta^</em>]$ 区间的产出损失）；<strong>(3) 经典的"蛋糕大小 vs. 分得多少"权衡</strong>（更高的 $r$ 让创作者做更多任务扩大蛋糕，但平台分到的比例下降）。</p>
+<hr>
+<h3 id="stage-1">Stage 1：平台的分成决策</h3>
+<p>Proposition 1 揭示了过度委托问题的存在，Lemma 2 和 Proposition 2 进一步分析平台如何在均衡中权衡这些力量来设定最优分成。</p>
+<p><strong>Lemma 2</strong>（均衡特征对比表）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">无 AI</th>
+<th style="text-align: left;">有 AI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">最优分成</td>
+<td style="text-align: left;">$\hat{r} = \frac{f(\hat{e})}{h(\hat{e})}$</td>
+<td style="text-align: left;">$r^<em> = \frac{f(e^</em>)}{h(e^<em>)} = -\frac{f(\theta^</em>)}{d(\theta^*)}$</td>
+</tr>
+<tr>
+<td style="text-align: left;">总产出</td>
+<td style="text-align: left;">$H(\hat{e}) = \frac{h(\hat{e})[h(\hat{e}) - f(\hat{e})]}{[1 - \eta(\hat{e})] f'(\hat{e})}$</td>
+<td style="text-align: left;">$D(\theta^<em>) + H(e^</em>)$</td>
+</tr>
+<tr>
+<td style="text-align: left;">最优利润</td>
+<td style="text-align: left;">$\Pi_0(\hat{e}) = \frac{[h(\hat{e}) - f(\hat{e})]^2}{[1 - \eta(\hat{e})] f'(\hat{e})}$</td>
+<td style="text-align: left;">$\Pi(\theta^<em>, e^</em>) = \frac{[d(\theta^<em>) + f(\theta^</em>)]^2}{[\epsilon(\theta^<em>) - 1] f'(\theta^</em>)} + \frac{[h(e^<em>) - f(e^</em>)]^2}{[1 - \eta(e^<em>)] f'(e^</em>)}$</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>直觉</strong>：有 AI 时，平台利润由两部分组成——委托部分的贡献（第一项，取决于 AI 产出优势 $d(\theta^<em>)$ 与成本 $f(\theta^</em>)$ 的关系）和人力部分的贡献（第二项，结构与无 AI 场景类似）。注意 $D(\theta^<em>) = \int_0^{\theta^</em>} d(t)\,\mathrm{d}t$ 代表委托 AI 带来的净产出改善（增益减去损失）。</p>
+</blockquote>
+<hr>
+<p><strong>Proposition 2</strong>（分成调整方向与 AI 的利润影响）</p>
+<p>定义 $M = \frac{[h(\hat{e}) - f(\hat{e})]^2}{[1 - \eta(\hat{e})] f'(\hat{e})} - \frac{[h(e^<em>) - f(e^</em>)]^2}{[1 - \eta(e^<em>)] f'(e^</em>)}$。</p>
+<p>(a) 最优分成高于无 AI 基准（$r^<em> &gt; \hat{r}$）</em><em>当且仅当</em>*均衡中委托带来的产出改善不够大，即：</p>
+<p>$$D(\theta^<em>) &lt; \frac{d(\theta^</em>)[d(\theta^<em>) + f(\theta^</em>)]}{[\epsilon(\theta^<em>) - 1] f'(\theta^</em>)}$$</p>
+<p>(b) 在 (a) 的条件下，引入 AI 对平台不利<strong>当且仅当</strong>均衡委托水平处的边际委托绩效对边际人力成本的弹性 $\epsilon(\theta^*)$ 足够高，即：</p>
+<p>$$\epsilon(\theta^<em>) &gt; \frac{[d(\theta^</em>) + f(\theta^<em>)]^2}{M f'(\theta^</em>)} + 1$$</p>
+<blockquote>
+<p><strong>直觉 (a)</strong>：AI 引入的净效果取决于两股力量的对比。若 $D(\theta^<em>)$ 足够大（AI 确实在它擅长的领域带来了巨大产出增益），那么 between-task complementarity 占主导，平台可以降分成——因为同样水平的产出用更少的激励就能实现。反之，若过度委托导致 $D(\theta^</em>)$ 偏小（损失侵蚀了增益），偷懒纠偏效应占主导，平台被迫涨分成。</p>
+<p><strong>直觉 (b)</strong>：当 $\epsilon(\theta^<em>)$ 很高时，$|\partial \theta^</em>/\partial r|$ 偏低（Lemma 1），意味着涨分成对减少过度委托的效果很差。平台"花了钱（涨分成）却没买到效果（创作者仍然大量委托）"，因此引入 AI 反而减损利润。</p>
+</blockquote>
+<hr>
+<h3 id="ai">AI 强度的比较静态（线性函数形式）</h3>
+<p>Proposition 2 用一般函数形式给出了定性条件，下面通过线性函数 $g(t) = a - t/b$, $h(t) = h$, $f(t) = ct$ 来进行可视化的比较静态分析。</p>
+<p><strong>Corollary 1</strong>（线性均衡的闭式解）</p>
+<p>$$\Pi^<em> = \frac{(r^</em> - 1) r^<em>\left[2ab^2c^2(a-2h) - bc(a-3h)(a+h)r^</em> - 2h^2 r^{<em>2}\right]}{2c(r^</em> - bc)^2}$$</p>
+<p>当 $b \to 0$ 时退化为无 AI 基准：$\hat{e} = h/(2c)$，$\hat{r} = 1/2$，$\Pi_0 = h^2/(4c)$。</p>
+<blockquote>
+<p><strong>直觉</strong>：闭式解虽复杂，但关键在于 $r^*$ 在 $(0,1)$ 上的唯一性，以及随 $b$ 变化的非单调行为。当 $b \to 0$，AI 几乎无用，回到经典分成问题。</p>
+</blockquote>
+<hr>
+<p>Corollary 1 提供了均衡利润的解析表达，Corollary 2 进一步刻画 AI 变强时创作者行为的变化。</p>
+<p><strong>Corollary 2</strong>（AI 强度与委托程度）</p>
+<p>在 human-AI 协作均衡中，随着 AI 强度 $b$ 增加，委托给 AI 的任务数量 $\theta^<em>$ 和委托比例 $\theta^</em>/e^*$ 均递增。当 $b \geq \bar{b}$ 时，所有可行任务均由 AI 完成（AI-only equilibrium）。</p>
+<blockquote>
+<p><strong>直觉</strong>：更强的 AI 让创作者在更多任务上偷懒变得"合理"（$g(t)$ 上移），且平台通过调分成也难以完全遏制这一趋势。$\bar{b}$ 定义了 human-AI 协作均衡的可行域——超过这个阈值，创作者实质上被"挤出"。</p>
+</blockquote>
+<hr>
+<p>Corollary 2 显示创作者随 AI 变强而加剧偷懒，Proposition 3 转而分析平台的最优分成如何响应 AI 强度的变化。</p>
+<p><strong>Proposition 3</strong>（AI 强度与最优分成的非单调关系）</p>
+<p>在 human-AI 协作均衡中，最优分成 $r^<em>$ 随 AI 强度 $b$ </em><em>非单调变化</em><em>：$r^</em>$ 在 $b \in (0, b_L)$ 时先下降，在 $b \geq b_L$ 时上升。当 $b &gt; b_0 = \frac{1}{6c}$ 时，$r^* &gt; \hat{r}$（超过无 AI 基准）。</p>
+<blockquote>
+<p><strong>直觉</strong>：<strong>AI 较弱时</strong>（$b &lt; b_0$），过度委托问题不严重，AI 的产出增益效应占主导，平台可以降分成。<strong>AI 较强时</strong>（$b_0 \leq b &lt; \bar{b}$），创作者大面积偷懒，产出损失吞噬了增益，平台被迫涨分成来激励人力投入。<strong>AI 极强时</strong>（$b \geq \bar{b}$），平台干脆放弃人类创作者，不分成（$r = 0$），全部由 AI 生产。</p>
+</blockquote>
+<hr>
+<p>Proposition 3 揭示了分成的非单调性，Proposition 4 进一步追问：这种分成调整能否保住平台利润？</p>
+<p><strong>Proposition 4</strong>（AI Profit Trap）</p>
+<p>在 human-AI 协作均衡中，平台最优利润 $\Pi^<em>$ 也随 $b$ </em><em>非单调变化</em><em>：$\Pi^</em>$ 在 $b \in (0, b_0)$ 时上升，在 $b \geq b_0$ 时下降。平台利润的最大化点为 $b^* = b_0 = \frac{1}{6c}$。</p>
+<blockquote>
+<p><strong>直觉</strong>：即使平台可以调分成，当 AI 过强（$b_0 &lt; b &lt; \bar{b}$）时，涨分成的边际效果递减（$\epsilon(\theta^<em>)$ 高），无法有效遏制偷懒，导致平台利润反而低于无 AI 基准。当 $b \geq \bar{b}$ 时，平台切换到 AI-only 均衡，利润随 $b$ 重新上升。这就是 </em><em>"AI Profit Trap"</em><em>：如果平台无法将 AI 提升到足够强的水平（超过 $\bar{b}$），那么中等强度的 AI 反而是利润的"陷阱"。</em><em>最优策略是将 $b$ 设定在 $b_0 = 1/(6c)$，此时 $r^</em> = \hat{r}$，无需改变分成结构。**</p>
+</blockquote>
+<hr>
+<h3 id="_12">社会福利分析</h3>
+<p>Proposition 4 聚焦平台利润，Proposition 5 拓展到全社会视角，考察消费者和创作者的境遇。</p>
+<p><strong>Proposition 5</strong>（AI Welfare Trap）</p>
+<p>(1) 当 $0 &lt; b &lt; \bar{b}$ 时，消费者剩余、创作者利润和社会福利均随 $b$ 递增。
+(2) 在 $b = \bar{b}$ 处，三者均发生<strong>断崖式下跌</strong>。
+(3) 当 $b &gt; \bar{b}$ 时，创作者利润保持为零，消费者剩余和社会福利随 $b$ 递增。</p>
+<blockquote>
+<p><strong>直觉</strong>：在 human-AI 协作均衡内（$b &lt; \bar{b}$），即使平台利润在 $b &gt; b_0$ 后下降，消费者和创作者仍受益——因为更强的 AI 提高了总产出（尽管效率低于 first-best）。但在 $b = \bar{b}$，平台为逃离 "AI Profit Trap" 切换到 AI-only 均衡，导致总产出骤降（人类在高索引任务上的比较优势被放弃），所有利益相关方同时受损。<strong>这就是 "AI Welfare Trap"——平台的利润最大化选择损害了社会福利。</strong> 核心低效来自经典 Principal-Agent 关系的新变体：AI 成为一个"平庸的外部选项"，最终削减了总体福利。</p>
+</blockquote>
+<hr>
+<h3 id="extension-1within-task-human-ai-collaboration">Extension 1：Within-Task Human-AI Collaboration</h3>
+<p>主模型假设每个任务要么全人工、要么全 AI，Extension 1 放松了这一假设，允许 AI 在任务层面增强人类表现。</p>
+<p><strong>设定</strong>：AI 增强后的人类产出为 $h_c(t) = h(t)^{1-\varphi} g_c(t)^{\varphi}$，其中 $\varphi \in [0,1]$ 度量增强程度，$g_c(t)$ 为互补 AI 资本。均衡中任务被分为三段：低索引→全自动化 (automation)，中索引→人机协作 (augmentation)，高索引→纯人工 (human-only)。</p>
+<p><strong>Proposition 6</strong>（Augmentation 的缓解效应）</p>
+<p>随着 AI augmentation 强度 $\varphi$ 提高，自动化任务数量减少（$\theta^<em>$ 下降），平台利润增加。但过度自动化仍然存在（$\theta^</em> &gt; t_0$），且关于分成和平台利润的主要结论定性不变。</p>
+<blockquote>
+<p><strong>直觉</strong>：Augmentation 给了偷懒的创作者一个"折中选项"——与其完全偷懒（automation），不如半偷懒（augmentation，仍需人力但产出更高）。这减少了全自动化的范围，但不能根除偷懒动机，因为 automation 仍然是成本最低的选择。Augmentation 越强，这个折中选项越有吸引力，偷懒程度越低。</p>
+</blockquote>
+<h3 id="extension-2ai">Extension 2：AI 使用定价</h3>
+<p>Extension 1 在技术层面缓解问题，Extension 2 探索管理层面的干预——对 AI 使用收费。</p>
+<p><strong>设定</strong>：平台对使用 AI 完成任务 $t$ 收取价格 $p(t)$。创作者在 $rh(t) - f(t) = rg(t) - p(t)$ 时无差异。</p>
+<p><strong>Proposition 7</strong>（定价无法消除过度自动化）</p>
+<p>对 AI 工具定价无法在均衡中消除过度自动化（$\theta^* &gt; t_0$ 仍成立）。</p>
+<blockquote>
+<p><strong>直觉</strong>：平台自身也是自利的——它倾向于维持较高的 AI 使用量以从 $p(t)$ 中获取直接收入。消除过度自动化需要设定足够高的价格 $p(t)$ 使创作者不愿委托，但这同时会损失平台从 AI 定价中获得的收入。在均衡中，平台会在"纠偏"和"赚取 AI 使用费"之间妥协，结果是过度自动化只是减轻而非消除。</p>
+</blockquote>
+<p><strong>Proposition 8</strong>（定价下的利益分配）</p>
+<p>(1) $0 &lt; b &lt; \bar{b}$：平台利润随 $b$ 单调递增（避免了 "AI Profit Trap"），但创作者利润保持不变。消费者剩余和社会福利在特定条件下可能随 $b$ 递减。
+(2) $b = \bar{b}$：消费者剩余、创作者利润、社会福利断崖下跌，但平台利润连续。
+(3) $b &gt; \bar{b}$：除创作者利润为零外，其余递增。</p>
+<p><strong>Corollary 3</strong>（定价 vs. 基准的比较）</p>
+<p>在 human-AI 协作均衡中，定价政策总是有利于平台、不利于创作者。当 AI 较弱（$b &lt; \dot{b}$）时提升总产出，当 AI 较强（$b \geq \dot{b}$）时降低总产出。</p>
+<blockquote>
+<p><strong>直觉</strong>：定价政策帮平台避免了 "AI Profit Trap"（利润单调递增），但代价是将风险转嫁给创作者和消费者。当 AI 较强时，定价政策实际上加剧了 "Turing Trap"——平台获益，但创作者和社会福利受损。<strong>平台总是有动机实施定价，但这不一定是社会最优的。</strong></p>
+</blockquote>
+<hr>
+<h2 id="comparative-statics-summary">比较静态汇总表 (Comparative Statics Summary)</h2>
+<p>以下汇总线性函数形式下 AI 强度 $b$ 对各关键变量的影响：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参数变化</th>
+<th style="text-align: left;">对 $\theta^*$（委托水平）</th>
+<th style="text-align: left;">对 $\theta^<em>/e^</em>$（委托比例）</th>
+<th style="text-align: left;">对 $r^*$（最优分成）</th>
+<th style="text-align: left;">对 $\Pi^*$（平台利润）</th>
+<th style="text-align: left;">对 $CS^*$（消费者剩余）</th>
+<th style="text-align: left;">对 $W^*$（社会福利）</th>
+<th style="text-align: left;">直觉</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$b \uparrow$（$b &lt; b_0$）</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\downarrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">AI 较弱，产出增益 &gt; 偷懒损失，各方受益</td>
+</tr>
+<tr>
+<td style="text-align: left;">$b \uparrow$（$b_0 \leq b &lt; \bar{b}$）</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\downarrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">AI 较强，偷懒加剧，平台陷入 "AI Profit Trap"，但消费者/创作者仍受益</td>
+</tr>
+<tr>
+<td style="text-align: left;">$b = \bar{b}$（切换至 AI-only）</td>
+<td style="text-align: left;">$= e^*$（全委托）</td>
+<td style="text-align: left;">$= 1$</td>
+<td style="text-align: left;">$\to 0$</td>
+<td style="text-align: left;">跳升</td>
+<td style="text-align: left;">断崖下跌</td>
+<td style="text-align: left;">断崖下跌</td>
+<td style="text-align: left;">平台逃离陷阱，但社会福利骤降（"AI Welfare Trap"）</td>
+</tr>
+<tr>
+<td style="text-align: left;">$b \uparrow$（$b &gt; \bar{b}$）</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">$0$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">AI-only 均衡，产出随 AI 提升单调增长</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\varphi \uparrow$（augmentation 强度）</td>
+<td style="text-align: left;">$\downarrow$</td>
+<td style="text-align: left;">$\downarrow$</td>
+<td style="text-align: left;">定性不变</td>
+<td style="text-align: left;">$\uparrow$</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">Augmentation 缓解过度自动化，但不根除</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="main-results-managerial-insights">主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="benchmark">与 Benchmark 的对比</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">无 AI Benchmark</th>
+<th style="text-align: left;">有 AI（Human-AI 协作）</th>
+<th style="text-align: left;">新的 Trade-off / Counter-intuitive 结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">分成比例</td>
+<td style="text-align: left;">$\hat{r} = 1/2$</td>
+<td style="text-align: left;">$r^*$ 可高可低，随 $b$ 非单调</td>
+<td style="text-align: left;">反直觉：AI 越强，分成可能需要越高（非"AI 替代人力所以降分成"的直觉）</td>
+</tr>
+<tr>
+<td style="text-align: left;">平台利润</td>
+<td style="text-align: left;">$h^2/(4c)$</td>
+<td style="text-align: left;">可高可低，存在 "AI Profit Trap"</td>
+<td style="text-align: left;">反直觉：引入 AI（即使不计开发成本）可能降低平台利润</td>
+</tr>
+<tr>
+<td style="text-align: left;">最优 AI 强度配置</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">$b^<em> = b_0 = 1/(6c)$，此时 $r^</em> = \hat{r}$</td>
+<td style="text-align: left;"><strong>若平台可控 AI 强度，分成结构无需改变</strong>——极大简化决策</td>
+</tr>
+<tr>
+<td style="text-align: left;">社会福利</td>
+<td style="text-align: left;">无跳跃</td>
+<td style="text-align: left;">在 $b = \bar{b}$ 断崖下跌</td>
+<td style="text-align: left;">AI 作为"平庸外部选项"导致的新型 Principal-Agent 低效</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">管理建议</h3>
+<ol>
+<li>
+<p><strong>对于内容平台运营者</strong>：不要盲目追求 AI 能力最大化。在上线 AI 辅助工具前，评估 AI 强度是否处于 "Profit Trap" 区间（$b_0 &lt; b &lt; \bar{b}$）。若是，应主动限制 AI 工具的通用性或强度，将其控制在 $b^* = b_0$ 附近。</p>
+</li>
+<li>
+<p><strong>对于分成策略制定者</strong>：当 AI 工具显著提升产出时（AI 偏弱），可适当降低分成；当 AI 较强但未达到完全替代时，需提高分成以激励创作者在高价值任务上投入人力。若平台能最优配置 AI 强度，则无需调整分成结构。</p>
+</li>
+<li>
+<p><strong>对于政策制定者/监管者</strong>：注意 AI 的 "Welfare Trap"——利润最大化的平台可能过早切换至 AI-only 模式（即使人类仍有比较优势），损害创作者和消费者利益。对 AI 使用定价虽可缓解平台的利润陷阱，但可能加剧对创作者和社会福利的损害，需审慎权衡。</p>
+</li>
+<li>
+<p><strong>对于创作者</strong>：认识到自身的偷懒动机，主动在 AI 不擅长的创意性任务上投入更多精力——这不仅是平台的期望，也是维持自身议价能力和长期收益的关键。</p>
+</li>
+</ol>
+<hr>
+<h2 id="dialogue-with-literature">与相关文献的对话 (Dialogue with Literature)</h2>
+<h3 id="1-fugener-walzner-gupta-2026-management-science">1. Fügener, Walzner &amp; Gupta (2026, <em>Management Science</em>)</h3>
+<ul>
+<li><strong>共同关注</strong>：Human-AI 协作中的 task allocation，区分 automation 和 augmentation 两种模式。</li>
+<li><strong>本文推进</strong>：Fügener et al. 聚焦"最优分配方案的设计"，本文追问"最优方案能否被执行"，引入 moral hazard 视角。Fügener et al. 假设 allocation 由组织控制，本文将 allocation authority 委托给 agent，揭示了即使拥有完全 meta-knowledge，过度委托仍不可避免。</li>
+<li><strong>为何重要</strong>：最优设计若无法实施则缺乏实践价值，激励兼容性是 human-AI 系统部署的必要条件。</li>
+</ul>
+<h3 id="2-bhargava-2022-management-science">2. Bhargava (2022, <em>Management Science</em>)</h3>
+<ul>
+<li><strong>共同关注</strong>：内容平台的 creator economy 管理、收入分成设计、生态系统供给。</li>
+<li><strong>本文推进</strong>：Bhargava 研究的是传统内容平台的分成与供给管理，本文新增 AI 工具维度，揭示 AI 如何改变 Principal-Agent 的激励结构。特别是，AI 导致分成策略的双向调整（而非传统文献中的单向）。</li>
+<li><strong>为何重要</strong>：内容平台正在大规模部署 AI 工具（CapCut、YouTube AI 剪辑等），传统的分成理论需要被更新。</li>
+</ul>
+<h3 id="3-shapiro-stiglitz-1984-aer">3. Shapiro &amp; Stiglitz (1984, <em>AER</em>)</h3>
+<ul>
+<li><strong>共同关注</strong>：Worker shirking 与 wage premium 的关系。</li>
+<li><strong>本文推进</strong>：经典 efficiency wage 理论中，shirking 通过提高工资来遏制。本文展示了 AI 时代的新困境——提高分成（类比加薪）的边际效果可能很差（$\epsilon(\theta^*)$ 高），导致 "AI Profit Trap"。此外，AI 提供了一个新的 shirking 渠道——worker 不是"不干活"，而是"把活甩给 AI"。</li>
+<li><strong>为何重要</strong>：这拓展了经典 shirking 理论在技术变革背景下的适用性。</li>
+</ul>
+<h3 id="4-acemoglu-restrepo-2019-jep">4. Acemoglu &amp; Restrepo (2019, <em>JEP</em>)</h3>
+<ul>
+<li><strong>共同关注</strong>：Automation 对劳动力市场和工资的影响。</li>
+<li><strong>本文推进</strong>：Acemoglu &amp; Restrepo 的 task-based framework 侧重宏观层面的"替代 vs. 新任务创造"，本文在微观 Principal-Agent 层面揭示了 automation 的激励扭曲效应。特别是，本文发现 AI 强度与分成/利润的非单调关系（A&amp;R 通常预测单调的替代效应），以及"中等 AI"可能最有害的结论。</li>
+<li><strong>为何重要</strong>：补充了宏观 task-based 分析在微观激励层面的空白。</li>
+</ul>
+<hr>
+<h2 id="reviewers-critique">犀利评论 (Reviewer's Critique)</h2>
+<h3 id="_14">优点</h3>
+<ul>
+<li><strong>理论贡献突出</strong>：将 AI task delegation 的道德风险问题形式化，统一了"AI 贬值人力→降分成"和"AI 放大偷懒→升分成"两种看似矛盾的文献观点，"AI Profit Trap" 概念新颖且具有强烈的管理警示意义。</li>
+<li><strong>方法上简洁有力</strong>：用一般函数形式推导定性结论，再用线性形式获取闭式解和可视化，分析路径清晰、层层递进。</li>
+<li><strong>实践相关性强</strong>：CapCut "script-to-video" 的例子直接对应模型设定，研究问题对所有正在部署 AI 辅助工具的平台都有即时的管理启示。</li>
+</ul>
+<h3 id="_15">模型限制/假设过强</h3>
+<ul>
+<li><strong>代表性创作者假设（Representative Creator）</strong>：虽然 Appendix A3 用双创作者竞争做了稳健性检验，但现实中创作者在能力（meta-knowledge）、AI 使用熟练度、风格差异等方面具有高度异质性。异质性可能导致不同类型的创作者在均衡中做出不同的委托选择，平台可能需要差异化的分成策略。</li>
+<li><strong>零 AI 使用成本假设</strong>：$g(t)$ 的成本被标准化为零，这在当前 API 调用有成本的现实中过于极端。虽然文中提到正的 AI 成本不改变定性结论，但成本的大小和结构（fixed vs. per-task）可能显著影响 "AI Profit Trap" 的临界条件。</li>
+<li><strong>总产出的可加性假设</strong>：$V = \int_0^{\theta} g(t)\,\mathrm{d}t + \int_{\theta}^{e} h(t)\,\mathrm{d}t$ 假设任务产出完美可加，忽略了任务之间的互补性/替代性（例如，AI 写的脚本可能与人工拍摄的画面风格不匹配，导致整体产出低于各部分之和）。</li>
+<li><strong>AI 质量的外生性</strong>：模型假设 AI 的产出函数 $g(t)$ 是确定性的且创作者能准确评估。现实中，AI 产出质量高度不确定（同一 prompt 多次生成结果差异大），且创作者对 AI 能力的评估本身就有偏差（Dreyfuss &amp; Raux 2024）。</li>
+</ul>
+<h3 id="_16">未来方向</h3>
+<ol>
+<li>
+<p><strong>动态模型与创作者学习</strong>：创作者对 AI 能力的认知可能随使用经验而变化。构建多期模型，考察创作者如何通过试错学习 $g(t)$ 的真实水平，以及这种学习如何影响过度委托的演化轨迹。</p>
+</li>
+<li>
+<p><strong>异质性创作者与分离/混同均衡</strong>：引入创作者在能力或偷懒倾向上的异质性，考察平台是否应提供差异化的分成合同（menu of contracts），以及这种 screening 机制能否缓解 "AI Profit Trap"。</p>
+</li>
+<li>
+<p><strong>平台间竞争</strong>：当多个平台竞争创作者时（YouTube vs. TikTok），AI 工具的强度和分成策略可能成为竞争工具。平台是否会陷入"AI 军备竞赛"而集体落入 "Profit Trap"？</p>
+</li>
+<li>
+<p><strong>AI 产出的质量感知与消费者行为</strong>：若消费者能部分识别 AI 生成内容并对其打折（AI-generated content discount），这会如何改变创作者的委托决策和平台的最优策略？这与近年 AI 内容标注（AI labeling）政策讨论密切相关。</p>
+</li>
+<li>
+<p><strong>内生 AI 能力投资与知识产权</strong>：将 AI 开发成本内生化——平台投资 $b$ 的边际成本如何影响最优 AI 强度选择？特别是，当 AI 能力的投入产出存在 S 型曲线时，"AI Profit Trap" 的范围和深度如何变化？</p>
+</li>
+</ol>
+    </div>
+  </div>
+</body>
+</html>

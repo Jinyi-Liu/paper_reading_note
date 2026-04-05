@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026-04-04_MS_2018_Choe_King_Matsushima_pricing_with_cookies</title>
+  <style>
+:root {
+  --bg: #ffffff;
+  --fg: #24292f;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --link: #0969da;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.header .title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.header .meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+
+.markdown-body p { margin: 0.7em 0; }
+
+.markdown-body a { color: var(--link); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body code {
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.markdown-body pre {
+  background: var(--code-bg);
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid var(--border);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.6em 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+  background: #fbfcfd;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.markdown-body th {
+  background: #f6f8fa;
+  text-align: left;
+}
+
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Pygments default-ish tweaks for codehilite */
+.codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f6f8fa; }
+.codehilite .c { color: #6a737d } /* Comment */
+.codehilite .k { color: #d73a49 } /* Keyword */
+.codehilite .s { color: #032f62 } /* String */
+.codehilite .n { color: #24292f } /* Name */
+.codehilite .o { color: #d73a49 } /* Operator */
+.codehilite .p { color: #24292f } /* Punctuation */
+</style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="markdown-body">
+<h1 id="pricing-with-cookies-behavior-based-price-discrimination-and-spatial-competition">Pricing with Cookies: Behavior-Based Price Discrimination and Spatial Competition</h1>
+<p><strong>作者</strong>：Chongwoo Choe (Monash University), Stephen King (Monash University), Noriaki Matsushima (Osaka University)</p>
+<p><strong>期刊</strong>：<em>Management Science</em>, Vol. 64, No. 12, 2018, pp. 5669–5687</p>
+<p><strong>中文摘要</strong>：本文构建了一个两期动态竞争模型，两家企业通过第一期的购买行为收集消费者信息。这在第二期产生了信息不对称——每家企业对自己的老顾客了解更多，而对竞争对手的顾客知之甚少。文章研究了企业利用消费者信息进行个性化定价（personalized pricing）对价格和利润的影响。当产品差异化程度外生固定时，信息不对称导致两个非对称均衡，其中一家企业通过更激进的定价策略抢占更大的第一期市场份额。当产品差异化也由企业内生选择时，仍存在两个非对称均衡，其中一家企业选择更激进的产品定位。无论是通过定价还是定位，更激进的企业可以迫使博弈向有利于自己的方向发展。但与使用更简单的定价策略或承诺充分产品差异化的情形相比，两家企业最终都会变得更糟。</p>
+<hr>
+<h2 id="_1">论文速览</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>研究问题</strong></td>
+<td style="text-align: left;">当企业通过购买历史获取不对称消费者信息，并据此进行个性化定价时，竞争和利润会发生什么变化？</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>研究方法</strong></td>
+<td style="text-align: left;">两期 Hotelling 空间竞争模型，backward induction 求解 Subgame Perfect Equilibrium</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>核心机制</strong></td>
+<td style="text-align: left;">不对称信息获取（企业仅了解自己老顾客的精确位置）→ 个性化定价保护领地更有效 → 第一期市场份额竞争加剧 → 产生非对称均衡</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>主要发现</strong></td>
+<td style="text-align: left;">①两个对称企业产生非对称均衡（当 $\delta_f &gt; 0$）；②个性化定价 &lt; 第三级价格歧视 &lt; 统一定价（企业利润排序）；③内生产品选择进一步恶化竞争</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>主要贡献</strong></td>
+<td style="text-align: left;">首次在 BBPD 文献中引入不对称信息获取，揭示了对称企业产生非对称均衡的新机制；将产品选择纳入 BBPD 分析框架</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>适用场景</strong></td>
+<td style="text-align: left;">具有 cookie/会员卡/购买历史追踪能力的数字市场、零售业（如 Tesco vs Asda 的忠诚卡竞争）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="tldr">TL;DR</h2>
+<p>两家完全相同的企业，仅仅因为各自更了解自己的老顾客（而非对手的顾客），就会陷入一种"军备竞赛"式的竞争：一家激进抢市场份额，另一家被迫让步，但最终两家都比不做价格歧视时更惨。掌握的消费者数据越多、定价手段越精细，竞争反而越激烈、利润越低——这是一个典型的 Prisoner's Dilemma。</p>
+<hr>
+<h2 id="one-more-thing">One More Thing</h2>
+<p>这篇文章最精妙的洞察在于：<strong>对称性的自发破缺</strong>。想象两家完全一样的咖啡店，在街道两端面对面竞争。它们的位置一样、产品一样、成本一样，按常理应该收一样的价格、分一样的市场——这正是经典 Hotelling 模型和 Fudenberg &amp; Tirole (2000) 所预测的唯一对称均衡。但 Choe et al. 告诉你，只要这两家店各自用会员卡追踪自己顾客的偏好（而不知道对方顾客的偏好），这种完美的对称就会像量子力学中的自发对称性破缺一样瓦解：一家店会"选择"更激进的低价策略抢市场，另一家则被动接受较小的份额。这不是因为它们有任何先天差异，而纯粹因为<strong>不对称的信息获取</strong>创造了<strong>不对称的降价激励</strong>——抢到更多顾客的企业在第二期可以对每个老顾客收取量身定制的高价，这份未来的甜头让它愿意承受当下的价格战代价。更讽刺的是，两家店都知道这场竞争让自己更惨，却都无法单方面退出——这才是大数据时代个性化定价的真正"诅咒"。</p>
+<hr>
+<h2 id="motivation">研究背景与动机 (Motivation)</h2>
+<h3 id="_2">实践痛点</h3>
+<p>大数据与追踪技术（cookies, web beacons, 会员卡等）使企业能够精确了解消费者偏好并据此个性化定价。Shiller (2014) 估计 Netflix 如果利用消费者网络浏览行为进行个性化定价，利润可提升高达 12.2%。然而，实践中个性化定价也引发了隐私和公平问题：Amazon 的 DVD 差异化定价实验就因消费者发现价格差异而遭到强烈抵制。英国零售业中，Tesco 依赖 Clubcard 收集消费者数据并提供个性化优惠，而竞争对手 Asda 反而在 1999 年放弃了忠诚卡计划，转向"天天低价"策略。</p>
+<h3 id="_3">理论缺口</h3>
+<p>现有的 behavior-based price discrimination (BBPD) 文献（如 Thisse and Vives 1988; Fudenberg and Tirole 2000）有一个关键的共同假设：<strong>竞争企业获取的消费者信息是对称的</strong>。Thisse and Vives 假设两家企业都知道所有消费者的位置；Fudenberg and Tirole 假设两家企业都只知道消费者在哪家购买过，但不知道更精细的偏好。然而现实中，信息获取几乎总是<strong>不对称的</strong>——一家企业通过 cookie 或会员卡获得的详细信息，通常只属于该企业自己，竞争对手无法获取。这种关键的现实特征在文献中几乎未被考虑。</p>
+<h3 id="_4">核心贡献</h3>
+<ol>
+<li><strong>信息不对称的新模型</strong>：首次在 BBPD 框架中引入不对称信息获取（每家企业精确了解自己老顾客的位置，但对竞争对手的顾客只有粗略信息），更贴近现实中 cookie/忠诚卡产生的信息结构。</li>
+<li><strong>非对称均衡的发现</strong>：证明即使两家企业事前完全对称（ex ante symmetric），不对称信息获取会导致多个非对称均衡——这在 BBPD 文献中是全新的。</li>
+<li><strong>内生产品选择的分析</strong>：将产品定位决策纳入 BBPD 分析，展示企业在定价和产品定位两个维度上的竞争互动。</li>
+<li><strong>定价策略的利润排序</strong>：系统比较统一定价、第三级价格歧视和个性化定价下的企业利润，为企业的定价策略选择提供理论指导。</li>
+</ol>
+<hr>
+<h2 id="model-setup-assumptions">模型设定与假设 (Model Setup &amp; Assumptions)</h2>
+<h3 id="_5">市场环境模块</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$[0, 1]$</td>
+<td style="text-align: left;">Hotelling 线性城市</td>
+<td style="text-align: left;">消费者均匀分布</td>
+</tr>
+<tr>
+<td style="text-align: left;">$x$</td>
+<td style="text-align: left;">消费者位置</td>
+<td style="text-align: left;">$x \in [0,1]$，代表消费者的偏好/品味</td>
+</tr>
+<tr>
+<td style="text-align: left;">$v$</td>
+<td style="text-align: left;">单位产品效用</td>
+<td style="text-align: left;">假设足够大以保证市场完全覆盖</td>
+</tr>
+<tr>
+<td style="text-align: left;">$t$</td>
+<td style="text-align: left;">运输成本参数</td>
+<td style="text-align: left;">二次运输成本 $t(x - l)^2$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\tau = 1, 2$</td>
+<td style="text-align: left;">期数</td>
+<td style="text-align: left;">两期博弈</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">企业模块</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$i = A, B$</td>
+<td style="text-align: left;">两家企业</td>
+<td style="text-align: left;">事前对称，边际成本标准化为 0</td>
+</tr>
+<tr>
+<td style="text-align: left;">$a, b$</td>
+<td style="text-align: left;">企业 A、B 的位置</td>
+<td style="text-align: left;">外生情形 $a=0, b=1$；内生情形 $0 \le a \le b \le 1$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$P_i^1$</td>
+<td style="text-align: left;">企业 $i$ 的第一期价格</td>
+<td style="text-align: left;">统一定价</td>
+</tr>
+<tr>
+<td style="text-align: left;">$P_A(x)$</td>
+<td style="text-align: left;">企业 A 对老顾客 $x$ 的个性化价格</td>
+<td style="text-align: left;">仅用于第二期，基于 cookie 信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">$P_A(\mathcal{B})$</td>
+<td style="text-align: left;">企业 A 的 poaching 价格</td>
+<td style="text-align: left;">对企业 B 的第一期顾客统一报价</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\delta_f$</td>
+<td style="text-align: left;">企业折扣因子</td>
+<td style="text-align: left;">$\delta_f \in [0,1]$，刻画企业的前瞻性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">消费者模块</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">符号</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">备注/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$z$</td>
+<td style="text-align: left;">第一期边际消费者位置</td>
+<td style="text-align: left;">$x \le z$ 选 A，$x &gt; z$ 选 B</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\tilde{y}$</td>
+<td style="text-align: left;">第二期边际消费者位置</td>
+<td style="text-align: left;">界定第二期的顾客转换边界</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\delta_c$</td>
+<td style="text-align: left;">消费者折扣因子</td>
+<td style="text-align: left;">$\delta_c \in [0,1]$，刻画消费者的前瞻性</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\mathcal{A}, \mathcal{B}$</td>
+<td style="text-align: left;">第一期选择企业 A、B 的消费者集合</td>
+<td style="text-align: left;">$\mathcal{A} = [0, z]$，$\mathcal{B} = [z, 1]$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">博弈/决策结构</h3>
+<p><strong>Players</strong>：企业 A、企业 B、连续统消费者</p>
+<p><strong>Sequence of Events</strong>：</p>
+<ol>
+<li><strong>第一期</strong>（$\tau = 1$）：</li>
+<li>企业同时选择位置 $a, b$（内生情形）或位置外生固定在 $a=0, b=1$</li>
+<li>企业同时选择统一价格 $P_A^1, P_B^1$</li>
+<li>消费者观察价格并选择购买，形成市场分割 $z$</li>
+<li>
+<p>企业通过"cookie"追踪——企业 $i$ 学习到自己每位顾客的精确位置</p>
+</li>
+<li>
+<p><strong>第二期</strong>（$\tau = 2$）：</p>
+</li>
+<li>企业同时选择 poaching 价格（$P_A(\mathcal{B}), P_B(\mathcal{A})$）</li>
+<li>企业同时选择对自己老顾客的个性化价格（$P_A(x), P_B(y)$）</li>
+<li>消费者观察所有相关价格后做出购买决策</li>
+</ol>
+<p><strong>Information Structure</strong>：</p>
+<ul>
+<li>第一期结束后，企业 A 知道：(i) 每位消费者 $x$ 属于 $\mathcal{A}$ 还是 $\mathcal{B}$；(ii) 若 $x \in \mathcal{A}$，则知道 $x$ 的精确位置。</li>
+<li>企业 B 对称地了解自己的顾客。</li>
+<li><strong>这是关键的不对称信息结构</strong>：每家企业对自己的老顾客有精确信息，对竞争对手的顾客仅知道"他们选了对手"。</li>
+</ul>
+<h3 id="_9">目标函数与约束</h3>
+<p><strong>企业 $i$ 的目标</strong>：</p>
+<p>$$\max \Pi_i = \pi_i^1 + \delta_f \pi_i^2$$</p>
+<blockquote>
+<p>企业最大化两期折现总利润。$\pi_i^1$ 是第一期利润（统一定价 $\times$ 市场份额），$\pi_i^2$ 是第二期利润（来自个性化定价收入 + poaching 收入）。折扣因子 $\delta_f$ 控制企业对未来利润的重视程度——这是驱动非对称均衡的关键参数。</p>
+</blockquote>
+<p><strong>消费者 $x$ 的目标</strong>：</p>
+<p>$$\max u_x^1 + \delta_c u_x^2$$</p>
+<p>其中 $u_x^\tau = v - P_i(x) - t(x - l)^2$（从位于 $l$ 的企业 $i$ 以价格 $P_i(x)$ 购买）。</p>
+<blockquote>
+<p>消费者最大化两期折现效用。第一期选择决定了 cookie 追踪的归属——选择企业 A 的消费者在第二期将面对 A 的个性化定价和 B 的统一 poaching 价格。当 $\delta_c = 0$ 时，消费者完全短视，第一期选择仅基于当期效用。</p>
+</blockquote>
+<h3 id="_10">关键假设</h3>
+<p><strong>假设 1：二次运输成本</strong></p>
+<ul>
+<li><em>Justification</em>：保证单期博弈中最大差异化是唯一纯策略均衡（d'Aspremont et al. 1979 的经典结果），使本文结果与标准结果可比。</li>
+<li><em>若放松</em>：线性运输成本下 Hotelling 模型的纯策略均衡不存在，分析将显著复杂化。</li>
+</ul>
+<p><strong>假设 2：完全市场覆盖（$v$ 足够大）</strong></p>
+<ul>
+<li><em>Justification</em>：聚焦于企业间竞争而非企业与"不购买"选项的竞争，简化分析。</li>
+<li><em>若放松</em>：部分市场覆盖可能改变边界消费者的行为，影响 poaching 动态。</li>
+</ul>
+<p><strong>假设 3：消费者仅关心自己支付的价格（无公平偏好）</strong></p>
+<ul>
+<li><em>Justification</em>：目的是清晰地分离信息结构变化的效应，避免与行为因素混杂。</li>
+<li><em>若放松</em>：如 Li and Jain (2016) 所示，公平偏好会削弱 poaching 激励，软化竞争。文章结论部分对此有讨论。</li>
+</ul>
+<p><strong>假设 4：每家企业选择一个产品（位置固定跨期）</strong></p>
+<ul>
+<li><em>Justification</em>：区别于 Zhang (2011) 的无成本产品个性化假设，更适用于产品品种有限的市场。</li>
+<li><em>若放松</em>：允许产品个性化将消除 poaching 的可能性（如 Zhang 2011 所示），导致截然不同的均衡。</li>
+</ul>
+<p><strong>假设 5：第二期中 poaching 价格先于个性化价格选择</strong></p>
+<ul>
+<li><em>Justification</em>：反映"常规价格"是更高层级的管理决策，调整速度慢于个性化折扣。有助于确定子博弈完美均衡。</li>
+<li><em>若放松</em>：同时选择可能导致均衡的不唯一性。</li>
+</ul>
+<hr>
+<h2 id="roadmap-of-analysis">分析路线图 (Roadmap of Analysis)</h2>
+<p>本文的分析遵循一条递进式的路径，逐步增加战略自由度，以揭示不对称信息如何在不同层面改变竞争结构：</p>
+<ol>
+<li>
+<p><strong>Benchmarks（Section 2.1）</strong>：建立三个基准模型——标准 Hotelling、Thisse-Vives 完全信息个性化定价、Fudenberg-Tirole 第三级价格歧视，为后续比较提供参照系。</p>
+</li>
+<li>
+<p><strong>外生位置下的主模型（Section 3）</strong>：固定两家企业在 $a=0, b=1$（最大差异化），引入不对称信息获取和个性化定价。这一步回答核心问题：不对称信息如何打破对称均衡？通过 backward induction 先解第二期均衡（Lemma 1 的证明过程），再解第一期定价（Lemma 1 + Proposition 1）。</p>
+</li>
+<li>
+<p><strong>与第三级价格歧视的比较（Section 3.1）</strong>：将本文结果与 Fudenberg-Tirole (2000) 进行系统比较（Proposition 3），揭示个性化定价相对于第三级价格歧视的利润排序。</p>
+</li>
+<li>
+<p><strong>单边不对称信息的扩展（Section 3.2）</strong>：考虑仅一家企业拥有个性化信息的情形（Proposition 4），展示信息不对称的程度如何影响均衡结构。</p>
+</li>
+<li>
+<p><strong>内生位置选择（Section 4）</strong>：将产品定位作为额外的策略变量，聚焦 $\delta_c = 0, \delta_f = 1$ 的情形。这一步回答：当企业连位置都可以选择时，竞争会进一步恶化到什么程度？（Lemma 2 + Proposition 5 + Proposition 6）</p>
+</li>
+</ol>
+<hr>
+<h2 id="analysis-solution">核心分析与求解 (Analysis &amp; Solution)</h2>
+<h3 id="tau-2-a0-b1">第二期均衡（$\tau = 2$，外生位置 $a=0, b=1$）</h3>
+<p>第二期的均衡是后续所有结果的基础。给定第一期边际消费者 $z$，第二期的定价博弈有唯一均衡：</p>
+<p><strong>当 $z \le 1/2$ 时</strong>（企业 A 的市场份额较小）：</p>
+<ul>
+<li>企业 A 对老顾客 $x \in [0, z]$ 收取个性化价格 $P_A(x) = (1-2x)t$（递减的，越靠近 A 的顾客付越多）</li>
+<li>企业 A 对 B 的顾客统一收取 poaching 价格 $P_A(\mathcal{B}) = (1-2z)t/2$</li>
+<li>企业 B 对 A 的顾客报 $P_B(\mathcal{A}) = 0$（无法有效竞争）</li>
+<li>企业 B 对自己靠近端的老顾客收取个性化价格 $P_B(y) = (4y-2z-1)t/2$，$y \in [(1+2z)/4, 1]$</li>
+<li><strong>单向顾客转换</strong>：$[z, \tilde{y}]$ 上的消费者从 B 转向 A，$\tilde{y} = (1+2z)/4$</li>
+</ul>
+<blockquote>
+<p><strong>关键直觉</strong>：个性化定价让企业可以对自己的忠实顾客"量身定做"高价，同时用低价 poach 对手的边缘顾客。但信息不对称意味着企业无法对对手的顾客做精准定价，只能用统一的 poaching 价格——这导致了单向而非双向的顾客转换。</p>
+</blockquote>
+<p>第二期利润为：</p>
+<p>$$\pi_A^2 = \frac{(1 + 4z - 4z^2)t}{8}, \quad \pi_B^2 = \frac{(3-2z)^2 t}{16} \quad (z \le 1/2)$$</p>
+<p><strong>$z$ 对两家企业第二期利润的不对称影响是驱动非对称均衡的核心机制</strong>：当 $z$ 从 $1/2$ 减小时（A 市场份额缩小），B 的第二期利润增加幅度<strong>大于</strong> A 的第二期利润减少幅度。这是因为 $z$ 的减小同时提高了 B 的个性化价格和 A 的 poaching 价格。</p>
+<hr>
+<h3 id="lemma-1">Lemma 1：第一期定价均衡（外生位置）</h3>
+<p><strong>Lemma 1 建立了核心发现——两个非对称均衡的存在</strong>。</p>
+<p><strong>Lemma 1</strong>：给定外生位置 $a=0, b=1$，第一期博弈有两个均衡：</p>
+<p>(i) $P_A^1 = \frac{(4-2\delta_c+\delta_f)(6-3\delta_c-2\delta_f)t}{2(12-6\delta_c+\delta_f)}$，$P_B^1 = \frac{(6(2-\delta_c)^2 - 3(2-\delta_c)\delta_f - 2\delta_f^2)t}{2(12-6\delta_c+\delta_f)}$，$z = \frac{12-6\delta_c-\delta_f}{2(12-6\delta_c+\delta_f)} \le 1/2$</p>
+<p>(ii) 上述表达式中 A 和 B 的价格互换，$z = \frac{3(4-2\delta_c+\delta_f)}{2(12-6\delta_c+\delta_f)} \ge 1/2$</p>
+<blockquote>
+<p><strong>经济学直觉</strong>：两个均衡互为镜像，一个偏向 A、一个偏向 B。在均衡 (i) 中，B 定价更低、市场份额更大。为什么对称企业会产生不对称结果？因为第二期的个性化定价使得"第一期市场份额 → 第二期利润"的映射是<strong>非线性且不对称的</strong>——拥有更大份额的企业可以对更多忠实顾客收高价，而失去份额的企业可以通过更高的 poaching 价格部分补偿。这创造了不对称的降价激励：一方的降价动机始终强于另一方的跟进动机。<strong>当且仅当 $\delta_f = 0$ 时，均衡坍缩为唯一的对称均衡 $z = 1/2$</strong>。</p>
+</blockquote>
+<p>以 $\delta_c = 0, \delta_f = 1$ 为例：两个均衡分别为 (i) $P_A^1 = 10t/13, P_B^1 = 8t/13, z = 11/26$ 和 (ii) $P_A^1 = 8t/13, P_B^1 = 10t/13, z = 15/26$。图 2 展示了两条反应函数的交叉，可以直观看到：若 B 先报高价 $t$，A 的最优反应是大幅降价至 $5t/7$；但 B 不会跟进降到那么低——其最优反应是 $29t/35 &gt; 5t/7$。这种"降价动力不对称"经过反复调整最终收敛到非对称均衡。</p>
+<hr>
+<h3 id="proposition-1">Proposition 1：两期博弈完整均衡</h3>
+<p>Lemma 1 确定了第一期均衡和市场分割 $z$，Proposition 1 将 $z$ 代入第二期均衡价格，给出完整的两期定价方案。</p>
+<p><strong>Proposition 1</strong> 给出了两个完整均衡的所有价格表达式（见原文）。以均衡 (i)（$z \le 1/2$）为例，关键特征为：</p>
+<ul>
+<li>企业 A（小份额方）对老顾客的个性化价格从 $t$ 递减至 $(1-2z)t$</li>
+<li>企业 A 的 poaching 价格为 $\delta_f t/(12-6\delta_c+\delta_f)$</li>
+<li>企业 B（大份额方）对部分老顾客收取的最高个性化价格可以超过 Hotelling 价格 $t$</li>
+</ul>
+<blockquote>
+<p><strong>核心 trade-off</strong>：<strong>第一期价格竞争的激烈程度 vs. 第二期个性化定价的信息租金</strong>。企业在第一期降价抢份额，正是为了在第二期利用对更多老顾客的精确信息来收取更高的个性化价格。但这种"投资未来"的激励使得第一期竞争远比 Hotelling 基准更激烈——两家企业的第一期价格都低于 Hotelling 价格 $t$。</p>
+</blockquote>
+<hr>
+<h3 id="corollary">Corollary：比较静态</h3>
+<p>Proposition 1 建立了完整均衡后，Corollary 进一步分析折扣因子如何影响均衡特征。</p>
+<p><strong>Corollary</strong>：</p>
+<p>(i) $\delta_c$ 增加 $\Rightarrow$ $P_A^1, P_B^1, \Pi_A, \Pi_B$ 全部下降</p>
+<p>(ii) $\delta_f$ 增加 $\Rightarrow$ $P_A^1, P_B^1, \pi_A^1, \pi_B^1$ 全部下降</p>
+<p>(iii) 均衡坍缩为唯一对称均衡 $z = 1/2$ 当且仅当 $\delta_f = 0$</p>
+<blockquote>
+<p><strong>直觉</strong>：$\delta_c$ 增大意味着消费者更前瞻，会预期到第二期有利的 poaching 优惠，因此第一期需要更低的价格才能锁住他们——这使两家企业都受损。$\delta_f$ 增大意味着企业更前瞻，更看重第二期利润，因此第一期争份额的竞争更激烈。关键发现 (iii) 说明：非对称均衡的根源在于企业的前瞻性——没有对未来的考虑，就不存在争夺市场份额的激励。</p>
+</blockquote>
+<hr>
+<h3 id="proposition-2">Proposition 2：福利分析</h3>
+<p>Corollary 分析了企业利润的比较静态，Proposition 2 进一步扩展到消费者福利和社会总福利。</p>
+<p><strong>Proposition 2</strong>：在个性化定价均衡中，相比无价格歧视的情形：企业在每一期都更差，所有消费者都更好，但社会福利下降。</p>
+<blockquote>
+<p><strong>直觉</strong>：企业的激烈竞争压低了价格，消费者获益。但由于市场份额不对称（$z \ne 1/2$），平均运输距离大于最优的 $1/4$，导致社会效率损失。有趣的是，社会福利虽然低于 Hotelling 基准，但<strong>高于</strong> Fudenberg-Tirole 的第三级价格歧视情形，因为后者存在双向顾客转换导致的更大效率损失。</p>
+</blockquote>
+<hr>
+<h3 id="proposition-3-vs">Proposition 3：个性化定价 vs. 第三级价格歧视</h3>
+<p>Proposition 2 建立了与无歧视基准的比较，Proposition 3 进一步与 Fudenberg-Tirole (2000) 的第三级价格歧视进行利润比较。</p>
+<p><strong>Proposition 3</strong>：对所有 $(\delta_c, \delta_f)$ 值，个性化定价下每家企业的总折现利润都严格小于第三级价格歧视下的利润。</p>
+<blockquote>
+<p><strong>核心机制对比</strong>：在第三级价格歧视中，企业必须对所有老顾客收同一价格，不能区别对待边缘和忠实顾客。这意味着保护边缘顾客的成本很高（必须给忠实顾客也降价），导致<strong>双向顾客转换</strong>。结果是，第一期市场份额对第二期利润的影响被"洗掉"——无论 $z$ 如何，第二期利润对两家企业相同。这就消除了第一期抢份额的激励，竞争反而更温和（$P^1 = (3+\delta_c)t/3 \ge t$）。个性化定价恰好相反——它允许企业精准保护忠实顾客，使市场份额的价值更大，第一期竞争更加激烈。</p>
+</blockquote>
+<p><strong>定价策略利润排序</strong>：$\Pi_H \ge \Pi_{FT} \ge \Pi_{TV}$（统一定价 $\ge$ 第三级价格歧视 $\ge$ 个性化定价）。</p>
+<hr>
+<h3 id="extension-1section-32">Extension 1：单边不对称信息（Section 3.2）</h3>
+<p>Proposition 3 比较了不同定价策略下的利润，下面的 Proposition 4 探讨一种中间情形：仅一家企业拥有精确信息。</p>
+<p><strong>Proposition 4</strong>（$\delta_c = \delta_f = 1$）：若仅企业 A 使用个性化定价，企业 B 使用统一定价，则存在唯一均衡：</p>
+<ul>
+<li>$z = 6/17$，$P_A = 15t/17$，$P_B = 6t/17$</li>
+<li>第二期：$P_A(x) = (1-2x)t$（$x \in [0, 6/17]$），$P_A(\mathcal{B}) = 9t/17$，$P_B(\mathcal{A}) = 0$，$P_B(\mathcal{B}) = 13t/17$</li>
+<li>第二期市场扩大至 $[0, 21/34]$ 归 A</li>
+<li>$\Pi_A = 393t/578$，$\Pi_B = 301t/578$</li>
+</ul>
+<blockquote>
+<p><strong>关键发现</strong>：
+(i) 单边信息不对称产生<strong>唯一</strong>非对称均衡（而非双边情形下的两个均衡），因为不使用个性化定价的 B 无法在 $z &gt; 1/2$ 时保护所有老顾客。
+(ii) 两家企业都比双边信息不对称情形下更好——说明<strong>减少</strong>一方的信息精度反而对双方有利。
+(iii) 利润排序：最小对称信息（FT）&gt; 单边不对称 &gt; 双边不对称。</p>
+</blockquote>
+<p>这个发现直接对应 Asda 放弃忠诚卡的决策——它本质上是将博弈从"双边不对称信息 + 个性化定价"转向"单边不对称信息"，改善了双方处境。</p>
+<hr>
+<h3 id="extension-2section-4">Extension 2：内生位置选择（Section 4）</h3>
+<p>Proposition 4 分析了信息不对称程度的变化，Section 4 进一步增加一个策略维度——产品定位。聚焦 $\delta_c = 0, \delta_f = 1$。</p>
+<p><strong>Lemma 2</strong>：给定位置 $a, b$（$a \le b$），第一期博弈有以下均衡：</p>
+<p>(i) $P_A^1 = 2(3+2a+2b)(b-a)t/13$，$P_B^1 = 2(5-a-b)(b-a)t/13$，$z = (4+7a+7b)/26$</p>
+<p>(ii) $P_A^1 = 2(3+a+b)(b-a)t/13$，$P_B^1 = 2(7-2a-2b)(b-a)t/13$，$z = (8+7a+7b)/26$</p>
+<p>多重均衡的存在条件取决于 $a+b$：当 $a+b \approx 1$（对称位置附近）时两个均衡共存。</p>
+<blockquote>
+<p><strong>直觉</strong>：当 $a+b &gt; 1.04$（A 更靠近中心），A 天然更"激进"，只有均衡 (i) 存在；当 $a+b &lt; 0.96$（B 更靠近中心），只有均衡 (ii)。对称位置附近两个均衡共存——而正是这种多重性使得对称位置无法成为均衡。</p>
+</blockquote>
+<hr>
+<p><strong>Proposition 5</strong>：内生位置选择下的两个均衡：</p>
+<p>(i) $a \approx 0.2, b = 1$；$P_A^1 = 216t/325, P_B^1 = 152t/325$，$z = 31/65$</p>
+<p>(ii) $a = 0, b \approx 0.8$；$P_A^1 = 152t/325, P_B^1 = 216t/325$，$z = 34/65$</p>
+<blockquote>
+<p><strong>关键直觉</strong>：<strong>最大差异化不再是均衡</strong>。原因在于：当 $a+b = 1$ 时，定价子博弈有两个均衡，其中一个不利于自己。企业可以通过偏离对称位置来消除对自己不利的均衡。例如，在均衡 (i) 中，A 选择 $a \approx 0.2$ 而非 $a = 0$，虽然第一期竞争更激烈（更近），但第二期凭借靠近中心的位置优势获得更多 poaching 收益。这种"激进定位"策略的本质是：第一期用统一价格从忠实顾客中榨取剩余（因为位置优势让边缘效应更大），第二期用个性化定价保护领地并扩张。</p>
+</blockquote>
+<p>每个均衡对应唯一的定价子博弈均衡（而非固定位置下的两个均衡）——位置选择本身就"选择"了有利于自己的定价均衡。</p>
+<hr>
+<h3 id="proposition-6-vs">Proposition 6：内生 vs. 外生位置的福利比较</h3>
+<p>Proposition 5 给出了内生位置的均衡，Proposition 6 将其与外生位置的结果进行比较。</p>
+<p><strong>Proposition 6</strong>（$\delta_c = 0, \delta_f = 1$）：相比固定位置（最大差异化），内生位置选择使得企业在每一期利润都更低，但社会福利更高。</p>
+<blockquote>
+<p><strong>直觉</strong>：内生位置使产品差异化程度降低，竞争加剧。但对社会而言，消费者的平均运输距离减小（$0.195$ vs. $0.25$），效率提升。激进定位是一种<strong>损失最小化</strong>策略——企业在内生位置的"最好均衡"中的利润，高于固定位置"最差均衡"（被对手抢份额）中的利润。</p>
+</blockquote>
+<p>利润比较（$\delta_c = 0, \delta_f = 1$）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">外生位置（A 有利）</th>
+<th style="text-align: left;">内生位置（A 有利）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$\pi_A^1$</td>
+<td style="text-align: left;">$0.355t$</td>
+<td style="text-align: left;">$0.317t$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\pi_A^2$</td>
+<td style="text-align: left;">$0.290t$</td>
+<td style="text-align: left;">$0.282t$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\pi_B^1$</td>
+<td style="text-align: left;">$0.325t$</td>
+<td style="text-align: left;">$0.245t$</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\pi_B^2$</td>
+<td style="text-align: left;">$0.247t$</td>
+<td style="text-align: left;">$0.170t$</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="comparative-statics-summary">比较静态汇总表 (Comparative Statics Summary)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参数变化</th>
+<th style="text-align: left;">对第一期价格的影响</th>
+<th style="text-align: left;">对企业利润的影响</th>
+<th style="text-align: left;">对均衡对称性的影响</th>
+<th style="text-align: left;">直觉</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">$\delta_c \uparrow$</td>
+<td style="text-align: left;">$P_A^1, P_B^1 \downarrow$</td>
+<td style="text-align: left;">$\Pi_A, \Pi_B \downarrow$</td>
+<td style="text-align: left;">非对称程度不变</td>
+<td style="text-align: left;">前瞻消费者预期到 poaching 优惠，第一期需更低价格锁客</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\delta_f \uparrow$</td>
+<td style="text-align: left;">$P_A^1, P_B^1 \downarrow$</td>
+<td style="text-align: left;">$\pi_A^1, \pi_B^1 \downarrow$</td>
+<td style="text-align: left;">非对称性出现（$\delta_f &gt; 0$）</td>
+<td style="text-align: left;">企业更看重未来信息租金，第一期争份额更激烈</td>
+</tr>
+<tr>
+<td style="text-align: left;">$\delta_f = 0$</td>
+<td style="text-align: left;">回到 Hotelling</td>
+<td style="text-align: left;">最大</td>
+<td style="text-align: left;">唯一对称均衡</td>
+<td style="text-align: left;">无前瞻性 $\Rightarrow$ 无抢份额动机 $\Rightarrow$ 对称</td>
+</tr>
+<tr>
+<td style="text-align: left;">外生 $\to$ 内生位置</td>
+<td style="text-align: left;">平均价格 $\downarrow$</td>
+<td style="text-align: left;">两家均 $\downarrow$</td>
+<td style="text-align: left;">非对称体现在位置+定价</td>
+<td style="text-align: left;">差异化降低，竞争全面加剧</td>
+</tr>
+<tr>
+<td style="text-align: left;">双边 $\to$ 单边信息</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">两家均 $\uparrow$</td>
+<td style="text-align: left;">唯一非对称均衡</td>
+<td style="text-align: left;">减少一方精细信息削弱 poaching 威胁，软化竞争</td>
+</tr>
+<tr>
+<td style="text-align: left;">个性化 $\to$ 第三级PD</td>
+<td style="text-align: left;">$P^1 \uparrow$</td>
+<td style="text-align: left;">两家均 $\uparrow$</td>
+<td style="text-align: left;">唯一对称均衡</td>
+<td style="text-align: left;">统一老客价格使保护领地成本高，消除份额争夺激励</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="main-results-managerial-insights">主要结论与管理启示 (Main Results &amp; Managerial Insights)</h2>
+<h3 id="benchmark">与 Benchmark 的对比</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">Hotelling（统一定价）</th>
+<th style="text-align: left;">Fudenberg-Tirole（第三级 PD）</th>
+<th style="text-align: left;">本文（个性化定价）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">均衡类型</td>
+<td style="text-align: left;">唯一、对称</td>
+<td style="text-align: left;">唯一、对称</td>
+<td style="text-align: left;"><strong>两个非对称均衡</strong>（$\delta_f &gt; 0$）</td>
+</tr>
+<tr>
+<td style="text-align: left;">第一期价格</td>
+<td style="text-align: left;">$t$</td>
+<td style="text-align: left;">$(3+\delta_c)t/3 \ge t$</td>
+<td style="text-align: left;">$&lt; t$（两家均低于 Hotelling 价格）</td>
+</tr>
+<tr>
+<td style="text-align: left;">顾客转换</td>
+<td style="text-align: left;">无</td>
+<td style="text-align: left;">双向</td>
+<td style="text-align: left;"><strong>单向</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">市场份额</td>
+<td style="text-align: left;">对称 $50:50$</td>
+<td style="text-align: left;">对称 $50:50$</td>
+<td style="text-align: left;">不对称（如 $11:15$）</td>
+</tr>
+<tr>
+<td style="text-align: left;">企业利润</td>
+<td style="text-align: left;">最高</td>
+<td style="text-align: left;">中等</td>
+<td style="text-align: left;"><strong>最低</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">社会福利</td>
+<td style="text-align: left;">最高（$\tau=1$）</td>
+<td style="text-align: left;">最低（$\tau=2$ 双向转换低效）</td>
+<td style="text-align: left;">中等（$\tau=2$ 单向转换较高效）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>反直觉结果</strong>：</p>
+<ol>
+<li><strong>更多信息 = 更低利润</strong>：企业掌握的消费者信息越精细，竞争越激烈，利润越低——精细化定价的"武器"变成了彼此伤害的"军备竞赛"。</li>
+<li><strong>对称企业 → 非对称均衡</strong>：无需任何先天差异，仅信息获取的不对称性就能打破对称。</li>
+<li><strong>前瞻性消费者反而不利于前瞻性企业</strong>：$\delta_c$ 增大会降低企业利润（与 Fudenberg-Tirole 中 $\delta_c$ 增大有利企业的结论相反）。</li>
+<li><strong>激进定位是"损失最小化"而非利润最大化</strong>：企业选择激进定位不是因为它带来更高利润，而是因为它避免了"最差均衡"。</li>
+</ol>
+<h3 id="_11">管理建议</h3>
+<ol>
+<li>
+<p><strong>审慎对待个性化定价的"军备竞赛"</strong>：企业不应盲目追求更精细的消费者数据和定价能力。在竞争性市场中，这可能触发 Prisoner's Dilemma，使所有参与者受损。</p>
+</li>
+<li>
+<p><strong>考虑战略性地限制自身的定价精度</strong>：如 Asda 放弃忠诚卡所示，有时"知道得更少"反而对自己和竞争对手都更好。企业可以考虑承诺使用更简单的定价策略。</p>
+</li>
+<li>
+<p><strong>利用承诺机制避免破坏性竞争</strong>：如果可能，企业应承诺产品差异化（如品牌定位的差异化）或统一定价政策。Tesco 从 Clubcard 转向全面降价可能比维持个性化定价更有利可图。</p>
+</li>
+<li>
+<p><strong>关注竞争对手的信息能力</strong>：企业的最优策略取决于竞争对手是否也在收集和利用消费者数据。若对手不使用个性化定价，单方面采用可能有利；但若双方都采用，则陷入 Prisoner's Dilemma。</p>
+</li>
+<li>
+<p><strong>产品定位策略需考虑信息动态</strong>：产品差异化的程度不仅取决于传统的竞争缓和效应，还取决于消费者信息在未来如何被利用。前瞻性企业可能选择"过度接近"竞争对手的定位。</p>
+</li>
+</ol>
+<hr>
+<h2 id="dialogue-with-literature">与相关文献的对话 (Dialogue with Literature)</h2>
+<h3 id="fudenberg-and-tirole-2000-rand-journal-of-economics">Fudenberg and Tirole (2000), <em>RAND Journal of Economics</em></h3>
+<ul>
+<li><strong>共同关注</strong>：两期 Hotelling 模型中 behavior-based price discrimination 对竞争和利润的影响。</li>
+<li><strong>关键区别</strong>：FT 假设对称信息（两家企业都只知道顾客选了谁），使用第三级价格歧视，得到唯一对称均衡且双向顾客转换。本文引入不对称信息获取 + 个性化定价，得到多个非对称均衡且单向转换。</li>
+<li><strong>为什么重要</strong>：FT 的对称信息假设难以捕捉 cookie/会员卡等技术的核心特征——信息的私有性。这一差异导致了均衡结构的根本性改变（对称 $\to$ 非对称），以及竞争强度的显著提升。</li>
+</ul>
+<h3 id="thisse-and-vives-1988-american-economic-review">Thisse and Vives (1988), <em>American Economic Review</em></h3>
+<ul>
+<li><strong>共同关注</strong>：个性化定价下的空间竞争。</li>
+<li><strong>关键区别</strong>：TV 是静态模型，信息外生且对称（两家都知道所有消费者的位置）。本文是动态模型，信息内生且不对称（仅知道自己顾客的位置）。</li>
+<li><strong>为什么重要</strong>：TV 的结论"个性化定价必然降低利润"在他们的对称信息框架中是一个简单的 Prisoner's Dilemma。本文展示了信息获取的不对称性如何在此基础上产生更丰富的均衡结构和更深刻的竞争动态。</li>
+</ul>
+<h3 id="zhang-2011-marketing-science">Zhang (2011), <em>Marketing Science</em></h3>
+<ul>
+<li><strong>共同关注</strong>：个性化定价在动态竞争中的效应。</li>
+<li><strong>关键区别</strong>：Zhang 允许无成本的产品个性化（每个顾客可以得到定制产品），导致一旦一家企业获得顾客信息，另一家就无法有效服务该顾客——结果是对称均衡且第二期完美歧视。本文假设产品固定（企业只选一个产品/位置），但价格可个性化——这与大多数市场更匹配。</li>
+<li><strong>为什么重要</strong>：产品可否个性化是一个关键的建模选择。在产品种类有限的市场（如零售、服务），本文的框架更有解释力。</li>
+</ul>
+<h3 id="li-and-jain-2016-management-science">Li and Jain (2016), <em>Management Science</em></h3>
+<ul>
+<li><strong>共同关注</strong>：BBPD 下竞争企业的利润。</li>
+<li><strong>关键区别</strong>：LJ 在 Fudenberg-Tirole 框架中加入消费者公平偏好，发现公平偏好软化竞争从而使 BBPD 可以提高利润。本文保持标准偏好假设，通过改变信息结构得到竞争加剧的结论。</li>
+<li><strong>为什么重要</strong>：两文从不同维度修正 FT 的基准，得到相反方向的结论——一个软化竞争，一个加剧竞争。这提示理论预测高度依赖具体的市场特征（信息结构 vs. 消费者行为偏好）。</li>
+</ul>
+<hr>
+<h2 id="reviewers-critique">犀利评论 (Reviewer's Critique)</h2>
+<h3 id="_12">优点</h3>
+<ul>
+<li><strong>信息结构的创新</strong>：将不对称信息获取引入 BBPD 文献是一个自然且重要的扩展，直接捕捉了 cookie/会员卡产生的信息不对称——这比之前文献中的对称信息假设更符合现实。</li>
+<li><strong>清晰的机制分解</strong>：通过逐步增加策略自由度（外生位置 → 单边信息 → 内生位置），系统地分解了每个要素对均衡的影响，为读者建立了完整的直觉链条。</li>
+<li><strong>实践相关性</strong>：Tesco-Asda 的案例研究有效地将理论洞察与现实竞争策略对接，特别是 Asda 放弃忠诚卡的决策可以直接用模型结果解释。</li>
+</ul>
+<h3 id="_13">模型限制/假设过强</h3>
+<ul>
+<li><strong>双头垄断</strong>：仅考虑两家企业的竞争。在多企业市场中，信息不对称的结构更加复杂（一家企业可能对不同竞争对手有不同程度的信息优势），均衡性质可能根本不同。</li>
+<li><strong>线性城市 + 二次运输成本</strong>：Hotelling 框架虽然标准，但将消费者偏好简化为一维空间上的位置，无法捕捉多维度的产品属性和消费者异质性。在更一般的需求模型（如 logit 模型）下，非对称均衡是否依然存在尚不清楚。</li>
+<li><strong>无消费者策略行为</strong>：假设消费者不会删除 cookie、创建新账号或故意到对手处购买以获取更好优惠。这些策略行为在现实中普遍存在，可能显著改变 poaching 动态。文章在结论中承认了这一点，但未正式分析。</li>
+<li><strong>两期模型</strong>：仅考虑两期博弈，无法捕捉无限期重复博弈中可能出现的默契协调或声誉效应。在无限期模型中，企业可能通过"惩罚策略"维持合作均衡，避免 Prisoner's Dilemma。</li>
+<li><strong>$\delta_c = 0, \delta_f = 1$ 的聚焦</strong>：内生位置选择部分主要聚焦这一参数化，一般性 $(\delta_c, \delta_f)$ 下的完整刻画缺失。虽然 online appendix 有补充，但核心论述的参数覆盖面有限。</li>
+</ul>
+<h3 id="_14">未来方向</h3>
+<ol>
+<li>
+<p><strong>消费者策略行为的正式建模</strong>：引入消费者可以删除 cookie 或在两家企业间策略性切换的决策，分析这如何改变均衡。作者在 Section 6 的初步讨论提示，这可能软化竞争——值得深入。</p>
+</li>
+<li>
+<p><strong>多企业竞争</strong>：将模型扩展到三家或更多企业的圆形城市模型（Salop 框架），分析信息不对称在多边竞争中的效应。预期非对称均衡的结构会更加丰富。</p>
+</li>
+<li>
+<p><strong>信息获取的内生决策</strong>：将 cookie/会员卡的采用作为企业的策略选择（类似 Chen and Iyer 2002 的 addressability 模型），分析企业在何种条件下会选择"不收集信息"以避免竞争加剧。</p>
+</li>
+<li>
+<p><strong>数据共享与数据中介</strong>：考虑第三方数据中介（data broker）将一家企业的消费者信息出售给另一家的情形（如 Bergemann and Bonatti 2015）。这会改变信息的不对称性，可能导致从不对称向对称的转变。</p>
+</li>
+<li>
+<p><strong>结合公平偏好与信息不对称</strong>：将 Li and Jain (2016) 的公平偏好与本文的不对称信息结构相结合，分析两种力量（一个加剧竞争、一个软化竞争）的交互效应。在什么条件下哪种力量占主导？</p>
+</li>
+</ol>
+    </div>
+  </div>
+</body>
+</html>

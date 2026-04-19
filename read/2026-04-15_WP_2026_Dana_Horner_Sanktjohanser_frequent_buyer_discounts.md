@@ -548,3 +548,6 @@ $$
 它不是在说“loyalty program 一定提高利润”或者“会员折扣一定是反竞争的”。  
 它真正做的是：**在 search / learning frictions 下，证明高频购买者会因为更愿意 experiment 而拥有更强 outside option，因此在竞争市场里反而拿到更低价格；而 frequent buyer discounts 可以成为实现这种 price discrimination 的工具。**  
 把这句话读懂，基本就抓住了整篇 paper。
+
+
+- [x] 机制看着比较有趣，但估计还是挺难证明了

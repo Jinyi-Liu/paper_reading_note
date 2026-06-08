@@ -26,13 +26,13 @@
 
 ## TL;DR
 
-这篇文章最重要的结论是：**“市场低价时给农户更高 premium”听起来更公平，但不一定真的让农户赚更多钱。**因为企业看到 premium 变高后可能少买认证作物，而农户收入取决于“单价 × 能卖成认证的数量”。
+这篇文章最重要的结论是：**“市场低价时给农户更高 premium”听起来更公平，但不一定真的让农户赚更多钱.** 因为企业看到 premium 变高后可能少买认证作物，而农户收入取决于“单价 × 能卖成认证的数量”。
 
 灵活 premium 只有在认证作物供给比较充足、企业需求没有过度紧张时，才可能同时提高农户收入、可持续采购量和企业利润。否则，它可能让供需错配更严重，甚至伤害原本想保护的农户。
 
 ## One More Thing
 
-最有意思的洞察是：**保护农户的价格工具，可能因为企业的采购反应而反过来伤害农户。**灵活 premium 的初衷是“市场价格低时多补一点”，但农业市场里低价往往发生在高产量状态，高价往往发生在低产量状态。认证供给紧张时，在高价低产状态降低 premium，并不会让企业买到更多认证作物，因为根本没有足够 certified supply；它只会让农户在已经供给紧张的状态下拿到更低的认证单价。换句话说，本文真正揭示的是：**premium 设计不是单纯的价格公平问题，而是一个被企业采购决策和认证供给约束共同塑造的运营问题。**
+最有意思的洞察是：**保护农户的价格工具，可能因为企业的采购反应而反过来伤害农户.** 灵活 premium 的初衷是“市场价格低时多补一点”，但农业市场里低价往往发生在高产量状态，高价往往发生在低产量状态。认证供给紧张时，在高价低产状态降低 premium，并不会让企业买到更多认证作物，因为根本没有足够 certified supply；它只会让农户在已经供给紧张的状态下拿到更低的认证单价。换句话说，本文真正揭示的是：**premium 设计不是单纯的价格公平问题，而是一个被企业采购决策和认证供给约束共同塑造的运营问题.**
 
 ## 研究背景与动机 (Motivation)
 
@@ -253,7 +253,7 @@ $$
 
 **关键 trade-off：**
 
-**更高 premium = 更高单位农户收入，但也 = 更低企业认证采购需求。农户总收入取决于二者乘积，并受 certified supply 约束影响。**
+**更高 premium = 更高单位农户收入，但也 = 更低企业认证采购需求。农户总收入取决于二者乘积，并受 certified supply 约束影响.**
 
 ### Proposition 1：灵活 premium 对农户收入的影响
 
@@ -323,7 +323,7 @@ $$
 
 **一句话概括三赢条件：**
 
-**flexible premium 适合 certified supply 充足而 demand 没有过度紧张的作物。**
+**flexible premium 适合 certified supply 充足而 demand 没有过度紧张的作物.**
 
 ### Proposition 4：产量波动 $\sigma$ 的影响
 
@@ -375,7 +375,7 @@ $$
 
 > **机制直觉**：NGO 以农户收入为目标，可能设定较高 premium，吸引更多农户认证，但同时压低企业采购意愿。企业 self-labeling 则会选择较低 premium，虽然认证农户可能获得较低单位补偿，但企业更愿意采购 certified crops。因此，在 certified supply 足够的情况下，self-labeling 可能让可持续采购量更高；但它不是农户友好的制度，因为农户拿到的 premium 和总收入可能更低。
 
-这个命题把 self-label 的双刃剑讲清楚了：**它可能扩大“绿色采购量”，但把价值分配从农户转向企业。**
+这个命题把 self-label 的双刃剑讲清楚了：**它可能扩大“绿色采购量”，但把价值分配从农户转向企业.**
 
 ## 比较静态汇总表 (Comparative Statics Summary)
 
@@ -480,22 +480,22 @@ $$
 
 ### 管理建议
 
-1. **先诊断 certified supply 是否充足，再选择 premium 形式。**
+1. **先诊断 certified supply 是否充足，再选择 premium 形式.**
    若某作物认证农户多、认证成本低、平均产量高，且经常出现 certified crops 无法全部卖成 certified 的情况，flexible premium 更值得考虑。
 
-2. **不要把 flexible premium 当成 universal farmer-protection tool。**
+2. **不要把 flexible premium 当成 universal farmer-protection tool.**
    对于 low expected yield、高认证成本、high yield variability 或 certified supply shortage 的作物，fixed premium 可能更稳妥。
 
-3. **minimum price 与 premium 要联合看。**
+3. **minimum price 与 premium 要联合看.**
    如果 minimum price 已经较高，低价保护功能已有一部分由 $m$ 承担，flexible premium 的边际价值下降。
 
-4. **当 sustainable demand 快速增长时，要优先扩充 certified supply。**
+4. **当 sustainable demand 快速增长时，要优先扩充 certified supply.**
    只提高 demand-side marketing 或 label awareness 不够；若 $\gamma$ 和 $s$ 上升但 certified supply 没跟上，flexible premium 的效果可能变差。
 
-5. **对 self-label 应要求 premium transparency。**
+5. **对 self-label 应要求 premium transparency.**
    企业自标可能提高 sustainable sourcing quantity，但可能以较低 premium 和较低农户收入为代价。政策制定者和 NGO 可要求企业披露 premium、采购量和农户收入指标。
 
-6. **不同作物应采用差异化 premium design。**
+6. **不同作物应采用差异化 premium design.**
    cocoa 这类 certified supply 可能相对充足的作物，可以考虑 flexible premium；orange juice 等存在 certified supply shortage 的作物，则应谨慎。
 
 ## 与相关文献的对话 (Dialogue with Literature)
@@ -526,27 +526,27 @@ de Zegher et al. 研究 sourcing channels 与 contracts 如何促进 shared valu
 
 ### 模型限制 / 假设过强
 
-1. **主模型中的两点产量分布较 stylized。**虽然文章用 continuous distribution 做了数值检验，但解析结论的阈值结构依赖高/低两个状态。现实中产量和价格的联合分布可能更厚尾、更区域化，极端气候冲击也可能改变机制强度。
+1. **主模型中的两点产量分布较 stylized.** 虽然文章用 continuous distribution 做了数值检验，但解析结论的阈值结构依赖高/低两个状态。现实中产量和价格的联合分布可能更厚尾、更区域化，极端气候冲击也可能改变机制强度。
 
-2. **消费者对 certification 的信任被外生化。**特别是在 self-labeling 中，消费者是否相信企业自标、是否担心 greenwashing，会直接影响 $s'$。如果 credibility 内生，企业可能需要在 monitoring 或 transparency 上投资，self-label 的结论会更复杂。
+2. **消费者对 certification 的信任被外生化.** 特别是在 self-labeling 中，消费者是否相信企业自标、是否担心 greenwashing，会直接影响 $s'$。如果 credibility 内生，企业可能需要在 monitoring 或 transparency 上投资，self-label 的结论会更复杂。
 
-3. **农户认证是 all-or-nothing。**现实中农户可能只认证部分地块，或在 certified 与 uncertified 生产之间重新配置投入。这会影响认证可信度、产量和供给。
+3. **农户认证是 all-or-nothing.** 现实中农户可能只认证部分地块，或在 certified 与 uncertified 生产之间重新配置投入。这会影响认证可信度、产量和供给。
 
-4. **质量差异没有进入模型。**农作物市场价格常常与质量等级相关，premium rule 可能影响农户质量选择。如果 certified crops 与 conventional crops 在质量上系统不同，企业采购和定价决策会改变。
+4. **质量差异没有进入模型.** 农作物市场价格常常与质量等级相关，premium rule 可能影响农户质量选择。如果 certified crops 与 conventional crops 在质量上系统不同，企业采购和定价决策会改变。
 
-5. **模型是静态的。**certification adoption、soil conservation、farmer investment 和 firm-NGO relationship 都有明显动态性。当前模型无法解释 premium design 对长期产能、农户退出、气候适应投资的影响。
+5. **模型是静态的.** certification adoption、soil conservation、farmer investment 和 firm-NGO relationship 都有明显动态性。当前模型无法解释 premium design 对长期产能、农户退出、气候适应投资的影响。
 
 ### 未来研究方向
 
-1. **动态 certification investment model。**研究 fixed/flexible premium 如何影响农户多年期认证、投入、产量提升和退出决策，尤其是 climate change 下的长期适应。
+1. **动态 certification investment model.** 研究 fixed/flexible premium 如何影响农户多年期认证、投入、产量提升和退出决策，尤其是 climate change 下的长期适应。
 
-2. **多作物、多区域 empirical calibration。**用 cocoa、coffee、banana、orange juice 等作物的认证供给、销售比例、价格和 premium 数据估计阈值，形成可用于认证方决策的 crop-level premium design map。
+2. **多作物、多区域 empirical calibration.** 用 cocoa、coffee、banana、orange juice 等作物的认证供给、销售比例、价格和 premium 数据估计阈值，形成可用于认证方决策的 crop-level premium design map。
 
-3. **endogenous credibility and monitoring。**把 NGO label 与 self-label 的 credibility、audit intensity、greenwashing risk 内生化，研究 premium 与 monitoring 的联合设计。
+3. **endogenous credibility and monitoring.** 把 NGO label 与 self-label 的 credibility、audit intensity、greenwashing risk 内生化，研究 premium 与 monitoring 的联合设计。
 
-4. **contracts plus certification。**将 premium rule 与 advance purchase commitment、minimum quantity guarantee、revenue-sharing 或 long-term sourcing contracts 结合，研究能否在 supply-constrained crops 中恢复 flexible premium 的价值。
+4. **contracts plus certification.** 将 premium rule 与 advance purchase commitment、minimum quantity guarantee、revenue-sharing 或 long-term sourcing contracts 结合，研究能否在 supply-constrained crops 中恢复 flexible premium 的价值。
 
-5. **welfare analysis。**本文主要看 farmer income、sourcing quantity 和 firm profit；未来可加入 consumer surplus、environmental externality、NGO operating cost 和 distributional welfare，评价不同 premium 制度的社会福利。
+5. **welfare analysis.** 本文主要看 farmer income、sourcing quantity 和 firm profit；未来可加入 consumer surplus、environmental externality、NGO operating cost 和 distributional welfare，评价不同 premium 制度的社会福利。
 
 ## 最后一页总结
 
@@ -554,4 +554,4 @@ de Zegher et al. 研究 sourcing channels 与 contracts 如何促进 shared valu
 
 它的核心答案是：不能只看价格保护，还要看企业采购反应和 certified supply 约束。灵活 premium 在低价时提高补偿，听起来公平，但如果它导致企业少买 certified crops，或者在供给紧张状态下降低 premium 却无法增加交易量，农户反而可能受损。
 
-因此，fixed vs. flexible premium 的选择应取决于作物层面的运营条件：平均产量、产量波动、认证成本、minimum price、可持续消费者需求和 certified supply 是否充足。本文最重要的管理启示是：**灵活 premium 不是公平性的万能药，而是一种需要 supply-demand diagnosis 的运营设计工具。**
+因此，fixed vs. flexible premium 的选择应取决于作物层面的运营条件：平均产量、产量波动、认证成本、minimum price、可持续消费者需求和 certified supply 是否充足。本文最重要的管理启示是：**灵活 premium 不是公平性的万能药，而是一种需要 supply-demand diagnosis 的运营设计工具.**
